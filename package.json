@@ -1,0 +1,24 @@
+{
+    "name": "pigging-schedule",
+    "version": "1.0.0",
+    "description": "Thinkful fullstack capstone project, a pipeline pigging history and scheduling app",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project.git"
+    },
+    "dependencies": {
+        "express": "*",
+        "body-parser": "*",
+        "mongoose": "*"
+    },
+    "author": "Kim Sherrell",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/issues"
+    },
+    "homepage": "https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project#readme"
+}
