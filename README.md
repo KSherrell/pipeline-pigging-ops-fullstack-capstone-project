@@ -1,6 +1,7 @@
 # Pigging Operations History and Schedule
 Thinkful fullstack capstone project, a Pipeline Pigging Operations History and Schedule app, which allows pigging activities to be historized and scheduled.
-#Introduction
+
+## Introduction
 
 This application will replace the current Pigging History and Schedule, an Excel workbook that contains the history of pigging activities of over 120 pipelines. This document is also used to create a daily Pigging Schedule.
 
@@ -13,7 +14,7 @@ Part 2: The Daily Reports are compiled into one master Daily Report (by manually
 Part 3: The Pigging Schedule is sent out each day to a mailing list of schedule viewers.
 
 
-#User Stories
+## User Stories
 
 This application will be utilized by five different types of users: Pipeline Operators,  Pipeline Foremen, Production Foremen, Managers, and Contractors who view the pigging schedule.
 
@@ -28,7 +29,7 @@ This application will be utilized by five different types of users: Pipeline Ope
 - As a <b>Production Foreman or Contractor</b>, in order to plan field ops and aid communications, I can log in and view the pigging schedule
 
 
-#Functionality
+## Functionality
 
 The app's functionality includes the following abilities:
 
