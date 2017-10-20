@@ -3,30 +3,103 @@ Thinkful fullstack capstone project, a Pipeline Pigging Operations History and S
 
 ## Introduction
 
-This application will replace the current Pigging History and Schedule, an Excel workbook that contains the history of pigging activities of over 120 pipelines. This document is also used to create a daily Pigging Schedule.
+The Pigging Report is an Excel workbook I created which contains several different types of data: the pigging histories of the pipelines, the pigging schedule, the operators' daily field reports, and the pipeline debris trending reports. It also contains information about each pipeline, such as pipe size, valve types, and acceptable pigs. This report is very time-consuming to manage, modify, and update as all of the work of managing it is done maually -- whether I am copy/pasting information from 6 different daily field reports into the master workbook or copy/paste/clear contents/resetting formulas each month to create a new record. The process for adding new pipelines to the report is clumsy and fractionated, requiring data, links, and formulas to be updated in many places each time a pipeline is added to the report.
 
 The pigging report and schedule is completed in three parts every day:
 
-Part 1: Individual Daily Reports are completed by Pipeline Operators and sent to me via email. These Daily Reports are in Excel format and contain a few formulas and drop down menus to make the Daily reports easier for the operators to use.
+Part 1: Individual Daily Reports (in Excel format) are completed by Pipeline Operators and sent to me via email.
 
-Part 2: The Daily Reports are compiled into one master Daily Report (by manually copying/pasting data), which is stored as a page in the Pigging History workbook.
+Part 2: Every morning, the Daily Reports are compiled into one master Daily Report for that date, which is stored as a page in the Pigging History workbook.
 
-Part 3: The Pigging Schedule is sent out each day to a mailing list of schedule viewers.
+Part 3: The Pigging Schedule is created and sent out each day via email to a mailing list which includes Production Foremen, Managers, and Contractors.
+
+Although the Pigging Report has evolved and become more user-friendly over the years, it is still more frenemy than friend.
+
+This application will replace the current Pigging Report, helping our team be more effficient by saving time managing the report. This application will also stabilize the data by reducing the number of times the data is handled (by eliminating the copy/paste cycle), by standardizing data input (e.g. using timestamps instead of manually typing the date or AM/PM), and by identifying missing information.
 
 
 ## User Stories
 
-This application will be utilized by five different types of users: Pipeline Operators,  Pipeline Foremen, Production Foremen, Managers, and Contractors who view the pigging schedule.
+This application will be utilized by four different types of users: Pipeline Operators,  Pipeline Foremen, Production Foremen, and Managers.
 
-- As a <b>Pipeline Operator</b>, in order to work to maintain the pipelines, I can record my daily field activities and view the pigging schedule.
+* As a User, I want to login to so that I can utilize the application.
 
-- As a <b>Pipeline Foreman</b>, in order to keep product flowing through the pipelines, I can view the pigging history and create daily pigging schedules.
+* As a Pipeline Operator, I want to record my daily field activities so that I can track my work on the pipelines.
 
-- As a <b>Sr. Pipeline Foreman</b>, in order to track costs and plan spending, I can trend debris and pigging activity.
+* As a Pipeline Operator, I want to view the pigging schedule so that I can plan my field route.
 
-- As a <b>Manager</b>, in order to remain informed about my department, I can login and view the debris reports.
+* As a Pipeline Operator, I want to record notes about my location observations so that other operators can be aware of hazards.
 
-- As a <b>Production Foreman or Contractor</b>, in order to plan field ops and aid communications, I can log in and view the pigging schedule
+* As a Pipeline Operator, I want to record pigging exceptions (times when a pig was not launched on schedule) so that the launch schedule will remain up-to-date.
+
+* As a Pipeline Foreman, I want to view the debris reports so that I can adjust the pigging frequencies if necessary.
+
+* As a Pipeline Foreman, I want to create daily pigging schedules so that I can prioritize the tasks of the operators.
+
+* As a Pipeline Foreman, I want to view activity history so that I can identify missing launch and receive data.
+
+* As a Pipeline Foreman, I want to trend debris and pigging activity so that I can track costs and plan spending.
+
+* As a Pipeline Foreman, I want to be able to add or delete users so that I can control access to the pigging data.
+
+* As a Pipeline Foreman, I want to add add pipelines to the application so that I can add them to the pigging schedule.
+
+* As a Pipeline Foreman, I want to remove inactive pipelines from the pigging schedule so that I do not mistakenly send an operator to pig an inactive pipeline.
+
+* As a Pipeline Foreman, I want to be able to modify the pigging history so that I can correct mistakes.
+
+* As a Manager, I want to view the debris reports so that I can remain informed about my department.
+
+* As a Production Foreman, I want to view the pigging schedule so that I can plan field operations around the scheduled pigging activities.
+
+## Business items (database structure)
+
+* user
+    * role (Pipeline Operators,  Pipeline Foremen, Production Foremen, and Managers)
+    * email (email)
+    * password (password)
+    * first name (string)
+    * last name (string)
+    * active (boolean)
+
+* geo areas
+    * number (integer)
+* systems
+    * name (string)
+    * geo area number (integer)
+* pipeline
+    * name of the system (string)
+    * name of the pipeline (string)
+    * launcher site name (string)
+    * receiver site name (string)
+    * size of pipeline (string)
+    * type of product (string)
+    * type/name of acceptable pigs (string)
+    * valve information (string)
+    * pigging frequency (string)
+
+* piggs
+    * types/name (string)
+    * size (string)
+
+* pigging activities
+    * pipeline name (string)
+    * exception (string)
+    * asigned user email (email)
+    * notes (string)
+    * launch timestamp (timestamp)
+    * receive timestamp (timestamp)
+    * duration in hours (integer)
+    * launcher site name (string)
+    * receiver site name (string)
+    * debries found at the receiver site (string)
+
+* debries collected from the pipeline
+    * pipeline name (string)
+    * receiver site name (string)
+    * type (string)
+    * weight in pounds (integer)
+
 
 
 ## Functionality
@@ -34,10 +107,12 @@ This application will be utilized by five different types of users: Pipeline Ope
 The app's functionality includes the following abilities:
 
 - login with a username and password
-- enter and submit daily field activity, such as pig launches and receives
+- view daily pigging schedule
+- enter and submit daily pigging activities
 - make notes about launch and receive exceptions
 - view pipeline pigging history
 - add new pipelines to the history and to the schedule
-- add new users of all three types (Operators, Foremen, Schedule Viewers)
+- add new users
+- remove users
 - modify and correct the pigging history
-- create debris reports
+- create debris reports which trend type and amount of debris collected within specific timeframes
