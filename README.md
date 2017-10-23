@@ -22,31 +22,39 @@ This application will replace the current Pigging Report, helping our team be mo
 
 This application will be utilized by four different types of users: Pipeline Operators,  Pipeline Foremen, Production Foremen, and Managers.
 
-* As a User, I want to login to so that I can utilize the application.
+* As a User, I want to login so that I can utilize the application.
 
-* As a Pipeline Operator, I want to record my daily field activities so that I can track my work on the pipelines.
+* As a User, I want to view and update my account information so that I can change my password.
+
+* As a Pipeline Operator, I want to record my daily pigging activities so that I can track my work on the pipelines.
 
 * As a Pipeline Operator, I want to view the pigging schedule so that I can plan my field route.
+
+*As a Pipeline Operator, I want to view the previous launch details so that I can understand why pigs are overdue.
 
 * As a Pipeline Operator, I want to record notes about my location observations so that other operators can be aware of hazards.
 
 * As a Pipeline Operator, I want to record pigging exceptions (times when a pig was not launched on schedule) so that the launch schedule will remain up-to-date.
 
+* As a Pipeline Foreman, I want to view daily pigging schedules so that I can prioritize the tasks of the operators.
+
 * As a Pipeline Foreman, I want to view the debris reports so that I can adjust the pigging frequencies if necessary.
 
-* As a Pipeline Foreman, I want to create daily pigging schedules so that I can prioritize the tasks of the operators.
+* As a Pipeline Foreman, I want to trend pigging activity so that I can track costs and plan spending.
 
-* As a Pipeline Foreman, I want to view activity history so that I can identify missing launch and receive data.
+* As a Pipeline Foreman, I want to view pigging history so that I can identify missing launch and receive data.
 
-* As a Pipeline Foreman, I want to trend debris and pigging activity so that I can track costs and plan spending.
+* As a Pipeline Foreman, I want to be able to update the pigging history so that I can correct mistakes.
 
-* As a Pipeline Foreman, I want to be able to add or delete users so that I can control access to the pigging data.
+* As a Pipeline Foreman, I want to add pipelines to the application so that I can add them to the pigging schedule.
 
-* As a Pipeline Foreman, I want to add add pipelines to the application so that I can add them to the pigging schedule.
+* As a Pipeline Foreman, I want to update pipelines information so that I can correct mistakes and keep the data current.
 
 * As a Pipeline Foreman, I want to remove inactive pipelines from the pigging schedule so that I do not mistakenly send an operator to pig an inactive pipeline.
 
-* As a Pipeline Foreman, I want to be able to modify the pigging history so that I can correct mistakes.
+* As a Pipeline Foreman, I want to add and delete users so that I can control access to the pigging data.
+
+* As a Pipeline Foreman, I want to modify user data so that I can create temporary passwords in case a user forgets his password.
 
 * As a Manager, I want to view the debris reports so that I can remain informed about my department.
 
@@ -60,14 +68,18 @@ This application will be utilized by four different types of users: Pipeline Ope
     * password (password)
     * first name (string)
     * last name (string)
-    * active (boolean)
+    * active (boolean) (default value = true)
 
-* geo areas
-    * number (integer)
+* report centers
+    *name (string)
+    *number (integer)
+
 * systems
     * name (string)
-    * geo area number (integer)
+
 * pipeline
+    * report center name (string)
+    * report center number (integer)
     * name of the system (string)
     * name of the pipeline (string)
     * launcher site name (string)
@@ -75,8 +87,10 @@ This application will be utilized by four different types of users: Pipeline Ope
     * size of pipeline (string)
     * type of product (string)
     * type/name of acceptable pigs (string)
-    * valve information (string)
+    * closure information (string)
     * pigging frequency (string)
+    * date added, updated, or removed (timestamp)
+    * active (boolean)
 
 * piggs
     * types/name (string)
@@ -89,7 +103,6 @@ This application will be utilized by four different types of users: Pipeline Ope
     * notes (string)
     * launch timestamp (timestamp)
     * receive timestamp (timestamp)
-    * duration in hours (integer)
     * launcher site name (string)
     * receiver site name (string)
     * debries found at the receiver site (string)
