@@ -129,3 +129,7 @@ The app's functionality includes the following abilities:
 - remove users
 - modify and correct the pigging history
 - create debris reports which trend type and amount of debris collected within specific timeframes
+
+## Wireframes
+![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/login.png)
+
