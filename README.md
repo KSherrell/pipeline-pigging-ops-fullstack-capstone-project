@@ -38,7 +38,7 @@ This application will be utilized by four different types of users: Pipeline Ope
 
 * As a Pipeline Operator, I want to view the pigging schedule so that I can plan my field route.
 
-*As a Pipeline Operator, I want to view the previous launch details so that I can understand why pigs are overdue.
+* As a Pipeline Operator, I want to view the previous launch details so that I can understand why pigs are overdue.
 
 * As a Pipeline Foreman, I want to view daily pigging schedules so that I can prioritize the tasks of the operators.
 
