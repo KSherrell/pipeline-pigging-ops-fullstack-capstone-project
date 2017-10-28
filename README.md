@@ -22,21 +22,27 @@ This application will replace the current Pigging Report, helping our team be mo
 
 This application will be utilized by four different types of users: Pipeline Operators,  Pipeline Foremen, Production Foremen, and Managers.
 
-* As a User, I want to login so that I can utilize the application.
+* As a User, I want to login so that I can use the application.
+
+* As a User, I want to reset my password if I have forgotten it so that I can log in to the application.
+
+* As a User, I want to create an account so that I can use the application.
 
 * As a User, I want to view and update my account information so that I can change my password.
 
-* As a Pipeline Operator, I want to record my daily pigging activities so that I can track my work on the pipelines.
+* As a Pipeline Operator, I want to input my daily pigging activities so that I can track my work on the pipelines.
+
+* As a Pipeline Operator, I want to record pigging exceptions (times when a pig was not launched on schedule) so that the launch schedule will remain up-to-date.
+
+* As a Pipeline Operator, I want to record notes about my location observations so that other operators can be aware of hazards.
 
 * As a Pipeline Operator, I want to view the pigging schedule so that I can plan my field route.
 
 *As a Pipeline Operator, I want to view the previous launch details so that I can understand why pigs are overdue.
 
-* As a Pipeline Operator, I want to record notes about my location observations so that other operators can be aware of hazards.
-
-* As a Pipeline Operator, I want to record pigging exceptions (times when a pig was not launched on schedule) so that the launch schedule will remain up-to-date.
-
 * As a Pipeline Foreman, I want to view daily pigging schedules so that I can prioritize the tasks of the operators.
+
+* As a Pipeline Foreman, I want to view the details of the previous launch so the I can understand why pigs are overdue.
 
 * As a Pipeline Foreman, I want to view the debris reports so that I can adjust the pigging frequencies if necessary.
 
@@ -52,13 +58,15 @@ This application will be utilized by four different types of users: Pipeline Ope
 
 * As a Pipeline Foreman, I want to remove inactive pipelines from the pigging schedule so that I do not mistakenly send an operator to pig an inactive pipeline.
 
-* As a Pipeline Foreman, I want to add and delete users so that I can control access to the pigging data.
+* As a Pipeline Foreman, I want to assign user roles so that I can control access to the pigging data.
 
-* As a Pipeline Foreman, I want to modify user data so that I can create temporary passwords in case a user forgets his password.
+* As a Pipeline Foreman, I want to deactivate users so that I can control access to the pigging data.
 
-* As a Manager, I want to view the debris reports so that I can remain informed about my department.
+* As a Pipeline Foreman, I want to change user roles so that I can control access to the pigging data.
 
 * As a Production Foreman, I want to view the pigging schedule so that I can plan field operations around the scheduled pigging activities.
+
+* As a Manager, I want to view the debris reports so that I can remain informed about my department.
 
 ## Business items (database structure)
 
@@ -131,22 +139,45 @@ The app's functionality includes the following abilities:
 - create debris reports which trend type and amount of debris collected within specific timeframes
 
 ## Wireframes
-![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/login.png)
-![Wireframe _User Account Inf](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/user_account_info.png)
-![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/operator_input_pigging.png)
-![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/operator_pigging_schedule.png)
-![Wireframe _Operator Previous Launch](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/operator_prev_launch.png)
-![Wireframe _Foreman Admin Menu](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_admin_menu.png)
-![Wireframe _Foreman Debris Report ](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_debris_report.png)
-![Wireframe _foreman_pigging_activity](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_pigging_activity.png)
-![Wireframe _foreman_pigging_history](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_pigging_history.png)
-![Wireframe _foreman_pigging_schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_pigging_schedule.png)
-![Wireframe _foreman_update_pigging_history](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_update_pigging_history.png)
-![Wireframe _foreman_update_pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_update_pipeline.png)
-![Wireframe _foreman_update_users](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_update_users.png)
-![Wireframe _foreman_add_pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_add_pipeline.png)
-![Wireframe _foreman_add_users](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/foreman_add_users.png)
-![Wireframe _view-only_debris_report](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/view-only_debris_report.png)
-![Wireframe _view-only_pigging_schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/view-only_pigging_schedule.png)
+![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_login.png)
+
+![Wireframe _Reset Password](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_reset_password.png)
+
+![Wireframe _Create Account](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_create_account.png)
+
+![Wireframe _Account Info](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_account_info.png)
+
+![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_operator_pigging_schedule.png)
+
+![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_admin_menu.png)
+
+![Wireframe _Operator Previous Launch ](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_operator_prev_launch.png)
+
+![Wireframe _Foreman Admin Menu](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_admin_menu.png)
+
+![Wireframe _Foreman Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_pigging_schedule.png)
+
+![Wireframe _Foreman Previous Launch](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_prev_launch.png)
+
+![Wireframe _Foreman Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_debris_reports.png)
+
+![Wireframe _Foreman Pigging Activity](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_pigging_activity.png)
+
+![Wireframe _Foreman Pigging History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_pigging_history.png)
+
+![Wireframe _Foreman Update History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_update_history.png)
+
+![Wireframe _Foreman Add Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_add_pipeline.png)
+
+![Wireframe _Foreman Update Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_update_pipeline.png)
+
+![Wireframe _Foreman Add User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_add_user.png)
+
+![Wireframe _Foreman Update User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_update_user.png)
+
+![Wireframe _View Only Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_viewonly_pigging_schedule.png)
+
+![Wireframe _View Only Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_viewonly_debris_reports.png)
+
 
 
