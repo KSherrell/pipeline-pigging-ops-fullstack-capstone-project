@@ -15,7 +15,7 @@ Part 3: The Pigging Schedule is created and sent out each day via email to a mai
 
 Although the Pigging Report has evolved and become more user-friendly over the years, it is still more frenemy than friend.
 
-This application will replace the current Pigging Report, helping our team be more effficient by saving time managing the report. This application will also stabilize the data by reducing the number of times the data is handled (by eliminating the copy/paste cycle), by standardizing data input (e.g. using timestamps instead of manually typing the date or AM/PM), and by identifying missing information.
+This application will replace the current Pigging Report, helping our team be more effficient by saving time managing the report. This application will also stabilize the data by reducing the number of times the data is handled (by eliminating the copy/paste cycle), by standardizing data input (e.g. using timestamps instead of manually typing the date or AM/PM), and by making it easier to identify missing information.
 
 
 ## User Stories
@@ -79,8 +79,8 @@ This application will be utilized by four different types of users: Pipeline Ope
     * active (boolean) (default value = true)
 
 * report centers
-    *name (string)
-    *number (integer)
+    * name (string)
+    * number (integer)
 
 * systems
     * name (string)
@@ -100,7 +100,7 @@ This application will be utilized by four different types of users: Pipeline Ope
     * date added, updated, or removed (timestamp)
     * active (boolean)
 
-* piggs
+* pigs
     * types/name (string)
     * size (string)
 
@@ -113,9 +113,9 @@ This application will be utilized by four different types of users: Pipeline Ope
     * receive timestamp (timestamp)
     * launcher site name (string)
     * receiver site name (string)
-    * debries found at the receiver site (string)
+    * debris found at the receiver site (string)
 
-* debries collected from the pipeline
+* debris collected from the pipeline
     * pipeline name (string)
     * receiver site name (string)
     * type (string)
@@ -147,9 +147,9 @@ The app's functionality includes the following abilities:
 
 ![Wireframe _Account Info](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_account_info.png)
 
-![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_operator_pigging_schedule.png)
+![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_input_pigging.png)
 
-![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_foreman_admin_menu.png)
+![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_operator_pigging_schedule.png)
 
 ![Wireframe _Operator Previous Launch ](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes_operator_prev_launch.png)
 
