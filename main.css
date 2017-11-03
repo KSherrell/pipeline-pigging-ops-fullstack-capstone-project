@@ -1,0 +1,91 @@
+html {}
+
+* {
+    border: 0 solid red;
+}
+
+@media only screen and (min-width: 769px) {
+    body {
+        background-color: blueviolet;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        background-color: aliceblue;
+    }
+}
+
+@media only screen and (max-width: 703px) {
+    body {
+        background-color: darkorange;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    body {
+        background-color: antiquewhite;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    body {
+        box-sizing: border-box;
+        background-color: #FCFCFC;
+        font-family: 'Vollkorn', serif;
+        color: #333333;
+    }
+    header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 40px;
+        width: 100%;
+        z-index: 1;
+        background-color: #808d8e;
+    }
+    header h3 {
+        font-family: 'Monda', sans-serif;
+        font-weight: 600;
+        float: left;
+        margin: 7px 0 0 10px;
+        color: #f9f9f9;
+    }
+    header img {
+        height: 25px;
+        margin: 7px 7px 0 5px;
+        float: right;
+    }
+    h1 {}
+    h2 {}
+    hr {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .user-login-container {
+        padding: 30px 10px;
+    }
+    .user-reset-password-container {}
+    .user-create-account-container {}
+    .user-account-info-container {}
+    .operator-input-pigging-container {}
+    .operator-schedule-container {}
+    .operator-prev-launch-container {}
+    .foreman-admin-menu-container {}
+    .foreman-schedule-container {}
+    .foreman-prev-launch-container {}
+    .foreman-debris-reports-container {}
+    .foreman-pigging-activity-container {}
+    .foreman-view-history-container {}
+    .foreman-update-history-container {}
+    .foreman-add-pipeline-container {}
+    .foreman-update-pipeline-container {}
+    .foreman-assign-user-role-container {}
+    .foreman-update-user-container {}
+    .viewonly-schedule-container {}
+    .viewonly-debris-container {}
+    footer {}
+}
+
+
+}
