@@ -73,17 +73,21 @@ hr {
         text-shadow: 1px 1px 0 #156d7f;
     }
     main {
-        padding: 40px 10px;
+        width: 100%;
+        padding: 50px 10px;
+        font-size: 1rem;
+    }
+    p {
+        margin-top: 10px;
     }
     form {
-        margin-top: 2.5rem;
+        margin-top: 2rem;
         padding: 0 1.5rem;
         font-size: .9rem;
     }
     label {
         font-size: 1.1rem;
         display: inline-block;
-        margin-bottom: 5px;
     }
     form div {
         margin-top: 2rem;
@@ -96,11 +100,12 @@ hr {
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
         padding: 0 0 0 5px;
+        margin-top: .5rem;
     }
     .buttons {
         width: 234px;
         text-align: center;
-        margin: 2.5rem auto 0;
+        margin: 2.5rem auto;
     }
     button {
         width: 90px;
@@ -151,17 +156,20 @@ hr {
     /*    USER RESET PASSWORD*/
     .user-reset-password-container {
         width: 100%;
-        font-size: 1rem;
+    }
+    .user-reset-password-container hr {
+        width: 85%;
+        margin: 1.5rem auto;
     }
     /*    USER CREATE ACCOUNT*/
     .user-create-account-container {
         width: 100%;
-        font-size: 1rem;
     }
-    .user-create-account-container form div:nth-child(2n) {
-        margin-top: .5rem;
+    /*    USER VIEW/UPDATE ACCOUNT*/
+    .user-account-info-container hr {
+        width: 85%;
+        margin: 1.5rem auto;
     }
-    .user-account-info-container {}
     .operator-input-pigging-container {}
     .operator-schedule-container {}
     .operator-prev-launch-container {}
