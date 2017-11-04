@@ -13,11 +13,18 @@
 </head>
 
 <body>
-    <header class="user-login-container">
-        <h3 class="tooltip">Login</h3>
-        <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext">Exit</span></span>
+    <!--
+    <header>
+        <h3>Page Label</h3>
+        <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext ttt1">Exit</span></span>
         <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
     </header>
+-->
+    <!--
+    <header>
+        <h3>Login</h3>
+    </header>
+
     <main class="user-login-container">
         <form id="user-login" action="" method="">
             <div>
@@ -37,15 +44,35 @@
             <p><a href="#">Create an account</a></p>
         </div>
     </main>
-    <hr>
 
+    <hr>
+-->
+    <!--
+    <header>
+        <h3>Password Reset</h3>
+    </header>
     <main class="user-reset-password-container">
-        <h3>RESET PASSWORD</h3>
+        <form id="user-pwd-reset" action="" method="">
+            <div>
+                <label for="new-pwd">Enter New Password</label>
+                <input type="password" id="new-pwd" name="user-new-pwd">
+            </div>
+            <div>
+                <label for="new-pwd-reenter">Re-enter New Password</label>
+                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter">
+            </div>
+            <div class="buttons">
+                <button form="user-pwd-reset" type="submit">SUBMIT</button><button type="button">CANCEL</button>
+            </div>
+        </form>
+
     </main>
     <hr>
-
+-->
+    <header>
+        <h3>Create Account</h3>
+    </header>
     <main class="user-create-account-container">
-        <h3>CREATE ACCOUNT</h3>
     </main>
     <hr>
 
