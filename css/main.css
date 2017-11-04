@@ -80,6 +80,11 @@ hr {
         padding: 0 1.5rem;
         font-size: .9rem;
     }
+    label {
+        font-size: 1.1rem;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
     form div {
         margin-top: 2rem;
     }
@@ -92,11 +97,17 @@ hr {
         border-right: 1px solid #A7DBD8;
         padding: 0 0 0 5px;
     }
+    .buttons {
+        width: 234px;
+        text-align: center;
+        margin: 2.5rem auto 0;
+    }
     button {
         width: 90px;
         height: 35px;
-        display: block;
-        margin: auto;
+        display: inline-block;
+        margin: 0 13px;
+        font-family: 'Monda', sans-serif;
         color: #000;
         background-color: #F38630;
         border-radius: 28px;
@@ -118,7 +129,7 @@ hr {
     a:hover {
         color: #FA6900;
     }
-    /*    USER LOGIN STYLES*/
+    /*    USER LOGIN */
     .user-login-container {
         width: 100%;
         font-size: 1rem;
@@ -127,7 +138,7 @@ hr {
         margin-top: 2.5rem;
         text-align: center;
     }
-    .user-login-container p:nth-of-type(2) {
+    .user-login-container p:nth-child(2) {
         margin-top: 1.75rem;
     }
     .user-login-container form {
@@ -137,20 +148,19 @@ hr {
         height: 17rem;
         font-size: .9rem;
     }
-    /*    USER RESET PASSWORD STYLES*/
+    /*    USER RESET PASSWORD*/
     .user-reset-password-container {
         width: 100%;
         font-size: 1rem;
     }
-    .user-reset-password-container .buttons {
-        width: 234px;
-        margin: 2.5rem auto 0;
+    /*    USER CREATE ACCOUNT*/
+    .user-create-account-container {
+        width: 100%;
+        font-size: 1rem;
     }
-    .user-reset-password-container button {
-        display: inline-block;
-        margin: 0 13px;
+    .user-create-account-container form div:nth-child(2n) {
+        margin-top: .5rem;
     }
-    .user-create-account-container {}
     .user-account-info-container {}
     .operator-input-pigging-container {}
     .operator-schedule-container {}

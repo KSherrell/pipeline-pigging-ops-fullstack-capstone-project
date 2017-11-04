@@ -20,6 +20,8 @@
         <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
     </header>
 -->
+
+
     <!--
     <header>
         <h3>Login</h3>
@@ -28,15 +30,15 @@
     <main class="user-login-container">
         <form id="user-login" action="" method="">
             <div>
-                <label for="email">EMAIL</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="user-email">
             </div>
             <div>
-                <label for="password">PASSWORD</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="user-password">
             </div>
-            <div>
-                <button form="user-login" type="submit">SUBMIT</button>
+            <div class="buttons">
+                <button form="user-login" type="submit">Submit</button>
             </div>
         </form>
         <div>
@@ -47,32 +49,65 @@
 
     <hr>
 -->
-    <!--
-    <header>
-        <h3>Password Reset</h3>
-    </header>
-    <main class="user-reset-password-container">
-        <form id="user-pwd-reset" action="" method="">
-            <div>
-                <label for="new-pwd">Enter New Password</label>
-                <input type="password" id="new-pwd" name="user-new-pwd">
-            </div>
-            <div>
-                <label for="new-pwd-reenter">Re-enter New Password</label>
-                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter">
-            </div>
-            <div class="buttons">
-                <button form="user-pwd-reset" type="submit">SUBMIT</button><button type="button">CANCEL</button>
-            </div>
-        </form>
 
-    </main>
-    <hr>
+
+
+
+    <!--
+<header>
+    <h3>Password Reset</h3>
+</header>
+<main class="user-reset-password-container">
+    <form id="user-pwd-reset" action="" method="">
+        <div>
+            <label for="new-pwd">Enter New Password</label>
+            <input type="password" id="new-pwd" name="user-new-pwd">
+        </div>
+        <div>
+            <label for="new-pwd-reenter">Re-enter New Password</label>
+            <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter">
+        </div>
+        <div class="buttons">
+            <button form="user-pwd-reset" type="submit">Submit</button><button type="button">Cancel</button>
+        </div>
+    </form>
+
+</main>
+<hr>
 -->
+
+
     <header>
         <h3>Create Account</h3>
     </header>
     <main class="user-create-account-container">
+
+        <form id="user-create-acct" action="" method="">
+            <div>
+                <label for="first-name">Name</label>
+                <input type="text" id="first-name" name="user-first-name" placeholder="First Name">
+            </div>
+            <div>
+                <input type="text" id="last-name" name="user-last-name" placeholder="Last Name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="user-email" placeholder="Email">
+            </div>
+            <div>
+                <input type="email" id="reenter-email" name="user-reenter-email" placeholder="Re-enter Email">
+            </div>
+            <div>
+                <label for="password" Password>Password</label>
+                <input type="password" id="password" name="user-password" placeholder="Password">
+            </div>
+            <div>
+                <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password">
+            </div>
+            <div class="buttons">
+                <button form="user-create-acct" type="submit">Submit</button><button type="button">Cancel</button>
+            </div>
+        </form>
     </main>
     <hr>
 
