@@ -206,17 +206,19 @@ hr {
     .operator-input-pigging-container form div.select-receive label {
         font-size: 1rem;
     }
-    .operator-input-pigging-container form div#textArea {
+    .operator-input-pigging-container form div.textarea {
         margin-top: 2rem;
+        width: 100%;
         text-align: left;
-        resize: none;
-        padding: 10px;
+        padding: 7px;
+        border: 2px solid #A7DBD8;
+        background-color: #FFF8DC;
     }
     .operator-input-pigging-container form textarea {
         text-align: left;
         resize: none;
-        padding: 10px;
-        border: 2px solid #A7DBD8;
+        font-size: 1rem;
+        background-color: #FFF8DC;
     }
     .operator-input-pigging-container form div.select-exception {}
     .operator-schedule-container {}
