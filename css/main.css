@@ -198,10 +198,13 @@ hr {
     }
     .operator-input-pigging-container form input[type='number'],
     .operator-input-pigging-container form input[type='time'] {
-        width: 120px;
+        width: 125px;
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
+    }
+    .operator-input-pigging-container form div.input-debris input[type='number'] {
+        width: 75px;
     }
     .operator-input-pigging-container form div.select-receive label {
         font-size: 1rem;
