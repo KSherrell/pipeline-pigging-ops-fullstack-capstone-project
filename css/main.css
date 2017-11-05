@@ -87,20 +87,18 @@ hr {
     }
     label {
         font-size: 1.1rem;
-        display: inline-block;
     }
     form div {
         margin-top: 2rem;
     }
     form div input {
         background-color: #E0E4CC;
-        display: block;
         height: 30px;
         width: 100%;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
         padding: 0 0 0 5px;
-        margin-top: .5rem;
+        margin-top: .4rem;
     }
     .buttons {
         width: 234px;
@@ -108,10 +106,9 @@ hr {
         margin: 2.5rem auto;
     }
     button {
-        width: 90px;
-        height: 35px;
         display: inline-block;
         margin: 0 13px;
+        padding: 13px;
         font-family: 'Monda', sans-serif;
         color: #000;
         background-color: #F38630;
@@ -135,15 +132,11 @@ hr {
         color: #FA6900;
     }
     /*    USER LOGIN */
-    .user-login-container {
-        width: 100%;
-        font-size: 1rem;
-    }
     .user-login-container p {
         margin-top: 2.5rem;
         text-align: center;
     }
-    .user-login-container p:nth-child(2) {
+    .user-login-container p+p {
         margin-top: 1.75rem;
     }
     .user-login-container form {
@@ -154,23 +147,43 @@ hr {
         font-size: .9rem;
     }
     /*    USER RESET PASSWORD*/
-    .user-reset-password-container {
-        width: 100%;
-    }
     .user-reset-password-container hr {
         width: 85%;
         margin: 1.5rem auto;
     }
     /*    USER CREATE ACCOUNT*/
+    /*
     .user-create-account-container {
         width: 100%;
     }
+*/
     /*    USER VIEW/UPDATE ACCOUNT*/
     .user-account-info-container hr {
         width: 85%;
         margin: 1.5rem auto;
     }
+    /*    OPERATOR INPUT PIGGING*/
     .operator-input-pigging-container {}
+    .operator-input-pigging-container form div {
+        margin-top: 0;
+    }
+    .operator-input-pigging-container form div select,
+    p.auto-pop-site-name {
+        background-color: #E0E4CC;
+        display: block;
+        height: 30px;
+        width: 100%;
+        border-bottom: 1px solid #A7DBD8;
+        border-right: 1px solid #A7DBD8;
+        padding: 0 0 0 10px;
+        margin-top: .4rem;
+    }
+    .operator-input-pigging-container form div input[type='radio'],
+    label {
+        height: auto;
+        width: auto;
+        font-size: 1rem;
+    }
     .operator-schedule-container {}
     .operator-prev-launch-container {}
     .foreman-admin-menu-container {}

@@ -22,11 +22,6 @@
     </header>
 -->
 
-
-
-
-
-
     <header>
         <h3>Login</h3>
     </header>
@@ -146,8 +141,46 @@
     </main>
 
 
+
+    <header>
+        <h3>Input Pigging</h3>
+        <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext ttt1">Exit</span></span>
+        <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
+    </header>
     <main class="operator-input-pigging-container">
-        <h3>OP INPUT PIGGING</h3>
+        <form id="input-pigging" action="" method="">
+            <div>
+                <input type="date" name="date-time" class="pigging-date">
+            </div>
+            <div>
+                <select name="pipeline-systems">
+                <option value="select-system">Select Pipeline System</option>
+               <option value="system-one">System One</option>
+               <option value="system-two">System Two</option>
+               <option value="system-three">System Three</option>
+               <option value="system-four">System Four</option>
+            </select>
+            </div>
+            <div>
+                <select name="pipeline-names">
+                <option value="select-name">Select Pipeline Name</option>
+                <option value="system-one">Name One</option>
+                <option value="system-two">Name Two</option>
+                <option value="system-three">Name Three</option>
+                <option value="system-four">Name Four</option>
+            </select>
+            </div>
+            <div>
+                <p class="auto-pop-site-name"></p>
+            </div>
+            <div>
+                <input type="radio" name="pigging-activity" id="radio-launch" value="launch"><label for="radio-launch">Launch</label>
+            </div>
+
+        </form>
+
+
+
     </main>
     <hr>
 
