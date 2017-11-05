@@ -22,6 +22,7 @@
     </header>
 -->
 
+    <!--
     <header>
         <h3>Login</h3>
     </header>
@@ -90,7 +91,6 @@
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="user-email" placeholder="Email">
-                <input type="email" id="reenter-email" name="user-reenter-email" placeholder="Re-enter Email">
             </div>
             <div>
                 <label for="password" Password>Password</label>
@@ -139,13 +139,14 @@
         </form>
 
     </main>
+-->
 
 
 
     <header>
         <h3>Input Pigging</h3>
-        <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext ttt1">Exit</span></span>
-        <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
     <main class="operator-input-pigging-container">
         <form id="input-pigging" action="" method="">
@@ -174,7 +175,55 @@
                 <p class="auto-pop-site-name"></p>
             </div>
             <div>
-                <input type="radio" name="pigging-activity" id="radio-launch" value="launch"><label for="radio-launch">Launch</label>
+                <!-- Pig Launches-->
+                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch"><label for="radio-launch">Launch</label>
+                <div class="select-launch">
+                    <div>
+                        <p>Time <span><input type="time" name="launch-time" class="pigging-date"></span></p>
+                    </div>
+                    <div>
+                        <select name="pig-types">
+                        <option value="select-pig">Select Pig Type</option>
+                        <option value="pig-one">Pig Type One</option>
+                            <option value="pig-two">Pig Type Two</option>
+                            <option value="pig-three">Pig Type Three</option>
+                            <option value="pig-four">Pig Type Four</option>
+                    </select>
+                    </div>
+                </div>
+                <br/>
+
+
+                <!-- Pig Receives-->
+                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive"><label for="radio-receive">Receive</label>
+                <div class="select-receive">
+                    <p>Time <span><input type="time" name="receive-time" class="pigging-date"></span></p>
+                </div>
+                <div>
+                    <p>Debris</p>
+                    <span><input type="checkbox" name="check-debris" id="paraffin"><label for="paraffin">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight" class="input-weight"></span>
+                    <span><input type="checkbox" name="check-debris" id="sand"><label for="sand">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight" class="input-weight"></span>
+
+
+                </div>
+            </div>
+            <br/>
+            <!-- Pigging Exceptions-->
+            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception"><label for="radio-exception">Exception</label>
+            <div class="select-exception">
+                <div>
+                    <input type="time" name="exception-time" class="pigging-date">
+                </div>
+                <div>
+                    <select name="exceptions">
+                            <option value="select-exception">Select Exception</option>
+                            <option value="exception-one">Exception One</option>
+                            <option value="exception-two">Exception Two</option>
+                            <option value="exception-three">Exception Three</option>
+                            <option value="exception-four">Exception Four</option>
+                        </select>
+                </div>
+            </div>
             </div>
 
         </form>
