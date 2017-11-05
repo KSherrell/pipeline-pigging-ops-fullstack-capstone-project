@@ -151,7 +151,7 @@
     <main class="operator-input-pigging-container">
         <form id="input-pigging" action="" method="">
             <div>
-                <input type="date" name="date-time" class="pigging-date">
+                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
             </div>
             <div>
                 <select name="pipeline-systems">
@@ -179,7 +179,7 @@
                 <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch"><label for="radio-launch">Launch</label>
                 <div class="select-launch">
                     <div>
-                        <p>Time <span><input type="time" name="launch-time" class="pigging-date"></span></p>
+                        <p>Time: <span><input type="time" name="launch-time"></span></p>
                     </div>
                     <div>
                         <select name="pig-types">
@@ -197,34 +197,43 @@
                 <!-- Pig Receives-->
                 <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive"><label for="radio-receive">Receive</label>
                 <div class="select-receive">
-                    <p>Time <span><input type="time" name="receive-time" class="pigging-date"></span></p>
-                </div>
-                <div>
-                    <p>Debris</p>
-                    <span><input type="checkbox" name="check-debris" id="paraffin"><label for="paraffin">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight" class="input-weight"></span>
-                    <span><input type="checkbox" name="check-debris" id="sand"><label for="sand">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight" class="input-weight"></span>
+                    <div>
+                        <p>Time: <span><input type="time" name="receive-time"></span></p>
+                    </div>
+
+                    <div>
+                        <p>Debris:</p>
+                        <span><input type="checkbox" name="check-debris" id="paraffin"><label for="paraffin">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight" class="input-weight"></span>
+                        <span><input type="checkbox" name="check-debris" id="sand"><label for="sand">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight" class="input-weight"></span>
 
 
+                    </div>
                 </div>
-            </div>
-            <br/>
-            <!-- Pigging Exceptions-->
-            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception"><label for="radio-exception">Exception</label>
-            <div class="select-exception">
-                <div>
-                    <input type="time" name="exception-time" class="pigging-date">
-                </div>
-                <div>
-                    <select name="exceptions">
+                <br/>
+                <!-- Pigging Exceptions-->
+                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception"><label for="radio-exception">Exception</label>
+                <div class="select-exception">
+                    <div>
+                        <p>Time: <span><input type="time" name="exception-time"></span></p>
+                    </div>
+                    <div>
+                        <select name="exceptions">
                             <option value="select-exception">Select Exception</option>
                             <option value="exception-one">Exception One</option>
                             <option value="exception-two">Exception Two</option>
                             <option value="exception-three">Exception Three</option>
                             <option value="exception-four">Exception Four</option>
                         </select>
+                    </div>
                 </div>
             </div>
-            </div>
+<div id="textArea">
+    <textarea name="pigging-notes" maxlength="300" rows="12" cols="28" placeholder="Notes (up to 300 characters)"></textarea>
+</div>
+
+
+
+
 
         </form>
 

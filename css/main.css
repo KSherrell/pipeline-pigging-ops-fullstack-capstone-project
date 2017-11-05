@@ -76,7 +76,6 @@ hr {
         width: 100%;
         padding: 50px 10px;
         font-size: 1rem;
-        border: 1px solid red;
     }
     p {
         margin-top: 10px;
@@ -96,7 +95,7 @@ hr {
     form div select,
     p.auto-pop-site-name {
         background-color: #E0E4CC;
-        height: 2.25rem;
+        height: 2rem;
         width: 100%;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
@@ -146,7 +145,7 @@ hr {
         margin-top: 1.75rem;
     }
     .user-login-container form {
-        border: .1rem solid #A7DBD8;
+        border: 2px solid #A7DBD8;
         margin-top: 2.5rem;
         padding: 0 1.5rem;
         height: 19rem;
@@ -166,10 +165,14 @@ hr {
     /*    OPERATOR INPUT PIGGING*/
     .operator-input-pigging-container {
         padding-top: 30px;
+        padding-left: 5px;
     }
-    .operator-input-pigging-container form p {
+    .operator-input-pigging-container form input[type='date'] {
+        width: 175px;
+    }
+    .operator-input-pigging-container form p:not(.auto-pop-site-name) {
         font-size: 1rem;
-        margin-top: .75rem;
+        margin-top: 1rem;
     }
     .operator-input-pigging-container form div {
         margin-top: 0;
@@ -178,7 +181,6 @@ hr {
     .operator-input-pigging-container form div label {
         height: auto;
         width: auto;
-        font-size: 1rem;
         vertical-align: baseline;
         margin: 1rem .5rem 0 0;
     }
@@ -186,20 +188,35 @@ hr {
     .operator-input-pigging-container form div span {
         display: inline-block;
         width: 100px;
-        margin-left: 15px;
+        margin-left: 10px;
     }
     .operator-input-pigging-container form div input[type='checkbox'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
-        margin: 1.1rem 5px 1rem 0;
+        margin: 1.1rem 5px 1rem 5px;
     }
     .operator-input-pigging-container form input[type='number'],
     .operator-input-pigging-container form input[type='time'] {
-        width: 125px;
+        width: 120px;
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
+    }
+    .operator-input-pigging-container form div.select-receive label {
+        font-size: 1rem;
+    }
+    .operator-input-pigging-container form div#textArea {
+        margin-top: 2rem;
+        text-align: left;
+        resize: none;
+        padding: 10px;
+    }
+    .operator-input-pigging-container form textarea {
+        text-align: left;
+        resize: none;
+        padding: 10px;
+        border: 2px solid #A7DBD8;
     }
     .operator-input-pigging-container form div.select-exception {}
     .operator-schedule-container {}
