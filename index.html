@@ -29,7 +29,7 @@
     </header>
 
     <main class="user-login-container">
-        <form id="user-login" action="" method="">
+        <form id="userLogin" action="" method="">
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="user-email" required>
@@ -39,7 +39,7 @@
                 <input type="password" id="password" name="user-password" required>
             </div>
             <div class="buttons">
-                <button form="user-login" type="submit">Submit</button>
+                <button form="userLogin" type="submit">Submit</button>
             </div>
         </form>
         <div>
@@ -62,14 +62,14 @@
             <p>Email Address: <span></span></p>
         </div>
         <hr>
-        <form id="user-pwd-reset" action="" method="">
+        <form id="userPwdReset" action="" method="">
             <div>
                 <label for="new-pwd">Reset Password</label>
                 <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password" required>
                 <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
             </div>
             <div class="buttons">
-                <button form="user-pwd-reset" type="submit">Submit</button><button type="button">Cancel</button>
+                <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
             </div>
         </form>
 
@@ -83,7 +83,7 @@
     </header>
     <main class="user-create-account-container">
         <p>All fields required.</p>
-        <form id="user-create-acct" action="" method="">
+        <form id="userCreateAcct" action="" method="">
             <div>
                 <label for="first-name">Name</label>
                 <input type="text" id="first-name" name="user-first-name" placeholder="First Name" required>
@@ -99,7 +99,7 @@
                 <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password" required>
             </div>
             <div class="buttons">
-                <button form="user-create-acct" type="submit">Submit</button><button type="button">Cancel</button>
+                <button form="userCreateAcct" type="submit">Submit</button><button type="button">Cancel</button>
             </div>
         </form>
     </main>
@@ -117,7 +117,7 @@
         <div>
             <p>Enter updates into fields below.</p>
         </div>
-        <form id="user-update-acct" action="" method="">
+        <form id="userUpdateAcct" action="" method="">
             <div>
                 <label for="first-name">Name</label>
                 <input type="text" id="first-name" name="user-first-name" placeholder="Current First Name" required>
@@ -135,20 +135,21 @@
                 <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
             </div>
             <div class="buttons">
-                <button form="user-update-acct" type="submit">Submit</button><button type="button">Cancel</button>
+                <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
             </div>
         </form>
 
     </main>
 -->
 
+    <!--
     <header>
         <h3>Input Pigging</h3>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
     <main class="operator-input-pigging-container">
-        <form id="input-pigging" action="" method="">
+        <form id="inputPigging" action="" method="">
             <div>
                 <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
             </div>
@@ -174,7 +175,7 @@
                 <p class="auto-pop-site-name"></p>
             </div>
             <div>
-                <!-- Pig Launches-->
+
                 <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
                 <div class="select-launch">
                     <div>
@@ -193,7 +194,7 @@
                 <br/>
 
 
-                <!-- Pig Receives-->
+
                 <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
                 <div class="select-receive">
                     <div>
@@ -207,7 +208,7 @@
                     </div>
                 </div>
                 <br/>
-                <!-- Pigging Exceptions-->
+
                 <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
                 <div class="select-exception">
                     <div>
@@ -229,7 +230,7 @@
             </div>
 
             <div class="buttons">
-                <button form="user-update-acct" type="submit">Submit</button>
+                <button form="userUpdateAcct" type="submit">Submit</button>
             </div>
 
         </form>
@@ -237,14 +238,38 @@
             <p><a href="#"><span>Schedule</span></a><a href="#"><span>Prev Launch</span></a></p>
         </div>
     </main>
+-->
+
+    <header>
+        <h3>Pigging Schedule</h3>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="operator-schedule-container">
+        <form id="piggingSchedule" action="" method="">
+            <div>
+                <select name="pipeline-systems" required>
+                <option value="select-system">Select Pipeline System</option>
+                <option value="system-one">System One</option>
+                <option value="system-two">System Two</option>
+                <option value="system-three">System Three</option>
+                <option value="system-four">System Four</option>
+            </select>
+            </div>
+            <div>
+                <button form="piggingSchedule" type="submit">Submit</button>
+            </div>
+            <hr>
+        </form>
+        <div class="schedule-results"></div>
+
+        <div class="ops-nav">
+            <p><a href="#"><span>Prev Launch</span></a><a href="#"><span>Input Pigging</span></a></p>
+        </div>
+    </main>
+
+
     <!--
-<hr>
-
-<main class="operator-schedule-container">
-    <h3>OP PIGGING SCHEDULE</h3>
-</main>
-<hr>
-
 <main class="operator-prev-launch-container">
     <h3>OP PREVIOUS LAUNCH</h3>
 </main>
@@ -315,6 +340,7 @@
 
 <footer>comon header elements</footer>
 -->
+
 </body>
 
 </html>

@@ -36,7 +36,7 @@ hr {
         border-bottom: 3px solid #68baca;
     }
     header img {
-        margin: 10px 1rem;
+        margin: 10px .7rem;
         float: right;
     }
     h1 {
@@ -223,8 +223,49 @@ hr {
         font-size: 1rem;
         background-color: #FFF8DC;
     }
-    .operator-input-pigging-container form div.select-exception {}
-    .operator-schedule-container {}
+
+
+    main.operator-schedule-container {
+        padding: 0;
+    }
+
+    .operator-schedule-container form {
+        margin-top: 0;
+        padding: 0 .7rem;
+        font-size: .9rem;
+        width: 100%;
+        position: fixed;
+        top: 45px;
+        left: 0;
+        z-index: 1;
+    }
+
+    .operator-schedule-container form div {
+        margin-top: 0;
+        display: inline-block;
+        width: 72%;
+         }
+
+    .operator-schedule-container form div + div {
+        display: inline-block;
+        width: 25%;
+        height: 2rem;
+        vertical-align: bottom;
+        text-align: center;
+    }
+
+    .operator-schedule-container form div button {
+        background-color: #F38630;
+        border-radius: 6px;
+        padding: 0;
+        width: 100%;
+        height: 100%
+    }
+    .operator-schedule-container hr {
+        margin: 10px
+    }
+
+
     .operator-prev-launch-container {}
     .foreman-admin-menu-container {}
     .foreman-schedule-container {}
