@@ -22,6 +22,7 @@
     </header>
 -->
 
+
     <!--
     <header>
         <h3>Login</h3>
@@ -31,11 +32,11 @@
         <form id="user-login" action="" method="">
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="user-email">
+                <input type="email" id="email" name="user-email" required>
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="user-password">
+                <input type="password" id="password" name="user-password" required>
             </div>
             <div class="buttons">
                 <button form="user-login" type="submit">Submit</button>
@@ -64,8 +65,8 @@
         <form id="user-pwd-reset" action="" method="">
             <div>
                 <label for="new-pwd">Reset Password</label>
-                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password">
-                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password">
+                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password" required>
+                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
             </div>
             <div class="buttons">
                 <button form="user-pwd-reset" type="submit">Submit</button><button type="button">Cancel</button>
@@ -81,21 +82,21 @@
         <h3>Create Account</h3>
     </header>
     <main class="user-create-account-container">
-
+        <p>All fields required.</p>
         <form id="user-create-acct" action="" method="">
             <div>
                 <label for="first-name">Name</label>
-                <input type="text" id="first-name" name="user-first-name" placeholder="First Name">
-                <input type="text" id="last-name" name="user-last-name" placeholder="Last Name">
+                <input type="text" id="first-name" name="user-first-name" placeholder="First Name" required>
+                <input type="text" id="last-name" name="user-last-name" placeholder="Last Name" required>
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" placeholder="Email">
+                <input type="email" id="email" name="user-email" placeholder="Email" required>
             </div>
             <div>
                 <label for="password" Password>Password</label>
-                <input type="password" id="password" name="user-password" placeholder="Password">
-                <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password">
+                <input type="password" id="password" name="user-password" placeholder="Password" required>
+                <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password" required>
             </div>
             <div class="buttons">
                 <button form="user-create-acct" type="submit">Submit</button><button type="button">Cancel</button>
@@ -119,19 +120,19 @@
         <form id="user-update-acct" action="" method="">
             <div>
                 <label for="first-name">Name</label>
-                <input type="text" id="first-name" name="user-first-name" placeholder="Current First Name">
-                <input type="text" id="last-name" name="user-last-name" placeholder="Current Last Name">
+                <input type="text" id="first-name" name="user-first-name" placeholder="Current First Name" required>
+                <input type="text" id="last-name" name="user-last-name" placeholder="Current Last Name" required>
             </div>
             <div>
                 <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" placeholder="Current Email">
+                <input type="email" id="email" name="user-email" placeholder="Current Email" required>
 
             </div>
             <div>
                 <label for="password" Password>Password</label>
-                <input type="password" id="password" name="user-password" placeholder="Current Password">
-                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="New Password">
-                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password">
+                <input type="password" id="password" name="user-password" placeholder="Current Password" required>
+                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="New Password" required>
+                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
             </div>
             <div class="buttons">
                 <button form="user-update-acct" type="submit">Submit</button><button type="button">Cancel</button>
@@ -141,8 +142,6 @@
     </main>
 -->
 
-
-
     <header>
         <h3>Input Pigging</h3>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -151,10 +150,10 @@
     <main class="operator-input-pigging-container">
         <form id="input-pigging" action="" method="">
             <div>
-                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
+                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
             </div>
             <div>
-                <select name="pipeline-systems">
+                <select name="pipeline-systems" required>
                 <option value="select-system">Select Pipeline System</option>
                <option value="system-one">System One</option>
                <option value="system-two">System Two</option>
@@ -163,7 +162,7 @@
             </select>
             </div>
             <div>
-                <select name="pipeline-names">
+                <select name="pipeline-names" required>
                 <option value="select-name">Select Pipeline Name</option>
                 <option value="system-one">Name One</option>
                 <option value="system-two">Name Two</option>
@@ -176,48 +175,46 @@
             </div>
             <div>
                 <!-- Pig Launches-->
-                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch"><label for="radio-launch">Launch</label>
+                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
                 <div class="select-launch">
                     <div>
-                        <p>Time: <span><input type="time" name="launch-time"></span></p>
+                        <p>Time: <span><input type="time" name="launch-time" required></span></p>
                     </div>
                     <div>
-                        <select name="pig-types">
-                        <option value="select-pig">Select Pig Type</option>
-                        <option value="pig-one">Pig Type One</option>
+                        <select name="pig-types" required>
+                            <option value="select-pig">Select Pig Type</option>
+                            <option value="pig-one">Pig Type One</option>
                             <option value="pig-two">Pig Type Two</option>
                             <option value="pig-three">Pig Type Three</option>
                             <option value="pig-four">Pig Type Four</option>
-                    </select>
+                        </select>
                     </div>
                 </div>
                 <br/>
 
 
                 <!-- Pig Receives-->
-                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive"><label for="radio-receive">Receive</label>
+                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
                 <div class="select-receive">
                     <div>
-                        <p>Time: <span><input type="time" name="receive-time"></span></p>
+                        <p>Time: <span><input type="time" name="receive-time" required></span></p>
                     </div>
 
                     <div class="input-debris">
                         <p>Debris:</p>
-                        <span><input type="checkbox" name="check-debris" id="paraffin"><label for="paraffin">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                        <span><input type="checkbox" name="check-debris" id="sand"><label for="sand">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-
-
+                        <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                        <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                     </div>
                 </div>
                 <br/>
                 <!-- Pigging Exceptions-->
-                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception"><label for="radio-exception">Exception</label>
+                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
                 <div class="select-exception">
                     <div>
-                        <p>Time: <span><input type="time" name="exception-time"></span></p>
+                        <p>Time: <span><input type="time" name="exception-time" required></span></p>
                     </div>
                     <div>
-                        <select name="exceptions">
+                        <select name="exceptions" required>
                             <option value="select-exception">Select Exception</option>
                             <option value="exception-one">Exception One</option>
                             <option value="exception-two">Exception Two</option>
@@ -231,16 +228,16 @@
                 <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
             </div>
 
-
-
-
+            <div class="buttons">
+                <button form="user-update-acct" type="submit">Submit</button>
+            </div>
 
         </form>
-
-
-
+        <div class="ops-nav">
+            <p><a href="#"><span>Schedule</span></a><a href="#"><span>Prev Launch</span></a></p>
+        </div>
     </main>
-<!--
+    <!--
 <hr>
 
 <main class="operator-schedule-container">
