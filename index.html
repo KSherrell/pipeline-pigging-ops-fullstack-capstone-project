@@ -16,7 +16,7 @@
 
     <!--
     <header>
-        <h3>Page Label</h3>
+        <h1>Page Label</h1>
         <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext ttt1">Exit</span></span>
         <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
     </header>
@@ -24,8 +24,9 @@
 
 
 
+    <!--
     <header>
-        <h3>Login</h3>
+        <h1>Login</h1>
     </header>
 
     <main class="user-login-container">
@@ -47,39 +48,43 @@
             <p><a href="#">Create an account</a></p>
         </div>
     </main>
+-->
 
 
 
 
 
 
-    <header>
-        <h3>Password Reset</h3>
-    </header>
-    <main class="user-reset-password-container">
+    <!--
+<header>
+    <h1>Password Reset</h1>
+</header>
+<main class="user-reset-password-container">
+    <div>
+        <p>User ID: <span></span></p>
+        <p>Email Address: <span></span></p>
+    </div>
+    <hr>
+    <form id="userPwdReset" action="" method="">
         <div>
-            <p>User ID: <span></span></p>
-            <p>Email Address: <span></span></p>
+            <label for="new-pwd">Reset Password</label>
+            <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password" required>
+            <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
         </div>
-        <hr>
-        <form id="userPwdReset" action="" method="">
-            <div>
-                <label for="new-pwd">Reset Password</label>
-                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password" required>
-                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
-            </div>
-            <div class="buttons">
-                <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
-            </div>
-        </form>
+        <div class="buttons">
+            <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
+        </div>
+    </form>
 
-    </main>
+</main>
+-->
 
 
 
 
+    <!--
     <header>
-        <h3>Create Account</h3>
+        <h1>Create Account</h1>
     </header>
     <main class="user-create-account-container">
         <p>All fields required.</p>
@@ -103,15 +108,17 @@
             </div>
         </form>
     </main>
+-->
 
 
 
+    <!--
     <header>
-        <h3>Update Account</h3>
+        <h1>Update Account</h1>
     </header>
     <main class="user-account-info-container">
         <div>
-            <p>User ID: <span></span></p>
+            <p>User ID: <span class="user-id"></span></p>
         </div>
         <hr>
         <div>
@@ -140,12 +147,14 @@
         </form>
 
     </main>
+-->
 
     <!--pre-fill the fields with some default data -->
 
 
+    <!--
     <header>
-        <h3>Input Pigging</h3>
+        <h1>Input Pigging</h1>
 
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
@@ -238,14 +247,16 @@
 
         </form>
         <div class="ops-nav">
-            <p><a href="#"><span>Schedule</span></a></p>
+            <p><a href="#"><span>Pigging Schedule</span></a></p>
         </div>
     </main>
+-->
 
 
 
+    <!--
     <header>
-        <h3>Pigging Schedule</h3>
+        <h1>Pigging Schedule</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
 
@@ -293,72 +304,104 @@
             <p><a href="#">Input Pigging</a></p>
         </div>
     </main>
+-->
 
+
+    <header>
+        <h1>Previous Launch</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="operator-prev-launch-container">
+        <div>
+            <h2>Pipeline Name</h2>
+        </div>
+        <hr>
+        <div>
+            <p><span>Last Recorded Launch: </span><span> (date)</span></p>
+            <p><span>Operator Name:</span><span> (name)</span></p>
+            <p><span>Type of pig: </span><span> (pig type)</span></p>
+        </div>
+        <div>
+            <p><span>Last Recorded Receive: </span><span> (date)</span></p>
+            <p><span>Operator Name: </span><span> (name)</span></p>
+            <p><span>Paraffin: </span><span class="debris-lbs"> # </span><span>lbs</span></p>
+            <p><span>Sand:<span class="debris-lbs"> # </span>lbs</span></p>
+        </div>
+        <div>
+            <p><span>Last Recorded Exception: </span><span>(date)</span></p>
+            <p><span>Type of exception: </span><span>(exception)</span></p>
+        </div>
+        <div>
+            <p>Last Recorded Notes: </p><p class="notes">(notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page. (notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page.</p>
+        </div>
+        <div class="ops-nav">
+            <p><a href="#">Back</a></p>
+        </div>
+
+
+    </main>
 
     <!--
-<main class="operator-prev-launch-container">
-    <h3>OP PREVIOUS LAUNCH</h3>
-</main>
-<hr>
 
 <main class="foreman-admin-menu-container">
-    <h3>ADMIN MENU</h3>
+    <h1>ADMIN MENU</h1>
 </main>
 
 
 <main class="foreman-schedule-container">
-    <h3>PIGGING SCHEDULE</h3>
+    <h1>PIGGING SCHEDULE</h1>
 </main>
 <hr>
 
 <main class="foreman-prev-launch-container">
-    <h3>PREVIOUS LAUNCH</h3>
+    <h1>PREVIOUS LAUNCH</h1>
 </main>
 <hr>
 
 <main class="foreman-debris-reports-container">
-    <h3>DEBRIS REPORTS</h3>
+    <h1>DEBRIS REPORTS</h1>
 </main>
 <hr>
 
 <main class="foreman-pigging-activity-container">
-    <h3>PIGGING ACTIVITY</h3>
+    <h1>PIGGING ACTIVITY</h1>
 </main>
 <hr>
 
 <main class="foreman-view-history-container">
-    <h3>PIGGING HISTORY</h3>
+    <h1>PIGGING HISTORY</h1>
 </main>
 <hr>
 
 <main class="foreman-update-history-container">
-    <h3>UPDATE HISTORY</h3>
+    <h1>UPDATE HISTORY</h1>
 </main>
 <hr>
 
 <main class="foreman-add-pipeline-container">
-    <h3>ADD PIPELINE</h3>
+    <h1>ADD PIPELINE</h1>
 </main>
 <hr>
 
 <main class="foreman-update-pipeline-container">
-    <h3>UPDATE PIPELINE</h3>
+    <h1>UPDATE PIPELINE</h1>
 </main>
 
 <main class="<foreman-assign-user-role-container">
-    <h3>ADD USER</h3>
+    <h1>ADD USER</h1>
 </main>
 
 <main class="foreman-update-user-container">
-    <h3>UPDATE USER</h3>
+    <h1>UPDATE USER</h1>
 </main>
 
 <main class="viewonly-schedule-container">
-    <h3>VO PIGGING SCHEDULE</h3>
+    <h1>VO PIGGING SCHEDULE</h1>
 </main>
 
 <main class="viewonly-debris-container">
-    <h3>VO DEBRIS REPORTS</h3>
+    <h1>VO DEBRIS REPORTS</h1>
 </main>
 
 
@@ -366,6 +409,7 @@
 
 <footer>comon header elements</footer>
 -->
+
 
 </body>
 
