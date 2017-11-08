@@ -294,7 +294,19 @@ hr {
     .operator-prev-launch-container p.notes {
         color: #F38630;
     }
-    .foreman-admin-menu-container {}
+    .foreman-admin-menu-container button {
+        button {
+            display: block;
+            margin: 1rem auto;
+            padding: 13px;
+            font-family: 'Monda', sans-serif;
+            color: #000;
+            background-color: #F38630;
+            border-radius: 10px;
+            border-bottom: 1px solid #A7DBD8;
+            border-right: 1px solid #A7DBD8;
+        }
+    }
     .foreman-schedule-container {}
     .foreman-prev-launch-container {}
     .foreman-debris-reports-container {}
