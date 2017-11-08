@@ -36,8 +36,11 @@ hr {
         border-bottom: 3px solid #68baca;
     }
     header img {
-        margin: 10px .7rem;
+        margin: 10px .5rem 10px 0;
         float: right;
+    }
+    header a:nth-of-type(2) img {
+        margin: 10px .7rem 10px 0;
     }
     h1 {
         font-size: 2rem;
@@ -124,16 +127,10 @@ hr {
         left: 0px;
         height: 40px;
         width: 100%;
+        text-align: center;
         z-index: 1;
         background-color: #69D2E7;
         border-top: 3px solid #68baca;
-    }
-    .ops-nav span {
-        display: inline-block;
-        width: 49%;
-        padding: 0;
-        text-align: center;
-        text-decoration: underline;
     }
     .ops-nav a {
         color: #000;
@@ -223,12 +220,9 @@ hr {
         font-size: 1rem;
         background-color: #FFF8DC;
     }
-
-
     main.operator-schedule-container {
         padding: 0;
     }
-
     .operator-schedule-container form {
         margin-top: 0;
         padding: 0 .7rem;
@@ -238,22 +232,20 @@ hr {
         top: 45px;
         left: 0;
         z-index: 1;
+        background-color: #ffffff;
     }
-
     .operator-schedule-container form div {
         margin-top: 0;
         display: inline-block;
         width: 72%;
-         }
-
-    .operator-schedule-container form div + div {
+    }
+    .operator-schedule-container form div+div {
         display: inline-block;
         width: 25%;
         height: 2rem;
         vertical-align: bottom;
         text-align: center;
     }
-
     .operator-schedule-container form div button {
         background-color: #F38630;
         border-radius: 6px;
@@ -262,10 +254,30 @@ hr {
         height: 100%
     }
     .operator-schedule-container hr {
-        margin: 10px
+        margin: 10px 0 0;
     }
-
-
+    .operator-schedule-container div.schedule-results {
+        margin: 6.5rem 0 3.5rem;
+        padding-left: 10px;
+    }
+    .operator-schedule-container div.schedule-results span {
+        display: inline-block;
+    }
+    .operator-schedule-container p a {
+        color: #1f1f1f;
+    }
+    .operator-schedule-container span.due-today {
+        background-color: #ffffff;
+    }
+    .operator-schedule-container span.due-in-seven {
+        background-color: #ffe552;
+    }
+    .operator-schedule-container span.overdue-within-thirty {
+        background-color: #ee7777;
+    }
+    .operator-schedule-container span.overdue-plus-thirty {
+        background-color: #c0c0c0;
+    }
     .operator-prev-launch-container {}
     .foreman-admin-menu-container {}
     .foreman-schedule-container {}
