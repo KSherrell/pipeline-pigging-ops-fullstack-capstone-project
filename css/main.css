@@ -43,11 +43,11 @@ hr {
         margin: 10px 1rem 10px 0;
     }
     header.foreman-header img {
-        margin: 10px 13px;
+        margin: 10px 2.5%;
         float: right;
     }
     header.foreman-header a:first-child img {
-        margin: 10px 5px;
+        margin: 10px .5rem;
         float: left;
     }
     header.foreman-header a:nth-of-type(2) img {
@@ -65,7 +65,7 @@ hr {
     header.foreman-header h1 {
         font-size: 1.4rem;
         float: left;
-        margin: 10px 0;
+        margin: 10px 0 10px .3rem;
     }
     h3 {
         font-size: 1rem;
@@ -378,7 +378,6 @@ hr {
         table-layout: fixed;
         width: 100%;
         border-collapse: collapse;
-        font-size: .9rem;
         margin: 0 0;
     }
     .foreman-debris-report-container table.months-lbs {
@@ -393,7 +392,7 @@ hr {
         border-bottom: 1px solid #A7DBD8;
     }
     .foreman-debris-report-container div.submit-reset {
-        position:fixed;
+        position: fixed;
         bottom: 0px;
         left: 0px;
         width: 100%;
