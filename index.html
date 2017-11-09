@@ -463,6 +463,7 @@
     </header>
     <main class="foreman-debris-report-container">
 
+        <!--
         <form id="debrisReport" action="" method="">
             <div>
                 <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
@@ -508,14 +509,35 @@
             </div>
 
         </form>
+-->
 
-        <div class=debris-results>
-            <h3>Name of Area</h3>
-            <table>
+        <div class="debris-results">
+            <div>
+                <h3>Name of Area</h3>
+                <p>Total Debris in Pounds</p>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Paraffin</th>
+                        <th>Sand</th>
+                    </tr>
+                </table>
+            </div>
+            <table class="months-lbs">
                 <tr>
-                    <th></th>
-                    <th>Paraffin</th>
-                    <th>Sand</th>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
                 </tr>
                 <tr>
                     <td>Month</td>
@@ -542,13 +564,37 @@
                     <td>lbs</td>
                     <td>lbs</td>
                 </tr>
-
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>lbs</td>
+                    <td>lbs</td>
+                </tr>
             </table>
 
         </div>
 
+        <!--
         <div class="submit-reset">
             <button form="debrisReport" type="submit">Submit</button>
+        </div>
+-->
+        <div class="submit-reset">
+            <button form="debrisReport" type="reset">Reset</button>
         </div>
 
     </main>
