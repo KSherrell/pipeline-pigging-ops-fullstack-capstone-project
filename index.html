@@ -307,7 +307,8 @@
 -->
 
 
-    <!--
+
+<!--
     <header>
         <h1>Previous Launch</h1>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -345,28 +346,74 @@
 -->
 
 
+
+<!--
     <header>
         <h1>Admin Menu</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
     <main class="foreman-admin-menu-container">
-        <div class="buttons">
-            <button type="button">View Pigging Schedule</button>
-            <button type="button">View Debris Reports</button>
-            <button type="button">Pigging Activity</button>
-            <button type="button">View/Update Pigging History</button>
-            <button type="button">Add Pipeline</button>
-            <button type="button">Update / Remove Pipeline</button>
-            <button type="button">Add User</button>
-            <button type="button">Update / Remove User</button>
+        <div>
+            <a href="#0"><p>View Pigging Schedule</p></a>
+            <p>View Debris Reports</p>
+            <p>Pigging Activity</p>
+            <p>View/Update Pigging History</p>
+            <p>Add Pipeline</p>
+            <p>Update / Remove Pipeline</p>
+            <p>Add User</p>
+            <p>Update / Remove User</p>
         </div>
 
     </main>
+-->
 
-
+    <header class=foreman-header>
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Pigging Schedule</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
     <main class="foreman-schedule-container">
-        <h1>PIGGING SCHEDULE</h1>
+        <form id="piggingSchedule" action="" method="">
+            <div>
+                <select name="pipeline-systems" required>
+                    <option value="select-system">Select Pipeline System</option>
+                    <option value="system-one">System One</option>
+                    <option value="system-two">System Two</option>
+                    <option value="system-three">System Three</option>
+                    <option value="system-four">System Four</option>
+                </select>
+            </div>
+            <div>
+                <button form="piggingSchedule" type="submit">Submit</button>
+            </div>
+            <hr>
+        </form>
+        <div class="schedule-results">
+            <p><span class="due-today"><a href="">Pipeline Name One</a></span></p>
+            <p><span class="due-today"><a href="">Pipeline Name Two</a></span></p>
+            <p><span class="due-today"><a href="">Pipeline Name Three</a></span></p>
+            <p><span class="due-today"><a href="">Pipeline Name Four</a></span></p>
+            <p><span class="due-today"><a href="">Pipeline Name Five</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Six</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Seven</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Eight</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Nine</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Ten</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Eleven</a></span></p>
+            <p><span class="due-in-seven"><a href="">Pipeline Name Twelve</a></span></p>
+            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Thirteen</a></span></p>
+            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Fourteen</a></span></p>
+            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Fifteen</a></span></p>
+            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Sixteen</a></span></p>
+            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Seventeen</a></span></p>
+            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Eighteen</a></span></p>
+            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Nineteen</a></span></p>
+            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Twenty</a></span></p>
+        </div>
+
+
     </main>
     <hr>
 

@@ -42,6 +42,13 @@ hr {
     header a:nth-of-type(2) img {
         margin: 10px 1rem 10px 0;
     }
+    header.foreman-header img {
+        margin: 10px .5rem;
+        float: left;
+    }
+    header.foreman-header a:nth-of-type(2) img {
+        margin: 10px 0;
+    }
     h1 {
         font-size: 1.5rem;
         font-family: 'Monda', sans-serif;
@@ -49,6 +56,12 @@ hr {
         float: left;
         margin: .5rem 0 0 .75rem;
         color: #fff;
+        text-shadow: 1px 1px 0 #156d7f;
+    }
+    header.foreman-header h1 {
+        font-size: 1.4rem;
+        float: left;
+        margin: 10px .7rem 10px 0;
         text-shadow: 1px 1px 0 #156d7f;
     }
     h3 {
@@ -101,7 +114,7 @@ hr {
         margin: 0 8.5%;
         padding: 13px;
         font-family: 'Monda', sans-serif;
-        color: #000;
+        color: #1f1f1f;
         background-color: #F38630;
         border-radius: 10px;
         border-bottom: 1px solid #A7DBD8;
@@ -117,10 +130,7 @@ hr {
         outline: none;
     }
     a {
-        color: #20aac5;
-    }
-    a:hover {
-        color: #FA6900;
+        color: #1f1f1f;
     }
     .ops-nav {
         position: fixed;
@@ -132,9 +142,6 @@ hr {
         z-index: 1;
         background-color: #69D2E7;
         border-top: 3px solid #68baca;
-    }
-    .ops-nav a {
-        color: #000;
     }
     /*    USER LOGIN */
     .user-login-container p {
@@ -150,6 +157,12 @@ hr {
         padding: 0 1.5rem;
         height: 19rem;
         font-size: .9rem;
+    }
+    .user-login-container a {
+        color: #20aac5;
+    }
+    .user-login-container a:hover {
+        color: #FA6900;
     }
     /*    USER RESET PASSWORD*/
     .user-reset-password-container div p {
@@ -217,15 +230,16 @@ hr {
         background-color: #FFF8DC;
     }
     .operator-input-pigging-container form textarea {
-        text-align: left;
         resize: none;
         font-size: 1rem;
         background-color: #FFF8DC;
     }
-    main.operator-schedule-container {
+    main.operator-schedule-container,
+    main.foreman-schedule-container {
         padding: 0;
     }
-    .operator-schedule-container form {
+    .operator-schedule-container form,
+    .foreman-schedule-container form {
         margin-top: 0;
         padding: 0 .7rem;
         font-size: .9rem;
@@ -236,19 +250,22 @@ hr {
         z-index: 1;
         background-color: #ffffff;
     }
-    .operator-schedule-container form div {
+    .operator-schedule-container form div,
+    .foreman-schedule-container form div {
         margin-top: 0;
         display: inline-block;
         width: 72%;
     }
-    .operator-schedule-container form div+div {
+    .operator-schedule-container form div+div,
+    .foreman-schedule-container form div+div {
         display: inline-block;
         width: 25%;
         height: 2rem;
         vertical-align: bottom;
         text-align: center;
     }
-    .operator-schedule-container form div button {
+    .operator-schedule-container form div button,
+    .foreman-schedule-container form div button {
         background-color: #F38630;
         border-radius: 6px;
         padding: 0;
@@ -256,29 +273,33 @@ hr {
         height: 100%
     }
     .operator-schedule-container hr,
-    .operator-prev-launch-container hr {
+    .operator-prev-launch-container hr,
+    .foreman-schedule-container hr {
         margin: 10px 0 0;
     }
-    .operator-schedule-container div.schedule-results {
+    .operator-schedule-container div.schedule-results,
+    .foreman-schedule-container div.schedule-results {
         margin: 6.5rem 0 3.5rem;
         padding-left: 10px;
     }
-    .operator-schedule-container div.schedule-results span {
+    .operator-schedule-container div.schedule-results span,
+    .foreman-schedule-container div.schedule-results span {
         display: inline-block;
     }
-    .operator-schedule-container p a {
-        color: #1f1f1f;
-    }
-    .operator-schedule-container span.due-today {
+    .operator-schedule-container span.due-today,
+    .foreman-schedule-container span.due today {
         background-color: #ffffff;
     }
-    .operator-schedule-container span.due-in-seven {
+    .operator-schedule-container span.due-in-seven,
+    .foreman-schedule-container span.due-in-seven {
         background-color: #ffe552;
     }
-    .operator-schedule-container span.overdue-within-thirty {
+    .operator-schedule-container span.overdue-within-thirty,
+    .foreman-schedule-container span.overdue-within-thirty {
         background-color: #ee7777;
     }
-    .operator-schedule-container span.overdue-plus-thirty {
+    .operator-schedule-container span.overdue-plus-thirty,
+    .foreman-schedule-container span.overdue-plus-thirty {
         background-color: #c0c0c0;
     }
     .operator-prev-launch-container div+div {
@@ -294,18 +315,20 @@ hr {
     .operator-prev-launch-container p.notes {
         color: #F38630;
     }
-    .foreman-admin-menu-container button {
-        button {
-            display: block;
-            margin: 1rem auto;
-            padding: 13px;
-            font-family: 'Monda', sans-serif;
-            color: #000;
-            background-color: #F38630;
-            border-radius: 10px;
-            border-bottom: 1px solid #A7DBD8;
-            border-right: 1px solid #A7DBD8;
-        }
+    main.foreman-admin-menu-container {
+        margin-top: 1rem;
+    }
+    .foreman-admin-menu-container div p {
+        margin: 0 auto 1rem;
+        padding: 13px;
+        color: #1f1f1f;
+        background-color: #F38630;
+        border-radius: 10px;
+        border-bottom: 1px solid #A7DBD8;
+        border-right: 1px solid #A7DBD8;
+    }
+    .foreman-admin-menu-container div a {
+        text-decoration: none;
     }
     .foreman-schedule-container {}
     .foreman-prev-launch-container {}
