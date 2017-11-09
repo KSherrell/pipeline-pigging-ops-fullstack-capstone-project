@@ -426,10 +426,11 @@ hr {
     }
     .foreman-pigging-activity-container div.months-pigs {
         margin: 90px 0 50px;
+        padding-left: 1rem;
     }
     .foreman-pigging-activity-container div.months-pigs p span {
         display: inline-block;
-        margin-left: 10px;
+        margin-left: 1rem;
         background-color: #ffe552;
         text-align: right;
         padding: 3px;
