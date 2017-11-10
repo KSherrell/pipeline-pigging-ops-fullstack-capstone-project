@@ -705,6 +705,7 @@
     </header>
     <main class="foreman-view-history-container">
 
+        <!--
         <form id="piggingHistory" method="">
             <div>
                 <select name="pipeline-systems" required>
@@ -725,14 +726,17 @@
             </select>
             </div>
             <div>
-            <label for"recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber" value="*">
+                <label for="recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber" value="*">
             </div>
         </form>
+-->
 
         <div class="history-results">
             <div>
                 <h3>Pipeline Name</h3>
-                <p>Activity Record(s) Returned:</p>
+                <p>Activity Records:</p>
+            </div>
+            <div class="activity-records">
                 <p>Date: <span>(date of record)</span></p>
                 <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
                 <p>Launch: <span>('yes' or '--')</span></p>
@@ -743,11 +747,35 @@
                 <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
                 <p>Sand lbs: <span>(# of lbs or '--')</span></p>
                 <p>Exception: <span>(exception type or '--')</span></p>
-                <p>Notes: <span>(notes or '--')</span></p>
-
+                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                        .foreman-add-pipeline-container {}
+                        .foreman-update-pipeline-container {}
+                        .foreman-assign-user-role-container {}
+                        .foreman-update-user-container {}
+                        .viewonly-schedule-container {}
+                        .viewonly-debris-container {}
+                        footer {}</span></p>
             </div>
-
-
+            <div class="activity-records">
+                <p>Date: <span>(date of record)</span></p>
+                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                <p>Launch: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Type of pig:<span>(pig type or '--')</span></p>
+                <p>Receive: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                <p>Exception: <span>(exception type or '--')</span></p>
+                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                    .foreman-add-pipeline-container {}
+                    .foreman-update-pipeline-container {}
+                    .foreman-assign-user-role-container {}
+                    .foreman-update-user-container {}
+                    .viewonly-schedule-container {}
+                    .viewonly-debris-container {}
+                    footer {}</span></p>
+            </div>
         </div>
 
         <!--
