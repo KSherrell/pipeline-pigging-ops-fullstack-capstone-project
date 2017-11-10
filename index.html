@@ -373,7 +373,7 @@
 
 
     <!--
-    <header class=foreman-header>
+    <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Pigging Schedule</h1>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -460,7 +460,7 @@
 -->
     <!--
 
-    <header class=foreman-header>
+    <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Debris Report</h1>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -610,15 +610,17 @@
 
     </main>
 -->
+    <!--
 
-    <header class=foreman-header>
+    <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Pigging Activity</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
     <main class="foreman-pigging-activity-container">
-        <!--
+-->
+    <!--
         <form id="piggingActivity" action="" method="">
             <div>
                 <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
@@ -659,6 +661,7 @@
        </form>
 -->
 
+    <!--
         <div class="pigging-activity-results">
             <div>
                 <h3>Name of Search</h3>
@@ -679,24 +682,89 @@
                 <p>Month <span>##</span></p>
             </div>
         </div>
-        <!--
+-->
+    <!--
         <div class="submit-reset">
-            <button form="debrisReport" type="submit">Submit</button>
+<button form="piggingActivity" type="submit">Submit</button>
         </div>
 -->
+    <!--
         <div class="submit-reset">
-            <button form="debrisReport" type="reset">Reset</button>
+            <button form="piggingActivity" type="reset">Reset</button>
+        </div>
+
+
+    </main>
+-->
+
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Pigging History</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="foreman-view-history-container">
+
+        <form id="piggingHistory" method="">
+            <div>
+                <select name="pipeline-systems" required>
+                <option value="select-system">Select Pipeline System</option>
+                <option value="system-one">System One</option>
+                <option value="system-two">System Two</option>
+                <option value="system-three">System Three</option>
+                <option value="system-four">System Four</option>
+            </select>
+            </div>
+            <div>
+                <select name="pipeline-names" required>
+                <option value="select-name">Select Pipeline Name</option>
+                <option value="system-one">Name One</option>
+                <option value="system-two">Name Two</option>
+                <option value="system-three">Name Three</option>
+                <option value="system-four">Name Four</option>
+            </select>
+            </div>
+            <div>
+            <label for"recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber" value="*">
+            </div>
+        </form>
+
+        <div class="history-results">
+            <div>
+                <h3>Pipeline Name</h3>
+                <p>Activity Record(s) Returned:</p>
+                <p>Date: <span>(date of record)</span></p>
+                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                <p>Launch: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Type of pig:<span>(pig type or '--')</span></p>
+                <p>Receive: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                <p>Exception: <span>(exception type or '--')</span></p>
+                <p>Notes: <span>(notes or '--')</span></p>
+
+            </div>
+
+
+        </div>
+
+        <!--
+        <div class="submit-reset">
+            <button form="piggingHistory" type="submit">Submit</button>
+        </div>
+-->
+
+
+        <div class="submit-reset">
+            <button form="piggingHistory" type="reset">Reset</button>
         </div>
 
 
     </main>
 
     <!--
-    <main class="foreman-view-history-container">
-        <h1>PIGGING HISTORY</h1>
-    </main>
-    <hr>
-
     <main class="foreman-update-history-container">
         <h1>UPDATE HISTORY</h1>
     </main>
