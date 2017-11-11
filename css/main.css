@@ -126,8 +126,15 @@ hr {
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
     }
+    .button-delete {
+        background-color: #bd0000;
+        color: #ffffff;
+    }
     button:hover {
         background-color: #FA6900;
+    }
+    .button-delete:hover {
+        background-color: #000000;
     }
     button:active {
         box-shadow: inset 3px 3px 3px #1F1F1F;
@@ -187,16 +194,21 @@ hr {
         padding-top: 30px;
         padding-left: 5px;
     }
+    .foreman-update-history-container form input[type='date'],
     .operator-input-pigging-container form input[type='date'] {
         width: 175px;
     }
+    .foreman-update-history-container form p,
     .operator-input-pigging-container form p:not(.auto-pop-site-name) {
         font-size: 1rem;
         margin-top: 1rem;
     }
+    .foreman-update-history-container form div,
     .operator-input-pigging-container form div {
         margin-top: 0;
     }
+    .foreman-update-history-container form div input[type='radio'],
+    .foreman-update-history-container form div label,
     .operator-input-pigging-container form div input[type='radio'],
     .operator-input-pigging-container form div label {
         height: auto;
@@ -205,15 +217,19 @@ hr {
         margin: 1rem .5rem 0 0;
     }
     .operator-input-pigging-container form div.select-launch {}
+    .foreman-update-history-container form div span,
     .operator-input-pigging-container form div span {
         display: inline-block;
         width: 100px;
         margin-left: 10px;
     }
+    .foreman-update-history-container form div.input-debris span:nth-child(even),
     .operator-input-pigging-container form div.input-debris span:nth-child(even) {
         width: 80px;
         margin-left: 30px;
     }
+    .foreman-update-history-container form input[type='number'],
+    .foreman-update-history-container form input[type='time'],
     .operator-input-pigging-container form input[type='number'],
     .operator-input-pigging-container form input[type='time'] {
         width: 125px;
@@ -221,12 +237,15 @@ hr {
         text-align: right;
         padding-right: 20px;
     }
+    .foreman-update-history-container form div.input-debris input[type='number'],
     .operator-input-pigging-container form div.input-debris input[type='number'] {
         width: 70px;
     }
+    .foreman-update-history-container form div.select-receive label,
     .operator-input-pigging-container form div.select-receive label {
         font-size: 1rem;
     }
+    .foreman-update-history-container form div.textarea,
     .operator-input-pigging-container form div.textarea {
         margin: 2rem 0;
         width: 100%;
@@ -235,6 +254,7 @@ hr {
         border: 2px solid #A7DBD8;
         background-color: #FFF8DC;
     }
+    .foreman-update-history-container form textarea,
     .operator-input-pigging-container form textarea {
         resize: none;
         font-size: 1rem;
@@ -485,7 +505,23 @@ hr {
     .foreman-view-history-container div.activity-records p:last-child {
         padding-bottom: 3rem;
     }
-    .foreman-update-history-container {}
+    .foreman-update-history-container div.warning {
+        margin: 1rem auto;
+        text-align: center;
+        color: #bd0000;
+        border: 2px solid #bd0000;
+    }
+    .foreman-update-history-container div.warning span {
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+    .foreman-update-history-container div.submit-cancel-delete {
+        width: 100%;
+        text-align: center;
+    }
+    .foreman-update-history-container div.submit-cancel-delete button {
+        margin: 0 2%;
+    }
     .foreman-add-pipeline-container {}
     .foreman-update-pipeline-container {}
     .foreman-assign-user-role-container {}
