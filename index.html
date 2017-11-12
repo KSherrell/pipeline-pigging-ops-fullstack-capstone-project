@@ -67,9 +67,9 @@
     <hr>
     <form id="userPwdReset" action="" method="">
         <div>
-            <label for="new-pwd">Reset Password</label>
-            <input type="password" id="new-pwd" name="user-new-pwd" placeholder="Enter New Password" required>
-            <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+            <label for="newPwd">Reset Password</label>
+            <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password" required>
+            <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
         </div>
         <div class="buttons">
             <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
@@ -90,9 +90,9 @@
         <p>All fields required.</p>
         <form id="userCreateAcct" action="" method="">
             <div>
-                <label for="first-name">Name</label>
-                <input type="text" id="first-name" name="user-first-name" placeholder="First Name" required>
-                <input type="text" id="last-name" name="user-last-name" placeholder="Last Name" required>
+                <label for="firstName">Name</label>
+                <input type="text" id="firstName" name="user-first-name" placeholder="First Name" required>
+                <input type="text" id="lastName" name="user-last-name" placeholder="Last Name" required>
             </div>
             <div>
                 <label for="email">Email</label>
@@ -126,9 +126,9 @@
         </div>
         <form id="userUpdateAcct" action="" method="">
             <div>
-                <label for="first-name">Name</label>
-                <input type="text" id="first-name" name="user-first-name" placeholder="Current First Name" required>
-                <input type="text" id="last-name" name="user-last-name" placeholder="Current Last Name" required>
+                <label for="firstName">Name</label>
+                <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
+                <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
             </div>
             <div>
                 <label for="email">Email</label>
@@ -138,8 +138,8 @@
             <div>
                 <label for="password" Password>Password</label>
                 <input type="password" id="password" name="user-password" placeholder="Current Password" required>
-                <input type="password" id="new-pwd" name="user-new-pwd" placeholder="New Password" required>
-                <input type="password" id="new-pwd-reenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
+                <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
             </div>
             <div class="buttons">
                 <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
@@ -344,8 +344,6 @@
 
 </main>
 -->
-
-
 
     <!--
     <header>
@@ -703,9 +701,7 @@
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
     <main class="foreman-view-history-container">
--->
 
-    <!--
         <form id="piggingHistory" method="">
             <div>
                 <select name="pipeline-systems" required>
@@ -796,95 +792,148 @@
 
     </main>
 -->
-    <header class="foreman-header">
-        <h1>Update History</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
+    <!--
+<header class="foreman-header">
+    <h1>Update History</h1>
+    <a href="#"><img src="imgs/exit.png"></a>
+    <a href="#"><img src="imgs/acct-info-wht.png"></a>
+</header>
 
-    <main class="foreman-update-history-container">
+<main class="foreman-update-history-container">
+    <div>
+        <p>ID of Record</p>
+        <p>System Name</p>
+        <p>Pipeline Name</p>
+        <p>L/R Site Name</p>
+    </div>
+    <div class="warning">
+        <p>***Warning***</p>
+        <p><span>Updates submitted below will</span>
+            <span>PERMANENTLY REPLACE</span>
+            <span>the current information.</span></p>
+    </div>
+    <form id="updateHistory" method="">
         <div>
-            <p>ID of Record</p>
-            <p>System Name</p>
-            <p>Pipeline Name</p>
-            <p>L/R Site Name</p>
+            <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
         </div>
-        <div class="warning">
-            <p>***Warning***</p>
-            <p><span>Updates submitted below will</span>
-                <span>PERMANENTLY REPLACE</span>
-                <span>the current information.</span></p>
-        </div>
-        <form id="updateHistory" method="">
-            <div>
-                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
-            </div>
-            <div>
-                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
-                <div class="select-launch">
-                    <div>
-                        <p>Time: <span><input type="time" name="launch-time" required></span></p>
-                    </div>
-                    <div>
-                        <select name="pig-types" required>
+        <div>
+            <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
+            <div class="select-launch">
+                <div>
+                    <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                </div>
+                <div>
+                    <select name="pig-types" required>
                         <option value="select-pig">Select Pig Type</option>
                         <option value="pig-one">Pig Type One</option>
                         <option value="pig-two">Pig Type Two</option>
                         <option value="pig-three">Pig Type Three</option>
                         <option value="pig-four">Pig Type Four</option>
                     </select>
-                    </div>
+                </div>
+            </div>
+
+            <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+            <div class="select-receive">
+                <div>
+                    <p>Time: <span><input type="time" name="receive-time" required></span></p>
                 </div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
-                <div class="select-receive">
-                    <div>
-                        <p>Time: <span><input type="time" name="receive-time" required></span></p>
-                    </div>
-
-                    <div class="input-debris">
-                        <p>Debris:</p>
-                        <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                        <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-                    </div>
+                <div class="input-debris">
+                    <p>Debris:</p>
+                    <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                    <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                 </div>
+            </div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
-                <div class="select-exception">
-                    <div>
-                        <p>Time: <span><input type="time" name="exception-time" required></span></p>
-                    </div>
-                    <div>
-                        <select name="exceptions" required>
+            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+            <div class="select-exception">
+                <div>
+                    <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                </div>
+                <div>
+                    <select name="exceptions" required>
                         <option value="select-exception">Select Exception</option>
                         <option value="exception-one">Exception One</option>
                         <option value="exception-two">Exception Two</option>
                         <option value="exception-three">Exception Three</option>
                         <option value="exception-four">Exception Four</option>
                     </select>
-                    </div>
                 </div>
             </div>
-            <div class="textarea">
-                <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+        </div>
+        <div class="textarea">
+            <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+        </div>
+    </form>
+
+    <div class="submit-cancel-delete">
+        <button form="updateHistory" type="submit">Submit</button>
+        <button type="button">Cancel</button>
+        <button form="updateHistory" type="submit" class="button-delete">Delete</button>
+    </div>
+
+</main>
+-->
+
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Add Pipeline</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+
+    <main class="foreman-add-pipeline-container">
+        <form id="addPipeline" method="">
+            <div>
+                <label for="addPipelineDate">Date: </label><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
             </div>
+            <div>
+                <select name="rc-names" required>
+                            <option value="select-rc">Select RC Name</option>
+                            <option value="rc-one">RC Name One</option>
+                    <option value="rc-two">RC Name Two</option>
+                    <option value="rc-three">RC Name Three</option>
+                    <option value="rc-four">RC Name Four</option>
+                        </select>
+                <select name="pipeline-systems" required>
+                    <option value="select-system">Select System</option>
+                    <option value="system-one">System One</option>
+                    <option value="system-two">System Two</option>
+                    <option value="system-three">System Three</option>
+                    <option value="system-four">System Four</option>
+                </select>
+
+                <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
+                <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
+                <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
+                <span>Size of Pipeline (inches): </span><input type="number" id="newPipelineSize" name="new-pipeline-size" value="0" required>
+                <span>Closure: </span>
+                <select name="pipeline-closures" required>
+                    <option value="select-closure">Select Closure</option>
+                    <option value="closure-one">Closure One</option>
+                    <option value="closure-two">Closure Two</option>
+                    <option value="closure-three">Closure Three</option>
+                    <option value="closure-four">Closure Four</option>
+                </select>
+                <p>Acceptable Pigs:</p>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
+
+            </div>
+
+
         </form>
 
-        <div class="submit-cancel-delete">
-            <button form="updateHistory" type="submit">Submit</button>
-            <button type="button">Cancel</button>
-            <button form="updateHistory" type="submit" class="button-delete">Delete</button>
-        </div>
-
     </main>
-
 
     <!--
-    <main class="foreman-add-pipeline-container">
-        <h1>ADD PIPELINE</h1>
-    </main>
-    <hr>
-
     <main class="foreman-update-pipeline-container">
         <h1>UPDATE PIPELINE</h1>
     </main>

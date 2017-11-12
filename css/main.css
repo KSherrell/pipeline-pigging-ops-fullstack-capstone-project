@@ -88,7 +88,6 @@ hr {
     form {
         margin-top: 2rem;
         padding: 0 1.5rem;
-        font-size: .9rem;
     }
     label {
         font-size: 1.1rem;
@@ -194,6 +193,7 @@ hr {
         padding-top: 30px;
         padding-left: 5px;
     }
+    .foreman-add-pipeline-container form input[type='date'],
     .foreman-update-history-container form input[type='date'],
     .operator-input-pigging-container form input[type='date'] {
         width: 175px;
@@ -228,6 +228,7 @@ hr {
         width: 80px;
         margin-left: 30px;
     }
+    .foreman-add-pipeline-container form input[type='number'],
     .foreman-update-history-container form input[type='number'],
     .foreman-update-history-container form input[type='time'],
     .operator-input-pigging-container form input[type='number'],
@@ -522,7 +523,48 @@ hr {
     .foreman-update-history-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
-    .foreman-add-pipeline-container {}
+    .foreman-add-pipeline-container {
+        padding-top: 1rem;
+    }
+    .foreman-add-pipeline-container form {
+        padding: 0;
+    }
+    .foreman-add-pipeline-container form div {
+        margin-top: 0;
+    }
+    .foreman-add-pipeline-container form div select,
+    .foreman-add-pipeline-container form div input {
+        margin-top: 1rem;
+    }
+    .foreman-add-pipeline-container form label {
+        font-size: 1rem;
+        padding-right: 5px;
+    }
+    .foreman-add-pipeline-container form input {
+        vertical-align: baseline;
+    }
+    .foreman-add-pipeline-container form input[type='number'] {
+        width: 3.5rem;
+        margin: 1rem 0 0;
+padding-right: 0;
+    }
+    .foreman-add-pipeline-container form select:last-of-type {
+        width: 200px;
+        vertical-align: baseline;
+        margin: 1rem 0 0;
+    }
+    .foreman-add-pipeline-container form p{
+        margin-top: 1rem;
+    }
+    .foreman-add-pipeline-container form input[type='checkbox'] {
+        height: auto;
+        width: auto;
+        vertical-align: baseline;
+        margin: 1rem 0 0;
+    }
+    .foreman-add-pipeline-container form input[type='checkbox']+label {
+        padding-left: 5px;
+    }
     .foreman-update-pipeline-container {}
     .foreman-assign-user-role-container {}
     .foreman-update-user-container {}
