@@ -16,16 +16,6 @@
 
     <!--
     <header>
-        <h1>Page Label</h1>
-        <span class="tooltip"><a href="#"><img src="imgs/exit.png"></a><span class="tooltiptext ttt1">Exit</span></span>
-        <span class="tooltip"><a href="#"><img src="imgs/acct-info-wht.png"></a><span class="tooltiptext ttt2">View/Update Account</span></span>
-    </header>
--->
-
-
-
-    <!--
-    <header>
         <h1>Login</h1>
     </header>
 
@@ -954,7 +944,7 @@
     </main>
 -->
 
-<!--
+    <!--
 <header class="foreman-header">
     <a href="#"><img src="imgs/admin-menu-wht.png"></a>
     <h1>Add Pipeline</h1>
@@ -1046,11 +1036,45 @@
 </main>
 -->
 
-    <!--
-    <main class="<foreman-assign-user-role-container">
-        <h1>ADD USER</h1>
-    </main>
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Add User</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="foreman-assign-user-role-container">
+        <form id="findUser" action="" method="">
+            <div>
+                <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+            </div>
+        </form>
+        <div class="buttons">
+            <button form="findUser" type="submit">Submit</button>
+            <button type="button">Cancel</button>
+        </div>
+        <p id="userID">User Database ID</p>
+        <p id="userFirstName">User First Name</p>
+        <p id="userLastName">User Last Name</p>
 
+        <form id="assignRole" action="" method="">
+            <p>Assign User Role:</p>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+            </div>
+        </form>
+        <div class="buttons">
+            <button form="assignRol" type="submit">Submit</button>
+            <button type="button">Cancel</button>
+        </div>
+
+    </main>
+    <!--
     <main class="foreman-update-user-container">
         <h1>UPDATE USER</h1>
     </main>

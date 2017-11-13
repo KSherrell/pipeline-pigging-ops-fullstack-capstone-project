@@ -577,7 +577,6 @@ hr {
         width: auto;
         padding-right: 1rem;
     }
-
     .foreman-add-pipeline-container div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
@@ -610,9 +609,11 @@ hr {
 .foreman-update-pipeline-container form {
     padding: 0;
 }
+
 .foreman-update-pipeline-container form div.checkboxes-product {
     padding-bottom: 2.5rem;
 }
+
 .foreman-update-pipeline-container form div.checkboxes-product div:last-of-type {
     padding-right: 0;
 }
@@ -632,9 +633,31 @@ hr {
     margin: 0 2%;
 }
 
-
-
 .foreman-assign-user-role-container {}
+
+.foreman-assign-user-role-container form {
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.foreman-assign-user-role-container form div {
+    margin-top: 1rem;
+    padding: 0px;
+}
+
+.foreman-assign-user-role-container form div input[type='radio'] {
+    height: auto;
+    width: auto;
+    vertical-align: baseline;
+    margin: 0 0 0 1rem;
+    padding: 0px;
+}
+
+.foreman-assign-user-role-container form div label {
+    vertical-align: baseline;
+    margin-left: .5rem;
+    padding: 0px;
+}
 
 .foreman-update-user-container {}
 
