@@ -10,7 +10,6 @@ html {}
 }
 
 body {
-    background-color: #FFFFFF;
     font-family: 'Vollkorn', serif;
     color: #1F1F1F;
 }
@@ -24,6 +23,7 @@ hr {
     body {
         font-size: 14px;
         font-family: 'Monda', sans-serif;
+        background-color: #ffffff;
     }
     header {
         position: fixed;
@@ -511,10 +511,7 @@ hr {
         text-align: center;
         color: #bd0000;
         border: 2px solid #bd0000;
-    }
-    .foreman-update-history-container div.warning span {
-        display: inline-block;
-        margin-bottom: .5rem;
+        padding: .5rem;
     }
     .foreman-update-history-container div.submit-cancel-delete {
         width: 100%;
@@ -546,41 +543,85 @@ hr {
     .foreman-add-pipeline-container form input[type='number'] {
         width: 3.5rem;
         margin: 1rem 0 0;
-padding-right: 0;
+        padding-right: 0;
     }
     .foreman-add-pipeline-container form select:last-of-type {
         width: 200px;
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-add-pipeline-container form p{
-        margin-top: 1rem;
+    .foreman-add-pipeline-container form p {
+        display: inline-block;
+        margin: 2rem .5rem 0 0;
+        font-weight: bold;
     }
-    .foreman-add-pipeline-container form input[type='checkbox'] {
-        height: auto;
+    .foreman-add-pipeline-container form div div p {
+        margin: 1rem .5rem 0 0;
+    }
+    .foreman-add-pipeline-container div.checkboxes-pigs div {
+        display: inline-block;
+        width: 49%;
+    }
+    .foreman-add-pipeline-container div.checkboxes-product div {
+        display: inline-block;
         width: auto;
-        vertical-align: baseline;
-        margin: 1rem 0 0;
+        padding-right: 1rem;
     }
-    .foreman-add-pipeline-container form input[type='checkbox']+label {
-        padding-left: 5px;
+    .foreman-add-pipeline-container div.checkboxes-product div:last-of-type {
+        padding-right: 0;
     }
-    .foreman-update-pipeline-container {}
-    .foreman-assign-user-role-container {}
-    .foreman-update-user-container {}
-    .viewonly-schedule-container {}
-    .viewonly-debris-container {}
-    footer {}
 }
 
+.foreman-add-pipeline-container form input[type='checkbox'] {
+    height: auto;
+    width: auto;
+    vertical-align: baseline;
+    margin: 1rem 0 0;
+}
+
+.foreman-add-pipeline-container form input[type='checkbox']+label {
+    padding-left: 5px;
+}
+
+.foreman-add-pipeline-container div.warning {
+    margin: 1rem auto;
+    text-align: center;
+    color: #bd0000;
+    border: 2px solid #bd0000;
+    padding: .5rem;
+}
+
+.foreman-update-pipeline-container {}
+
+.foreman-assign-user-role-container {}
+
+.foreman-update-user-container {}
+
+.viewonly-schedule-container {}
+
+.viewonly-debris-container {}
+
+footer {}
+
+
+}
+@media only screen and (min-width: 375px) {
+    body {
+        background-color: black;
+    }
+}
 @media only screen and (min-width: 414px) {
     body {
-        background-color: antiquewhite;
+        background-color: blueviolet;
     }
 }
-
 @media only screen and (min-width: 768px) {
     body {
-        background-color: aliceblue;
+        background-color: skyblue;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    body {
+        background-color: blue;
     }
 }

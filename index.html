@@ -806,12 +806,12 @@
         <p>Pipeline Name</p>
         <p>L/R Site Name</p>
     </div>
-    <div class="warning">
-        <p>***Warning***</p>
-        <p><span>Updates submitted below will</span>
-            <span>PERMANENTLY REPLACE</span>
-            <span>the current information.</span></p>
-    </div>
+<div class="warning">
+<p>***Warning***</p>
+<p>Updates submitted below will</p>
+<p>PERMANENTLY REPLACE</p>
+<p>the current information.</p>
+</div>
     <form id="updateHistory" method="">
         <div>
             <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
@@ -886,7 +886,7 @@
     <main class="foreman-add-pipeline-container">
         <form id="addPipeline" method="">
             <div>
-                <label for="addPipelineDate">Date: </label><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
+                <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
             </div>
             <div>
                 <select name="rc-names" required>
@@ -907,30 +907,49 @@
                 <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
                 <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
                 <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
-                <span>Size of Pipeline (inches): </span><input type="number" id="newPipelineSize" name="new-pipeline-size" value="0" required>
-                <span>Closure: </span>
-                <select name="pipeline-closures" required>
+                <div>
+                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" value="0" required>
+                </div>
+                <div>
+                    <p>Closure:</p>
+                    <select name="pipeline-closures" required>
                     <option value="select-closure">Select Closure</option>
                     <option value="closure-one">Closure One</option>
                     <option value="closure-two">Closure Two</option>
                     <option value="closure-three">Closure Three</option>
                     <option value="closure-four">Closure Four</option>
                 </select>
+                </div>
+
                 <p>Acceptable Pigs:</p>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-                <input type="checkbox" name="acceptable-pigs" id="pigTypeOne"><label for="pigTypeOne">Pig Type One</label>
-
+                <div class="checkboxes-pigs">
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                    <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+                </div>
+                <p>Product:</p>
+                <div class="checkboxes-product">
+                    <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
+                    <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
+                    <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+                </div>
+                <div>
+                    <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                </div>
             </div>
-
-
         </form>
-
+        <div class="warning">
+            <p>*** IMPORTANT ***</p>
+            <p>Please review all of the information above before clicking Submit.</p>
+        </div>
+        <div class="buttons">
+            <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
+        </div>
     </main>
 
     <!--
