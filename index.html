@@ -1125,67 +1125,280 @@
 
 
 
-    <header>
-        <h1>Pigging Schedule</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    <!--
+<header>
+    <h1>Pigging Schedule</h1>
+    <a href="#"><img src="imgs/exit.png"></a>
+    <a href="#"><img src="imgs/acct-info-wht.png"></a>
 
-    </header>
-    <main class="viewonly-schedule-container">
-        <form id="piggingSchedule" action="" method="">
-            <div>
-                <select name="pipeline-systems" required>
+</header>
+<main class="viewonly-schedule-container">
+    <form id="piggingSchedule" action="" method="">
+        <div>
+            <select name="pipeline-systems" required>
                         <option value="select-system">Select Pipeline System</option>
                         <option value="system-one">System One</option>
                         <option value="system-two">System Two</option>
                         <option value="system-three">System Three</option>
                         <option value="system-four">System Four</option>
                     </select>
-            </div>
-            <div>
-                <button form="piggingSchedule" type="submit">Submit</button>
-            </div>
-            <hr>
-        </form>
-        <div class="schedule-results">
-            <p><span class="due-today">Pipeline Name One</span></p>
-            <p><span class="due-today">Pipeline Name Two</span></p>
-            <p><span class="due-today">Pipeline Name Three</span></p>
-            <p><span class="due-today">Pipeline Name Four</span></p>
-            <p><span class="due-today">Pipeline Name Five</span></p>
-            <p><span class="due-in-seven">Pipeline Name Six</span></p>
-            <p><span class="due-in-seven">Pipeline Name Seven</span></p>
-            <p><span class="due-in-seven">Pipeline Name Eight</span></p>
-            <p><span class="due-in-seven">Pipeline Name Nine</span></p>
-            <p><span class="due-in-seven">Pipeline Name Ten</span></p>
-            <p><span class="due-in-seven">Pipeline Name Eleven</span></p>
-            <p><span class="due-in-seven">Pipeline Name Twelve</span></p>
-            <p><span class="overdue-within-thirty">Pipeline Name Thirteen</span></p>
-            <p><span class="overdue-within-thirty">Pipeline Name Fourteen</span></p>
-            <p><span class="overdue-within-thirty">Pipeline Name Fifteen</span></p>
-            <p><span class="overdue-within-thirty">Pipeline Name Sixteen</span></p>
-            <p><span class="overdue-within-thirty">Pipeline Name Seventeen</span></p>
-            <p><span class="overdue-plus-thirty">Pipeline Name Eighteen</span></p>
-            <p><span class="overdue-plus-thirty">Pipeline Name Nineteen</span></p>
-            <p><span class="overdue-plus-thirty">Pipeline Name Twenty</span></p>
         </div>
-
-        <div class="ops-nav">
-            <p><a href="#">Debris Reports</a></p>
+        <div>
+            <button form="piggingSchedule" type="submit">Submit</button>
         </div>
-    </main>
+        <hr>
+    </form>
+    <div class="schedule-results">
+        <p><span class="due-today">Pipeline Name One</span></p>
+        <p><span class="due-today">Pipeline Name Two</span></p>
+        <p><span class="due-today">Pipeline Name Three</span></p>
+        <p><span class="due-today">Pipeline Name Four</span></p>
+        <p><span class="due-today">Pipeline Name Five</span></p>
+        <p><span class="due-in-seven">Pipeline Name Six</span></p>
+        <p><span class="due-in-seven">Pipeline Name Seven</span></p>
+        <p><span class="due-in-seven">Pipeline Name Eight</span></p>
+        <p><span class="due-in-seven">Pipeline Name Nine</span></p>
+        <p><span class="due-in-seven">Pipeline Name Ten</span></p>
+        <p><span class="due-in-seven">Pipeline Name Eleven</span></p>
+        <p><span class="due-in-seven">Pipeline Name Twelve</span></p>
+        <p><span class="overdue-within-thirty">Pipeline Name Thirteen</span></p>
+        <p><span class="overdue-within-thirty">Pipeline Name Fourteen</span></p>
+        <p><span class="overdue-within-thirty">Pipeline Name Fifteen</span></p>
+        <p><span class="overdue-within-thirty">Pipeline Name Sixteen</span></p>
+        <p><span class="overdue-within-thirty">Pipeline Name Seventeen</span></p>
+        <p><span class="overdue-plus-thirty">Pipeline Name Eighteen</span></p>
+        <p><span class="overdue-plus-thirty">Pipeline Name Nineteen</span></p>
+        <p><span class="overdue-plus-thirty">Pipeline Name Twenty</span></p>
+    </div>
 
-    <!--
-    <main class="viewonly-debris-container">
-        <h1>VO DEBRIS REPORTS</h1>
-    </main>
-
-
-
-
-    <footer>comon header elements</footer>
-
+    <div class="ops-nav">
+        <p><a href="#">Debris Reports</a></p>
+    </div>
+</main>
 -->
+
+    <header>
+        <h1>Debris Reports</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="viewonly-debris-container foreman-debris-report-container">
+
+        <!--
+            <form id="debrisReport" action="" method="">
+                <div>
+                    <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
+                    <div>
+                        <select name="select-debris-system" required>
+                            <option value="select-debris-system">Select System</option>
+                            <option value="debris-system-one">System One</option>
+                            <option value="debris-system-two">System Two</option>
+                            <option value="debris-system-three">System Three</option>
+                            <option value="debris-system-four">System Four</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
+                    <div>
+                        <select name="select-debris-system" required>
+                            <option value="select-debris-system">Select System</option>
+                            <option value="debris-system-one">System One</option>
+                            <option value="debris-system-two">System Two</option>
+                            <option value="debris-system-three">System Three</option>
+                            <option value="debris-system-four">System Four</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select name="select-debris-pipeline" required>
+                            <option value="select-debris-pipeline">Select Pipeline</option>
+                            <option value="debris-pipeline-one">Pipeline One</option>
+                            <option value="debris-pipeline-two">Pipeline Two</option>
+                            <option value="debris-pipeline-three">Pipeline Three</option>
+                            <option value="debris-pipeline-four">Pipeline Four</option>
+                        </select>
+                    </div>
+                </div>
+
+            </form>
+-->
+
+        <div>
+            <div class="debris-results-header">
+                <h3>Name of Area</h3>
+                <p>Total Debris in Pounds</p>
+                <hr>
+            </div>
+            <div class="debris-results">
+                <div>
+                    <div>
+                        <h3></h3>
+                    </div>
+                    <div>
+                        <h3>Paraffin</h3>
+                    </div>
+                    <div>
+                        <h3>Sand</h3>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Oct</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Sep</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Aug</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jul</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jun</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>May</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Apr</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Mar</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Feb</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jan</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Dec</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Nov</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--
+
+<div class="submit-reset">
+<button form="debrisReport" type="submit">Submit</button>
+</div>
+-->
+
+
+            <div class="submit-reset">
+                <button form="debrisReport" type="reset">Reset</button>
+            </div>
+
+    </main>
+
 
 
 </body>

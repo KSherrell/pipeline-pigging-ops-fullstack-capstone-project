@@ -384,39 +384,6 @@ hr {
     .foreman-pigging-activity-container div select {
         margin-top: .5rem
     }
-    .foreman-debris-report-container div.debris-results div:first-child {
-        position: fixed;
-        width: 100%;
-        top: 45px;
-        left: 0;
-        z-index: 1;
-        padding-left: 10px;
-        background-color: #ffffff;
-    }
-    .foreman-debris-report-container div.debris-results p {
-        text-align: center;
-        width: 85%;
-        margin: 0 auto 10px;
-        padding-bottom: 5px;
-        border-bottom: 2px solid #A7DBD8;
-    }
-    .foreman-debris-report-container table {
-        table-layout: fixed;
-        width: 100%;
-        border-collapse: collapse;
-        margin: 0 0;
-    }
-    .foreman-debris-report-container table.months-lbs {
-        margin-top: 100px;
-    }
-    .foreman-debris-report-container th,
-    .foreman-debris-report-container td {
-        padding: 10px;
-        text-align: center;
-    }
-    .foreman-debris-report-container td {
-        border-bottom: 1px solid #A7DBD8;
-    }
     .foreman-debris-report-container div.submit-reset,
     .foreman-pigging-activity-container div.submit-reset,
     .foreman-view-history-container div.submit-reset {
@@ -763,25 +730,72 @@ hr {
 
 .viewonly-debris-container {}
 
-footer {}
-
-
+.viewonly-debris-container div.debris-results-header {
+    position: fixed;
+    top: 45px;
+    background-color: #ffffff;
+    width: 99%;
 }
+
+.viewonly-debris-container div.debris-results-header hr {
+    margin: 10px 0 0px;
+}
+
+.viewonly-debris-container div.debris-results {
+    margin-top: 5rem;
+}
+
+.viewonly-debris-container div.debris-results div {
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.viewonly-debris-container div.debris-results>div:last-child {
+    margin-bottom: 5rem;
+}
+
+.viewonly-debris-container div.debris-results>div+div {
+    border-bottom: 1px solid #A7DBD8;
+}
+
+.viewonly-debris-container div.debris-results div>div {
+    display: inline-block;
+}
+
+.viewonly-debris-container div.debris-results div>div>h3 {
+    padding: 0 0;
+}
+
+.viewonly-debris-container div.debris-results div div:first-child {
+    width: 20%;
+    text-align: right;
+}
+
+.viewonly-debris-container div.debris-results div div:not(first-child) {
+    width: 38%;
+    text-align: center;
+}
+
+.viewonly-debris-container div.debris-results p {}
+
 @media only screen and (min-width: 375px) {
     body {
         background-color: black;
     }
 }
+
 @media only screen and (min-width: 414px) {
     body {
         background-color: blueviolet;
     }
 }
+
 @media only screen and (min-width: 768px) {
     body {
         background-color: skyblue;
     }
 }
+
 @media only screen and (min-width: 1024px) {
     body {
         background-color: blue;
