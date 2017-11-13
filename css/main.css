@@ -577,7 +577,7 @@ hr {
         width: auto;
         padding-right: 1rem;
     }
-    .foreman-update-pipeline-container form div.checkboxes-product div:last-of-type,
+
     .foreman-add-pipeline-container div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
@@ -610,6 +610,18 @@ hr {
 .foreman-update-pipeline-container form {
     padding: 0;
 }
+.foreman-update-pipeline-container form div.checkboxes-product {
+    padding-bottom: 2.5rem;
+}
+.foreman-update-pipeline-container form div.checkboxes-product div:last-of-type {
+    padding-right: 0;
+}
+
+.foreman-update-pipeline-container form select:last-of-type {
+    width: 200px;
+    vertical-align: baseline;
+    margin: 1rem 0 0;
+}
 
 .foreman-update-pipeline-container div.submit-cancel-delete {
     width: 100%;
@@ -620,11 +632,7 @@ hr {
     margin: 0 2%;
 }
 
-.foreman-update-pipeline-container form select:last-of-type {
-    width: 200px;
-    vertical-align: baseline;
-    margin: 1rem 0 0;
-}
+
 
 .foreman-assign-user-role-container {}
 
