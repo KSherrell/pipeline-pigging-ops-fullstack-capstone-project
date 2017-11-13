@@ -661,6 +661,30 @@ hr {
 
 .foreman-update-user-container {}
 
+.foreman-update-user-container form {
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.foreman-update-user-container form div {
+    margin-top: 1rem;
+    padding: 0px;
+}
+
+.foreman-update-user-container form div input[type='radio'] {
+    height: auto;
+    width: auto;
+    vertical-align: baseline;
+    margin: 0 0 0 1rem;
+    padding: 0px;
+}
+
+.foreman-update-user-container form div label {
+    vertical-align: baseline;
+    margin-left: .5rem;
+    padding: 0px;
+}
+
 .viewonly-schedule-container {}
 
 .viewonly-debris-container {}

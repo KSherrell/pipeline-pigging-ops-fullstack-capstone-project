@@ -1035,6 +1035,47 @@
     </div>
 </main>
 -->
+    <!--
+<header class="foreman-header">
+    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+    <h1>Add User</h1>
+    <a href="#"><img src="imgs/exit.png"></a>
+    <a href="#"><img src="imgs/acct-info-wht.png"></a>
+</header>
+<main class="foreman-assign-user-role-container">
+    <form id="findUser" action="" method="">
+        <div>
+            <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+        </div>
+    </form>
+    <div class="buttons">
+        <button form="findUser" type="submit">Submit</button>
+        <button type="button">Cancel</button>
+    </div>
+    <p id="userID">User Database ID</p>
+    <p id="userFirstName">User First Name</p>
+    <p id="userLastName">User Last Name</p>
+
+    <form id="assignRole" action="" method="">
+        <p>Assign User Role:</p>
+        <div>
+            <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+        </div>
+        <div>
+            <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+        </div>
+        <div>
+            <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+        </div>
+    </form>
+    <div class="buttons">
+        <button form="assignRol" type="submit">Submit</button>
+        <button type="button">Cancel</button>
+    </div>
+
+</main>
+-->
+
 
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
@@ -1042,7 +1083,7 @@
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
-    <main class="foreman-assign-user-role-container">
+    <main class="foreman-update-user-container">
         <form id="findUser" action="" method="">
             <div>
                 <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
@@ -1057,7 +1098,7 @@
         <p id="userLastName">User Last Name</p>
 
         <form id="assignRole" action="" method="">
-            <p>Assign User Role:</p>
+            <p>Update User Role:</p>
             <div>
                 <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
             </div>
@@ -1067,6 +1108,13 @@
             <div>
                 <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
             </div>
+            <p>Change User Status:</p>
+            <div>
+                <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
+            </div>
         </form>
         <div class="buttons">
             <button form="assignRol" type="submit">Submit</button>
@@ -1074,11 +1122,8 @@
         </div>
 
     </main>
-    <!--
-    <main class="foreman-update-user-container">
-        <h1>UPDATE USER</h1>
-    </main>
 
+    <!--
     <main class="viewonly-schedule-container">
         <h1>VO PIGGING SCHEDULE</h1>
     </main>
