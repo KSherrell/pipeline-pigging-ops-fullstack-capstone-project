@@ -657,6 +657,7 @@ hr {
     vertical-align: baseline;
     margin-left: .5rem;
     padding: 0px;
+    font-size: 1rem;
 }
 
 .foreman-update-user-container {}
@@ -671,6 +672,14 @@ hr {
     padding: 0px;
 }
 
+.foreman-update-user-container form p {
+    font-weight: bolder;
+}
+
+.foreman-update-user-container form p:nth-of-type(2) {
+    margin-top: 2rem;
+}
+
 .foreman-update-user-container form div input[type='radio'] {
     height: auto;
     width: auto;
@@ -683,9 +692,74 @@ hr {
     vertical-align: baseline;
     margin-left: .5rem;
     padding: 0px;
+    font-size: 1rem;
 }
 
 .viewonly-schedule-container {}
+
+.viewonly-schedule-container form {
+    margin-top: 0;
+    padding: 0 .7rem;
+    font-size: .9rem;
+    width: 100%;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    z-index: 1;
+    background-color: #ffffff;
+}
+
+.viewonly-schedule-container form div {
+    margin-top: 0;
+    display: inline-block;
+    width: 72%;
+}
+
+.viewonly-schedule-container form div+div {
+    display: inline-block;
+    width: 25%;
+    height: 2rem;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.viewonly-schedule-container div button {
+    background-color: #F38630;
+    border-radius: 6px;
+    padding: 0;
+    width: 100%;
+    height: 100%
+}
+
+.viewonly-schedule-container hr {
+    margin: 10px 0 0;
+}
+
+.viewonly-schedule-container div.schedule-results {
+    margin: 4rem 0 3.5rem;
+    padding-left: 10px;
+}
+
+.viewonly-schedule-container div.schedule-results span {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.viewonly-schedule-container span.due today {
+    background-color: #ffffff;
+}
+
+.viewonly-schedule-container span.due-in-seven {
+    background-color: #ffe552;
+}
+
+.viewonly-schedule-container span.overdue-within-thirty {
+    background-color: #ee7777;
+}
+
+.viewonly-schedule-container span.overdue-plus-thirty {
+    background-color: #c0c0c0;
+}
 
 .viewonly-debris-container {}
 

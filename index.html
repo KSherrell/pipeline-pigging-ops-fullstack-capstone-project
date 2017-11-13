@@ -1077,9 +1077,10 @@
 -->
 
 
+    <!--
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Add User</h1>
+        <h1>Update User</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
     </header>
@@ -1111,8 +1112,6 @@
             <p>Change User Status:</p>
             <div>
                 <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
-            </div>
-            <div>
                 <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
             </div>
         </form>
@@ -1122,12 +1121,61 @@
         </div>
 
     </main>
+-->
 
-    <!--
+
+
+    <header>
+        <h1>Pigging Schedule</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+
+    </header>
     <main class="viewonly-schedule-container">
-        <h1>VO PIGGING SCHEDULE</h1>
+        <form id="piggingSchedule" action="" method="">
+            <div>
+                <select name="pipeline-systems" required>
+                        <option value="select-system">Select Pipeline System</option>
+                        <option value="system-one">System One</option>
+                        <option value="system-two">System Two</option>
+                        <option value="system-three">System Three</option>
+                        <option value="system-four">System Four</option>
+                    </select>
+            </div>
+            <div>
+                <button form="piggingSchedule" type="submit">Submit</button>
+            </div>
+            <hr>
+        </form>
+        <div class="schedule-results">
+            <p><span class="due-today">Pipeline Name One</span></p>
+            <p><span class="due-today">Pipeline Name Two</span></p>
+            <p><span class="due-today">Pipeline Name Three</span></p>
+            <p><span class="due-today">Pipeline Name Four</span></p>
+            <p><span class="due-today">Pipeline Name Five</span></p>
+            <p><span class="due-in-seven">Pipeline Name Six</span></p>
+            <p><span class="due-in-seven">Pipeline Name Seven</span></p>
+            <p><span class="due-in-seven">Pipeline Name Eight</span></p>
+            <p><span class="due-in-seven">Pipeline Name Nine</span></p>
+            <p><span class="due-in-seven">Pipeline Name Ten</span></p>
+            <p><span class="due-in-seven">Pipeline Name Eleven</span></p>
+            <p><span class="due-in-seven">Pipeline Name Twelve</span></p>
+            <p><span class="overdue-within-thirty">Pipeline Name Thirteen</span></p>
+            <p><span class="overdue-within-thirty">Pipeline Name Fourteen</span></p>
+            <p><span class="overdue-within-thirty">Pipeline Name Fifteen</span></p>
+            <p><span class="overdue-within-thirty">Pipeline Name Sixteen</span></p>
+            <p><span class="overdue-within-thirty">Pipeline Name Seventeen</span></p>
+            <p><span class="overdue-plus-thirty">Pipeline Name Eighteen</span></p>
+            <p><span class="overdue-plus-thirty">Pipeline Name Nineteen</span></p>
+            <p><span class="overdue-plus-thirty">Pipeline Name Twenty</span></p>
+        </div>
+
+        <div class="ops-nav">
+            <p><a href="#">Debris Reports</a></p>
+        </div>
     </main>
 
+    <!--
     <main class="viewonly-debris-container">
         <h1>VO DEBRIS REPORTS</h1>
     </main>
