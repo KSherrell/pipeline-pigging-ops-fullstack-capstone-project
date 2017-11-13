@@ -520,26 +520,32 @@ hr {
     .foreman-update-history-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
+    .foreman-update-pipeline-container,
     .foreman-add-pipeline-container {
         padding-top: 1rem;
     }
     .foreman-add-pipeline-container form {
         padding: 0;
     }
+    .foreman-update-pipeline-container form div,
     .foreman-add-pipeline-container form div {
         margin-top: 0;
     }
-    .foreman-add-pipeline-container form div select,
+    .foreman-update-pipeline-container form div select,
+    .foreman-update-pipeline-container form div input .foreman-add-pipeline-container form div select,
     .foreman-add-pipeline-container form div input {
         margin-top: 1rem;
     }
+    .foreman-update-pipeline-container form label,
     .foreman-add-pipeline-container form label {
         font-size: 1rem;
         padding-right: 5px;
     }
+    .foreman-update-pipeline-container form input,
     .foreman-add-pipeline-container form input {
         vertical-align: baseline;
     }
+    .foreman-update-pipeline-container form input[type='number'],
     .foreman-add-pipeline-container form input[type='number'] {
         width: 3.5rem;
         margin: 1rem 0 0;
@@ -550,28 +556,34 @@ hr {
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
+    .foreman-update-pipeline-container form p,
     .foreman-add-pipeline-container form p {
         display: inline-block;
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
+    .foreman-update-pipeline-container form div div p,
     .foreman-add-pipeline-container form div div p {
         margin: 1rem .5rem 0 0;
     }
+    .foreman-update-pipeline-container div.checkboxes-pigs div,
     .foreman-add-pipeline-container div.checkboxes-pigs div {
         display: inline-block;
         width: 49%;
     }
+    .foreman-update-pipeline-container div.checkboxes-product div,
     .foreman-add-pipeline-container div.checkboxes-product div {
         display: inline-block;
         width: auto;
         padding-right: 1rem;
     }
+    .foreman-update-pipeline-container form div.checkboxes-product div:last-of-type,
     .foreman-add-pipeline-container div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
 }
 
+.foreman-update-pipeline-container form input[type='checkbox'],
 .foreman-add-pipeline-container form input[type='checkbox'] {
     height: auto;
     width: auto;
@@ -579,10 +591,12 @@ hr {
     margin: 1rem 0 0;
 }
 
+.foreman-update-pipeline-container form input[type='checkbox']+label,
 .foreman-add-pipeline-container form input[type='checkbox']+label {
     padding-left: 5px;
 }
 
+.foreman-update-pipeline-container div.warning,
 .foreman-add-pipeline-container div.warning {
     margin: 1rem auto;
     text-align: center;
@@ -592,6 +606,25 @@ hr {
 }
 
 .foreman-update-pipeline-container {}
+
+.foreman-update-pipeline-container form {
+    padding: 0;
+}
+
+.foreman-update-pipeline-container div.submit-cancel-delete {
+    width: 100%;
+    text-align: center;
+}
+
+.foreman-update-pipeline-container div.submit-cancel-delete button {
+    margin: 0 2%;
+}
+
+.foreman-update-pipeline-container form select:last-of-type {
+    width: 200px;
+    vertical-align: baseline;
+    margin: 1rem 0 0;
+}
 
 .foreman-assign-user-role-container {}
 

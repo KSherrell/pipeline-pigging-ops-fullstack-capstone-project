@@ -875,6 +875,7 @@
 
 </main>
 -->
+    <!--
 
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
@@ -908,7 +909,7 @@
                 <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
                 <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
                 <div>
-                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" value="0" required>
+                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
                 </div>
                 <div>
                     <p>Closure:</p>
@@ -951,12 +952,101 @@
             <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
         </div>
     </main>
+-->
 
-    <!--
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Add Pipeline</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+
     <main class="foreman-update-pipeline-container">
-        <h1>UPDATE PIPELINE</h1>
+<!--
+        <form id="updateSearch" method="">
+
+            <div>
+                <select name="rc-names" required>
+                    <option value="select-rc">Select RC Name</option>
+                    <option value="rc-one">RC Name One</option>
+                    <option value="rc-two">RC Name Two</option>
+                    <option value="rc-three">RC Name Three</option>
+                    <option value="rc-four">RC Name Four</option>
+                </select>
+                <select name="pipeline-systems" required>
+                    <option value="select-system">Select System</option>
+                    <option value="system-one">System One</option>
+                    <option value="system-two">System Two</option>
+                    <option value="system-three">System Three</option>
+                    <option value="system-four">System Four</option>
+                </select>
+                <select name="pipeline-names" required>
+                        <option value="select-name">Select Pipeline Name</option>
+                        <option value="pipeline-one">Pipeline One</option>
+                        <option value="pipeline-two">Pipeline Two</option>
+                        <option value="pipeline-three">Pipeline Three</option>
+                        <option value="pipeline-four">Pipeline Four</option>
+                    </select>
+            </div>
+        </form>
+        <div class="buttons">
+            <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
+        </div>
+-->
+
+        <form id="updatePipeline" method="">
+            <div>
+                <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
+                <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name" required>
+                <input type="text" id="receiverName" name="receiverName" placeholder="Current Receiver name" required>
+            </div>
+
+            <div>
+                <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+            </div>
+
+            <div>
+                <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
+            </div>
+            <div>
+                <p>Closure:</p>
+                <select name="pipeline-closures" required>
+                        <option value="current-closure">Current Closure</option>
+                        <option value="closure-one">Closure One</option>
+                        <option value="closure-two">Closure Two</option>
+                        <option value="closure-three">Closure Three</option>
+                        <option value="closure-four">Closure Four</option>
+                    </select>
+            </div>
+
+            <p>Acceptable Pigs:</p>
+            <div class="checkboxes-pigs">
+                <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+            </div>
+            <p>Product:</p>
+            <div class="checkboxes-product">
+                <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
+                <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
+                <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+            </div>
+
+        </form>
+
+        <div class="submit-cancel-delete">
+            <button form="updatePipeline" type="submit">Submit</button>
+            <button type="button">Cancel</button>
+            <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
+        </div>
     </main>
 
+    <!--
     <main class="<foreman-assign-user-role-container">
         <h1>ADD USER</h1>
     </main>
