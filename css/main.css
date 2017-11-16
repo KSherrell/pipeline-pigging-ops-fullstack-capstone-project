@@ -350,6 +350,8 @@ hr {
     .foreman-prev-launch-container p.notes {
         color: #F38630;
     }
+    .foreman-admin-menu-container{}
+
     main.foreman-admin-menu-container {
         margin-top: 1rem;
     }
@@ -362,14 +364,16 @@ hr {
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
     }
+
     .foreman-admin-menu-container div a {
         text-decoration: none;
     }
-    main.foreman-debris-report-container {
-        padding-top: 65px;
-        padding-bottom: 0
-    }
 
+    .foreman-debris-report-container {}
+
+    main.foreman-debris-report-container {
+        padding-top: 2rem;
+    }
     .foreman-debris-report-container div.debris-results-header {
         position: fixed;
         top: 0px;
@@ -379,15 +383,11 @@ hr {
         padding: 10px;
         background-color: #ffffff;
     }
-
     .foreman-debris-report-container div.debris-results-header div.debris-results {
         margin: 1rem auto 0;
         padding: 0;
-
-
     }
-    .foreman-debris-report-container form div input[type='radio'],
-    .foreman-pigging-activity-container input[type='radio'] {
+    .foreman-debris-report-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
@@ -397,12 +397,68 @@ hr {
         margin-left: 10px;
     }
     .foreman-debris-report-container form div div,
-    .foreman-debris-report-container form div select,
-    .foreman-pigging-activity-container div div,
-    .foreman-pigging-activity-container div select {
+    .foreman-debris-report-container form div select {
         margin-top: .5rem
     }
-    .foreman-debris-report-container div.submit-reset,
+    .foreman-debris-report-container form {
+        padding: 0;
+    }
+
+    .foreman-debris-report-container div.debris-results-header {
+        top: 44px;
+        left: 0;
+        background-color: #ffffff;
+    }
+    .foreman-debris-report-container div.debris-results-header h3 {
+        padding-bottom: 0;
+    }
+    .foreman-debris-report-container div.debris-results div>div>h3 {
+        padding: 0 0;
+    }
+    .foreman-debris-report-container div.debris-results-header hr {
+        margin: 10px 0 0;
+    }
+    .foreman-debris-report-container div.debris-results {
+        margin-top: 6rem;
+    }
+    .foreman-debris-report-container div.debris-results div {
+        width: 100%;
+        padding-bottom: 5px;
+    }
+    .foreman-debris-report-container div.debris-results>div:last-child {
+        margin-bottom: 5rem;
+    }
+    .foreman-debris-report-container div.debris-results>div {
+        border-bottom: 1px solid #A7DBD8;
+    }
+    .foreman-debris-report-container div.debris-results-header div>div,
+    .foreman-debris-report-container div.debris-results div>div {
+        display: inline-block;
+    }
+    .foreman-debris-report-container div.debris-results-header div div:first-child,
+    .foreman-debris-report-container div.debris-results div div:first-child {
+        width: 20%;
+        text-align: right;
+    }
+    .foreman-debris-report-container div.debris-results-header div div:not(first-child),
+    .foreman-debris-report-container div.debris-results div div:not(first-child) {
+        width: 38%;
+        text-align: center;
+    }
+    .foreman-debris-report-container div.debris-results p {}
+    .foreman-debris-report-container div.submit-reset {
+        /*
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+*/
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        margin: 0 auto;
+        padding: 2rem 0 .5rem;
+        background-color: #ffffff;
+    }
     .foreman-pigging-activity-container div.submit-reset,
     .foreman-view-history-container div.submit-reset {
         position: fixed;
@@ -416,6 +472,13 @@ hr {
         background-color: #ffffff;
     }
     .foreman-pigging-activity-container {}
+
+    .foreman-pigging-activity-container input[type='radio'] {
+        height: auto;
+        width: auto;
+        vertical-align: baseline;
+        margin: 0;
+    }
     .foreman-pigging-activity-container h3+p {
         text-align: center;
         width: 85%;
@@ -423,6 +486,12 @@ hr {
         padding-bottom: .5rem;
         border-bottom: 2px solid #A7DBD8;
     }
+
+    .foreman-pigging-activity-container div div,
+    .foreman-pigging-activity-container div select {
+        margin-top: .5rem
+    }
+
     .foreman-pigging-activity-container div.pigging-activity-results div:first-child {
         position: fixed;
         width: 100%;
@@ -745,71 +814,6 @@ hr {
 .viewonly-schedule-container span.overdue-plus-thirty {
     background-color: #c0c0c0;
 }
-
-.viewonly-debris-container {}
-
-.viewonly-debris-container form {
-    padding: 0;
-}
-
-.viewonly-debris-container form div input[type='radio'] {
-    height: auto;
-    width: auto;
-    vertical-align: baseline;
-    margin: 0;
-}
-
-.viewonly-debris-container div.debris-results-header {
-    top: 44px;
-    left: 0;
-    background-color: #ffffff;
-}
-.viewonly-debris-container div.debris-results-header h3 {
-    padding-bottom: 0;
-    }
-
-.viewonly-debris-container div.debris-results div>div>h3 {
-    padding: 0 0;
-}
-
-.viewonly-debris-container div.debris-results-header hr {
-    margin: 10px 0 0;
-}
-.viewonly-debris-container div.debris-results {
-    margin-top: 6rem;
-}
-
-.viewonly-debris-container div.debris-results div {
-    width: 100%;
-    padding-bottom: 5px;
-}
-
-.viewonly-debris-container div.debris-results>div:last-child {
-    margin-bottom: 5rem;
-}
-
-.viewonly-debris-container div.debris-results>div {
-    border-bottom: 1px solid #A7DBD8;
-}
-
-.viewonly-debris-container div.debris-results-header div>div,
-.viewonly-debris-container div.debris-results div>div {
-    display: inline-block;
-}
-
-.viewonly-debris-container div.debris-results-header div div:first-child,
-.viewonly-debris-container div.debris-results div div:first-child {
-    width: 20%;
-    text-align: right;
-}
-
-.viewonly-debris-container div.debris-results-header div div:not(first-child),
-.viewonly-debris-container div.debris-results div div:not(first-child) {
-    width: 38%;
-    text-align: center;
-}
-
-.viewonly-debris-container div.debris-results p {}
 
 @media only screen and (min-width: 375px) {
     body {
