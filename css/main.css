@@ -303,7 +303,8 @@ hr {
     .operator-schedule-container hr,
     .operator-prev-launch-container hr,
     .foreman-schedule-container hr,
-    .foreman-prev-launch-container hr {
+    .foreman-prev-launch-container hr,
+    .foreman-debris-report-container hr {
         margin: 10px 0 0;
     }
     .operator-schedule-container div.schedule-results,
@@ -367,6 +368,23 @@ hr {
     main.foreman-debris-report-container {
         padding-top: 65px;
         padding-bottom: 0
+    }
+
+    .foreman-debris-report-container div.debris-results-header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        z-index: 1;
+        padding: 10px;
+        background-color: #ffffff;
+    }
+
+    .foreman-debris-report-container div.debris-results-header div.debris-results {
+        margin: 1rem auto 0;
+        padding: 0;
+
+
     }
     .foreman-debris-report-container form div input[type='radio'],
     .foreman-pigging-activity-container input[type='radio'] {
@@ -730,19 +748,35 @@ hr {
 
 .viewonly-debris-container {}
 
+.viewonly-debris-container form {
+    padding: 0;
+}
+
+.viewonly-debris-container form div input[type='radio'] {
+    height: auto;
+    width: auto;
+    vertical-align: baseline;
+    margin: 0;
+}
+
 .viewonly-debris-container div.debris-results-header {
-    position: fixed;
-    top: 45px;
+    top: 44px;
+    left: 0;
     background-color: #ffffff;
-    width: 99%;
+}
+.viewonly-debris-container div.debris-results-header h3 {
+    padding-bottom: 0;
+    }
+
+.viewonly-debris-container div.debris-results div>div>h3 {
+    padding: 0 0;
 }
 
 .viewonly-debris-container div.debris-results-header hr {
-    margin: 10px 0 0px;
+    margin: 10px 0 0;
 }
-
 .viewonly-debris-container div.debris-results {
-    margin-top: 5rem;
+    margin-top: 6rem;
 }
 
 .viewonly-debris-container div.debris-results div {
@@ -754,23 +788,22 @@ hr {
     margin-bottom: 5rem;
 }
 
-.viewonly-debris-container div.debris-results>div+div {
+.viewonly-debris-container div.debris-results>div {
     border-bottom: 1px solid #A7DBD8;
 }
 
+.viewonly-debris-container div.debris-results-header div>div,
 .viewonly-debris-container div.debris-results div>div {
     display: inline-block;
 }
 
-.viewonly-debris-container div.debris-results div>div>h3 {
-    padding: 0 0;
-}
-
+.viewonly-debris-container div.debris-results-header div div:first-child,
 .viewonly-debris-container div.debris-results div div:first-child {
     width: 20%;
     text-align: right;
 }
 
+.viewonly-debris-container div.debris-results-header div div:not(first-child),
 .viewonly-debris-container div.debris-results div div:not(first-child) {
     width: 38%;
     text-align: center;
