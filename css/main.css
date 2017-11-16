@@ -192,6 +192,7 @@ hr {
         width: 85%;
         margin: 1.5rem auto;
     }
+    /* OPERATOR INPUT PIGGING*/
     .operator-input-pigging-container {
         padding-top: 30px;
         padding-left: 5px;
@@ -264,10 +265,11 @@ hr {
         font-size: 1rem;
         background-color: #FFF8DC;
     }
+    /* PIGGING SCHEDULE*/
     main.foreman-schedule-container {
         padding: 0;
     }
-    .foreman-schedule-container form {
+    .pigging-schedule-container form {
         margin-top: 0;
         padding: .7rem;
         font-size: .9rem;
@@ -278,67 +280,62 @@ hr {
         z-index: 1;
         background-color: #ffffff;
     }
-    .foreman-schedule-container form div {
+    .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
         width: 72%;
     }
-    .foreman-schedule-container form div select {
+    .pigging-schedule-container form div select {
         margin: 0;
     }
-    .foreman-schedule-container form div+div {
+    .pigging-schedule-container form div+div {
         width: 25%;
     }
-    .foreman-schedule-container button {
+    .pigging-schedule-container button {
         margin: 0;
         padding: 0;
         border-radius: 6px;
         width: 100%;
         height: 2rem;
     }
-    .operator-prev-launch-container hr,
-    .foreman-prev-launch-container hr,
-    .foreman-debris-report-container hr {
+    .pigging-schedule-container hr {
         margin: 10px 0 0;
     }
-    .foreman-schedule-container hr {
-        margin: 10px 0 0;
-    }
-    .foreman-schedule-container div.schedule-results {
+    .pigging-schedule-container div.schedule-results {
         margin: 6.5rem 0 3.5rem;
         padding-left: 10px;
     }
-    .foreman-schedule-container div.schedule-results span {
+    .pigging-schedule-container div.schedule-results span {
         display: inline-block;
         margin-bottom: 8px;
     }
-    .foreman-schedule-container span.due today {
+    .pigging-schedule-container span.due today {
         background-color: #ffffff;
     }
-    .foreman-schedule-container span.due-in-seven {
+    .pigging-schedule-container span.due-in-seven {
         background-color: #ffe552;
     }
-    .foreman-schedule-container span.overdue-within-thirty {
+    .pigging-schedule-container span.overdue-within-thirty {
         background-color: #ee7777;
     }
-    .foreman-schedule-container span.overdue-plus-thirty {
+    .pigging-schedule-container span.overdue-plus-thirty {
         background-color: #c0c0c0;
     }
-    .operator-prev-launch-container div+div,
-    .foreman-prev-launch-container div+div {
+    /* PREVIOUS LAUNCH */
+    .prev-launch-container hr {
+        margin: 10px 0 0;
+    }
+    .prev-launch-container div+div {
         margin-top: 3rem;
     }
-    .operator-prev-launch-container span:nth-child(2),
-    .foreman-prev-launch-container span:nth-child(2) {
+    .prev-launch-container span:nth-child(2) {
         color: #FA6900;
     }
-    .operator-prev-launch-container span.debris-lbs,
-    .foreman-prev-launch-container span.debris-lbs {
+    .prev-launch-container span.debris-lbs {
         margin: 0 10px;
         color: #FA6900;
     }
-    .operator-prev-launch-container p.notes,
-    .foreman-prev-launch-container p.notes {
+    .prev-launch-container p.notes {
         color: #F38630;
     }
     .foreman-admin-menu-container {}
@@ -358,6 +355,9 @@ hr {
         text-decoration: none;
     }
     .foreman-debris-report-container {}
+    .foreman-debris-report-container hr {
+        margin: 10px 0 0;
+    }
     main.foreman-debris-report-container {
         padding-top: 2rem;
     }
