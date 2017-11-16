@@ -354,14 +354,14 @@ hr {
     .foreman-admin-menu-container div a {
         text-decoration: none;
     }
-    .foreman-debris-report-container {}
-    .foreman-debris-report-container hr {
+    .debris-report-container {}
+    .debris-report-container hr {
         margin: 10px 0 0;
     }
     main.foreman-debris-report-container {
         padding-top: 2rem;
     }
-    .foreman-debris-report-container div.debris-results-header {
+    .debris-report-container div.debris-results-header {
         position: fixed;
         top: 0px;
         left: 0px;
@@ -370,74 +370,68 @@ hr {
         padding: 10px;
         background-color: #ffffff;
     }
-    .foreman-debris-report-container div.debris-results-header div.debris-results {
+    .debris-report-container div.debris-results-header div.debris-results {
         margin: 1rem auto 0;
         padding: 0;
     }
-    .foreman-debris-report-container form div input[type='radio'] {
+    .debris-report-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0;
     }
-    .foreman-debris-report-container form div label {
+    .debris-report-container form div label {
         margin-left: 10px;
     }
-    .foreman-debris-report-container form div div,
-    .foreman-debris-report-container form div select {
+    .debris-report-container form div div,
+    .debris-report-container form div select {
         margin-top: .5rem
     }
-    .foreman-debris-report-container form {
+    .debris-report-container form {
         padding: 0;
     }
-    .foreman-debris-report-container div.debris-results-header {
+    .debris-report-container div.debris-results-header {
         top: 44px;
         left: 0;
         background-color: #ffffff;
     }
-    .foreman-debris-report-container div.debris-results-header h3 {
+    .debris-report-container div.debris-results-header h3 {
         padding-bottom: 0;
     }
-    .foreman-debris-report-container div.debris-results div>div>h3 {
+    .debris-report-container div.debris-results div>div>h3 {
         padding: 0 0;
     }
-    .foreman-debris-report-container div.debris-results-header hr {
+    .debris-report-container div.debris-results-header hr {
         margin: 10px 0 0;
     }
-    .foreman-debris-report-container div.debris-results {
+    .debris-report-container div.debris-results {
         margin-top: 6rem;
     }
-    .foreman-debris-report-container div.debris-results div {
+    .debris-report-container div.debris-results div {
         width: 100%;
         padding-bottom: 5px;
     }
-    .foreman-debris-report-container div.debris-results>div:last-child {
+    .debris-report-container div.debris-results>div:last-child {
         margin-bottom: 5rem;
     }
-    .foreman-debris-report-container div.debris-results>div {
+    .debris-report-container div.debris-results>div {
         border-bottom: 1px solid #A7DBD8;
     }
-    .foreman-debris-report-container div.debris-results-header div>div,
-    .foreman-debris-report-container div.debris-results div>div {
+    .debris-report-container div.debris-results-header div>div,
+    .debris-report-container div.debris-results div>div {
         display: inline-block;
     }
-    .foreman-debris-report-container div.debris-results-header div div:first-child,
-    .foreman-debris-report-container div.debris-results div div:first-child {
+    .debris-report-container div.debris-results-header div div:first-child,
+    .debris-report-container div.debris-results div div:first-child {
         width: 20%;
         text-align: right;
     }
-    .foreman-debris-report-container div.debris-results-header div div:not(first-child),
-    .foreman-debris-report-container div.debris-results div div:not(first-child) {
+    .debris-report-container div.debris-results-header div div:not(first-child),
+    .debris-report-container div.debris-results div div:not(first-child) {
         width: 38%;
         text-align: center;
     }
-    .foreman-debris-report-container div.debris-results p {}
-    .foreman-debris-report-container div.submit-reset {
-        /*
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-*/
+    .debris-report-container div.submit-reset {
         width: 100%;
         text-align: center;
         z-index: 1;
@@ -445,8 +439,8 @@ hr {
         padding: 2rem 0 .5rem;
         background-color: #ffffff;
     }
-    .foreman-pigging-activity-container div.submit-reset,
-    .foreman-view-history-container div.submit-reset {
+    /*FOREMAN PIGGING ACTIVITY*/
+    .foreman-pigging-activity-container div.submit-reset {
         position: fixed;
         bottom: 0px;
         left: 0px;
@@ -457,7 +451,6 @@ hr {
         padding: 1rem 0 .5rem;
         background-color: #ffffff;
     }
-    .foreman-pigging-activity-container {}
     .foreman-pigging-activity-container input[type='radio'] {
         height: auto;
         width: auto;
@@ -498,8 +491,20 @@ hr {
         text-align: right;
         padding: 3px;
     }
+    /* FOREMAN VIEW HISTORY */
     main.foreman-view-history-container {
         padding: 30px 10px;
+    }
+    .foreman-view-history-container div.submit-reset {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        margin: 0 auto;
+        padding: 1rem 0 .5rem;
+        background-color: #ffffff;
     }
     .foreman-view-history-container form {
         padding: 0;
@@ -543,6 +548,7 @@ hr {
     .foreman-view-history-container div.activity-records p:last-child {
         padding-bottom: 3rem;
     }
+    /* FOREMAN UPDATE HISTORY  */
     .foreman-update-history-container div.warning {
         margin: 1rem auto;
         text-align: center;
@@ -557,32 +563,27 @@ hr {
     .foreman-update-history-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
-    .foreman-update-pipeline-container,
+    /* FOREMAN ADD PIPELINE */
     .foreman-add-pipeline-container {
         padding-top: 1rem;
     }
     .foreman-add-pipeline-container form {
         padding: 0;
     }
-    .foreman-update-pipeline-container form div,
     .foreman-add-pipeline-container form div {
         margin-top: 0;
     }
-    .foreman-update-pipeline-container form div select,
-    .foreman-update-pipeline-container form div input .foreman-add-pipeline-container form div select,
+    .foreman-add-pipeline-container form div select,
     .foreman-add-pipeline-container form div input {
         margin-top: 1rem;
     }
-    .foreman-update-pipeline-container form label,
     .foreman-add-pipeline-container form label {
         font-size: 1rem;
         padding-right: 5px;
     }
-    .foreman-update-pipeline-container form input,
     .foreman-add-pipeline-container form input {
         vertical-align: baseline;
     }
-    .foreman-update-pipeline-container form input[type='number'],
     .foreman-add-pipeline-container form input[type='number'] {
         width: 3.5rem;
         margin: 1rem 0 0;
@@ -593,22 +594,18 @@ hr {
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-update-pipeline-container form p,
     .foreman-add-pipeline-container form p {
         display: inline-block;
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
-    .foreman-update-pipeline-container form div div p,
     .foreman-add-pipeline-container form div div p {
         margin: 1rem .5rem 0 0;
     }
-    .foreman-update-pipeline-container div.checkboxes-pigs div,
     .foreman-add-pipeline-container div.checkboxes-pigs div {
         display: inline-block;
         width: 49%;
     }
-    .foreman-update-pipeline-container div.checkboxes-product div,
     .foreman-add-pipeline-container div.checkboxes-product div {
         display: inline-block;
         width: auto;
@@ -619,7 +616,6 @@ hr {
     }
 }
 
-.foreman-update-pipeline-container form input[type='checkbox'],
 .foreman-add-pipeline-container form input[type='checkbox'] {
     height: auto;
     width: auto;
@@ -627,12 +623,10 @@ hr {
     margin: 1rem 0 0;
 }
 
-.foreman-update-pipeline-container form input[type='checkbox']+label,
 .foreman-add-pipeline-container form input[type='checkbox']+label {
     padding-left: 5px;
 }
 
-.foreman-update-pipeline-container div.warning,
 .foreman-add-pipeline-container div.warning {
     margin: 1rem auto;
     text-align: center;
@@ -641,14 +635,64 @@ hr {
     padding: .5rem;
 }
 
-.foreman-update-pipeline-container {}
+
+/* FOREMAN UPDATE PIPELINE */
+
+.foreman-update-pipeline-container {
+    padding-top: 1rem;
+}
 
 .foreman-update-pipeline-container form {
     padding: 0;
 }
 
+.foreman-update-pipeline-container form div {
+    margin-top: 0;
+}
+
+.foreman-update-pipeline-container form div select,
+.foreman-update-pipeline-container form div input {
+    margin-top: 1rem;
+}
+
+.foreman-update-pipeline-container form label {
+    font-size: 1rem;
+    padding-right: 5px;
+}
+
+.foreman-update-pipeline-container form input {
+    vertical-align: baseline;
+}
+
+.foreman-update-pipeline-container form input[type='number'] {
+    width: 3.5rem;
+    margin: 1rem 0 0;
+    padding-right: 0;
+}
+
+.foreman-update-pipeline-container form p {
+    display: inline-block;
+    margin: 2rem .5rem 0 0;
+    font-weight: bold;
+}
+
+.foreman-update-pipeline-container form div div p {
+    margin: 1rem .5rem 0 0;
+}
+
+.foreman-update-pipeline-container div.checkboxes-pigs div {
+    display: inline-block;
+    width: 49%;
+}
+
 .foreman-update-pipeline-container form div.checkboxes-product {
     padding-bottom: 2.5rem;
+}
+
+.foreman-update-pipeline-container div.checkboxes-product div {
+    display: inline-block;
+    width: auto;
+    padding-right: 1rem;
 }
 
 .foreman-update-pipeline-container form div.checkboxes-product div:last-of-type {
@@ -661,6 +705,25 @@ hr {
     margin: 1rem 0 0;
 }
 
+.foreman-update-pipeline-container form input[type='checkbox'] {
+    height: auto;
+    width: auto;
+    vertical-align: baseline;
+    margin: 1rem 0 0;
+}
+
+.foreman-update-pipeline-container form input[type='checkbox']+label {
+    padding-left: 5px;
+}
+
+.foreman-update-pipeline-container div.warning {
+    margin: 1rem auto;
+    text-align: center;
+    color: #bd0000;
+    border: 2px solid #bd0000;
+    padding: .5rem;
+}
+
 .foreman-update-pipeline-container div.submit-cancel-delete {
     width: 100%;
     text-align: center;
@@ -669,6 +732,9 @@ hr {
 .foreman-update-pipeline-container div.submit-cancel-delete button {
     margin: 0 2%;
 }
+
+
+/* FOREMAN ADD USER */
 
 .foreman-assign-user-role-container {}
 
