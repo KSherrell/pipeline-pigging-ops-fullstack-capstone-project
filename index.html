@@ -243,60 +243,6 @@
 
 
     <!--
-    <header>
-        <h1>Pigging Schedule</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-
-    </header>
-    <main class="operator-schedule-container">
-        <form id="piggingSchedule" action="" method="">
-            <div>
-                <select name="pipeline-systems" required>
-                <option value="select-system">Select Pipeline System</option>
-                <option value="system-one">System One</option>
-                <option value="system-two">System Two</option>
-                <option value="system-three">System Three</option>
-                <option value="system-four">System Four</option>
-            </select>
-            </div>
-            <div>
-                <button form="piggingSchedule" type="submit">Submit</button>
-            </div>
-            <hr>
-        </form>
-        <div class="schedule-results">
-            <p><span class="due-today"><a href="">Pipeline Name One</a></span></p>
-            <p><span class="due-today"><a href="">Pipeline Name Two</a></span></p>
-            <p><span class="due-today"><a href="">Pipeline Name Three</a></span></p>
-            <p><span class="due-today"><a href="">Pipeline Name Four</a></span></p>
-            <p><span class="due-today"><a href="">Pipeline Name Five</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Six</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Seven</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Eight</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Nine</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Ten</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Eleven</a></span></p>
-            <p><span class="due-in-seven"><a href="">Pipeline Name Twelve</a></span></p>
-            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Thirteen</a></span></p>
-            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Fourteen</a></span></p>
-            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Fifteen</a></span></p>
-            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Sixteen</a></span></p>
-            <p><span class="overdue-within-thirty"><a href="">Pipeline Name Seventeen</a></span></p>
-            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Eighteen</a></span></p>
-            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Nineteen</a></span></p>
-            <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Twenty</a></span></p>
-        </div>
-
-        <div class="ops-nav">
-            <p><a href="#">Input Pigging</a></p>
-        </div>
-    </main>
--->
-
-
-
-    <!--
 <header>
     <h1>Previous Launch</h1>
     <a href="#"><img src="imgs/exit.png"></a>
@@ -358,9 +304,14 @@
 
 
 
-    <!--
+
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Pigging Schedule</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <header>
         <h1>Pigging Schedule</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
@@ -376,7 +327,7 @@
                     <option value="system-four">System Four</option>
                 </select>
             </div>
-            <div>
+            <div class="buttons">
                 <button form="piggingSchedule" type="submit">Submit</button>
             </div>
             <hr>
@@ -404,9 +355,17 @@
             <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Nineteen</a></span></p>
             <p><span class="overdue-plus-thirty"><a href="">Pipeline Name Twenty</a></span></p>
         </div>
+        <!-- for operator schedule-->
+        <div class="ops-nav">
+            <p><a href="#">Input Pigging</a></p>
+        </div>
+        <!-- for view only schedule        -->
+        <div class="ops-nav">
+            <p><a href="#">Debris Reports</a></p>
+        </div>
     </main>
 
--->
+
 
     <!--
     <header class="foreman-header>
@@ -455,6 +414,14 @@
     </header>
     <main class="foreman-debris-report-container">
 -->
+    <!--
+    <header>
+        <h1>Debris Reports</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+-->
+
 
     <!--
 
@@ -1259,232 +1226,6 @@
     </div>
 </main>
 -->
-
-
-    <!--
-    <header>
-        <h1>Debris Reports</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-
-    <main class="foreman-debris-report-container">
-
-
-        <form id="debrisReport" action="" method="">
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
-                <div>
-                    <select name="select-debris-system" required>
-<option value="select-debris-system">Select System</option>
-<option value="debris-system-one">System One</option>
-<option value="debris-system-two">System Two</option>
-<option value="debris-system-three">System Three</option>
-<option value="debris-system-four">System Four</option>
-</select>
-                </div>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
-                <div>
-                    <select name="select-debris-system" required>
-<option value="select-debris-system">Select System</option>
-<option value="debris-system-one">System One</option>
-<option value="debris-system-two">System Two</option>
-<option value="debris-system-three">System Three</option>
-<option value="debris-system-four">System Four</option>
-</select>
-                </div>
-                <div>
-                    <select name="select-debris-pipeline" required>
-<option value="select-debris-pipeline">Select Pipeline</option>
-<option value="debris-pipeline-one">Pipeline One</option>
-<option value="debris-pipeline-two">Pipeline Two</option>
-<option value="debris-pipeline-three">Pipeline Three</option>
-<option value="debris-pipeline-four">Pipeline Four</option>
-</select>
-                </div>
-            </div>
-
-        </form>
--->
-
-    <!--
-        <div>
-            <div class="debris-results-header">
-                <h3>Name of Area</h3>
-                <div>
-                    <div>
-                        <h3></h3>
-                    </div>
-                    <div>
-                        <h3>Paraffin lbs</h3>
-                    </div>
-                    <div>
-                        <h3>Sand lbs</h3>
-                    </div>
-
-                </div>
-                <hr>
-            </div>
-            <div class="debris-results">
-                <div>
-                    <div>
-                        <h3>Oct</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Sep</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Aug</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jul</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jun</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>May</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Apr</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Mar</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Feb</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jan</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Dec</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Nov</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
--->
-
-    <!--
-        <div class="submit-reset">
-            <button form="debrisReport" type="submit">Submit</button>
-            <a href=""><button type="button">Cancel</button></a>
-        </div>
-
-    </main>
--->
-
-
 
 
 
