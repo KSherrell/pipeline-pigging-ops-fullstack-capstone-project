@@ -729,7 +729,9 @@ hr {
         padding: 0px;
         font-size: 1rem;
     }
-    .foreman-update-user-container {}
+
+/* FOREMAN UPDATE USER */
+
     .foreman-update-user-container form {
         margin-top: 2rem;
         padding: 0;
