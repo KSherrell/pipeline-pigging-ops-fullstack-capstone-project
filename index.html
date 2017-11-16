@@ -14,6 +14,7 @@
 
 <body>
 
+
     <!--
     <header>
         <h1>Login</h1>
@@ -39,6 +40,8 @@
         </div>
     </main>
 -->
+
+
 
 
 
@@ -72,12 +75,14 @@
 
 
 
+
     <!--
+
     <header>
         <h1>Create Account</h1>
     </header>
     <main class="user-create-account-container">
-        <p>All fields required.</p>
+        <p>All fields are required.</p>
         <form id="userCreateAcct" action="" method="">
             <div>
                 <label for="firstName">Name</label>
@@ -99,6 +104,8 @@
         </form>
     </main>
 -->
+
+
 
 
 
@@ -139,108 +146,111 @@
     </main>
 -->
 
+
     <!--pre-fill the fields with some default data -->
 
 
 
 
+
     <!--
-    <header>
-        <h1>Input Pigging</h1>
+<header>
+    <h1>Input Pigging</h1>
 
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    <a href="#"><img src="imgs/exit.png"></a>
+    <a href="#"><img src="imgs/acct-info-wht.png"></a>
 
-    </header>
+</header>
 
 
-    <main class="operator-input-pigging-container">
-        <form id="inputPigging" action="" method="">
-            <div>
-                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
-            </div>
-            <div>
-                <select name="pipeline-systems" required>
+<main class="operator-input-pigging-container">
+    <form id="inputPigging" action="" method="">
+        <div>
+            <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+        </div>
+        <div>
+            <select name="pipeline-systems" required>
                 <option value="select-system">Select Pipeline System</option>
                <option value="system-one">System One</option>
                <option value="system-two">System Two</option>
                <option value="system-three">System Three</option>
                <option value="system-four">System Four</option>
             </select>
-            </div>
-            <div>
-                <select name="pipeline-names" required>
+        </div>
+        <div>
+            <select name="pipeline-names" required>
                 <option value="select-name">Select Pipeline Name</option>
                 <option value="system-one">Name One</option>
                 <option value="system-two">Name Two</option>
                 <option value="system-three">Name Three</option>
                 <option value="system-four">Name Four</option>
             </select>
-            </div>
-            <div>
-                <p class="auto-pop-site-name"></p>
-            </div>
-            <div>
+        </div>
+        <div>
+            <p class="auto-pop-site-name"></p>
+        </div>
+        <div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
-                <div class="select-launch">
-                    <div>
-                        <p>Time: <span><input type="time" name="launch-time" required></span></p>
-                    </div>
-                    <div>
-                        <select name="pig-types" required>
+            <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
+            <div class="select-launch">
+                <div>
+                    <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                </div>
+                <div>
+                    <select name="pig-types" required>
                             <option value="select-pig">Select Pig Type</option>
                             <option value="pig-one">Pig Type One</option>
                             <option value="pig-two">Pig Type Two</option>
                             <option value="pig-three">Pig Type Three</option>
                             <option value="pig-four">Pig Type Four</option>
                         </select>
-                    </div>
+                </div>
+            </div>
+
+            <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+            <div class="select-receive">
+                <div>
+                    <p>Time: <span><input type="time" name="receive-time" required></span></p>
                 </div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
-                <div class="select-receive">
-                    <div>
-                        <p>Time: <span><input type="time" name="receive-time" required></span></p>
-                    </div>
-
-                    <div class="input-debris">
-                        <p>Debris:</p>
-                        <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                        <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-                    </div>
+                <div class="input-debris">
+                    <p>Debris:</p>
+                    <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                    <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                 </div>
+            </div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
-                <div class="select-exception">
-                    <div>
-                        <p>Time: <span><input type="time" name="exception-time" required></span></p>
-                    </div>
-                    <div>
-                        <select name="exceptions" required>
+            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+            <div class="select-exception">
+                <div>
+                    <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                </div>
+                <div>
+                    <select name="exceptions" required>
                             <option value="select-exception">Select Exception</option>
                             <option value="exception-one">Exception One</option>
                             <option value="exception-two">Exception Two</option>
                             <option value="exception-three">Exception Three</option>
                             <option value="exception-four">Exception Four</option>
                         </select>
-                    </div>
                 </div>
             </div>
-            <div class="textarea">
-                <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
-            </div>
-
-            <div class="buttons">
-                <button form="inputPigging" type="submit">Submit</button>
-            </div>
-
-        </form>
-        <div class="ops-nav">
-            <p><a href="#"><span>Pigging Schedule</span></a></p>
         </div>
-    </main>
+        <div class="textarea">
+            <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+        </div>
+
+        <div class="buttons">
+            <button form="inputPigging" type="submit">Submit</button>
+        </div>
+
+    </form>
+    <div class="ops-nav">
+        <p><a href="#"><span>Pigging Schedule</span></a></p>
+    </div>
+</main>
 -->
+
 
     <!--
 
@@ -855,7 +865,8 @@
 -->
 
 
-    <!--
+
+<!--
 
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
@@ -933,6 +944,7 @@
         </div>
     </main>
 -->
+
 
 
     <!--
@@ -1073,6 +1085,7 @@
 
 
 
+    <!--
 
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
@@ -1117,6 +1130,7 @@
         </div>
 
     </main>
+-->
 
 
 </body>
