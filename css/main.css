@@ -407,17 +407,6 @@ body {
         background-color: #ffffff;
     }
     /*FOREMAN PIGGING ACTIVITY*/
-    .foreman-pigging-activity-container div.submit-reset {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        text-align: center;
-        z-index: 1;
-        margin: 0 auto;
-        padding: 1rem 0 .5rem;
-        background-color: #ffffff;
-    }
     .foreman-pigging-activity-container input[type='radio'] {
         height: auto;
         width: auto;
@@ -426,7 +415,6 @@ body {
     }
     .foreman-pigging-activity-container h3+p {
         text-align: center;
-        width: 85%;
         margin: auto;
         padding-bottom: .5rem;
         border-bottom: 2px solid #A7DBD8;
@@ -437,15 +425,12 @@ body {
     }
     .foreman-pigging-activity-container div.pigging-activity-results div:first-child {
         position: fixed;
-        width: 100%;
-        top: 37px;
-        left: 0;
+        top: 45px;
         z-index: 1;
-        padding-left: 10px;
         background-color: #ffffff;
     }
     .foreman-pigging-activity-container div.months-pigs {
-        margin: 90px 0 50px;
+        margin: 90px auto 50px;
         padding-left: 1rem;
     }
     .foreman-pigging-activity-container div.months-pigs p {
@@ -457,6 +442,17 @@ body {
         background-color: #ffe552;
         text-align: right;
         padding: 3px;
+    }
+    .foreman-pigging-activity-container div.submit-reset {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        margin: 0 auto;
+        padding: 1rem 0 .5rem;
+        background-color: #ffffff;
     }
     /* FOREMAN VIEW HISTORY */
     main.foreman-view-history-container {
@@ -785,7 +781,6 @@ body {
 @media only screen and (min-width: 375px) {
     body {
         background-color: aliceblue;
-        font-size: 16px;
     }
     header.foreman-header h1 {
         font-size: 1.5rem;
@@ -798,7 +793,6 @@ body {
     form div input,
     form div select,
     p.auto-pop-site-name {
-        width: 100%;
         padding: 0;
         margin-top: 1rem;
     }
