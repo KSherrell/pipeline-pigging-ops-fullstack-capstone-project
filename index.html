@@ -3,19 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pigging History and Schedule</title>
     <link href="https://fonts.googleapis.com/css?family=Monda|Vollkorn" rel="stylesheet">
     <link href="css/resetCSS.css" rel="stylesheet" type="text/css" />
     <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 </head>
 
 <body>
-
-
-
 
     <!--
     <header>
@@ -286,7 +285,7 @@
 -->
 
 
-<!--
+    <!--
     <header>
         <h1>Admin Menu</h1>
         <a href="# "><img src="imgs/exit.png "></a>
@@ -310,7 +309,7 @@
 -->
 
 
-<!--
+    <!--
 
     <header class="foreman-header ">
         <a href="# "><img src="imgs/admin-menu-wht.png "></a>
@@ -373,7 +372,7 @@
     </main>
 -->
 
-<!--
+    <!--
     <header>
         <h1>Debris Reports</h1>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -604,92 +603,97 @@
 
 
 
+<!--
 
-<header class="foreman-header">
-    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-    <h1>Pigging Activity</h1>
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
-<main class="foreman-pigging-activity-container">
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Pigging Activity</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <main class="foreman-pigging-activity-container">
 
-    <form id="piggingActivity" action="" method="">
-        <div>
-            <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
-        </div>
-        <div>
-            <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
+        <form id="piggingActivity" action="" method="">
             <div>
-                <select name="select-debris-system" required>
+                <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
+                <div>
+                    <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
+                </div>
             </div>
-        </div>
-        <div>
-            <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
             <div>
-                <select name="select-debris-system" required>
+                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
+                <div>
+                    <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-            </div>
-            <div>
-                <select name="select-debris-pipeline" required>
+                </div>
+                <div>
+                    <select name="select-debris-pipeline" required>
                         <option value="select-debris-pipeline">Select Pipeline</option>
                         <option value="debris-pipeline-one">Pipeline One</option>
                         <option value="debris-pipeline-two">Pipeline Two</option>
                         <option value="debris-pipeline-three">Pipeline Three</option>
                         <option value="debris-pipeline-four">Pipeline Four</option>
                     </select>
+                </div>
             </div>
-        </div>
-        <div class="submit-reset">
-            <button form="piggingActivity" type="submit">Submit</button>
-        </div>
-    </form>
+            <div class="submit-reset">
+                <button form="piggingActivity" type="submit">Submit</button>
+            </div>
+        </form>
 
-    <div class="pigging-activity-results">
-        <div>
-            <h3>Name of Search</h3>
-            <p>Total Monthly Pigs</p>
-        </div>
-        <div class="months-pigs">
-            <p>Month <span>.............13</span></p>
-            <p>Month <span>...............15</span></p>
-            <p>Month <span>...........................27</span></p>
-            <p>Month <span>..........10</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-            <p>Month <span>##</span></p>
-        </div>
+
+<div class="pigging-activity-results">
+    <div>
+        <h3>Name of Search</h3>
+        <p>Total Monthly Pigs</p>
     </div>
-
-
-
-    <div class="submit-reset">
-        <button form="piggingActivity" type="reset">Reset</button>
+    <div class="months-pigs">
+        <p>Month <span>.............13</span></p>
+        <p>Month <span>...............15</span></p>
+        <p>Month <span>...........................27</span></p>
+        <p>Month <span>..........10</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
+        <p>Month <span>##</span></p>
     </div>
-
-</main>
-
+</div>
 
 
 
+<div class="submit-reset">
+    <button form="piggingActivity" type="reset">Reset</button>
+</div>
 
 
-    <!--
+    </main>
+-->
+
+
+
+
+
+
+
+<!--
     <header class="foreman-header jsForemanPage">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Pigging History</h1>
@@ -718,17 +722,17 @@
             </select>
             </div>
             <div>
-                <label for="recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber" value="*">
+                <label for="recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber">
             </div>
         </form>
 
         <div class="history-results">
             <div>
                 <h3>Pipeline Name</h3>
-                <p>Activity Records:</p>
+                <p>Activity Records</p>
             </div>
             <div class="activity-records">
-                <p>Date: <span>(date of record)</span></p>
+                <p>Date of Record: <span>(date of record)</span></p>
                 <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
                 <p>Launch: <span>('yes' or '--')</span></p>
                 <p>Operator name: <span>(name or '--')</span></p>
@@ -748,7 +752,27 @@
                         footer {}</span></p>
             </div>
             <div class="activity-records">
-                <p>Date: <span>(date of record)</span></p>
+                <p>Date of Record: <span>(date of record)</span></p>
+                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                <p>Launch: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Type of pig:<span>(pig type or '--')</span></p>
+                <p>Receive: <span>('yes' or '--')</span></p>
+                <p>Operator name: <span>(name or '--')</span></p>
+                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                <p>Exception: <span>(exception type or '--')</span></p>
+                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                    .foreman-add-pipeline-container {}
+                    .foreman-update-pipeline-container {}
+                    .foreman-assign-user-role-container {}
+                    .foreman-update-user-container {}
+                    .viewonly-schedule-container {}
+                    .viewonly-debris-container {}
+                    footer {}</span></p>
+            </div>
+            <div class="activity-records">
+                <p>Date of Record: <span>(date of record)</span></p>
                 <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
                 <p>Launch: <span>('yes' or '--')</span></p>
                 <p>Operator name: <span>(name or '--')</span></p>
@@ -781,7 +805,9 @@
 -->
 
 
-    <!--
+
+<!--
+
 <header class="foreman-header">
     <h1>Update History</h1>
     <a href="#"><img src="imgs/exit.png"></a>
@@ -866,9 +892,7 @@
 -->
 
 
-
-    <!--
-
+<!--
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Add Pipeline</h1>
@@ -948,8 +972,9 @@
 
 
 
-    <!--
 
+
+<!--
 <header class="foreman-header">
     <a href="#"><img src="imgs/admin-menu-wht.png"></a>
     <h1>Update Pipeline</h1>
@@ -1042,7 +1067,8 @@
 -->
 
 
-    <!--
+
+
 <header class="foreman-header">
     <a href="#"><img src="imgs/admin-menu-wht.png"></a>
     <h1>Add User</h1>
@@ -1081,7 +1107,7 @@
     </div>
 
 </main>
--->
+
 
 
 
@@ -1132,7 +1158,6 @@
 
     </main>
 -->
-
 
 </body>
 
