@@ -16,6 +16,7 @@
 
 <body>
     <main>
+
         <section id="mainLogin">
             <header>
                 <h1>Login</h1>
@@ -44,721 +45,685 @@
 
 
 
-
-        <!--
-<section id="mainResetPwd">
-<header>
-    <h1>Password Reset</h1>
-</header>
-<div class="main user-reset-password-container">
-    <div>
-        <p>User ID: <span></span></p>
-        <p>Email Address: <span></span></p>
-    </div>
-    <hr>
-    <form id="userPwdReset" action="" method="">
-        <div>
-            <label for="newPwd">Reset Password</label>
-            <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password" required>
-            <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
-        </div>
-        <div class="buttons">
-            <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
-        </div>
-    </form>
-
-</div>
-</section>
--->
-
-
-
-        <!--
-<section id="pageCreateAcct">
-    <header>
-        <h1>Create Account</h1>
-    </header>
-    <div class="main user-create-account-container">
-        <p>All fields are required.</p>
-        <form id="userCreateAcct" action="" method="">
-            <div>
-                <label for="firstName">Name</label>
-                <input type="text" id="firstName" name="user-first-name" placeholder="First Name" required>
-                <input type="text" id="lastName" name="user-last-name" placeholder="Last Name" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" placeholder="Email" required>
-            </div>
-            <div>
-                <label for="password" Password>Password</label>
-                <input type="password" id="password" name="user-password" placeholder="Password" required>
-                <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password" required>
-            </div>
-            <div class="buttons">
-                <button form="userCreateAcct" type="submit">Submit</button><button type="button">Cancel</button>
-            </div>
-        </form>
-    </div>
-</section>
--->
-
-
-
-
-        <!--
-<section id="pageUpdateAcct">
-    <header>
-        <h1>Update Account</h1>
-    </header>
-    <div class="main user-account-info-container">
-        <div>
-            <p>User ID: <span class="user-id"></span></p>
-        </div>
-        <hr>
-        <div>
-            <p>Enter updates into fields below.</p>
-        </div>
-        <form id="userUpdateAcct" action="" method="">
-            <div>
-                <label for="firstName">Name</label>
-                <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
-                <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" placeholder="Current Email" required>
+        <section id="mainResetPwd">
+            <header>
+                <h1>Password Reset</h1>
+            </header>
+            <div class="main user-reset-password-container">
+                <div>
+                    <p>User ID: <span></span></p>
+                    <p>Email Address: <span></span></p>
+                </div>
+                <hr>
+                <form id="userPwdReset" action="" method="">
+                    <div>
+                        <label for="newPwd">Reset Password</label>
+                        <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password" required>
+                        <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                    </div>
+                    <div class="buttons">
+                        <button form="userPwdReset" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
+                </form>
 
             </div>
-            <div>
-                <label for="password" Password>Password</label>
-                <input type="password" id="password" name="user-password" placeholder="Current Password" required>
-                <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
-                <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+        </section>
+
+
+
+        <section id="pageCreateAcct">
+            <header>
+                <h1>Create Account</h1>
+            </header>
+            <div class="main user-create-account-container">
+                <p>All fields are required.</p>
+                <form id="userCreateAcct" action="" method="">
+                    <div>
+                        <label for="firstName">Name</label>
+                        <input type="text" id="firstName" name="user-first-name" placeholder="First Name" required>
+                        <input type="text" id="lastName" name="user-last-name" placeholder="Last Name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="user-email" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <label for="password" Password>Password</label>
+                        <input type="password" id="password" name="user-password" placeholder="Password" required>
+                        <input type="password" id="password-reenter" name="user-password-reenter" placeholder="Re-enter Password" required>
+                    </div>
+                    <div class="buttons">
+                        <button form="userCreateAcct" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
+                </form>
             </div>
-            <div class="buttons">
-                <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
+        </section>
+
+
+
+
+
+        <section id="pageUpdateAcct">
+            <header>
+                <h1>Update Account</h1>
+            </header>
+            <div class="main user-account-info-container">
+                <div>
+                    <p>User ID: <span class="user-id"></span></p>
+                </div>
+                <hr>
+                <div>
+                    <p>Enter updates into fields below.</p>
+                </div>
+                <form id="userUpdateAcct" action="" method="">
+                    <div>
+                        <label for="firstName">Name</label>
+                        <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
+                        <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="user-email" placeholder="Current Email" required>
+
+                    </div>
+                    <div>
+                        <label for="password" Password>Password</label>
+                        <input type="password" id="password" name="user-password" placeholder="Current Password" required>
+                        <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
+                        <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                    </div>
+                    <div class="buttons">
+                        <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
+                </form>
+
             </div>
-        </form>
-
-    </div>
-</section>
--->
+        </section>
 
 
 
 
-        <!--pre-fill the fields with some default data -->
+        <section id="pageInputPigging">
+
+            <header>
+                <h1>Input Pigging</h1>
+
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
 
 
-        <!--
-<section id="pageInputPigging">
-
-<header>
-    <h1>Input Pigging</h1>
-
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
-
-
-<div class="main operator-input-pigging-container">
-    <form id="inputPigging" action="" method="">
-        <div>
-            <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
-        </div>
-        <div>
-            <select name="pipeline-systems" required>
+            <div class="main operator-input-pigging-container">
+                <form id="inputPigging" action="" method="">
+                    <div>
+                        <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+                    </div>
+                    <div>
+                        <select name="pipeline-systems" required>
                 <option value="select-system">Select Pipeline System</option>
                <option value="system-one">System One</option>
                <option value="system-two">System Two</option>
                <option value="system-three">System Three</option>
                <option value="system-four">System Four</option>
             </select>
-        </div>
-        <div>
-            <select name="pipeline-names" required>
+                    </div>
+                    <div>
+                        <select name="pipeline-names" required>
                 <option value="select-name">Select Pipeline Name</option>
                 <option value="system-one">Name One</option>
                 <option value="system-two">Name Two</option>
                 <option value="system-three">Name Three</option>
                 <option value="system-four">Name Four</option>
             </select>
-        </div>
-        <div>
-            <p class="auto-pop-site-name"></p>
-        </div>
-        <div>
+                    </div>
+                    <div>
+                        <p class="auto-pop-site-name"></p>
+                    </div>
+                    <div>
 
-            <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
-            <div class="select-launch">
-                <div>
-                    <p>Time: <span><input type="time" name="launch-time" required></span></p>
-                </div>
-                <div>
-                    <select name="pig-types" required>
+                        <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
+                        <div class="select-launch">
+                            <div>
+                                <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                            </div>
+                            <div>
+                                <select name="pig-types" required>
                             <option value="select-pig">Select Pig Type</option>
                             <option value="pig-one">Pig Type One</option>
                             <option value="pig-two">Pig Type Two</option>
                             <option value="pig-three">Pig Type Three</option>
                             <option value="pig-four">Pig Type Four</option>
                         </select>
-                </div>
-            </div>
+                            </div>
+                        </div>
 
-            <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
-            <div class="select-receive">
-                <div>
-                    <p>Time: <span><input type="time" name="receive-time" required></span></p>
-                </div>
+                        <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+                        <div class="select-receive">
+                            <div>
+                                <p>Time: <span><input type="time" name="receive-time" required></span></p>
+                            </div>
 
-                <div class="input-debris">
-                    <p>Debris:</p>
-                    <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                    <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-                </div>
-            </div>
+                            <div class="input-debris">
+                                <p>Debris:</p>
+                                <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                                <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
+                            </div>
+                        </div>
 
-            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
-            <div class="select-exception">
-                <div>
-                    <p>Time: <span><input type="time" name="exception-time" required></span></p>
-                </div>
-                <div>
-                    <select name="exceptions" required>
+                        <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+                        <div class="select-exception">
+                            <div>
+                                <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                            </div>
+                            <div>
+                                <select name="exceptions" required>
                             <option value="select-exception">Select Exception</option>
                             <option value="exception-one">Exception One</option>
                             <option value="exception-two">Exception Two</option>
                             <option value="exception-three">Exception Three</option>
                             <option value="exception-four">Exception Four</option>
                         </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textarea">
+                        <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+                    </div>
+
+                    <div class="buttons">
+                        <button form="inputPigging" type="submit">Submit</button>
+                    </div>
+
+                </form>
+                <div class="ops-nav">
+                    <p><a href="#"><span>Pigging Schedule</span></a></p>
                 </div>
             </div>
-        </div>
-        <div class="textarea">
-            <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
-        </div>
-
-        <div class="buttons">
-            <button form="inputPigging" type="submit">Submit</button>
-        </div>
-
-    </form>
-    <div class="ops-nav">
-        <p><a href="#"><span>Pigging Schedule</span></a></p>
-    </div>
-</div>
-</section>
--->
+        </section>
 
 
+        <section id="pagePrevLaunch">
+            <header>
+                <h1>Previous Launch</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
 
-        <!--
-<section id="pagePrevLaunch">
-<header>
-    <h1>Previous Launch</h1>
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
+            <div class="main prev-launch-container">
+                <div>
+                    <h2>Pipeline Name</h2>
+                </div>
+                <hr>
+                <div>
+                    <p><span>Last Recorded Launch: </span><span> (date)</span></p>
+                    <p><span>Operator Name:</span><span> (name)</span></p>
+                    <p><span>Type of pig: </span><span> (pig type)</span></p>
+                </div>
+                <div>
+                    <p><span>Last Recorded Receive: </span><span> (date)</span></p>
+                    <p><span>Operator Name: </span><span> (name)</span></p>
+                    <p><span>Paraffin: </span><span class="debris-lbs "> # </span><span>lbs</span></p>
+                    <p><span>Sand:<span class="debris-lbs "> # </span>lbs</span>
+                    </p>
+                </div>
+                <div>
+                    <p><span>Last Recorded Exception: </span><span>(date)</span></p>
+                    <p><span>Type of exception: </span><span>(exception)</span></p>
+                </div>
+                <div>
+                    <p>Last Recorded Notes: </p>
+                    <p class="notes ">(notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page. (notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page.</p>
+                </div>
+                <div class="ops-nav ">
+                    <p><a href="# ">Back</a></p>
+                </div>
+            </div>
+        </section>
 
-<div class="main prev-launch-container">
-    <div>
-        <h2>Pipeline Name</h2>
-    </div>
-    <hr>
-    <div>
-        <p><span>Last Recorded Launch: </span><span> (date)</span></p>
-        <p><span>Operator Name:</span><span> (name)</span></p>
-        <p><span>Type of pig: </span><span> (pig type)</span></p>
-    </div>
-    <div>
-        <p><span>Last Recorded Receive: </span><span> (date)</span></p>
-        <p><span>Operator Name: </span><span> (name)</span></p>
-        <p><span>Paraffin: </span><span class="debris-lbs "> # </span><span>lbs</span></p>
-        <p><span>Sand:<span class="debris-lbs "> # </span>lbs</span>
-        </p>
-    </div>
-    <div>
-        <p><span>Last Recorded Exception: </span><span>(date)</span></p>
-        <p><span>Type of exception: </span><span>(exception)</span></p>
-    </div>
-    <div>
-        <p>Last Recorded Notes: </p>
-        <p class="notes ">(notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page. (notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page.</p>
-    </div>
-    <div class="ops-nav ">
-        <p><a href="# ">Back</a></p>
-    </div>
-</div>
-</div>
--->
+        <section id="pageAdminMenu">
+            <header>
+                <h1>Admin Menu</h1>
+                <a href="# "><img src="imgs/exit.png "></a>
+                <a href="# "><img src="imgs/acct-info-wht.png "></a>
+            </header>
+            <div class="main admin-menu-container ">
+                <div>
+                    <a href="#0 ">
+                        <p>View Pigging Schedule</p>
+                    </a>
+                    <p>View Debris Report</p>
+                    <p>Pigging Activity</p>
+                    <p>View/Update Pigging History</p>
+                    <p>Add Pipeline</p>
+                    <p>Update / Remove Pipeline</p>
+                    <p>Add User</p>
+                    <p>Update / Remove User</p>
+                </div>
 
+            </div>
+        </section>
 
-        <!--
-<section id="pageAdminMenu">
-    <header>
-        <h1>Admin Menu</h1>
-        <a href="# "><img src="imgs/exit.png "></a>
-        <a href="# "><img src="imgs/acct-info-wht.png "></a>
-    </header>
-    <div class="main foreman-admin-menu-container ">
-        <div>
-            <a href="#0 ">
-                <p>View Pigging Schedule</p>
-            </a>
-            <p>View Debris Report</p>
-            <p>Pigging Activity</p>
-            <p>View/Update Pigging History</p>
-            <p>Add Pipeline</p>
-            <p>Update / Remove Pipeline</p>
-            <p>Add User</p>
-            <p>Update / Remove User</p>
-        </div>
-
-    </div>
-</section>
--->
-
-
-        <!--
-<section id="pagePiggingSchedule">
-    <header class="foreman-header ">
-        <a href="# "><img src="imgs/admin-menu-wht.png "></a>
-        <h1>Pigging Schedule</h1>
-        <a href="# "><img src="imgs/exit.png "></a>
-        <a href="# "><img src="imgs/acct-info-wht.png "></a>
-    </header>
-    <header>
-        <h1>Pigging Schedule</h1>
-        <a href="# "><img src="imgs/exit.png "></a>
-        <a href="# "><img src="imgs/acct-info-wht.png "></a>
-    </header>
-    <div class="main pigging-schedule-container ">
-        <form id="piggingSchedule " action=" " method=" ">
-            <div>
-                <select name="pipeline-systems " required>
+        <section id="pagePiggingSchedule">
+            <header class="foreman-header ">
+                <a href="# "><img src="imgs/admin-menu-wht.png "></a>
+                <h1>Pigging Schedule</h1>
+                <a href="# "><img src="imgs/exit.png "></a>
+                <a href="# "><img src="imgs/acct-info-wht.png "></a>
+            </header>
+            <header>
+                <h1>Pigging Schedule</h1>
+                <a href="# "><img src="imgs/exit.png "></a>
+                <a href="# "><img src="imgs/acct-info-wht.png "></a>
+            </header>
+            <div class="main pigging-schedule-container ">
+                <form id="piggingSchedule " action=" " method=" ">
+                    <div>
+                        <select name="pipeline-systems " required>
                     <option value="select-system ">Select Pipeline System</option>
                     <option value="system-one ">System One</option>
                     <option value="system-two ">System Two</option>
                     <option value="system-three ">System Three</option>
                     <option value="system-four ">System Four</option>
                 </select>
-            </div>
-            <div>
-                <button form="piggingSchedule " type="submit ">Submit</button>
-            </div>
-            <hr>
-        </form>
+                    </div>
+                    <div>
+                        <button form="piggingSchedule " type="submit ">Submit</button>
+                    </div>
+                    <hr>
+                </form>
 
-        <div class="schedule-results ">
-            <p><span class="due-today "><a href=" ">Pipeline Name One</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Two</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Three</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Four</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Five</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Six</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Seven</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eight</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Nine</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Ten</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eleven</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Twelve</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Thirteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fourteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fifteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Sixteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Seventeen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Eighteen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Nineteen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Twenty</a></span></p>
-        </div>
+                <div class="schedule-results ">
+                    <p><span class="due-today "><a href=" ">Pipeline Name One</a></span></p>
+                    <p><span class="due-today "><a href=" ">Pipeline Name Two</a></span></p>
+                    <p><span class="due-today "><a href=" ">Pipeline Name Three</a></span></p>
+                    <p><span class="due-today "><a href=" ">Pipeline Name Four</a></span></p>
+                    <p><span class="due-today "><a href=" ">Pipeline Name Five</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Six</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Seven</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Eight</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Nine</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Ten</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Eleven</a></span></p>
+                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Twelve</a></span></p>
+                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Thirteen</a></span></p>
+                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fourteen</a></span></p>
+                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fifteen</a></span></p>
+                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Sixteen</a></span></p>
+                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Seventeen</a></span></p>
+                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Eighteen</a></span></p>
+                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Nineteen</a></span></p>
+                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Twenty</a></span></p>
+                </div>
 
-        <div class="ops-nav ">
-            <p><a href="# ">Input Pigging</a></p>
-        </div>
+                <div class="ops-nav ">
+                    <p><a href="# ">Input Pigging</a></p>
+                </div>
 
-        <div class="ops-nav ">
-            <p><a href="# ">Debris Reports</a></p>
-        </div>
-    </div>
-</section>
--->
-
-        <!--
-<section id="pageDebrisReport">
-    <header>
-        <h1>Debris Reports</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-    <header class="foreman-header">
-        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Debris Report</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-    <div class="main debris-report-container">
-
-        <form id="debrisReport" action="" method="">
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
+                <div class="ops-nav ">
+                    <p><a href="# ">Debris Reports</a></p>
+                </div>
             </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
-                <div>
-                    <select name="select-debris-system" required>
+        </section>
+
+
+        <section id="pageDebrisReport">
+            <header>
+                <h1>Debris Reports</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Debris Report</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <div class="main debris-report-container">
+
+                <form id="debrisReport" action="" method="">
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-            </div>
-            <div>
-                <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
-                <div>
-                    <select name="select-debris-system" required>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-                <div>
-                    <select name="select-debris-pipeline" required>
+                        </div>
+                        <div>
+                            <select name="select-debris-pipeline" required>
                     <option value="select-debris-pipeline">Select Pipeline</option>
                     <option value="debris-pipeline-one">Pipeline One</option>
                     <option value="debris-pipeline-two">Pipeline Two</option>
                     <option value="debris-pipeline-three">Pipeline Three</option>
                     <option value="debris-pipeline-four">Pipeline Four</option>
                 </select>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div>
+                    <div class="debris-results-header">
+                        <h3>Name of Area</h3>
+                        <div>
+                            <div>
+                                <h3></h3>
+                            </div>
+                            <div>
+                                <h3>Paraffin lbs</h3>
+                            </div>
+                            <div>
+                                <h3>Sand lbs</h3>
+                            </div>
+
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="debris-results">
+                        <div>
+                            <div>
+                                <h3>Oct</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Sep</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Aug</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Jul</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Jun</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>May</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Apr</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Mar</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Feb</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Jan</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Dec</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <h3>Nov</h3>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                            <div>
+                                <p>##</p>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
+
+                <div class="submit-reset">
+                    <button form="debrisReport" type="submit">Submit</button>
+                </div>
+
+                <div class="submit-reset">
+                    <button form="debrisReport" type="reset">Reset</button>
+                </div>
+
             </div>
-
-        </form>
-
-        <div>
-            <div class="debris-results-header">
-                <h3>Name of Area</h3>
-                <div>
-                    <div>
-                        <h3></h3>
-                    </div>
-                    <div>
-                        <h3>Paraffin lbs</h3>
-                    </div>
-                    <div>
-                        <h3>Sand lbs</h3>
-                    </div>
-
-                </div>
-                <hr>
-            </div>
-            <div class="debris-results">
-                <div>
-                    <div>
-                        <h3>Oct</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Sep</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Aug</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jul</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jun</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>May</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Apr</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Mar</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Feb</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Jan</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Dec</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <h3>Nov</h3>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                    <div>
-                        <p>##</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-            <div class="submit-reset">
-                <button form="debrisReport" type="submit">Submit</button>
-            </div>
-
-        <div class="submit-reset">
-            <button form="debrisReport" type="reset">Reset</button>
-        </div>
-
-    </div>
-</section>
--->
+        </section>
 
 
+        <section id="pagePiggingActivity">
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Pigging Activity</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <div class="main pigging-activity-container">
 
-
-
-
-        <!--
-<section id="pagePiggingActivity">
-    <header class="foreman-header">
-        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Pigging Activity</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-    <div class="main foreman-pigging-activity-container">
-
-        <form id="piggingActivity" action="" method="">
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
-                <div>
-                    <select name="select-debris-system" required>
+                <form id="piggingActivity" action="" method="">
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-            </div>
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
-                <div>
-                    <select name="select-debris-system" required>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-                <div>
-                    <select name="select-debris-pipeline" required>
+                        </div>
+                        <div>
+                            <select name="select-debris-pipeline" required>
                         <option value="select-debris-pipeline">Select Pipeline</option>
                         <option value="debris-pipeline-one">Pipeline One</option>
                         <option value="debris-pipeline-two">Pipeline Two</option>
                         <option value="debris-pipeline-three">Pipeline Three</option>
                         <option value="debris-pipeline-four">Pipeline Four</option>
                     </select>
+                        </div>
+                    </div>
+                    <div class="submit-reset">
+                        <button form="piggingActivity" type="submit">Submit</button>
+                    </div>
+                </form>
+
+
+                <div class="pigging-activity-results">
+                    <div>
+                        <h3>Name of Search</h3>
+                        <p>Total Monthly Pigs</p>
+                    </div>
+                    <div class="months-pigs">
+                        <p>Month <span>.............13</span></p>
+                        <p>Month <span>...............15</span></p>
+                        <p>Month <span>...........................27</span></p>
+                        <p>Month <span>..........10</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                    </div>
+                </div>
+
+
+
+                <div class="submit-reset">
+                    <button form="piggingActivity" type="reset">Reset</button>
                 </div>
             </div>
-            <div class="submit-reset">
-                <button form="piggingActivity" type="submit">Submit</button>
-            </div>
-        </form>
+        </section>
 
+        <section id="pageViewHistory">
+            <header class="foreman-header jsForemanPage">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Pigging History</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <div class="main view-history-container jsForemanPage">
 
-<div class="pigging-activity-results">
-    <div>
-        <h3>Name of Search</h3>
-        <p>Total Monthly Pigs</p>
-    </div>
-    <div class="months-pigs">
-        <p>Month <span>.............13</span></p>
-        <p>Month <span>...............15</span></p>
-        <p>Month <span>...........................27</span></p>
-        <p>Month <span>..........10</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-        <p>Month <span>##</span></p>
-    </div>
-</div>
-
-
-
-<div class="submit-reset">
-    <button form="piggingActivity" type="reset">Reset</button>
-</div>
-
-
-    </div>
-</section>
--->
-
-
-
-
-
-
-
-        <!--
-<section id="pageViewHistory">
-    <header class="foreman-header jsForemanPage">
-        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Pigging History</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-<div class="main foreman-view-history-container jsForemanPage">
-
-        <form id="piggingHistory" method="">
-            <div>
-                <select name="pipeline-systems" required>
+                <form id="piggingHistory" method="">
+                    <div>
+                        <select name="pipeline-systems" required>
                 <option value="select-system">Select Pipeline System</option>
                 <option value="system-one">System One</option>
                 <option value="system-two">System Two</option>
                 <option value="system-three">System Three</option>
                 <option value="system-four">System Four</option>
             </select>
-            </div>
-            <div>
-                <select name="pipeline-names" required>
+                    </div>
+                    <div>
+                        <select name="pipeline-names" required>
                 <option value="select-name">Select Pipeline Name</option>
                 <option value="system-one">Name One</option>
                 <option value="system-two">Name Two</option>
                 <option value="system-three">Name Three</option>
                 <option value="system-four">Name Four</option>
             </select>
-            </div>
-            <div>
-                <label for="recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber">
-            </div>
-        </form>
+                    </div>
+                    <div>
+                        <label for="recordsNumber"> Number of records ('*' for all): </label><input type="text" id="recordsNumber" name="recordsNumber">
+                    </div>
+                </form>
 
-        <div class="history-results">
-            <div>
-                <h3>Pipeline Name</h3>
-                <p>Activity Records</p>
-            </div>
-            <div class="activity-records">
-                <p>Date of Record: <span>(date of record)</span></p>
-                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
-                <p>Launch: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Type of pig:<span>(pig type or '--')</span></p>
-                <p>Receive: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
-                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
-                <p>Exception: <span>(exception type or '--')</span></p>
-                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                <div class="history-results">
+                    <div>
+                        <h3>Pipeline Name</h3>
+                        <p>Activity Records</p>
+                    </div>
+                    <div class="activity-records">
+                        <p>Date of Record: <span>(date of record)</span></p>
+                        <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                        <p>Launch: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Type of pig:<span>(pig type or '--')</span></p>
+                        <p>Receive: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Exception: <span>(exception type or '--')</span></p>
+                        <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
                         .foreman-add-pipeline-container {}
                         .foreman-update-pipeline-container {}
                         .foreman-assign-user-role-container {}
@@ -766,19 +731,19 @@
                         .viewonly-schedule-container {}
                         .viewonly-debris-container {}
                         footer {}</span></p>
-            </div>
-            <div class="activity-records">
-                <p>Date of Record: <span>(date of record)</span></p>
-                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
-                <p>Launch: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Type of pig:<span>(pig type or '--')</span></p>
-                <p>Receive: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
-                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
-                <p>Exception: <span>(exception type or '--')</span></p>
-                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                    </div>
+                    <div class="activity-records">
+                        <p>Date of Record: <span>(date of record)</span></p>
+                        <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                        <p>Launch: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Type of pig:<span>(pig type or '--')</span></p>
+                        <p>Receive: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Exception: <span>(exception type or '--')</span></p>
+                        <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
                     .foreman-add-pipeline-container {}
                     .foreman-update-pipeline-container {}
                     .foreman-assign-user-role-container {}
@@ -786,19 +751,19 @@
                     .viewonly-schedule-container {}
                     .viewonly-debris-container {}
                     footer {}</span></p>
-            </div>
-            <div class="activity-records">
-                <p>Date of Record: <span>(date of record)</span></p>
-                <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
-                <p>Launch: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Type of pig:<span>(pig type or '--')</span></p>
-                <p>Receive: <span>('yes' or '--')</span></p>
-                <p>Operator name: <span>(name or '--')</span></p>
-                <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
-                <p>Sand lbs: <span>(# of lbs or '--')</span></p>
-                <p>Exception: <span>(exception type or '--')</span></p>
-                <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                    </div>
+                    <div class="activity-records">
+                        <p>Date of Record: <span>(date of record)</span></p>
+                        <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                        <p>Launch: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Type of pig:<span>(pig type or '--')</span></p>
+                        <p>Receive: <span>('yes' or '--')</span></p>
+                        <p>Operator name: <span>(name or '--')</span></p>
+                        <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                        <p>Exception: <span>(exception type or '--')</span></p>
+                        <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
                     .foreman-add-pipeline-container {}
                     .foreman-update-pipeline-container {}
                     .foreman-assign-user-role-container {}
@@ -806,134 +771,124 @@
                     .viewonly-schedule-container {}
                     .viewonly-debris-container {}
                     footer {}</span></p>
-            </div>
-        </div>
-
-        <div class="submit-reset">
-            <button form="piggingHistory" type="submit">Submit</button>
-        </div>
-
-        <div class="submit-reset">
-            <button form="piggingHistory" type="reset">Reset</button>
-        </div>
-
-    </div>
-</section>
--->
-
-
-
-        <!--
-<section id="pageUpdateHistory">
-
-<header class="foreman-header">
-    <h1>Update History</h1>
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
-
-<div class="main foreman-update-history-container">
-    <div>
-        <p>ID of Record</p>
-        <p>System Name</p>
-        <p>Pipeline Name</p>
-        <p>L/R Site Name</p>
-    </div>
-    <div class="warning">
-        <p>***Warning***</p>
-        <p>Updates submitted below will</p>
-        <p>PERMANENTLY REPLACE</p>
-        <p>the current information.</p>
-    </div>
-    <form id="updateHistory" method="">
-        <div>
-            <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
-        </div>
-        <div>
-            <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
-            <div class="select-launch">
-                <div>
-                    <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                    </div>
                 </div>
+                <div class="submit-reset">
+                    <button form="piggingHistory" type="submit">Submit</button>
+                </div>
+                <div class="submit-reset">
+                    <button form="piggingHistory" type="reset">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pageUpdateHistory">
+            <header class="foreman-header">
+                <h1>Update History</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+
+            <div class="main update-history-container">
                 <div>
-                    <select name="pig-types" required>
+                    <p>ID of Record</p>
+                    <p>System Name</p>
+                    <p>Pipeline Name</p>
+                    <p>L/R Site Name</p>
+                </div>
+                <div class="warning">
+                    <p>***Warning***</p>
+                    <p>Updates submitted below will</p>
+                    <p>PERMANENTLY REPLACE</p>
+                    <p>the current information.</p>
+                </div>
+                <form id="updateHistory" method="">
+                    <div>
+                        <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
+                        <div class="select-launch">
+                            <div>
+                                <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                            </div>
+                            <div>
+                                <select name="pig-types" required>
                         <option value="select-pig">Select Pig Type</option>
                         <option value="pig-one">Pig Type One</option>
                         <option value="pig-two">Pig Type Two</option>
                         <option value="pig-three">Pig Type Three</option>
                         <option value="pig-four">Pig Type Four</option>
                     </select>
-                </div>
-            </div>
+                            </div>
+                        </div>
 
-            <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
-            <div class="select-receive">
-                <div>
-                    <p>Time: <span><input type="time" name="receive-time" required></span></p>
-                </div>
+                        <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+                        <div class="select-receive">
+                            <div>
+                                <p>Time: <span><input type="time" name="receive-time" required></span></p>
+                            </div>
 
-                <div class="input-debris">
-                    <p>Debris:</p>
-                    <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                    <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-                </div>
-            </div>
+                            <div class="input-debris">
+                                <p>Debris:</p>
+                                <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                                <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
+                            </div>
+                        </div>
 
-            <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
-            <div class="select-exception">
-                <div>
-                    <p>Time: <span><input type="time" name="exception-time" required></span></p>
-                </div>
-                <div>
-                    <select name="exceptions" required>
+                        <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+                        <div class="select-exception">
+                            <div>
+                                <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                            </div>
+                            <div>
+                                <select name="exceptions" required>
                         <option value="select-exception">Select Exception</option>
                         <option value="exception-one">Exception One</option>
                         <option value="exception-two">Exception Two</option>
                         <option value="exception-three">Exception Three</option>
                         <option value="exception-four">Exception Four</option>
                     </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textarea">
+                        <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+                    </div>
+                </form>
+
+                <div class="submit-cancel-delete">
+                    <button form="updateHistory" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                    <button form="updateHistory" type="submit" class="button-delete">Delete</button>
                 </div>
+
             </div>
-        </div>
-        <div class="textarea">
-            <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
-        </div>
-    </form>
-
-    <div class="submit-cancel-delete">
-        <button form="updateHistory" type="submit">Submit</button>
-        <button type="button">Cancel</button>
-        <button form="updateHistory" type="submit" class="button-delete">Delete</button>
-    </div>
-
-</div>
-</section>
--->
+        </section>
 
 
-        <!--
-<section id="pageAddPipeline">
-    <header class="foreman-header">
-        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Add Pipeline</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
+        <section id="pageAddPipeline">
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Add Pipeline</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
 
-    <div class="main foreman-add-pipeline-container">
-        <form id="addPipeline" method="">
-            <div>
-                <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
-            </div>
-            <div>
-                <select name="rc-names" required>
+            <div class="main add-pipeline-container">
+                <form id="addPipeline" method="">
+                    <div>
+                        <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
+                    </div>
+                    <div>
+                        <select name="rc-names" required>
                             <option value="select-rc">Select RC Name</option>
                             <option value="rc-one">RC Name One</option>
                     <option value="rc-two">RC Name Two</option>
                     <option value="rc-three">RC Name Three</option>
                     <option value="rc-four">RC Name Four</option>
                         </select>
-                <select name="pipeline-systems" required>
+                        <select name="pipeline-systems" required>
                     <option value="select-system">Select System</option>
                     <option value="system-one">System One</option>
                     <option value="system-two">System Two</option>
@@ -941,255 +896,236 @@
                     <option value="system-four">System Four</option>
                 </select>
 
-                <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
-                <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
-                <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
-                <div>
-                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
-                </div>
-                <div>
-                    <p>Closure:</p>
-                    <select name="pipeline-closures" class="select-closure" required>
-                    <option value="select-closure">Select Closure</option>
-                    <option value="closure-one">Closure One</option>
-                    <option value="closure-two">Closure Two</option>
-                    <option value="closure-three">Closure Three</option>
-                    <option value="closure-four">Closure Four</option>
-                </select>
-                </div>
+                        <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
+                        <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
+                        <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
+                        <div>
+                            <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
+                        </div>
+                        <div>
+                            <p>Closure:</p>
+                            <select name="pipeline-closures" class="select-closure" required>
+                                <option value="select-closure">Select Closure</option>
+                                <option value="closure-one">Closure One</option>
+                                <option value="closure-two">Closure Two</option>
+                                <option value="closure-three">Closure Three</option>
+                                <option value="closure-four">Closure Four</option>
+                            </select>
+                        </div>
 
-                <p>Acceptable Pigs:</p>
-                <div class="checkboxes-pigs">
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
-                    <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+                        <p>Acceptable Pigs:</p>
+                        <div class="checkboxes-pigs">
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+                        </div>
+                        <p>Product:</p>
+                        <div class="checkboxes-product">
+                            <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
+                            <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
+                            <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+                        </div>
+                        <div>
+                            <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="warning">
+                    <p>*** IMPORTANT ***</p>
+                    <p>Please review all of the information above before clicking Submit.</p>
                 </div>
-                <p>Product:</p>
-                <div class="checkboxes-product">
-                    <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
-                    <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
-                    <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
-                </div>
-                <div>
-                    <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                <div class="buttons">
+                    <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
                 </div>
             </div>
-        </form>
-        <div class="warning">
-            <p>*** IMPORTANT ***</p>
-            <p>Please review all of the information above before clicking Submit.</p>
-        </div>
-        <div class="buttons">
-            <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
-        </div>
-    </div>
-</section>
--->
+        </section>
 
+        <section id="pageUpdatePipeline">
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Update Pipeline</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
 
+            <div class="main update-pipeline-container">
+                <form id="updateSearch" method="">
 
-
-
-        <!--
-<section id="pageUpdatePipeline">
-<header class="foreman-header">
-    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-    <h1>Update Pipeline</h1>
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
-
-<div class="main foreman-update-pipeline-container">
-    <form id="updateSearch" method="">
-
-        <div>
-            <select name="rc-names" required>
+                    <div>
+                        <select name="rc-names" required>
                     <option value="select-rc">Select RC Name</option>
                     <option value="rc-one">RC Name One</option>
                     <option value="rc-two">RC Name Two</option>
                     <option value="rc-three">RC Name Three</option>
                     <option value="rc-four">RC Name Four</option>
                 </select>
-            <select name="pipeline-systems" required>
+                        <select name="pipeline-systems" required>
                     <option value="select-system">Select System</option>
                     <option value="system-one">System One</option>
                     <option value="system-two">System Two</option>
                     <option value="system-three">System Three</option>
                     <option value="system-four">System Four</option>
                 </select>
-            <select name="pipeline-names" required>
+                        <select name="pipeline-names" required>
                         <option value="select-name">Select Pipeline Name</option>
                         <option value="pipeline-one">Pipeline One</option>
                         <option value="pipeline-two">Pipeline Two</option>
                         <option value="pipeline-three">Pipeline Three</option>
                         <option value="pipeline-four">Pipeline Four</option>
                     </select>
-        </div>
-    </form>
-    <div class="buttons">
-        <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
-    </div>
+                    </div>
+                </form>
+                <div class="buttons">
+                    <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
+                </div>
 
-    <form id="updatePipeline" method="">
-        <div>
-            <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
-            <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name" required>
-            <input type="text" id="receiverName" name="receiverName" placeholder="Current Receiver name" required>
-        </div>
+                <form id="updatePipeline" method="">
+                    <div>
+                        <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
+                        <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name" required>
+                        <input type="text" id="receiverName" name="receiverName" placeholder="Current Receiver name" required>
+                    </div>
 
-        <div>
-            <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
-        </div>
+                    <div>
+                        <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                    </div>
 
-        <div>
-            <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
-        </div>
-        <div>
-            <p>Closure:</p>
-            <select name="pipeline-closures" required>
+                    <div>
+                        <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
+                    </div>
+                    <div>
+                        <p>Closure:</p>
+                        <select name="pipeline-closures" required>
                         <option value="current-closure">Current Closure</option>
                         <option value="closure-one">Closure One</option>
                         <option value="closure-two">Closure Two</option>
                         <option value="closure-three">Closure Three</option>
                         <option value="closure-four">Closure Four</option>
                     </select>
-        </div>
+                    </div>
 
-        <p>Acceptable Pigs:</p>
-        <div class="checkboxes-pigs">
-            <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
-            <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
-        </div>
-        <p>Product:</p>
-        <div class="checkboxes-product">
-            <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
-            <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
-            <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
-        </div>
+                    <p>Acceptable Pigs:</p>
+                    <div class="checkboxes-pigs">
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+                    </div>
+                    <p>Product:</p>
+                    <div class="checkboxes-product">
+                        <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
+                        <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
+                        <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+                    </div>
 
-    </form>
+                </form>
 
-    <div class="submit-cancel-delete">
-        <button form="updatePipeline" type="submit">Submit</button>
-        <button type="button">Cancel</button>
-        <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
-    </div>
-</div>
-</section>
--->
-
-
-
-
-        <!--
-<section id="pageAddUser">
-<header class="foreman-header">
-    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-    <h1>Add User</h1>
-    <a href="#"><img src="imgs/exit.png"></a>
-    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-</header>
-<div class="main foreman-assign-user-role-container">
-    <form id="findUser" action="" method="">
-        <div>
-            <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
-        </div>
-    </form>
-    <div class="buttons">
-        <button form="findUser" type="submit">Submit</button>
-        <button type="button">Cancel</button>
-    </div>
-    <p id="userID">User Database ID</p>
-    <p id="userFirstName">User First Name</p>
-    <p id="userLastName">User Last Name</p>
-
-    <form id="assignRole" action="" method="">
-        <p>Assign User Role:</p>
-        <div>
-            <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
-        </div>
-        <div>
-            <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
-        </div>
-        <div>
-            <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
-        </div>
-    </form>
-    <div class="buttons">
-        <button form="assignRol" type="submit">Submit</button>
-        <button type="button">Cancel</button>
-    </div>
-
-</div>
-</section>
--->
-
-
-
-
-
-
-
-        <!--
-<section id="pageUdateUser">
-    <header class="foreman-header">
-        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-        <h1>Update User</h1>
-        <a href="#"><img src="imgs/exit.png"></a>
-        <a href="#"><img src="imgs/acct-info-wht.png"></a>
-    </header>
-    <div class="main foreman-update-user-container">
-        <form id="findUser" action="" method="">
-            <div>
-                <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+                <div class="submit-cancel-delete">
+                    <button form="updatePipeline" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                    <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
+                </div>
             </div>
-        </form>
-        <div class="buttons">
-            <button form="findUser" type="submit">Submit</button>
-            <button type="button">Cancel</button>
-        </div>
-        <p id="userID">User Database ID</p>
-        <p id="userFirstName">User First Name</p>
-        <p id="userLastName">User Last Name</p>
+        </section>
 
-        <form id="assignRole" action="" method="">
-            <p>Update User Role:</p>
-            <div>
-                <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
-            </div>
-            <p>Change User Status:</p>
-            <div>
-                <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
-                <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
-            </div>
-        </form>
-        <div class="buttons">
-            <button form="assignRol" type="submit">Submit</button>
-            <button type="button">Cancel</button>
-        </div>
 
-    </div>
-</section>
--->
+        <section id="pageAddUser">
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Add User</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <div class="main assign-user-role-container">
+                <form id="findUser" action="" method="">
+                    <div>
+                        <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+                    </div>
+                </form>
+                <div class="buttons">
+                    <button form="findUser" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                </div>
+                <p id="userID">User Database ID</p>
+                <p id="userFirstName">User First Name</p>
+                <p id="userLastName">User Last Name</p>
 
-        </div>
+                <form id="assignRole" action="" method="">
+                    <p>Assign User Role:</p>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+                    </div>
+                </form>
+                <div class="buttons">
+                    <button form="assignRol" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="pageUdateUser">
+            <header class="foreman-header">
+                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                <h1>Update User</h1>
+                <a href="#"><img src="imgs/exit.png"></a>
+                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+            </header>
+            <div class="main update-user-container">
+                <form id="findUser" action="" method="">
+                    <div>
+                        <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+                    </div>
+                </form>
+                <div class="buttons">
+                    <button form="findUser" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                </div>
+                <p id="userID">User Database ID</p>
+                <p id="userFirstName">User First Name</p>
+                <p id="userLastName">User Last Name</p>
+
+                <form id="assignRole" action="" method="">
+                    <p>Update User Role:</p>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+                    </div>
+                    <p>Change User Status:</p>
+                    <div>
+                        <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
+                        <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
+                    </div>
+                </form>
+                <div class="buttons">
+                    <button form="assignRol" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>

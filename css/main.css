@@ -14,7 +14,7 @@ body {
     color: #1F1F1F;
 }
 
-@media only screen and (min-width: 200px) {
+@media only screen and (min-width: 320px) {
     body {
         font-size: 14px;
         font-family: 'Monda', sans-serif;
@@ -37,15 +37,15 @@ body {
     header a:nth-of-type(2) img {
         margin: 10px 1rem 10px 0;
     }
-    header.foreman-header img {
+    header.header img {
         margin: 10px 4%;
         float: right;
     }
-    header.foreman-header a:first-child img {
+    header.header a:first-child img {
         margin: 10px 3%;
         float: left;
     }
-    header.foreman-header a:nth-of-type(2) img {
+    header.header a:nth-of-type(2) img {
         margin-right: 2%;
     }
     h1 {
@@ -57,7 +57,7 @@ body {
         color: #fff;
         text-shadow: 1px 1px 0 #156d7f;
     }
-    header.foreman-header h1 {
+    header.header h1 {
         font-size: 1.3rem;
         float: left;
         color: #ffffff;
@@ -320,10 +320,10 @@ body {
         color: #F38630;
     }
     /* FOREMAN ADMIN MENU*/
-    main.foreman-admin-menu-container {
+    main.admin-menu-container {
         margin-top: 1rem;
     }
-    .foreman-admin-menu-container div p {
+    .admin-menu-container div p {
         margin: 0 auto 1rem;
         padding: 13px;
         color: #1f1f1f;
@@ -332,7 +332,7 @@ body {
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
     }
-    .foreman-admin-menu-container div a {
+    .admin-menu-container div a {
         text-decoration: none;
     }
     /* DEBRIS REPORTS*/
@@ -407,17 +407,17 @@ body {
         background-color: #ffffff;
     }
     /*FOREMAN PIGGING ACTIVITY*/
-    .foreman-pigging-activity-container input[type='radio'] {
+    .pigging-activity-container input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0;
     }
-    .foreman-pigging-activity-container div div,
-    .foreman-pigging-activity-container div select {
+    .pigging-activity-container div div,
+    .pigging-activity-container div select {
         margin-top: .5rem
     }
-    .foreman-pigging-activity-container div.pigging-activity-results div:first-child {
+    .pigging-activity-container div.pigging-activity-results div:first-child {
         position: fixed;
         top: 45px;
         left: 0px;
@@ -428,28 +428,28 @@ body {
         padding: 1rem 0 .5rem;
         background-color: #ffffff;
     }
-    .foreman-pigging-activity-container h3+p {
+    .pigging-activity-container h3+p {
         width: 85%;
         text-align: center;
         margin: auto;
         padding-bottom: .5rem;
         border-bottom: 1px solid #A7DBD8;
     }
-    .foreman-pigging-activity-container div.months-pigs {
+    .pigging-activity-container div.months-pigs {
         margin: 90px auto 50px;
         padding-left: 1rem;
     }
-    .foreman-pigging-activity-container div.months-pigs p {
+    .pigging-activity-container div.months-pigs p {
         margin-bottom: .75rem;
     }
-    .foreman-pigging-activity-container div.months-pigs p span {
+    .pigging-activity-container div.months-pigs p span {
         display: inline-block;
         margin-left: 1rem;
         background-color: #ffe552;
         text-align: right;
         padding: 3px;
     }
-    .foreman-pigging-activity-container div.submit-reset {
+    .pigging-activity-container div.submit-reset {
         position: fixed;
         bottom: 0px;
         left: 0px;
@@ -461,10 +461,10 @@ body {
         background-color: #ffffff;
     }
     /* FOREMAN VIEW HISTORY */
-    main.foreman-view-history-container {
+    main.view-history-container {
         padding: 30px 10px;
     }
-    .foreman-view-history-container div.submit-reset {
+    .view-history-container div.submit-reset {
         position: fixed;
         bottom: 0px;
         left: 0px;
@@ -475,27 +475,27 @@ body {
         padding: 1rem 0 .5rem;
         background-color: #ffffff;
     }
-    .foreman-view-history-container form {
+    .view-history-container form {
         padding: 0;
     }
-    .foreman-view-history-container form div+div {
+    .view-history-container form div+div {
         margin: 0 0 1rem;
     }
-    .foreman-view-history-container form div label {
+    .view-history-container form div label {
         font-size: 1rem;
     }
-    .foreman-view-history-container form div label+input {
+    .view-history-container form div label+input {
         width: 2rem;
         text-align: center;
     }
-    .foreman-view-history-container div.history-results {
+    .view-history-container div.history-results {
         margin-top: 6rem;
         margin-bottom: 3.2rem;
     }
-    .foreman-view-history-container div.history-results p {
+    .view-history-container div.history-results p {
         margin-bottom: 1rem;
     }
-    .foreman-view-history-container div.history-results div:first-child {
+    .view-history-container div.history-results div:first-child {
         position: fixed;
         top: 45px;
         left: 0px;
@@ -506,10 +506,10 @@ body {
         padding: 1rem 0 .5rem;
         background-color: #ffffff;
     }
-    .foreman-view-history-container div.history-results div:nth-child(even) {
+    .view-history-container div.history-results div:nth-child(even) {
         background-color: #f5f5f5;
     }
-    .foreman-view-history-container div.history-results h3+p {
+    .view-history-container div.history-results h3+p {
         width: 85%;
         text-align: center;
         color: #68baca;
@@ -517,61 +517,61 @@ body {
         margin: 0 auto;
         border-bottom: 1px solid #A7DBD8;
     }
-    .foreman-view-history-container div.history-results p span {
+    .view-history-container div.history-results p span {
         color: #F38630;
     }
-    .foreman-view-history-container div.activity-records {
+    .view-history-container div.activity-records {
         padding: 10px;
         border-bottom: 1px dashed #A7DBD8;
     }
     /* FOREMAN UPDATE HISTORY  */
-    .foreman-update-history-container form p {
+    .update-history-container form p {
         font-size: 1rem;
         margin-top: 1rem;
     }
-    .foreman-update-history-container form div {
+    .update-history-container form div {
         margin-top: 0;
     }
-    .foreman-update-history-container div.warning {
+    .update-history-container div.warning {
         margin: 1rem auto;
         text-align: center;
         color: #bd0000;
         border: 2px solid #bd0000;
         padding: .5rem;
     }
-    .foreman-update-history-container form input[type='date'] {
+    .update-history-container form input[type='date'] {
         width: 175px;
     }
-    .foreman-update-history-container form div input[type='radio'],
-    .foreman-update-history-container form div label {
+    .update-history-container form div input[type='radio'],
+    .update-history-container form div label {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 1rem .5rem 0 0;
     }
-    .foreman-update-history-container form div span {
+    .update-history-container form div span {
         display: inline-block;
         width: 100px;
         margin-left: 10px;
     }
-    .foreman-update-history-container form div.input-debris span:nth-child(even) {
+    .update-history-container form div.input-debris span:nth-child(even) {
         width: 80px;
         margin-left: 30px;
     }
-    .foreman-update-history-container form input[type='number'],
-    .foreman-update-history-container form input[type='time'] {
+    .update-history-container form input[type='number'],
+    .update-history-container form input[type='time'] {
         width: 125px;
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
     }
-    .foreman-update-history-container form div.input-debris input[type='number'] {
+    .update-history-container form div.input-debris input[type='number'] {
         width: 70px;
     }
-    .foreman-update-history-container form div.select-receive label {
+    .update-history-container form div.select-receive label {
         font-size: 1rem;
     }
-    .foreman-update-history-container form div.textarea {
+    .update-history-container form div.textarea {
         margin: 2rem 0;
         width: 100%;
         text-align: left;
@@ -579,87 +579,87 @@ body {
         border: 2px solid #A7DBD8;
         background-color: #FFF8DC;
     }
-    .foreman-update-history-container form textarea {
+    .update-history-container form textarea {
         resize: none;
         font-size: 1rem;
         background-color: #FFF8DC;
     }
-    .foreman-update-history-container div.submit-cancel-delete {
+    .update-history-container div.submit-cancel-delete {
         width: 100%;
         text-align: center;
     }
-    .foreman-update-history-container div.submit-cancel-delete button {
+    .update-history-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
     /* FOREMAN ADD PIPELINE */
-    .foreman-add-pipeline-container {
+    .add-pipeline-container {
         padding-top: 1rem;
     }
-    .foreman-add-pipeline-container form {
+    .add-pipeline-container form {
         padding: 0;
     }
-    .foreman-add-pipeline-container form div {
+    .add-pipeline-container form div {
         margin-top: 0;
     }
-    .foreman-add-pipeline-container form div select,
-    .foreman-add-pipeline-container form div input {
+    .add-pipeline-container form div select,
+    .add-pipeline-container form div input {
         margin-top: 1rem;
     }
-    .foreman-add-pipeline-container form label {
+    .add-pipeline-container form label {
         font-size: 1rem;
         padding-right: 5px;
     }
-    .foreman-add-pipeline-container form input {
+    .add-pipeline-container form input {
         vertical-align: baseline;
     }
-    .foreman-add-pipeline-container form input[type='text'] {
+    .add-pipeline-container form input[type='text'] {
         padding-left: 5px;
     }
-    .foreman-add-pipeline-container form input[type='number'] {
+    .add-pipeline-container form input[type='number'] {
         vertical-align: baseline;
         text-align: center;
         width: 3.5rem;
         margin: 1rem 0 0;
         padding-right: 0;
     }
-    .foreman-add-pipeline-container form input[type='date'] {
+    .add-pipeline-container form input[type='date'] {
         width: 175px;
     }
-    .foreman-add-pipeline-container form select.select-closure {
+    .add-pipeline-container form select.select-closure {
         width: 200px;
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-add-pipeline-container form p {
+    .add-pipeline-container form p {
         display: inline-block;
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
-    .foreman-add-pipeline-container form div div p {
+    .add-pipeline-container form div div p {
         margin: 1rem .5rem 0 0;
     }
-    .foreman-add-pipeline-container div.checkboxes-pigs div {
+    .add-pipeline-container div.checkboxes-pigs div {
         display: inline-block;
         width: 49%;
     }
-    .foreman-add-pipeline-container div.checkboxes-product div {
+    .add-pipeline-container div.checkboxes-product div {
         display: inline-block;
         width: auto;
         padding-right: 1rem;
     }
-    .foreman-add-pipeline-container div.checkboxes-product div:last-of-type {
+    .add-pipeline-container div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
-    .foreman-add-pipeline-container form input[type='checkbox'] {
+    .add-pipeline-container form input[type='checkbox'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-add-pipeline-container form input[type='checkbox']+label {
+    .add-pipeline-container form input[type='checkbox']+label {
         padding-left: 5px;
     }
-    .foreman-add-pipeline-container div.warning {
+    .add-pipeline-container div.warning {
         margin: 1rem auto;
         text-align: center;
         color: #bd0000;
@@ -667,134 +667,134 @@ body {
         padding: .5rem;
     }
     /* FOREMAN UPDATE PIPELINE */
-    .foreman-update-pipeline-container {
+    .update-pipeline-container {
         padding-top: 1rem;
     }
-    .foreman-update-pipeline-container form {
+    .update-pipeline-container form {
         padding: 0;
     }
-    .foreman-update-pipeline-container form div {
+    .update-pipeline-container form div {
         margin-top: 0;
     }
-    .foreman-update-pipeline-container form div select,
-    .foreman-update-pipeline-container form div input {
+    .update-pipeline-container form div select,
+    .update-pipeline-container form div input {
         margin-top: 1rem;
         vertical-align: baseline;
     }
-    .foreman-update-pipeline-container form div input[type='text'] {
+    .update-pipeline-container form div input[type='text'] {
         padding-left: 5px;
     }
-    .foreman-update-pipeline-container form label {
+    .update-pipeline-container form label {
         font-size: 1rem;
         padding-right: 5px;
     }
-    .foreman-update-pipeline-container form input[type='number'] {
+    .update-pipeline-container form input[type='number'] {
         width: 3.5rem;
         margin: 1rem 0 0;
         padding-right: 0;
     }
-    .foreman-update-pipeline-container form p {
+    .update-pipeline-container form p {
         display: inline-block;
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
-    .foreman-update-pipeline-container form div div p {
+    .update-pipeline-container form div div p {
         margin: 1rem .5rem 0 0;
     }
-    .foreman-update-pipeline-container div.checkboxes-pigs div {
+    .update-pipeline-container div.checkboxes-pigs div {
         display: inline-block;
         width: 49%;
     }
-    .foreman-update-pipeline-container form div.checkboxes-product {
+    .update-pipeline-container form div.checkboxes-product {
         padding-bottom: 2.5rem;
     }
-    .foreman-update-pipeline-container div.checkboxes-product div {
+    .update-pipeline-container div.checkboxes-product div {
         display: inline-block;
         width: auto;
         padding-right: 1rem;
     }
-    .foreman-update-pipeline-container form div.checkboxes-product div:last-of-type {
+    .update-pipeline-container form div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
-    .foreman-update-pipeline-container form select:last-of-type {
+    .update-pipeline-container form select:last-of-type {
         width: 200px;
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-update-pipeline-container form input[type='checkbox'] {
+    .update-pipeline-container form input[type='checkbox'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .foreman-update-pipeline-container form input[type='checkbox']+label {
+    .update-pipeline-container form input[type='checkbox']+label {
         padding-left: 5px;
     }
-    .foreman-update-pipeline-container div.warning {
+    .update-pipeline-container div.warning {
         margin: 1rem auto;
         text-align: center;
         color: #bd0000;
         border: 2px solid #bd0000;
         padding: .5rem;
     }
-    .foreman-update-pipeline-container div.submit-cancel-delete {
+    .update-pipeline-container div.submit-cancel-delete {
         width: 100%;
         text-align: center;
     }
-    .foreman-update-pipeline-container div.submit-cancel-delete button {
+    .update-pipeline-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
     /* FOREMAN ADD USER */
-    .foreman-assign-user-role-container form {
+    .assign-user-role-container form {
         margin-top: 2rem;
         padding: 0;
     }
-    .foreman-assign-user-role-container form div {
+    .assign-user-role-container form div {
         margin-top: 1rem;
         padding: 0px;
     }
-    .foreman-assign-user-role-container form div input[type='email'] {
+    .assign-user-role-container form div input[type='email'] {
         padding-left: 5px;
     }
-    .foreman-assign-user-role-container form div input[type='radio'] {
+    .assign-user-role-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0 0 0 1rem;
         padding: 0px;
     }
-    .foreman-assign-user-role-container form div label {
+    .assign-user-role-container form div label {
         vertical-align: baseline;
         margin-left: .5rem;
         padding: 0px;
         font-size: 1rem;
     }
     /* FOREMAN UPDATE USER */
-    .foreman-update-user-container form {
+    .update-user-container form {
         margin-top: 2rem;
         padding: 0;
     }
-    .foreman-update-user-container form div {
+    .update-user-container form div {
         margin-top: 1rem;
         padding: 0px;
     }
-    .foreman-update-user-container form p {
+    .update-user-container form p {
         font-weight: bolder;
     }
-    .foreman-update-user-container form p:nth-of-type(2) {
+    .update-user-container form p:nth-of-type(2) {
         margin-top: 2rem;
     }
-    .foreman-update-user-container form div input[type='email'] {
+    .update-user-container form div input[type='email'] {
         padding-left: 5px;
     }
-    .foreman-update-user-container form div input[type='radio'] {
+    .update-user-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0 0 0 1rem;
         padding: 0px;
     }
-    .foreman-update-user-container form div label {
+    .update-user-container form div label {
         vertical-align: baseline;
         margin-left: .5rem;
         padding: 0px;
@@ -804,9 +804,9 @@ body {
 
 @media only screen and (min-width: 375px) {
     body {
-        background-color: #ffffff;
+        background-color: burlywood;
     }
-    header.foreman-header h1 {
+    header.header h1 {
         font-size: 1.5rem;
     }
     .main {
