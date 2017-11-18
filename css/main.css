@@ -753,7 +753,7 @@ body {
         margin-top: 1rem;
         padding: 0px;
     }
-    .foreman-assign-user-role-container form div input[type='text'] {
+    .foreman-assign-user-role-container form div input[type='email'] {
         padding-left: 5px;
     }
     .foreman-assign-user-role-container form div input[type='radio'] {
@@ -784,6 +784,9 @@ body {
     .foreman-update-user-container form p:nth-of-type(2) {
         margin-top: 2rem;
     }
+    .foreman-update-user-container form div input[type='email'] {
+        padding-left: 5px;
+    }
     .foreman-update-user-container form div input[type='radio'] {
         height: auto;
         width: auto;
@@ -801,8 +804,7 @@ body {
 
 @media only screen and (min-width: 375px) {
     body {
-        background-color: aliceblue;
-        font-size: 24px;
+        background-color: #ffffff;
     }
     header.foreman-header h1 {
         font-size: 1.5rem;
@@ -844,6 +846,7 @@ body {
     body {
         background-color: blueviolet;
     }
+
 }
 
 @media only screen and (min-width: 768px) {

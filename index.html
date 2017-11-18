@@ -16,36 +16,37 @@
 
 <body>
 
-    <!--
-    <header>
-        <h1>Login</h1>
-    </header>
+    <div id="mainLogin">
+        <header>
+            <h1>Login</h1>
+        </header>
 
-    <main class="user-login-container">
-        <form id="userLogin" action="" method="">
+        <main class="user-login-container">
+            <form id="userLogin" action="" method="">
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="user-email" required>
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="user-password" required>
+                </div>
+                <div class="buttons">
+                    <button form="userLogin" type="submit">Submit</button>
+                </div>
+            </form>
             <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" required>
+                <p><a href="#">Forgot your password?</a></p>
+                <p><a href="#">Create an account</a></p>
             </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" id="password" name="user-password" required>
-            </div>
-            <div class="buttons">
-                <button form="userLogin" type="submit">Submit</button>
-            </div>
-        </form>
-        <div>
-            <p><a href="#">Forgot your password?</a></p>
-            <p><a href="#">Create an account</a></p>
-        </div>
-    </main>
--->
+        </main>
+    </div>
 
 
 
 
     <!--
+<div id="mainResetPwd">
 <header>
     <h1>Password Reset</h1>
 </header>
@@ -67,11 +68,13 @@
     </form>
 
 </main>
+</div>
 -->
 
 
 
     <!--
+<div id="pageCreateAcct">
     <header>
         <h1>Create Account</h1>
     </header>
@@ -97,12 +100,14 @@
             </div>
         </form>
     </main>
+</div>
 -->
 
 
 
 
     <!--
+<div id="pageUpdateAcct">
     <header>
         <h1>Update Account</h1>
     </header>
@@ -137,6 +142,7 @@
         </form>
 
     </main>
+</div>
 -->
 
 
@@ -146,13 +152,13 @@
 
 
     <!--
+<div id="pageInputPigging">
 
 <header>
     <h1>Input Pigging</h1>
 
     <a href="#"><img src="imgs/exit.png"></a>
     <a href="#"><img src="imgs/acct-info-wht.png"></a>
-
 </header>
 
 
@@ -242,11 +248,13 @@
         <p><a href="#"><span>Pigging Schedule</span></a></p>
     </div>
 </main>
+</div>
 -->
 
 
 
     <!--
+<div id="pagePrevLaunch">
 <header>
     <h1>Previous Launch</h1>
     <a href="#"><img src="imgs/exit.png"></a>
@@ -282,10 +290,12 @@
         <p><a href="# ">Back</a></p>
     </div>
 </main>
+</div>
 -->
 
 
     <!--
+<div id="pageAdminMenu">
     <header>
         <h1>Admin Menu</h1>
         <a href="# "><img src="imgs/exit.png "></a>
@@ -306,11 +316,12 @@
         </div>
 
     </main>
+</div>
 -->
 
 
     <!--
-
+<div id="pagePiggingSchedule">
     <header class="foreman-header ">
         <a href="# "><img src="imgs/admin-menu-wht.png "></a>
         <h1>Pigging Schedule</h1>
@@ -370,9 +381,11 @@
             <p><a href="# ">Debris Reports</a></p>
         </div>
     </main>
+</div>
 -->
 
     <!--
+<div id="pageDebrisReport">
     <header>
         <h1>Debris Reports</h1>
         <a href="#"><img src="imgs/exit.png"></a>
@@ -596,6 +609,7 @@
         </div>
 
     </main>
+</div>
 -->
 
 
@@ -603,8 +617,8 @@
 
 
 
-<!--
-
+    <!--
+<div id="pagePiggingActivity">
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Pigging Activity</h1>
@@ -685,6 +699,7 @@
 
 
     </main>
+</div>
 -->
 
 
@@ -693,7 +708,8 @@
 
 
 
-<!--
+    <!--
+<div id="pageViewHistory">
     <header class="foreman-header jsForemanPage">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Pigging History</h1>
@@ -802,11 +818,13 @@
         </div>
 
     </main>
+</div>
 -->
 
 
 
-<!--
+    <!--
+<div id="pageUpdateHistory">
 
 <header class="foreman-header">
     <h1>Update History</h1>
@@ -889,10 +907,12 @@
     </div>
 
 </main>
+</div>
 -->
 
 
-<!--
+    <!--
+<div id="pageAddPipeline">
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Add Pipeline</h1>
@@ -968,13 +988,15 @@
             <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
         </div>
     </main>
+</div>
 -->
 
 
 
 
 
-<!--
+    <!--
+<div id="pageUpdatePipeline">
 <header class="foreman-header">
     <a href="#"><img src="imgs/admin-menu-wht.png"></a>
     <h1>Update Pipeline</h1>
@@ -1064,11 +1086,14 @@
         <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
     </div>
 </main>
+</div>
 -->
 
 
 
 
+    <!--
+<div id="pageAddUser">
 <header class="foreman-header">
     <a href="#"><img src="imgs/admin-menu-wht.png"></a>
     <h1>Add User</h1>
@@ -1107,13 +1132,17 @@
     </div>
 
 </main>
+</div>
+-->
+
+
 
 
 
 
 
     <!--
-
+<div id="pageUdateUser">
     <header class="foreman-header">
         <a href="#"><img src="imgs/admin-menu-wht.png"></a>
         <h1>Update User</h1>
@@ -1157,7 +1186,9 @@
         </div>
 
     </main>
+</div>
 -->
+
 
 </body>
 
