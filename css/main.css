@@ -72,7 +72,7 @@ body {
         font-size: 1.1rem;
         padding: .5rem 0 0;
     }
-    main {
+    .main {
         width: 100%;
         padding: 50px 10px;
         font-size: 1rem;
@@ -809,7 +809,7 @@ body {
     header.foreman-header h1 {
         font-size: 1.5rem;
     }
-    main {
+    .main {
         padding: 50px 15px;
         width: 350px;
         margin: auto;
@@ -846,7 +846,6 @@ body {
     body {
         background-color: blueviolet;
     }
-
 }
 
 @media only screen and (min-width: 768px) {
