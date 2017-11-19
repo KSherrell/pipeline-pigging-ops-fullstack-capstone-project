@@ -22,8 +22,8 @@ body {
     }
     header {
         position: fixed;
-        top: 0px;
-        left: 0px;
+        top: 0;
+        left: 0;
         height: 45px;
         width: 100%;
         z-index: 1;
@@ -37,15 +37,15 @@ body {
     header a:nth-of-type(2) img {
         margin: 10px 1rem 10px 0;
     }
-    header.header img {
+    header.foreman-header img {
         margin: 10px 4%;
         float: right;
     }
-    header.header a:first-child img {
+    header.foreman-header a:first-child img {
         margin: 10px 3%;
         float: left;
     }
-    header.header a:nth-of-type(2) img {
+    header.foreman-header a:nth-of-type(2) img {
         margin-right: 2%;
     }
     h1 {
@@ -53,11 +53,13 @@ body {
         font-family: 'Monda', sans-serif;
         font-weight: normal;
         float: left;
-        margin: 10px 0 0 .75rem;
+        margin: 0 auto;
+        padding-left: .75rem;
+        padding-top: 10px;
         color: #fff;
         text-shadow: 1px 1px 0 #156d7f;
     }
-    header.header h1 {
+    header.foreman-header h1 {
         font-size: 1.3rem;
         float: left;
         color: #ffffff;
@@ -82,7 +84,6 @@ body {
     }
     form {
         margin-top: 2rem;
-        padding: 0 1.5rem;
     }
     label {
         font-size: 1.1rem;
@@ -172,6 +173,9 @@ body {
         color: #FA6900;
     }
     /*    USER RESET PASSWORD*/
+    .user-reset-password-container form {
+        padding: 0 1.5rem;
+    }
     .user-reset-password-container div p {
         width: 85%;
         margin: 1rem auto;
@@ -180,17 +184,26 @@ body {
         width: 85%;
         margin: 1.5rem auto;
     }
+    .user-reset-password-container form input[type='password'] {
+        padding-left: 5px;
+    }
     /* USER CREATE ACCOUNT */
     .user-create-account-container form {
         padding: 0;
     }
-    /* USER ACCOUNT INFO */
+    .user-create-account-container input {
+        padding-left: 5px;
+    }
+    /* USER UPDATE ACCOUNT INFO */
     .user-account-info-container hr {
         width: 85%;
         margin: 1.5rem auto;
     }
     .user-account-info-container form {
         padding: 0;
+    }
+    .user-account-info-container input {
+        padding-left: 5px;
     }
     /* OPERATOR INPUT PIGGING*/
     .operator-input-pigging-container {
@@ -804,7 +817,7 @@ body {
 
 @media only screen and (min-width: 375px) {
     body {
-        background-color: burlywood;
+        background-color: #ffffff;
     }
     header.header h1 {
         font-size: 1.5rem;
@@ -844,7 +857,40 @@ body {
 
 @media only screen and (min-width: 414px) {
     body {
-        background-color: blueviolet;
+        background-color: #ffffff;
+    }
+    section {
+        width: 400px;
+        margin: auto;
+        border: 1px dashed #69D2E7;
+    }
+    h1 {
+        float: none;
+        width: 400px;
+        height: 100%;
+        margin: 0 auto;
+        padding-left: .75rem;
+        padding-top: 10px;
+        border-left: 1px dashed white;
+        border-right: 1px dashed white;
+    }
+    header img {
+        margin: 10px .3rem 10px 0;
+        float: right;
+    }
+    header a:nth-of-type(2) img {
+        margin: 10px 1rem 10px 0;
+    }
+    header.foreman-header img {
+        margin: 10px 4%;
+        float: right;
+    }
+    header.foreman-header a:first-child img {
+        margin: 10px 3%;
+        float: left;
+    }
+    header.foreman-header a:nth-of-type(2) img {
+        margin-right: 2%;
     }
 }
 
