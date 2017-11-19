@@ -206,10 +206,6 @@ body {
         padding-left: 5px;
     }
     /* OPERATOR INPUT PIGGING*/
-    .operator-input-pigging-container {
-        padding-top: 30px;
-        padding-left: 5px;
-    }
     .operator-input-pigging-container form input[type='date'] {
         width: 175px;
     }
@@ -231,6 +227,9 @@ body {
         display: inline-block;
         width: 100px;
         margin-left: 10px;
+    }
+    .operator-input-pigging-container div.input-debris {
+        width: 79%;
     }
     .operator-input-pigging-container form div.input-debris span:nth-child(even) {
         width: 80px;
@@ -830,7 +829,6 @@ body {
     form div input,
     form div select,
     p.auto-pop-site-name {
-        padding: 0;
         margin-top: 1rem;
     }
     /* OPERATOR INPUT PIGGING*/
@@ -857,29 +855,40 @@ body {
 
 @media only screen and (min-width: 414px) {
     body {
-        background-color: #ffffff;
+        background-color: darkgrey;
     }
     section {
         width: 400px;
         margin: auto;
         border: 1px dashed #69D2E7;
     }
-    h1 {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 45px;
+        width: 100%;
+        z-index: 1;
+        background-color: #69D2E7;
+        border-bottom: 3px solid #68baca;
+    }
+    header div {
         float: none;
         width: 400px;
         height: 100%;
         margin: 0 auto;
-        padding-left: .75rem;
-        padding-top: 10px;
         border-left: 1px dashed white;
         border-right: 1px dashed white;
+    }
+    h1 {
+        padding: 10px 0 0 .75rem;
     }
     header img {
         margin: 10px .3rem 10px 0;
         float: right;
     }
     header a:nth-of-type(2) img {
-        margin: 10px 1rem 10px 0;
+        margin: 10px 1rem 10px;
     }
     header.foreman-header img {
         margin: 10px 4%;
@@ -896,7 +905,7 @@ body {
 
 @media only screen and (min-width: 768px) {
     body {
-        background-color: skyblue;
+        background-color: antiquewhite;
     }
 }
 
