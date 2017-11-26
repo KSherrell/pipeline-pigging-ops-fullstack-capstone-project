@@ -348,7 +348,7 @@ body {
         text-decoration: none;
     }
     /* DEBRIS REPORTS*/
-    main.debris-report-container {
+    .debris-report-container {
         padding-top: 2rem;
     }
     .debris-report-container form div input[type='radio'] {
@@ -495,10 +495,12 @@ body {
     }
     .view-history-container form div label {
         font-size: 1rem;
+        vertical-align: middle;
     }
     .view-history-container form div label+input {
         width: 2rem;
         text-align: center;
+        margin: 0;
     }
     .view-history-container div.history-results {
         margin-top: 6rem;
@@ -818,13 +820,20 @@ body {
     body {
         background-color: #ffffff;
     }
-    header.header h1 {
+    header h1 {
         font-size: 1.5rem;
+    }
+    header.foreman-header h1 {
+        font-size: 1.3rem;
+        float: left;
+        color: #ffffff;
+        text-shadow: 1px 1px 0 #1f1f1f;
+        margin: 12px 0 10px .3rem;
     }
     .main {
         padding: 50px 15px;
         width: 350px;
-        margin: auto;
+        margin: 0 auto;
     }
     form div input,
     form div select,
@@ -859,8 +868,10 @@ body {
     }
     section {
         width: 400px;
-        margin: auto;
+        margin: 0 auto;
+        padding: 0 0 30px;
         border: 1px dashed #69D2E7;
+        border-top: none;
     }
     header div.wrapper {
         float: none;
@@ -870,51 +881,54 @@ body {
         border-left: 1px dashed white;
         border-right: 1px dashed white;
     }
-    h1 {
-        padding: 10px 0 0 .75rem;
-    }
-    header img {
-        margin: 10px .3rem 10px 0;
-        float: right;
-    }
-    header a:nth-of-type(2) img {
-        margin: 10px 1rem 10px;
-    }
-    header.foreman-header img {
-        margin: 10px 4%;
-        float: right;
-    }
-    header.foreman-header a:first-child img {
-        margin: 10px 3%;
-        float: left;
-    }
-    header.foreman-header a:nth-of-type(2) img {
-        margin-right: 2%;
+    header.foreman-header h1 {
+        margin: 0;
+        padding-top: .75rem;
     }
     .ops-nav a {
         font-size: 1.2rem;
-        color: #fff;
-        text-shadow: 1px 1px 1px #1f1f1f;
+        color: #000000;
+        text-shadow: none;
     }
-/*
-    .ops-nav {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        height: 40px;
-        width: 100%;
-        text-align: center;
-        z-index: 1;
-        background-color: #69D2E7;
-        border-top: 3px solid #68baca;
-    }
-*/
     .ops-nav p {
         width: 400px;
         height: 100%;
-        margin: .2rem auto 0;
+        margin: .3rem auto 0;
         border-left: 1px dashed white;
         border-right: 1px dashed white;
+    }
+    #pagePiggingSchedule div.main {
+        padding: 50px 0;
+    }
+    #pageDebrisReport div.main {
+        padding: 50px 0;
+    }
+    .pigging-schedule-container form {
+        width: 350px;
+        left: auto;
+        padding: 10px 0;
+    }
+    .debris-report-container div.debris-results-header {
+        width: 350px;
+        left: inherit;
+        padding: 10px 0;
+    }
+    #pagePiggingActivity div.main {
+        padding: 50px 0;
+    }
+    .pigging-activity-container div.pigging-activity-results div:first-child {
+        width: 350px;
+        margin: auto;
+        left: auto;
+    }
+    #pageViewHistory div.main {
+        padding: 50px 0 0;
+    }
+    .view-history-container div.submit-reset {
+        position: absolute;
+        bottom: auto;
+        padding: 0;
+        margin: 50px 0;
     }
 }
 
