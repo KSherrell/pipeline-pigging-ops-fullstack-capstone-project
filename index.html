@@ -16,8 +16,7 @@
 
 <body>
     <main>
-
-
+        <!--
         <section id="pageLogin">
             <header>
                 <div>
@@ -44,10 +43,11 @@
                 </div>
             </div>
         </section>
+-->
 
 
 
-<!--
+        <!--
         <section id="pageResetPwd">
             <header>
                 <div>
@@ -77,7 +77,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageCreateAcct">
             <header>
                 <div class="wrapper">
@@ -112,7 +112,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageUpdateAcct">
             <header>
                 <div class="wrapper">
@@ -155,7 +155,7 @@
 -->
 
 
-<!--
+        <!--
         <section id="pageInputPigging">
 
             <header>
@@ -257,10 +257,7 @@
             </div>
         </section>
 -->
-
-
         <!--
-
         <section id="pagePrevLaunch">
             <header>
                 <div class="wrapper">
@@ -296,7 +293,7 @@
                     <p class="notes ">(notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page. (notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page.</p>
                 </div>
                 <div class="ops-nav ">
-                    <p><a href="# ">Back</a></p>
+                    <div><a href="# ">Back</a></div>
                 </div>
             </div>
         </section>
@@ -330,139 +327,148 @@
 -->
 
         <!--
-        <section id="pagePiggingSchedule">
-            <header class="foreman-header ">
-               <div class = "wrapper">
-                <a href="# "><img src="imgs/admin-menu-wht.png "></a>
-                <h1>Pigging Schedule</h1>
-                <a href="# "><img src="imgs/exit.png "></a>
-                <a href="# "><img src="imgs/acct-info-wht.png "></a>
-                </div>
-            </header>
-            <header>
-               <div class="wrapper">
-                <h1>Pigging Schedule</h1>
-                <a href="# "><img src="imgs/exit.png "></a>
-                <a href="# "><img src="imgs/acct-info-wht.png "></a>
-                </div>
-            </header>
-            <div class="main pigging-schedule-container ">
-                <form id="piggingSchedule " action=" " method=" ">
-                    <div class="wrapper">
-                        <select name="pipeline-systems " required>
+<section id="pagePiggingSchedule">
+
+    <header class="foreman-header ">
+        <div>
+            <a href="# "><img src="imgs/admin-menu-wht.png "></a>
+            <h1>Pigging Schedule</h1>
+            <a href="# "><img src="imgs/exit.png "></a>
+            <a href="# "><img src="imgs/acct-info-wht.png "></a>
+        </div>
+    </header>
+
+    <header>
+        <div>
+            <h1>Pigging Schedule</h1>
+            <a href="# "><img src="imgs/exit.png "></a>
+            <a href="# "><img src="imgs/acct-info-wht.png "></a>
+        </div>
+    </header>
+    <div class="main pigging-schedule-container ">
+        <form id="piggingSchedule " action=" " method=" ">
+            <div>
+                <select name="pipeline-systems " required>
                     <option value="select-system ">Select Pipeline System</option>
                     <option value="system-one ">System One</option>
                     <option value="system-two ">System Two</option>
                     <option value="system-three ">System Three</option>
                     <option value="system-four ">System Four</option>
                 </select>
-                    </div>
-                    <div class="wrapper">
-                        <button form="piggingSchedule " type="submit ">Submit</button>
-                    </div>
-                    <hr>
-                </form>
-
-                <div class="schedule-results ">
-                    <p><span class="due-today "><a href=" ">Pipeline Name One</a></span></p>
-                    <p><span class="due-today "><a href=" ">Pipeline Name Two</a></span></p>
-                    <p><span class="due-today "><a href=" ">Pipeline Name Three</a></span></p>
-                    <p><span class="due-today "><a href=" ">Pipeline Name Four</a></span></p>
-                    <p><span class="due-today "><a href=" ">Pipeline Name Five</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Six</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Seven</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Eight</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Nine</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Ten</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Eleven</a></span></p>
-                    <p><span class="due-in-seven "><a href=" ">Pipeline Name Twelve</a></span></p>
-                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Thirteen</a></span></p>
-                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fourteen</a></span></p>
-                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fifteen</a></span></p>
-                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Sixteen</a></span></p>
-                    <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Seventeen</a></span></p>
-                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Eighteen</a></span></p>
-                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Nineteen</a></span></p>
-                    <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Twenty</a></span></p>
-                </div>
-
-                <div class="ops-nav ">
-                    <p><a href="# ">Input Pigging</a></p>
-                </div>
-
-                <div class="ops-nav ">
-                    <p><a href="# ">Debris Reports</a></p>
-                </div>
             </div>
-        </section>
+            <div>
+                <button form="piggingSchedule " type="submit ">Submit</button>
+            </div>
+            <hr>
+        </form>
+
+        <div class="schedule-results ">
+            <p><span class="due-today "><a href=" ">Pipeline Name One</a></span></p>
+            <p><span class="due-today "><a href=" ">Pipeline Name Two</a></span></p>
+            <p><span class="due-today "><a href=" ">Pipeline Name Three</a></span></p>
+            <p><span class="due-today "><a href=" ">Pipeline Name Four</a></span></p>
+            <p><span class="due-today "><a href=" ">Pipeline Name Five</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Six</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Seven</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eight</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Nine</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Ten</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eleven</a></span></p>
+            <p><span class="due-in-seven "><a href=" ">Pipeline Name Twelve</a></span></p>
+            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Thirteen</a></span></p>
+            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fourteen</a></span></p>
+            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fifteen</a></span></p>
+            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Sixteen</a></span></p>
+            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Seventeen</a></span></p>
+            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Eighteen</a></span></p>
+            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Nineteen</a></span></p>
+            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Twenty</a></span></p>
+        </div>
+
+        <div class="ops-nav">
+            <div><a href="# ">Input Pigging</a></div>
+        </div>
+
+        <div class="ops-nav">
+            <div><a href="# ">Debris Reports</a></div>
+        </div>
+
+    </div>
+</section>
 -->
 
 
-        <!--
         <section id="pageDebrisReport">
             <header>
-               <div class="wrapper">
-                <h1>Debris Reports</h1>
-                <a href="#"><img src="imgs/exit.png"></a>
-                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+                <div>
+                    <h1>Debris Reports</h1>
+                    <a href="#"><img src="imgs/exit.png"></a>
+                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
                 </div>
             </header>
+<!--
             <header class="foreman-header">
-               <div class="wrapper">
-                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-                <h1>Debris Report</h1>
-                <a href="#"><img src="imgs/exit.png"></a>
-                <a href="#"><img src="imgs/acct-info-wht.png"></a>
+                <div>
+                    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                    <h1>Debris Report</h1>
+                    <a href="#"><img src="imgs/exit.png"></a>
+                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
                 </div>
             </header>
+-->
             <div class="main debris-report-container">
 
-<form id="debrisReport" action="" method="">
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
-        <div>
-            <select name="select-debris-system" required>
+                <form id="debrisReport" action="" method="">
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-        </div>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
-        <div>
-            <select name="select-debris-system" required>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-        </div>
-        <div>
-            <select name="select-debris-pipeline" required>
+                        </div>
+                        <div>
+                            <select name="select-debris-pipeline" required>
                     <option value="select-debris-pipeline">Select Pipeline</option>
                     <option value="debris-pipeline-one">Pipeline One</option>
                     <option value="debris-pipeline-two">Pipeline Two</option>
                     <option value="debris-pipeline-three">Pipeline Three</option>
                     <option value="debris-pipeline-four">Pipeline Four</option>
                 </select>
-        </div>
-    </div>
+                        </div>
+                    </div>
 
-</form>
+                    <div class="submit-reset">
+                        <button form="debrisReport" type="submit">Submit</button>
+                    </div>
 
+                </form>
+
+<!--
                 <div>
                     <div class="debris-results-header">
                         <h3>Name of Area</h3>
@@ -619,16 +625,13 @@
                 </div>
 
                 <div class="submit-reset">
-                    <button form="debrisReport" type="submit">Submit</button>
-                </div>
-
-                <div class="submit-reset">
                     <button form="debrisReport" type="reset">Reset</button>
                 </div>
+-->
 
             </div>
         </section>
--->
+
 
         <!--
 
