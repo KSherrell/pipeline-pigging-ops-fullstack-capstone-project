@@ -10,11 +10,10 @@ html {}
 }
 
 body {
-    font-family: 'Vollkorn', serif;
     color: #1F1F1F;
 }
 
-@media only screen and (min-width: 200px) {
+@media only screen and (min-width: 320px) {
     body {
         font-size: 14px;
         font-family: 'Monda', sans-serif;
@@ -76,7 +75,7 @@ body {
     }
     .main {
         width: 100%;
-        padding: 50px 10px;
+        padding: 50px 10px 0;
         font-size: 1rem;
     }
     p {
@@ -99,7 +98,7 @@ body {
         width: 100%;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
-        padding: 0 0 0 5px;
+        padding: 0 0 0 .5rem;
         margin-top: .7rem;
     }
     form div input:first-of-type {
@@ -108,7 +107,7 @@ body {
     .buttons {
         width: 100%;
         text-align: center;
-        margin: 2.5rem auto;
+        margin: 0 auto;
     }
     button {
         display: inline-block;
@@ -144,12 +143,14 @@ body {
         position: fixed;
         bottom: 0px;
         left: 0px;
-        height: 40px;
+        height: 10%;
         width: 100%;
         text-align: center;
+        padding-top: 1rem;
         z-index: 1;
-        background-color: #69D2E7;
-        border-top: 3px solid #68baca;
+        color: #1f1f1f;
+        background-color: #F38630;
+        border-top: 3px solid #c6793b;
     }
     /*    USER LOGIN */
     .user-login-container p {
@@ -172,6 +173,9 @@ body {
     .user-login-container a:hover {
         color: #FA6900;
     }
+    .user-login-container .buttons {
+        margin: 2rem auto 0;
+    }
     /*    USER RESET PASSWORD*/
     .user-reset-password-container form {
         padding: 0 1.5rem;
@@ -187,68 +191,77 @@ body {
     .user-reset-password-container form input[type='password'] {
         padding-left: 5px;
     }
+    .user-reset-password-container .buttons {
+        margin: 2rem auto 0;
+    }
     /* USER CREATE ACCOUNT */
-    .user-create-account-container form {
-        padding: 0;
+    .user-create-account-container p {
+        margin: 1rem 0 0;
+        color: red;
     }
     .user-create-account-container input {
-        padding-left: 5px;
+        padding-left: .5rem;
+    }
+    .user-create-account-container .buttons {
+        margin: 2rem auto 0;
     }
     /* USER UPDATE ACCOUNT INFO */
-    .user-account-info-container hr {
-        width: 85%;
-        margin: 1.5rem auto;
-    }
     .user-account-info-container form {
         padding: 0;
     }
     .user-account-info-container input {
         padding-left: 5px;
     }
+    .user-account-info-container .buttons {
+        margin: 2rem auto;
+    }
     /* OPERATOR INPUT PIGGING*/
-    .operator-input-pigging-container form input[type='date'] {
+    #pageInputPigging div.main {
+        padding-bottom: 6rem;
+    }
+    .input-pigging-container form input[type='date'] {
         width: 175px;
     }
-    .operator-input-pigging-container form p:not(.auto-pop-site-name) {
+    .input-pigging-container form p:not(.auto-pop-site-name) {
         font-size: 1rem;
         margin-top: 1rem;
     }
-    .operator-input-pigging-container form div {
+    .input-pigging-container form div {
         margin-top: 0;
     }
-    .operator-input-pigging-container form div input[type='radio'],
-    .operator-input-pigging-container form div label {
+    .input-pigging-container form div input[type='radio'],
+    .input-pigging-container form div label {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 1rem .5rem 0 0;
     }
-    .operator-input-pigging-container form div span {
+    .input-pigging-container form div span {
         display: inline-block;
         width: 100px;
         margin-left: 10px;
     }
-    .operator-input-pigging-container div.input-debris {
+    .input-pigging-container div.input-debris {
         width: 79%;
     }
-    .operator-input-pigging-container form div.input-debris span:nth-child(even) {
+    .input-pigging-container form div.input-debris span:nth-child(even) {
         width: 80px;
         margin-left: 30px;
     }
-    .operator-input-pigging-container form input[type='number'],
-    .operator-input-pigging-container form input[type='time'] {
+    .input-pigging-container form input[type='number'],
+    .input-pigging-container form input[type='time'] {
         width: 125px;
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
     }
-    .operator-input-pigging-container form div.input-debris input[type='number'] {
+    .input-pigging-container form div.input-debris input[type='number'] {
         width: 70px;
     }
-    .operator-input-pigging-container form div.select-receive label {
+    .input-pigging-container form div.select-receive label {
         font-size: 1rem;
     }
-    .operator-input-pigging-container form div.textarea {
+    .input-pigging-container form div.textarea {
         margin: 2rem 0;
         width: 100%;
         text-align: left;
@@ -256,10 +269,19 @@ body {
         border: 2px solid #A7DBD8;
         background-color: #FFF8DC;
     }
-    .operator-input-pigging-container form textarea {
+    .input-pigging-container form textarea {
         resize: none;
         font-size: 1rem;
         background-color: #FFF8DC;
+    }
+    .input-pigging-container .ops-nav div {
+        display: inline;
+        padding: .25rem 1rem;
+        border-radius: 25px;
+        border: 1px solid #ffffff;
+    }
+    .input-pigging-container .ops-nav div a {
+        text-decoration: none;
     }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
@@ -818,7 +840,7 @@ body {
 
 @media only screen and (min-width: 375px) {
     body {
-        background-color: #ffffff;
+        background-color: antiquewhite;
     }
     header h1 {
         font-size: 1.5rem;
@@ -865,70 +887,6 @@ body {
 @media only screen and (min-width: 414px) {
     body {
         background-color: #ffffff;
-    }
-    section {
-        width: 400px;
-        margin: 0 auto;
-        padding: 0 0 30px;
-        border: 1px dashed #69D2E7;
-        border-top: none;
-    }
-    header div.wrapper {
-        float: none;
-        width: 400px;
-        height: 100%;
-        margin: 0 auto;
-        border-left: 1px dashed white;
-        border-right: 1px dashed white;
-    }
-    header.foreman-header h1 {
-        margin: 0;
-        padding-top: .75rem;
-    }
-    .ops-nav a {
-        font-size: 1.2rem;
-        color: #000000;
-        text-shadow: none;
-    }
-    .ops-nav p {
-        width: 400px;
-        height: 100%;
-        margin: .3rem auto 0;
-        border-left: 1px dashed white;
-        border-right: 1px dashed white;
-    }
-    #pagePiggingSchedule div.main {
-        padding: 50px 0;
-    }
-    #pageDebrisReport div.main {
-        padding: 50px 0;
-    }
-    .pigging-schedule-container form {
-        width: 350px;
-        left: auto;
-        padding: 10px 0;
-    }
-    .debris-report-container div.debris-results-header {
-        width: 350px;
-        left: inherit;
-        padding: 10px 0;
-    }
-    #pagePiggingActivity div.main {
-        padding: 50px 0;
-    }
-    .pigging-activity-container div.pigging-activity-results div:first-child {
-        width: 350px;
-        margin: auto;
-        left: auto;
-    }
-    #pageViewHistory div.main {
-        padding: 50px 0 0;
-    }
-    .view-history-container div.submit-reset {
-        position: absolute;
-        bottom: auto;
-        padding: 0;
-        margin: 50px 0;
     }
 }
 
