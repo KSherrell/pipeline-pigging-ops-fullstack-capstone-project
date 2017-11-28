@@ -168,6 +168,11 @@ body {
         height: 19rem;
         font-size: .9rem;
     }
+    .user-login-container form#forgotPassword {
+        margin-top: 1rem;
+        height: 12rem;
+
+    }
     .user-login-container a {
         color: #20aac5;
     }
