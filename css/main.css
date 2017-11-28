@@ -142,8 +142,8 @@ body {
     }
     .ops-nav {
         position: fixed;
-        bottom: 0px;
-        left: 0px;
+        bottom: 0;
+        left: 0;
         height: 10%;
         width: 100%;
         text-align: center;
@@ -171,7 +171,6 @@ body {
     .user-login-container form#forgotPassword {
         margin-top: 1rem;
         height: 12rem;
-
     }
     .user-login-container a {
         color: #20aac5;
@@ -1002,22 +1001,30 @@ body {
     .debris-report-container div.debris-results div.submit-reset {
         padding: 2rem 0;
     }
-
-
     #pageViewHistory div.main {
         padding-top: 1rem;
     }
-
     .view-history-container form div select {
         margin-top: 1.5rem;
     }
-
-
 }
 
 @media only screen and (min-width: 414px) {
     body {
         background-color: #ffffff;
+    }
+    .ops-nav {
+        position: fixed;
+        bottom: 9%;
+        left: 0;
+        height: 10%;
+        width: 100%;
+        text-align: center;
+        padding-top: 1.5rem;
+        z-index: 1;
+        color: #1f1f1f;
+        background-color: #69D2E7;
+        border-top: 3px solid #68baca;
     }
 }
 
