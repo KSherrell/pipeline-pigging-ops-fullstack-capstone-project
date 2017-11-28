@@ -1017,10 +1017,10 @@ body {
         position: fixed;
         bottom: 0;
         left: 0;
-        height: 10%;
+        height: 50px;
         width: 100%;
         text-align: center;
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         z-index: 1;
         color: #1f1f1f;
         background-color: #69D2E7;
