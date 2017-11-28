@@ -997,6 +997,17 @@ body {
     .debris-report-container div.debris-results div.submit-reset {
         padding: 2rem 0;
     }
+
+
+    #pageViewHistory div.main {
+        padding-top: 1rem;
+    }
+
+    .view-history-container form div select {
+        margin-top: 1.5rem;
+    }
+
+
 }
 
 @media only screen and (min-width: 414px) {
