@@ -458,7 +458,6 @@ body {
     .debris-report-container div.debris-results>div.submit-reset {
         border: none;
     }
-
     .debris-report-container .ops-nav div {
         display: inline;
         padding: .25rem 1rem;
@@ -487,7 +486,7 @@ body {
         text-align: center;
         z-index: 1;
         margin: 0 auto;
-        padding: 1rem 0 .5rem;
+        padding: 0 0 .5rem;
         background-color: #ffffff;
     }
     .pigging-activity-container h3+p {
@@ -498,7 +497,7 @@ body {
         border-bottom: 1px solid #A7DBD8;
     }
     .pigging-activity-container div.months-pigs {
-        margin: 90px auto 50px;
+        margin: 5rem auto 0;
         padding-left: 1rem;
     }
     .pigging-activity-container div.months-pigs p {
@@ -512,30 +511,16 @@ body {
         padding: 3px;
     }
     .pigging-activity-container div.submit-reset {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
+        position: relative;
+        padding: 2rem 0;
         width: 100%;
         text-align: center;
-        z-index: 1;
         margin: 0 auto;
-        padding: 1rem 0 .5rem;
         background-color: #ffffff;
     }
     /* FOREMAN VIEW HISTORY */
     main.view-history-container {
         padding: 30px 10px;
-    }
-    .view-history-container div.submit-reset {
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        text-align: center;
-        z-index: 1;
-        margin: 0 auto;
-        padding: 1rem 0 .5rem;
-        background-color: #ffffff;
     }
     .view-history-container form {
         padding: 0;
@@ -587,6 +572,21 @@ body {
     .view-history-container div.activity-records {
         padding: 10px;
         border-bottom: 1px dashed #A7DBD8;
+    }
+    .view-history-container div.submit-reset {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        text-align: center;
+        z-index: 1;
+        margin: 0 auto;
+        padding: 1rem 0 .5rem;
+        background-color: #ffffff;
+    }
+    .view-history-container form div.submit-reset {
+        position: relative;
+        padding: 2rem 0;
     }
     /* FOREMAN UPDATE HISTORY  */
     .update-history-container form p {
