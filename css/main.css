@@ -581,12 +581,14 @@ body {
         text-align: center;
         z-index: 1;
         margin: 0 auto;
-        padding: 1rem 0 .5rem;
+        padding: .75rem 0;
         background-color: #ffffff;
+        border-top: 1px solid #E0E4CC;
     }
     .view-history-container form div.submit-reset {
         position: relative;
         padding: 2rem 0;
+        border-top: none;
     }
     /* FOREMAN UPDATE HISTORY  */
     .update-history-container form p {
@@ -636,21 +638,30 @@ body {
         font-size: 1rem;
     }
     .update-history-container form div.textarea {
-        margin: 2rem 0;
+        margin: 2rem 0 6rem;
         width: 100%;
         text-align: left;
-        padding: 7px;
+        padding: .5rem;
         border: 2px solid #A7DBD8;
         background-color: #FFF8DC;
     }
     .update-history-container form textarea {
         resize: none;
+        width: 100%;
         font-size: 1rem;
         background-color: #FFF8DC;
     }
     .update-history-container div.submit-cancel-delete {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
         width: 100%;
         text-align: center;
+        z-index: 1;
+        margin: 0 auto;
+        padding: .75rem 0;
+        background-color: #ffffff;
+        border-top: 1px solid #E0E4CC;
     }
     .update-history-container div.submit-cancel-delete button {
         margin: 0 2%;
