@@ -638,7 +638,7 @@
 -->
 
 
-<!--
+        <!--
         <section id="pagePiggingActivity">
             <header class="foreman-header">
                 <div class="wrapper">
@@ -723,6 +723,7 @@
 -->
 
 
+        <!--
         <section id="pageViewHistory">
             <header class="foreman-header jsForemanPage">
                <div class="wrapper">
@@ -838,92 +839,94 @@
 
         </div>
         </section>
+-->
 
-<!--
-        <section id="pageUpdateHistory">
-            <header class="foreman-header">
-                <h1>Update History</h1>
-                <a href="#"><img src="imgs/exit.png"></a>
-                <a href="#"><img src="imgs/acct-info-wht.png"></a>
-            </header>
 
-            <div class="main update-history-container">
-                <div>
-                    <p>ID of Record</p>
-                    <p>System Name</p>
-                    <p>Pipeline Name</p>
-                    <p>L/R Site Name</p>
-                </div>
-                <div class="warning">
-                    <p>***Warning***</p>
-                    <p>Updates submitted below will</p>
-                    <p>PERMANENTLY REPLACE</p>
-                    <p>the current information.</p>
-                </div>
-                <form id="updateHistory" method="">
+        <!--
+<section id="pageUpdateHistory">
+    <header class="foreman-header">
+        <h1>Update History</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+
+    <div class="main update-history-container">
+        <div>
+            <p>ID of Record</p>
+            <p>System Name</p>
+            <p>Pipeline Name</p>
+            <p>L/R Site Name</p>
+        </div>
+        <div class="warning">
+            <p>***Warning***</p>
+            <p>Updates submitted below will</p>
+            <p>PERMANENTLY REPLACE</p>
+            <p>the current information.</p>
+        </div>
+        <form id="updateHistory" method="">
+            <div>
+                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+            </div>
+            <div>
+                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
+                <div class="select-launch">
                     <div>
-                        <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+                        <p>Time: <span><input type="time" name="launch-time" required></span></p>
                     </div>
                     <div>
-                        <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" required><label for="radio-launch">Launch</label>
-                        <div class="select-launch">
-                            <div>
-                                <p>Time: <span><input type="time" name="launch-time" required></span></p>
-                            </div>
-                            <div>
-                                <select name="pig-types" required>
+                        <select name="pig-types" required>
                         <option value="select-pig">Select Pig Type</option>
                         <option value="pig-one">Pig Type One</option>
                         <option value="pig-two">Pig Type Two</option>
                         <option value="pig-three">Pig Type Three</option>
                         <option value="pig-four">Pig Type Four</option>
                     </select>
-                            </div>
-                        </div>
+                    </div>
+                </div>
 
-                        <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
-                        <div class="select-receive">
-                            <div>
-                                <p>Time: <span><input type="time" name="receive-time" required></span></p>
-                            </div>
+                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+                <div class="select-receive">
+                    <div>
+                        <p>Time: <span><input type="time" name="receive-time" required></span></p>
+                    </div>
 
-                            <div class="input-debris">
-                                <p>Debris:</p>
-                                <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                                <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
-                            </div>
-                        </div>
+                    <div class="input-debris">
+                        <p>Debris:</p>
+                        <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
+                        <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
+                    </div>
+                </div>
 
-                        <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
-                        <div class="select-exception">
-                            <div>
-                                <p>Time: <span><input type="time" name="exception-time" required></span></p>
-                            </div>
-                            <div>
-                                <select name="exceptions" required>
+                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+                <div class="select-exception">
+                    <div>
+                        <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                    </div>
+                    <div>
+                        <select name="exceptions" required>
                         <option value="select-exception">Select Exception</option>
                         <option value="exception-one">Exception One</option>
                         <option value="exception-two">Exception Two</option>
                         <option value="exception-three">Exception Three</option>
                         <option value="exception-four">Exception Four</option>
                     </select>
-                            </div>
-                        </div>
                     </div>
-                    <div class="textarea">
-                        <textarea name="pigging-notes" maxlength="250" rows="9" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
-                    </div>
-                </form>
-
-                <div class="submit-cancel-delete">
-                    <button form="updateHistory" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                    <button form="updateHistory" type="submit" class="button-delete">Delete</button>
                 </div>
-
             </div>
-        </section>
--->
+            <div class="textarea">
+                <textarea name="pigging-notes" maxlength="250" rows="9" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+            </div>
+        </form>
+
+        <div class="submit-cancel-delete">
+            <button form="updateHistory" type="submit">Submit</button>
+            <button type="button">Cancel</button>
+            <button form="updateHistory" type="submit" class="button-delete">Delete</button>
+        </div>
+
+    </div>
+</section>
+        -->
 
         <!--
         <section id="pageAddPipeline">
@@ -998,11 +1001,12 @@
                     <p>*** IMPORTANT ***</p>
                     <p>Please review all of the information above before clicking Submit.</p>
                 </div>
-                <div class="buttons">
+                <div class="submit-reset">
                     <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
                 </div>
             </div>
         </section>
+-->
 
         <section id="pageUpdatePipeline">
             <header class="foreman-header">
@@ -1039,9 +1043,10 @@
                     </select>
                     </div>
                 </form>
-                <div class="buttons">
+                <div class="submit-reset">
                     <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
                 </div>
+
 
                 <form id="updatePipeline" method="">
                     <div>
@@ -1093,10 +1098,11 @@
                     <button type="button">Cancel</button>
                     <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
                 </div>
+
             </div>
         </section>
 
-
+        <!--
         <section id="pageAddUser">
             <header class="foreman-header">
                 <a href="#"><img src="imgs/admin-menu-wht.png"></a>
