@@ -147,7 +147,7 @@ body {
         height: 10%;
         width: 100%;
         text-align: center;
-        padding-top: 1rem;
+        padding-top: 1.5rem;
         z-index: 1;
         color: #1f1f1f;
         background-color: #69D2E7;
@@ -387,7 +387,7 @@ body {
         text-decoration: none;
     }
     /* DEBRIS REPORTS*/
-    .debris-report-container {
+    div.debris-report-container {
         padding-top: 2rem;
     }
     .debris-report-container form div input[type='radio'] {
@@ -416,46 +416,51 @@ body {
         width: 100%;
         z-index: 1;
         padding: 10px;
+        text-align: center;
         background-color: #ffffff;
     }
     .debris-report-container div.debris-results-header h3 {
         padding: 1rem 0 0;
     }
+    .debris-report-container div.debris-results-header>h3 {
+        padding-bottom: .5rem;
+        color: #69D2E7;
+        font-size: 1.1rem;
+    }
     .debris-report-container h3 {
         padding: 0;
     }
     .debris-report-container div.debris-results {
-        margin: 6.5rem 0 0;
-        padding-bottom: 5rem;
+        padding-bottom: 4rem;
+        margin: 8.5rem 0 0;
     }
-    .debris-report-container div.debris-results>div {
+    .debris-report-container div.debris-results-list>div {
         width: 100%;
         padding-bottom: 5px;
         border-bottom: 1px solid #A7DBD8;
     }
     .debris-report-container div.debris-results-header div>div,
-    .debris-report-container div.debris-results div>div {
+    .debris-report-container div.debris-results-list div>div {
         display: inline-block;
+        text-align: center;
     }
     .debris-report-container div.debris-results-header div>div:first-child,
-    .debris-report-container div.debris-results div>div:first-child {
+    .debris-report-container div.debris-results-list div>div:first-child {
         width: 20%;
-        text-align: right;
     }
     .debris-report-container div.debris-results-header div>div:not(first-child),
-    .debris-report-container div.debris-results div>div:not(first-child) {
+    .debris-report-container div.debris-results-list div>div:not(first-child) {
         width: 38%;
-        text-align: center;
     }
     .debris-report-container div.submit-reset {
         position: relative;
-        padding: 2rem 0 0;
+        padding: 2rem 0;
         width: 100%;
         text-align: center;
         margin: 0 auto;
         background-color: #ffffff;
     }
-    .debris-report-container div.debris-results>div.submit-reset {
+    .debris-report-container div.debris-results-list>div.submit-reset {
         border: none;
     }
     .debris-report-container .ops-nav div {
@@ -924,11 +929,21 @@ body {
         font-size: 1.5rem;
     }
     header.foreman-header h1 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         float: left;
         color: #ffffff;
         text-shadow: 1px 1px 0 #1f1f1f;
-        margin: 0;
+        margin-top: .7rem;
+    }
+    header.foreman-header img {
+        margin: .5rem .75rem 0;
+        float: right;
+    }
+    header.foreman-header a:first-child img {
+        float: left;
+    }
+    header.foreman-header a:nth-of-type(2) img {
+        margin: .5rem .5rem 0;
     }
     .main {
         padding: 50px 15px;
@@ -941,8 +956,12 @@ body {
         margin-top: 1rem;
     }
     /* OPERATOR INPUT PIGGING*/
-    .operator-input-pigging-container {
-        padding: 30px 0;
+    div.input-pigging-container {
+        padding-top: 2rem;
+    }
+    /* ADMIN MENU */
+    #pageAdminMenu div.main {
+        padding-top: 4rem;
     }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
@@ -956,9 +975,27 @@ body {
         margin: 0;
         width: 100%;
     }
-    .debris-report-container div.debris-results-header div>div:first-child,
-    .debris-report-container div.debris-results div>div:first-child {
-        text-align: center;
+    /* DEBRIS REPORTS*/
+    #pageDebrisReport div.main {
+        padding: 0;
+    }
+    .debris-report-container form {
+        padding-top: 1rem;
+    }
+    .debris-report-container div.debris-results {
+        width: 350px;
+        margin-top: 0;
+    }
+    .debris-report-container div.debris-results-header {
+        position: sticky;
+        width: 100%;
+    }
+    .debris-report-container div.debris-results-list {
+        margin: 4rem 0 0;
+        padding-bottom: 0;
+    }
+    .debris-report-container div.debris-results div.submit-reset {
+        padding: 2rem 0;
     }
 }
 
