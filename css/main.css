@@ -754,9 +754,8 @@ body {
         border-top: 1px solid #E0E4CC;
     }
     /* FOREMAN UPDATE PIPELINE */
-
     #pageUpdatePipeline div.main {
-     padding-top: 1rem;
+        padding-top: 1rem;
         padding-bottom: 4.5rem;
     }
     .update-pipeline-container form {
@@ -830,7 +829,6 @@ body {
         border: 2px solid #bd0000;
         padding: .5rem;
     }
-
     .update-pipeline-container div.submit-cancel-delete {
         position: fixed;
         bottom: 0px;
@@ -843,7 +841,6 @@ body {
         background-color: #ffffff;
         border-top: 1px solid #E0E4CC;
     }
-
     .update-pipeline-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
@@ -859,6 +856,10 @@ body {
     .assign-user-role-container form div input[type='email'] {
         padding-left: 5px;
     }
+    .assign-user-role-container div.submit-reset {
+        text-align: center;
+        padding: 1.5rem 0 0;
+    }
     .assign-user-role-container form div input[type='radio'] {
         height: auto;
         width: auto;
@@ -873,12 +874,18 @@ body {
         font-size: 1rem;
     }
     /* FOREMAN UPDATE USER */
+    #pageUdateUser div.main {
+        padding-top: 4rem;
+    }
     .update-user-container form {
-        margin-top: 2rem;
+        margin-top: 0;
         padding: 0;
     }
+    .update-user-container form#assignRole {
+        margin-top: 2rem;
+    }
     .update-user-container form div {
-        margin-top: 1rem;
+        margin-top: 0;
         padding: 0px;
     }
     .update-user-container form p {
@@ -890,11 +897,15 @@ body {
     .update-user-container form div input[type='email'] {
         padding-left: 5px;
     }
+    .update-user-container div.submit-reset {
+        text-align: center;
+        padding: 2rem 0 0;
+    }
     .update-user-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
-        margin: 0 0 0 1rem;
+        margin: 1rem 0 0 1rem;
         padding: 0px;
     }
     .update-user-container form div label {

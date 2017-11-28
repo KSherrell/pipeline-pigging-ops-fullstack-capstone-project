@@ -1008,6 +1008,7 @@
         </section>
 -->
 
+        <!--
         <section id="pageUpdatePipeline">
             <header class="foreman-header">
                 <a href="#"><img src="imgs/admin-menu-wht.png"></a>
@@ -1101,6 +1102,8 @@
 
             </div>
         </section>
+-->
+
 
         <!--
         <section id="pageAddUser">
@@ -1115,11 +1118,13 @@
                     <div>
                         <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
                     </div>
+                    <div class="submit-reset">
+                        <button form="findUser" type="submit">Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
                 </form>
-                <div class="buttons">
-                    <button form="findUser" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                </div>
+
+
                 <p id="userID">User Database ID</p>
                 <p id="userFirstName">User First Name</p>
                 <p id="userLastName">User Last Name</p>
@@ -1135,14 +1140,16 @@
                     <div>
                         <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
                     </div>
+                    <div class="submit-reset">
+                        <button form="assignRole" type="submit">Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
                 </form>
-                <div class="buttons">
-                    <button form="assignRol" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                </div>
+
 
             </div>
         </section>
+-->
 
 
         <section id="pageUdateUser">
@@ -1153,15 +1160,17 @@
                 <a href="#"><img src="imgs/acct-info-wht.png"></a>
             </header>
             <div class="main update-user-container">
+                <label for="findUser">Find User</label>
                 <form id="findUser" action="" method="">
                     <div>
                         <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
                     </div>
+                    <div class="submit-reset">
+                        <button form="findUser" type="submit">Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
                 </form>
-                <div class="buttons">
-                    <button form="findUser" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                </div>
+
                 <p id="userID">User Database ID</p>
                 <p id="userFirstName">User First Name</p>
                 <p id="userLastName">User Last Name</p>
@@ -1182,15 +1191,16 @@
                         <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
                         <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
                     </div>
+                    <div class="submit-reset">
+                        <button form="assignRol" type="submit">Submit</button>
+                        <button type="button">Cancel</button>
+                    </div>
                 </form>
-                <div class="buttons">
-                    <button form="assignRol" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                </div>
+
 
             </div>
         </section>
--->
+
     </main>
 </body>
 
