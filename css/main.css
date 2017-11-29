@@ -988,6 +988,7 @@ body {
     .debris-report-container div.debris-results-header {
         position: sticky;
         width: 100%;
+
     }
     .debris-report-container div.debris-results-list {
         margin: 4rem 0 0;
@@ -1008,14 +1009,32 @@ body {
     body {
         background-color: antiquewhite;
     }
+
+    header>div {
+        width: 350px;
+        margin: auto;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        background-color: #ffffff;
+    }
     div.main {
         border-left: 1px dashed #69D2E7;
         border-right: 1px dashed #69D2E7;
         border-bottom: 1px dashed #69D2E7;
     }
-    header>div {
-        width: 350px;
-        margin: auto;
+
+    #pageLogin div.main {
+        border: 0;
+    }
+    div.ops-nav {
+        height: 10%
+    }
+    div.input-pigging-container form#inputPigging {
+        padding-bottom: 2rem;
     }
     #pagePiggingSchedule div.main {
         padding: 40px 0 1rem;
@@ -1029,25 +1048,18 @@ body {
     .pigging-schedule-container div.schedule-results {
         margin-top: 1rem;
     }
-}
 
-@media only screen and (min-width: 768px) {
-    body {
-        background-color: #ffffff;
+    form#debrisReport {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
-    div.main {
-        border-left: 1px dashed #69D2E7;
-        border-right: 1px dashed #69D2E7;
-        border-bottom: 1px dashed #69D2E7;
+    .debris-report-container div.debris-results {
+        width: 96%;
+        margin: auto;
+        padding-bottom: 0;
     }
-    #pageLogin div.main {
-        border: 0;
-    }
-    div.ops-nav {
-        height: 10%
-    }
-    div.input-pigging-container form#inputPigging {
-        padding-bottom: 2rem;
+    .debris-report-container div.debris-results-list {
+        margin-top: 4rem;
     }
 }
 

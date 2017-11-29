@@ -18,7 +18,7 @@
     <main>
 
 
-<!--
+        <!--
         <section id="pageLogin">
             <header>
                 <div>
@@ -56,7 +56,7 @@
         </section>
 -->
 
-<!--
+        <!--
 
         <section id="pageResetPwd">
             <header>
@@ -87,7 +87,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageCreateAcct">
             <header>
                 <div class="wrapper">
@@ -120,7 +120,7 @@
 -->
 
 
-<!--
+        <!--
         <section id="pageUpdateAcct">
             <header>
                 <div class="wrapper">
@@ -165,7 +165,7 @@
 
 
 
-<!--
+        <!--
 <section id="pageInputPigging">
 
     <header>
@@ -273,7 +273,7 @@
 
 
 
-<!--
+        <!--
         <section id="pagePrevLaunch">
             <header>
                 <div class="wrapper">
@@ -321,7 +321,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageAdminMenu">
             <header>
                 <div>
@@ -354,6 +354,7 @@
 
 
 
+        <!--
 <section id="pagePiggingSchedule">
 
     <header class="foreman-header ">
@@ -365,7 +366,6 @@
         </div>
     </header>
 
-<!--
     <header>
         <div>
             <h1>Pigging Schedule</h1>
@@ -373,7 +373,6 @@
             <a href="# "><img src="imgs/acct-info-wht.png "></a>
         </div>
     </header>
--->
     <div class="main pigging-schedule-container ">
         <form id="piggingSchedule " action=" " method=" ">
             <div>
@@ -419,14 +418,13 @@
             <div><a href="# ">Input Pigging</a></div>
         </div>
 
-<!--
         <div class="ops-nav">
             <div><a href="# ">Debris Reports</a></div>
         </div>
--->
 
     </div>
 </section>
+-->
 
 
 
@@ -434,244 +432,246 @@
 
 
 
-        <!--
-        <section id="pageDebrisReport">
-            <header>
-                <div>
-                    <h1>Debris Reports</h1>
-                    <a href="#"><img src="imgs/exit.png"></a>
-                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-                </div>
-            </header>
 
-            <header class="foreman-header">
-                <div>
-                    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-                    <h1>Debris Report</h1>
-                    <a href="#"><img src="imgs/exit.png"></a>
-                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
-                </div>
-            </header>
-
-            <div class="main debris-report-container">
-
-
-<form id="debrisReport" action="" method="">
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
+<!--
+<section id="pageDebrisReport">
+    <header>
         <div>
-            <select name="select-debris-system" required>
+            <h1>Debris Reports</h1>
+            <a href="#"><img src="imgs/exit.png"></a>
+            <a href="#"><img src="imgs/acct-info-wht.png"></a>
+        </div>
+    </header>
+
+    <header class="foreman-header">
+        <div>
+            <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+            <h1>Debris Report</h1>
+            <a href="#"><img src="imgs/exit.png"></a>
+            <a href="#"><img src="imgs/acct-info-wht.png"></a>
+        </div>
+    </header>
+
+    <div class="main debris-report-container">
+
+
+        <form id="debrisReport" action="" method="">
+            <div>
+                <input type="radio" name="radio-debris-report" id="radio-total-debris" value="total-debris" checked="checked" required><label for="radio-total-debris">Total Debris</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-debris-report" id="radio-debris-north" value="debris-north" required><label for="radio-debris-north">Total Debris North</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-debris-report" id="radio-debris-south" value="debris-south" required><label for="radio-debris-south">Total Debris South</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-debris-report" id="radio-debris-by-system" value="debris-by-system" required><label for="radio-debris-by-system">Total Debris by System</label>
+                <div>
+                    <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-        </div>
-    </div>
-    <div>
-        <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
-        <div>
-            <select name="select-debris-system" required>
+                </div>
+            </div>
+            <div>
+                <input type="radio" name="radio-debris-report" id="radio-debris-by-pipeline" value="debris-by-pipeline" required><label for="radio-debris-by-pipeline">Total Debris by Pipeline</label>
+                <div>
+                    <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-        </div>
-        <div>
-            <select name="select-debris-pipeline" required>
+                </div>
+                <div>
+                    <select name="select-debris-pipeline" required>
                     <option value="select-debris-pipeline">Select Pipeline</option>
                     <option value="debris-pipeline-one">Pipeline One</option>
                     <option value="debris-pipeline-two">Pipeline Two</option>
                     <option value="debris-pipeline-three">Pipeline Three</option>
                     <option value="debris-pipeline-four">Pipeline Four</option>
                 </select>
-        </div>
-    </div>
+                </div>
+            </div>
 
-    <div class="submit-reset">
-        <button form="debrisReport" type="submit">Submit</button>
-    </div>
+            <div class="submit-reset">
+                <button form="debrisReport" type="submit">Submit</button>
+            </div>
 
-</form>
+        </form>
 
 
-                <div class="debris-results">
-                    <div class="debris-results-header">
-                        <h3>Wells Ranch Something Here and Something Else Too</h3>
-                        <div>
-                            <div>
-                                <h3></h3>
-                            </div>
-                            <div>
-                                <h3>Paraffin lbs</h3>
-                            </div>
-                            <div>
-                                <h3>Sand lbs</h3>
-                            </div>
-
-                        </div>
-                        <hr>
+        <div class="debris-results">
+            <div class="debris-results-header">
+                <h3>Wells Ranch Something Here and Something Else Too</h3>
+                <div>
+                    <div>
+                        <h3></h3>
                     </div>
-                    <div class="debris-results-list">
-                        <div>
-                            <div>
-                                <h3>Oct</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Sep</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Aug</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Jul</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Jun</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>May</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Apr</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Mar</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Feb</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Jan</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Dec</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <h3>Nov</h3>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                            <div>
-                                <p>##</p>
-                            </div>
-                        </div>
-
+                    <div>
+                        <h3>Paraffin lbs</h3>
                     </div>
-                    <div class="submit-reset">
-                        <button form="debrisReport" type="reset">Reset</button>
+                    <div>
+                        <h3>Sand lbs</h3>
                     </div>
 
                 </div>
-
-                <div class="ops-nav">
-                    <div><a href="# ">Pigging Schedule</a></div>
+                <hr>
+            </div>
+            <div class="debris-results-list">
+                <div>
+                    <div>
+                        <h3>Oct</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Sep</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Aug</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jul</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jun</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>May</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Apr</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Mar</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Feb</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Jan</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Dec</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3>Nov</h3>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
+                    <div>
+                        <p>##</p>
+                    </div>
                 </div>
 
             </div>
-        </section>
+            <div class="submit-reset">
+                <button form="debrisReport" type="reset">Reset</button>
+            </div>
+
+        </div>
+
+        <div class="ops-nav">
+            <div><a href="# ">Pigging Schedule</a></div>
+        </div>
+
+    </div>
+</section>
 -->
+
 
 
 
