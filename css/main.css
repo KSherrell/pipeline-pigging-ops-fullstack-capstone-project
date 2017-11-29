@@ -17,7 +17,7 @@ body {
     body {
         font-size: 14px;
         font-family: 'Monda', sans-serif;
-        background-color: #ffffff;
+        background-color: antiquewhite;
     }
     header {
         position: fixed;
@@ -144,10 +144,10 @@ body {
         position: fixed;
         bottom: 0;
         left: 0;
-        height: 10%;
+        height: 50px;
         width: 100%;
         text-align: center;
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         z-index: 1;
         color: #1f1f1f;
         background-color: #69D2E7;
@@ -799,6 +799,14 @@ body {
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
+    #updatePipeline>p:first-of-type {
+        font-weight: normal;
+    }
+    .update-pipeline-container form div.warning p {
+        margin: .25rem 0;
+        line-height: 140%;
+        font-weight: normal;
+    }
     .update-pipeline-container form div div p {
         margin: 1rem .5rem 0 0;
     }
@@ -862,8 +870,16 @@ body {
         margin-top: 1rem;
         padding: 0px;
     }
+    .assign-user-role-container form#findUser div {
+        margin-top: 0;
+    }
+    #assignRole div:first-of-type {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #E0E4CC;
+    }
     .assign-user-role-container form div input[type='email'] {
-        padding-left: 5px;
+        padding-left: .5rem;
     }
     .assign-user-role-container div.submit-reset {
         text-align: center;
@@ -883,28 +899,30 @@ body {
         font-size: 1rem;
     }
     /* FOREMAN UPDATE USER */
-    #pageUdateUser div.main {
-        padding-top: 4rem;
-    }
     .update-user-container form {
-        margin-top: 0;
-        padding: 0;
-    }
-    .update-user-container form#assignRole {
         margin-top: 2rem;
+        padding: 0;
     }
     .update-user-container form div {
         margin-top: 0;
         padding: 0px;
     }
-    .update-user-container form p {
+    #updateRole div:first-of-type {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #E0E4CC;
+    }
+    #updateRole div:first-of-type>p {
+        margin: .5rem 0;
+    }
+    .update-user-container form>p {
         font-weight: bolder;
     }
     .update-user-container form p:nth-of-type(2) {
         margin-top: 2rem;
     }
     .update-user-container form div input[type='email'] {
-        padding-left: 5px;
+        padding-left: .5rem;
     }
     .update-user-container div.submit-reset {
         text-align: center;
@@ -927,7 +945,7 @@ body {
 
 @media only screen and (min-width: 375px) {
     body {
-        background-color: antiquewhite;
+        background-color: #ffffff;
     }
     header h1 {
         font-size: 1.5rem;
@@ -1011,26 +1029,13 @@ body {
 
 @media only screen and (min-width: 414px) {
     body {
-        background-color: #ffffff;
-    }
-    .ops-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        height: 50px;
-        width: 100%;
-        text-align: center;
-        padding-top: 1rem;
-        z-index: 1;
-        color: #1f1f1f;
-        background-color: #69D2E7;
-        border-top: 3px solid #68baca;
+        background-color: antiquewhite;
     }
 }
 
 @media only screen and (min-width: 768px) {
     body {
-        background-color: antiquewhite;
+        background-color: #ffffff;
     }
 }
 

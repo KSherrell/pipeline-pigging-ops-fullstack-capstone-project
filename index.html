@@ -19,7 +19,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageLogin">
             <header>
                 <div>
@@ -59,7 +59,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageResetPwd">
             <header>
                 <div>
@@ -94,7 +94,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageCreateAcct">
             <header>
                 <div class="wrapper">
@@ -133,7 +133,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageUpdateAcct">
             <header>
                 <div class="wrapper">
@@ -175,6 +175,7 @@
 -->
 
 
+        <!--
 
 <section id="pageInputPigging">
 
@@ -276,11 +277,12 @@
         </div>
     </div>
 </section>
+-->
 
 
 
 
-<!--
+        <!--
         <section id="pagePrevLaunch">
             <header>
                 <div class="wrapper">
@@ -325,6 +327,7 @@
 
 
 
+
         <!--
         <section id="pageAdminMenu">
             <header>
@@ -354,7 +357,9 @@
 
 
 
+
         <!--
+
 <section id="pagePiggingSchedule">
 
     <header class="foreman-header ">
@@ -424,6 +429,8 @@
     </div>
 </section>
 -->
+
+
 
 
 
@@ -668,6 +675,8 @@
 -->
 
 
+
+
         <!--
 <section id="pagePiggingActivity">
     <header class="foreman-header">
@@ -751,6 +760,8 @@
     </div>
 </section>
 -->
+
+
 
         <!--
         <section id="pageViewHistory">
@@ -870,6 +881,7 @@
         </section>
 -->
 
+
         <!--
 <section id="pageUpdateHistory">
     <header class="foreman-header">
@@ -957,7 +969,6 @@
 -->
 
 
-
         <!--
         <section id="pageAddPipeline">
             <header class="foreman-header">
@@ -1039,7 +1050,6 @@
 -->
 
 
-
         <!--
         <section id="pageUpdatePipeline">
             <header class="foreman-header">
@@ -1050,6 +1060,7 @@
             </header>
 
             <div class="main update-pipeline-container">
+
                 <form id="updateSearch" method="">
 
                     <div>
@@ -1075,13 +1086,16 @@
                         <option value="pipeline-four">Pipeline Four</option>
                     </select>
                     </div>
+                    <div class="submit-reset">
+                        <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
                 </form>
-                <div class="submit-reset">
-                    <button form="updateSearch" type="submit">Submit</button><button type="button">Cancel</button>
-                </div>
+
+
 
 
                 <form id="updatePipeline" method="">
+                    <p>To update the pipeline data, modify the information shown below.</p>
                     <div>
                         <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
                         <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name" required>
@@ -1123,20 +1137,21 @@
                         <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
                         <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
                     </div>
+                    <div class="warning">
+                        <p>**IMPORTANT**</p>
+                        <p>Submitted updates will <br/>PERMANENTLY REPLACE<br/> the current data.</p>
+                    </div>
+                    <div class="submit-cancel-delete">
+                        <button form="updatePipeline" type="submit">Submit</button>
+                        <button type="button">Cancel</button>
+                        <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
+                    </div>
 
                 </form>
-
-                <div class="submit-cancel-delete">
-                    <button form="updatePipeline" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                    <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
-                </div>
 
             </div>
         </section>
 -->
-
-
 
 
         <!--
@@ -1148,7 +1163,9 @@
                 <a href="#"><img src="imgs/acct-info-wht.png"></a>
             </header>
             <div class="main assign-user-role-container">
+
                 <form id="findUser" action="" method="">
+                    <label for="findUser">Find User</label>
                     <div>
                         <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
                     </div>
@@ -1159,21 +1176,24 @@
                 </form>
 
 
-                <p id="userID">User Database ID</p>
-                <p id="userFirstName">User First Name</p>
-                <p id="userLastName">User Last Name</p>
-
                 <form id="assignRole" action="" method="">
+                    <div>
+                        <p id="userID">User Database ID</p>
+                        <p id="userFirstName">User First Name</p>
+                        <p id="userLastName">User Last Name</p>
+                    </div>
+
                     <p>Assign User Role:</p>
+                    <div>
+                        <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+                    </div>
                     <div>
                         <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
                     </div>
                     <div>
                         <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
                     </div>
-                    <div>
-                        <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
-                    </div>
+
                     <div class="submit-reset">
                         <button form="assignRole" type="submit">Submit</button>
                         <button type="button">Cancel</button>
@@ -1186,58 +1206,59 @@
 -->
 
 
-
         <!--
+<section id="pageUdateUser">
+    <header class="foreman-header">
+        <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+        <h1>Update User</h1>
+        <a href="#"><img src="imgs/exit.png"></a>
+        <a href="#"><img src="imgs/acct-info-wht.png"></a>
+    </header>
+    <div class="main update-user-container">
 
-        <section id="pageUdateUser">
-            <header class="foreman-header">
-                <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-                <h1>Update User</h1>
-                <a href="#"><img src="imgs/exit.png"></a>
-                <a href="#"><img src="imgs/acct-info-wht.png"></a>
-            </header>
-            <div class="main update-user-container">
-                <label for="findUser">Find User</label>
-                <form id="findUser" action="" method="">
-                    <div>
-                        <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
-                    </div>
-                    <div class="submit-reset">
-                        <button form="findUser" type="submit">Submit</button>
-                        <button type="button">Cancel</button>
-                    </div>
-                </form>
+        <form id="findUser" action="" method="">
+            <label for="findUser">Find User</label>
+            <div>
+                <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+            </div>
+            <div class="submit-reset">
+                <button form="findUser" type="submit">Submit</button>
+                <button type="button">Cancel</button>
+            </div>
+        </form>
 
+
+        <form id="updateRole" action="" method="">
+            <div>
                 <p id="userID">User Database ID</p>
                 <p id="userFirstName">User First Name</p>
                 <p id="userLastName">User Last Name</p>
-
-                <form id="assignRole" action="" method="">
-                    <p>Update User Role:</p>
-                    <div>
-                        <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
-                    </div>
-                    <p>Change User Status:</p>
-                    <div>
-                        <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
-                        <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
-                    </div>
-                    <div class="submit-reset">
-                        <button form="assignRol" type="submit">Submit</button>
-                        <button type="button">Cancel</button>
-                    </div>
-                </form>
-
-
             </div>
-        </section>
--->
+            <p>Update User Role:</p>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+            </div>
+            <div>
+                <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+            </div>
+            <p>Change User Status:</p>
+            <div>
+                <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
+                <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
+            </div>
+            <div class="submit-reset">
+                <button form="assignRol" type="submit">Submit</button>
+                <button type="button">Cancel</button>
+            </div>
+        </form>
+
+
+    </div>
+</section>-->
+
 
 
     </main>
