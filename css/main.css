@@ -1099,10 +1099,38 @@ body {
     }
 }
 
-
-}
 @media only screen and (min-width: 1024px) {
     body {
-        background-color: antiquewhite;
+        background-color: #ffffff;
+    }
+    section {
+        width: 350px;
+        margin: 5% auto;
+    }
+    header {
+        position: relative;
+        margin: 0 auto;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    div.main {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+    #pageLogin div.main,
+    #pageLogin div.user-login-container {
+        padding: 0 0 3rem;
+        border-left: 1px dashed #69D2E7;
+        border-right: 1px dashed #69D2E7;
+        border-bottom: 1px dashed #69D2E7;
+    }
+    .user-login-container form {
+        border: 0;
+        margin-top: 0;
+        height: auto;
+    }
+    .user-login-container form div {
+        margin-top: 0;
+        padding-top: 1.5rem;
     }
 }
