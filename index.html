@@ -433,7 +433,7 @@
 
 
 
-<!--
+        <!--
 <section id="pageDebrisReport">
     <header>
         <div>
@@ -676,93 +676,96 @@
 
 
 
-        <!--
-<section id="pagePiggingActivity">
-    <header class="foreman-header">
-        <div class="wrapper">
-            <a href="#"><img src="imgs/admin-menu-wht.png"></a>
-            <h1>Pigging Activity</h1>
-            <a href="#"><img src="imgs/exit.png"></a>
-            <a href="#"><img src="imgs/acct-info-wht.png"></a>
-        </div>
-    </header>
-    <div class="main pigging-activity-container">
 
-        <form id="piggingActivity" action="" method="">
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
-            </div>
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
-                <div>
-                    <select name="select-debris-system" required>
+<!--
+        <section id="pagePiggingActivity">
+            <header class="foreman-header">
+                <div class="wrapper">
+                    <a href="#"><img src="imgs/admin-menu-wht.png"></a>
+                    <h1>Pigging Activity</h1>
+                    <a href="#"><img src="imgs/exit.png"></a>
+                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
+                </div>
+            </header>
+            <div class="main pigging-activity-container">
+
+                <form id="piggingActivity" action="" method="">
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-            </div>
-            <div>
-                <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
-                <div>
-                    <select name="select-debris-system" required>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
+                        <div>
+                            <select name="select-debris-system" required>
                         <option value="select-debris-system">Select System</option>
                         <option value="debris-system-one">System One</option>
                         <option value="debris-system-two">System Two</option>
                         <option value="debris-system-three">System Three</option>
                         <option value="debris-system-four">System Four</option>
                     </select>
-                </div>
-                <div>
-                    <select name="select-debris-pipeline" required>
+                        </div>
+                        <div>
+                            <select name="select-debris-pipeline" required>
                         <option value="select-debris-pipeline">Select Pipeline</option>
                         <option value="debris-pipeline-one">Pipeline One</option>
                         <option value="debris-pipeline-two">Pipeline Two</option>
                         <option value="debris-pipeline-three">Pipeline Three</option>
                         <option value="debris-pipeline-four">Pipeline Four</option>
                     </select>
+                        </div>
+                    </div>
+                    <div class="submit-reset">
+                        <button form="piggingActivity" type="submit">Submit</button>
+                    </div>
+                </form>
+
+
+                <div class="pigging-activity-results">
+                    <div>
+                        <h3>Name of Search</h3>
+                        <p>Total Monthly Pigs</p>
+                    </div>
+                    <div class="months-pigs">
+                        <p>Month <span>.............13</span></p>
+                        <p>Month <span>...............15</span></p>
+                        <p>Month <span>...........................27</span></p>
+                        <p>Month <span>..........10</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                        <p>Month <span>##</span></p>
+                    </div>
+                    <div class="submit-reset">
+                        <button form="piggingActivity" type="reset">Reset</button>
+                    </div>
                 </div>
-            </div>
-            <div class="submit-reset">
-                <button form="piggingActivity" type="submit">Submit</button>
-            </div>
-        </form>
 
 
-        <div class="pigging-activity-results">
-            <div>
-                <h3>Name of Search</h3>
-                <p>Total Monthly Pigs</p>
             </div>
-            <div class="months-pigs">
-                <p>Month <span>.............13</span></p>
-                <p>Month <span>...............15</span></p>
-                <p>Month <span>...........................27</span></p>
-                <p>Month <span>..........10</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-                <p>Month <span>##</span></p>
-            </div>
-            <div class="submit-reset">
-                <button form="piggingActivity" type="reset">Reset</button>
-            </div>
-        </div>
-
-
-    </div>
-</section>
+        </section>
 -->
 
 
 
-        <!--
+
+
+<!--
         <section id="pageViewHistory">
             <header class="foreman-header jsForemanPage">
                 <div class="wrapper">
@@ -881,12 +884,16 @@
 -->
 
 
-        <!--
+
+
+<!--
 <section id="pageUpdateHistory">
     <header class="foreman-header">
+       <div>
         <h1>Update History</h1>
         <a href="#"><img src="imgs/exit.png"></a>
         <a href="#"><img src="imgs/acct-info-wht.png"></a>
+        </div>
     </header>
 
     <div class="main update-history-container">
@@ -968,13 +975,16 @@
 -->
 
 
-        <!--
+
+
         <section id="pageAddPipeline">
             <header class="foreman-header">
+               <div>
                 <a href="#"><img src="imgs/admin-menu-wht.png"></a>
                 <h1>Add Pipeline</h1>
                 <a href="#"><img src="imgs/exit.png"></a>
                 <a href="#"><img src="imgs/acct-info-wht.png"></a>
+                </div>
             </header>
 
             <div class="main add-pipeline-container">
@@ -1042,11 +1052,13 @@
                     <p>Please review all of the information above before clicking Submit.</p>
                 </div>
                 <div class="submit-reset">
+                   <div>
                     <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
                 </div>
             </div>
         </section>
--->
+
 
 
         <!--
