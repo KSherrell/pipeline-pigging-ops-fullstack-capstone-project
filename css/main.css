@@ -144,14 +144,23 @@ body {
         position: fixed;
         bottom: 0;
         left: 0;
-        height: 50px;
+        height: 60px;
         width: 100%;
         text-align: center;
-        padding-top: 1rem;
+        padding-top: .5rem;
         z-index: 1;
         color: #1f1f1f;
         background-color: #69D2E7;
         border-top: 3px solid #68baca;
+    }
+    .ops-nav div {
+        display: inline;
+        padding: .25rem 1rem;
+        border-radius: 25px;
+        border: 1px solid #ffffff;
+    }
+    .ops-nav div a {
+        text-decoration: none;
     }
     /*    USER LOGIN */
     .user-login-container p {
@@ -279,15 +288,6 @@ body {
         font-size: 1rem;
         background-color: #FFF8DC;
     }
-    .input-pigging-container .ops-nav div {
-        display: inline;
-        padding: .25rem 1rem;
-        border-radius: 25px;
-        border: 1px solid #ffffff;
-    }
-    .input-pigging-container .ops-nav div a {
-        text-decoration: none;
-    }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
         margin-top: 0;
@@ -342,15 +342,6 @@ body {
     .pigging-schedule-container span.overdue-plus-thirty {
         background-color: #c0c0c0;
     }
-    .pigging-schedule-container .ops-nav div {
-        display: inline;
-        padding: .25rem 1rem;
-        border-radius: 25px;
-        border: 1px solid #ffffff;
-    }
-    .pigging-schedule-container .ops-nav div a {
-        text-decoration: none;
-    }
     /* PREVIOUS LAUNCH */
     .prev-launch-container hr {
         margin: 10px 0 0;
@@ -367,12 +358,6 @@ body {
     }
     .prev-launch-container p.notes {
         color: #F38630;
-    }
-    .prev-launch-container .ops-nav div {
-        display: inline;
-        padding: .25rem 1rem;
-        border-radius: 25px;
-        border: 1px solid #ffffff;
     }
     /* FOREMAN ADMIN MENU*/
     .admin-menu-container {
@@ -466,15 +451,6 @@ body {
     }
     .debris-report-container div.debris-results-list>div.submit-reset {
         border: none;
-    }
-    .debris-report-container .ops-nav div {
-        display: inline;
-        padding: .25rem 1rem;
-        border-radius: 25px;
-        border: 1px solid #ffffff;
-    }
-    .debris-report-container .ops-nav div a {
-        text-decoration: none;
     }
     /*FOREMAN PIGGING ACTIVITY*/
     .pigging-activity-container input[type='radio'] {
@@ -1031,11 +1007,32 @@ body {
     body {
         background-color: antiquewhite;
     }
+    header>div {
+        width: 350px;
+        margin: auto;
+    }
 }
 
 @media only screen and (min-width: 768px) {
     body {
         background-color: #ffffff;
+    }
+    div.main {
+        border-left: 1px dashed #69D2E7;
+        border-right: 1px dashed #69D2E7;
+        border-bottom: 1px dashed #69D2E7;
+    }
+    #pageLogin div.main {
+        border: 0;
+    }
+    .ops-nav {
+        height: 10%
+    }
+    .ops-nav div {
+        padding: 13px;
+    }
+    div.input-pigging-container form#inputPigging {
+        padding-bottom: 2rem;
     }
 }
 
