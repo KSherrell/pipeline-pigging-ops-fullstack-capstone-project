@@ -74,7 +74,8 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0 0;
     }
-    .main {
+    div.main {
+        position: relative;
         width: 100%;
         padding: 50px 10px 0;
         font-size: 1rem;
@@ -140,7 +141,7 @@ body {
     a {
         color: #1f1f1f;
     }
-    .ops-nav {
+    div.ops-nav {
         position: fixed;
         bottom: 0;
         left: 0;
@@ -153,9 +154,9 @@ body {
         background-color: #69D2E7;
         border-top: 3px solid #68baca;
     }
-    .ops-nav div {
-        display: inline;
-        padding: .25rem 1rem;
+    div.ops-nav div {
+        display: inline-block;
+        padding: 13px;
         border-radius: 25px;
         border: 1px solid #ffffff;
     }
@@ -303,7 +304,7 @@ body {
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
-        width: 72%;
+        width: 73%;
     }
     .pigging-schedule-container form div select {
         margin: 0;
@@ -317,7 +318,7 @@ body {
         padding: 0;
         border-radius: 6px;
         width: 100%;
-        height: 2.15rem;
+        height: 2.1rem;
     }
     .pigging-schedule-container hr {
         margin: 10px 0 0;
@@ -328,7 +329,7 @@ body {
     }
     .pigging-schedule-container div.schedule-results span {
         display: inline-block;
-        margin-bottom: 8px;
+        margin-bottom: .55rem;
     }
     .pigging-schedule-container span.due today {
         background-color: #ffffff;
@@ -943,7 +944,7 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0;
     }
-    .main {
+    div.main {
         padding: 50px 15px;
         width: 350px;
         margin: 0 auto;
@@ -1007,9 +1008,26 @@ body {
     body {
         background-color: antiquewhite;
     }
+    div.main {
+        border-left: 1px dashed #69D2E7;
+        border-right: 1px dashed #69D2E7;
+        border-bottom: 1px dashed #69D2E7;
+    }
     header>div {
         width: 350px;
         margin: auto;
+    }
+    #pagePiggingSchedule div.main {
+        padding: 40px 0 1rem;
+        margin-bottom: 5rem;
+    }
+    .pigging-schedule-container form {
+        width: 99%;
+        margin: auto;
+        position: sticky;
+    }
+    .pigging-schedule-container div.schedule-results {
+        margin-top: 1rem;
     }
 }
 
@@ -1025,11 +1043,8 @@ body {
     #pageLogin div.main {
         border: 0;
     }
-    .ops-nav {
+    div.ops-nav {
         height: 10%
-    }
-    .ops-nav div {
-        padding: 13px;
     }
     div.input-pigging-container form#inputPigging {
         padding-bottom: 2rem;
