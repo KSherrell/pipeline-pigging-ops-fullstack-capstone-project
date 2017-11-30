@@ -160,6 +160,10 @@ body {
         border-radius: 25px;
         border: 1px solid #ffffff;
     }
+
+    div.ops-nav div:hover {
+        background-color: #F38630;
+    }
     .ops-nav div a {
         text-decoration: none;
     }
@@ -232,7 +236,7 @@ body {
     }
     /* OPERATOR INPUT PIGGING*/
     #pageInputPigging div.main {
-        padding-bottom: 6rem;
+        padding-bottom: 0;
     }
     .input-pigging-container form input[type='date'] {
         width: 175px;
@@ -1018,6 +1022,17 @@ body {
     body {
         background-color: #ffffff;
     }
+    section {
+        width: 350px;
+        margin: 5% auto;
+    }
+    header {
+        position: relative;
+        margin: 0 auto;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
     div.main {
         border-left: 1px dashed #69D2E7;
         border-right: 1px dashed #69D2E7;
@@ -1037,9 +1052,19 @@ body {
     #pageLogin div.main {
         border: 0;
     }
-    div.ops-nav {
-        height: 10%
+    div.main {
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
+
+    div.ops-nav {
+        position: relative;
+        top: -6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        height: 65px;
+    }
+
     div.input-pigging-container form#inputPigging {
         padding-bottom: 2rem;
     }
@@ -1104,26 +1129,25 @@ body {
         background-color: #ffffff;
     }
     section {
-        width: 350px;
         margin: 5% auto 0;
     }
+/*
     header {
         position: relative;
         margin: 0 auto;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
-    /*
+*/
+
+/*
     div.main {
     padding: 50px 15px;
     width: 350px;
     margin: 0 auto;
 }
 */
-    div.main {
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-    }
+
     #pageLogin div.main,
     #pageLogin div.user-login-container {
         padding: 0 0 3rem;
@@ -1145,5 +1169,11 @@ body {
     }
     #pageUpdateAcct div.main {
         padding: 1rem 15px 0;
+    }
+    #pageInputPigging div.main {
+        padding: 1rem 15px 0;
+    }
+    div.input-pigging-container form#inputPigging{
+        margin-top: 0;
     }
 }

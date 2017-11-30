@@ -17,7 +17,7 @@
 <body>
     <main>
 
-<!--
+        <!--
         <section id="pageLogin">
             <header>
                 <div>
@@ -59,7 +59,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageResetPwd">
             <header>
                 <div>
@@ -90,7 +90,7 @@
 
 
 
-<!--
+        <!--
         <section id="pageCreateAcct">
             <header>
                 <div class="wrapper">
@@ -126,91 +126,96 @@
 
 
 
-<section id="pageUpdateAcct">
-    <header>
-        <div class="wrapper">
-            <h1>Update Account</h1>
-        </div>
-    </header>
-    <div class="main user-account-info-container">
-        <div>
-            <p>User ID: <span class="user-id"></span></p>
-        </div>
-        <hr>
-        <div>
-            <p>Enter updates into fields below.</p>
-        </div>
-        <form id="userUpdateAcct" action="" method="">
-            <div>
-                <label for="firstName">Name</label>
-                <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
-                <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
-            </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="user-email" placeholder="Current Email" required>
-
-            </div>
-            <div>
-                <label for="password" Password>Password</label>
-                <input type="password" id="password" name="user-password" placeholder="Current Password" required>
-                <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
-                <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
-            </div>
-            <div class="buttons">
-                <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
-            </div>
-        </form>
-
-    </div>
-</section>
-
-
-
-
-
-
         <!--
-<section id="pageInputPigging">
+        <section id="pageUpdateAcct">
+            <header>
+                <div class="wrapper">
+                    <h1>Update Account</h1>
+                </div>
+            </header>
+            <div class="main user-account-info-container">
+                <div>
+                    <p>User ID: <span class="user-id"></span></p>
+                </div>
+                <hr>
+                <div>
+                    <p>Enter updates into fields below.</p>
+                </div>
+                <form id="userUpdateAcct" action="" method="">
+                    <div>
+                        <label for="firstName">Name</label>
+                        <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
+                        <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="user-email" placeholder="Current Email" required>
 
-    <header>
-        <div class="wrapper">
-            <h1>Input Pigging</h1>
-            <a href="#"><img src="imgs/exit.png"></a>
-            <a href="#"><img src="imgs/acct-info-wht.png"></a>
-        </div>
-    </header>
+                    </div>
+                    <div>
+                        <label for="password" Password>Password</label>
+                        <input type="password" id="password" name="user-password" placeholder="Current Password" required>
+                        <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
+                        <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                    </div>
+                    <div class="buttons">
+                        <button form="userUpdateAcct" type="submit">Submit</button><button type="button">Cancel</button>
+                    </div>
+                </form>
 
-
-    <div class="main input-pigging-container">
-        <form id="inputPigging" action="" method="">
-            <div>
-                <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
             </div>
-            <div>
-                <select name="pipeline-systems" required>
+        </section>
+-->
+
+
+
+
+
+
+
+        <section id="pageInputPigging">
+
+            <header>
+                <div class="wrapper">
+                    <h1>Input Pigging</h1>
+                    <a href="#"><img src="imgs/exit.png"></a>
+                    <a href="#"><img src="imgs/acct-info-wht.png"></a>
+                </div>
+            </header>
+
+
+            <div class="main input-pigging-container">
+                <form id="inputPigging" action="" method="">
+                    <div>
+                        <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+                    </div>
+                    <div>
+                        <select name="pipeline-systems" required>
                 <option value="select-system">Select Pipeline System</option>
                <option value="system-one">System One</option>
                <option value="system-two">System Two</option>
                <option value="system-three">System Three</option>
                <option value="system-four">System Four</option>
             </select>
-            </div>
-            <div>
-                <select name="pipeline-names" required>
+                    </div>
+                    <div>
+                        <select name="pipeline-names" required>
                 <option value="select-name">Select Pipeline Name</option>
                 <option value="system-one">Name One</option>
                 <option value="system-two">Name Two</option>
                 <option value="system-three">Name Three</option>
                 <option value="system-four">Name Four</option>
             </select>
-            </div>
-            <div>
-                <p class="auto-pop-site-name"></p>
-            </div>
-            <div>
+                    </div>
+                    <div>
+                        <p class="auto-pop-site-name"></p>
+                    </div>
+                    <div>
 
-                <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
+                        <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
+
+
+<!--
                 <div class="select-launch">
                     <div>
                         <p>Time: <span><input type="time" name="launch-time" required></span></p>
@@ -225,8 +230,14 @@
                         </select>
                     </div>
                 </div>
+-->
 
-                <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+
+                        <br/>
+                        <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
+
+
+<!--
                 <div class="select-receive">
                     <div>
                         <p>Time: <span><input type="time" name="receive-time" required></span></p>
@@ -238,8 +249,13 @@
                         <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                     </div>
                 </div>
+-->
 
-                <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+
+                        <br/>
+                        <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
+
+<!--
                 <div class="select-exception">
                     <div>
                         <p>Time: <span><input type="time" name="exception-time" required></span></p>
@@ -254,24 +270,29 @@
                         </select>
                     </div>
                 </div>
-            </div>
-            <div class="textarea">
-                <textarea name="pigging-notes" maxlength="250" rows="12" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
-            </div>
-
-            <div class="buttons">
-                <button form="inputPigging" type="submit">Submit</button>
-            </div>
-
-        </form>
-        <div class="ops-nav">
-            <div>
-                <a href="">Pigging Schedule</a>
-            </div>
-        </div>
-    </div>
-</section>
 -->
+
+                    </div>
+                    <div class="textarea">
+                        <textarea name="pigging-notes" maxlength="250" rows="5" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+                    </div>
+
+                    <div class="buttons">
+                        <button form="inputPigging" type="submit">Submit</button>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="ops-nav">
+                <div>
+                    <a href="">Pigging Schedule</a>
+                </div>
+            </div>
+        </section>
+
 
 
 
