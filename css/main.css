@@ -6,7 +6,6 @@ html {}
     margin: 0;
     font-size: 100%;
     border: 0;
-    border: 0px solid red;
 }
 
 body {
@@ -74,7 +73,7 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0 0;
     }
-    div.main {
+    section.main {
         position: relative;
         width: 100%;
         padding: 50px 10px 0;
@@ -234,7 +233,7 @@ body {
         margin: 2rem auto;
     }
     /* OPERATOR INPUT PIGGING*/
-    #pageInputPigging div.main {
+    #pageInputPigging section {
         padding-bottom: 0;
     }
     .input-pigging-container form input[type='date'] {
@@ -655,7 +654,7 @@ body {
         margin: 0 2%;
     }
     /* FOREMAN ADD PIPELINE */
-    #pageAddPipeline div.main {
+    #pageAddPipeline section {
         padding-bottom: 5rem;
     }
     .add-pipeline-container form {
@@ -742,7 +741,7 @@ body {
         border-top: 1px solid #E0E4CC;
     }
     /* FOREMAN UPDATE PIPELINE */
-    #pageUpdatePipeline div.main {
+    #pageUpdatePipeline section {
         padding-top: 1rem;
         padding-bottom: 4.5rem;
     }
@@ -928,9 +927,6 @@ body {
     }
     header.foreman-header h1 {
         font-size: 1.4rem;
-        float: left;
-        color: #ffffff;
-        text-shadow: 1px 1px 0 #1f1f1f;
         margin-top: .7rem;
     }
     header.foreman-header img {
@@ -943,7 +939,7 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0;
     }
-    div.main {
+    section.main {
         padding: 50px 15px;
         width: 350px;
         margin: 0 auto;
@@ -958,7 +954,7 @@ body {
         padding-top: 2rem;
     }
     /* ADMIN MENU */
-    #pageAdminMenu div.main {
+    #pageAdminMenu section {
         padding-top: 4rem;
     }
     /* PIGGING SCHEDULE*/
@@ -974,7 +970,7 @@ body {
         width: 100%;
     }
     /* DEBRIS REPORTS*/
-    #pageDebrisReport div.main {
+    #pageDebrisReport section {
         padding: 0;
     }
     .debris-report-container form {
@@ -995,7 +991,7 @@ body {
     .debris-report-container div.debris-results div.submit-reset {
         padding: 2rem 0;
     }
-    #pageViewHistory div.main {
+    #pageViewHistory section {
         padding-top: 1rem;
     }
     .view-history-container form div select {
@@ -1026,15 +1022,15 @@ body {
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
-    div.main {
+    section {
         border-left: 1px dashed #69D2E7;
         border-right: 1px dashed #69D2E7;
         border-bottom: 1px dashed #69D2E7;
     }
-    #pageLogin div.main {
+    section.user-login-container {
         border: 0;
     }
-    div.main {
+    section {
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
@@ -1048,7 +1044,7 @@ body {
     div.input-pigging-container form#inputPigging {
         padding-bottom: 2rem;
     }
-    #pagePiggingSchedule div.main {
+    #pagePiggingSchedule section {
         height: 750px;
         padding: 0;
         margin-bottom: 0;
@@ -1075,7 +1071,7 @@ body {
     .debris-report-container div.debris-results-list {
         margin-top: 4rem;
     }
-    #pagePiggingActivity div.main {
+    #pagePiggingActivity section {
         padding: 50px 15px 0;
     }
     .pigging-activity-container div.pigging-activity-results div:first-child {
@@ -1090,7 +1086,7 @@ body {
     .view-history-container div.history-results {
         margin-top: 2rem;
     }
-    #pageAddPipeline div.main {
+    #pageAddPipeline section {
         padding-bottom: 1rem;
         margin-bottom: 4rem;
     }
@@ -1098,7 +1094,7 @@ body {
         width: 350px;
         margin: auto;
     }
-    #pageUpdatePipeline div.main {
+    #pageUpdatePipeline section {
         padding-top: 2rem;
         padding-bottom: 0;
     }
@@ -1120,13 +1116,13 @@ body {
     }
 */
     /*
-    div.main {
+    section {
     padding: 50px 15px;
     width: 350px;
     margin: 0 auto;
 }
 */
-    #pageLogin div.main,
+    section.user-login-container,
     #pageLogin div.user-login-container {
         padding: 0 0 3rem;
         border-left: 1px dashed #69D2E7;
@@ -1142,22 +1138,22 @@ body {
         margin-top: 0;
         padding-top: 1.5rem;
     }
-    #pageCreateAcct div.main {
+    #pageCreateAcct section {
         padding: 1rem 15px 3rem;
     }
-    #pageUpdateAcct div.main {
+    #pageUpdateAcct section {
         padding: 1rem 15px 0;
     }
-    #pageInputPigging div.main {
+    #pageInputPigging section {
         padding: 1rem 15px 0;
     }
     div.input-pigging-container form#inputPigging {
         margin-top: 0;
     }
-    #pagePrevLaunch div.main {
+    #pagePrevLaunch section {
         padding: 1rem 15px 2rem;
     }
-    #pageAdminMenu div.main {
+    #pageAdminMenu section {
         padding: 2rem 15px;
     }
 }
