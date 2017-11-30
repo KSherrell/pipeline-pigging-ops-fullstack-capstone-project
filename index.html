@@ -173,6 +173,7 @@
 
 
 
+        <!--
         <section id="pageInputPigging">
 
             <header>
@@ -214,8 +215,6 @@
 
                         <input type="radio" name="radio-pig-activity" id="radio-launch" value="launch" checked="checked" required><label for="radio-launch">Launch</label>
 
-
-<!--
                 <div class="select-launch">
                     <div>
                         <p>Time: <span><input type="time" name="launch-time" required></span></p>
@@ -230,14 +229,12 @@
                         </select>
                     </div>
                 </div>
--->
 
 
                         <br/>
                         <input type="radio" name="radio-pig-activity" id="radio-receive" value="receive" required><label for="radio-receive">Receive</label>
 
 
-<!--
                 <div class="select-receive">
                     <div>
                         <p>Time: <span><input type="time" name="receive-time" required></span></p>
@@ -249,13 +246,11 @@
                         <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                     </div>
                 </div>
--->
 
 
                         <br/>
                         <input type="radio" name="radio-pig-activity" id="radio-exception" value="exception" required><label for="radio-exception">Exception</label>
 
-<!--
                 <div class="select-exception">
                     <div>
                         <p>Time: <span><input type="time" name="exception-time" required></span></p>
@@ -270,7 +265,6 @@
                         </select>
                     </div>
                 </div>
--->
 
                     </div>
                     <div class="textarea">
@@ -292,10 +286,7 @@
                 </div>
             </div>
         </section>
-
-
-
-
+-->
 
 
 
@@ -334,15 +325,13 @@
                     <p>Last Recorded Notes: </p>
                     <p class="notes ">(notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page. (notes up to 250 characters)blah blah blah some text here lorem ipsum stuff for sure so i can test the margins of the elements on this page.</p>
                 </div>
-                <div class="ops-nav ">
-                    <div><a href="# ">Back</a></div>
-                </div>
+
+            </div>
+            <div class="ops-nav ">
+                <div><a href="# ">Back</a></div>
             </div>
         </section>
 -->
-
-
-
 
 
 
@@ -376,13 +365,9 @@
 
 
 
+        <section id="pagePiggingSchedule">
 
-
-
-
-        <!--
-<section id="pagePiggingSchedule">
-
+            <!--
     <header class="foreman-header ">
         <div>
             <a href="# "><img src="imgs/admin-menu-wht.png "></a>
@@ -391,66 +376,81 @@
             <a href="# "><img src="imgs/acct-info-wht.png "></a>
         </div>
     </header>
+-->
 
-    <header>
-        <div>
-            <h1>Pigging Schedule</h1>
-            <a href="# "><img src="imgs/exit.png "></a>
-            <a href="# "><img src="imgs/acct-info-wht.png "></a>
-        </div>
-    </header>
-    <div class="main pigging-schedule-container ">
-        <form id="piggingSchedule " action=" " method=" ">
-            <div>
-                <select name="pipeline-systems " required>
+            <header>
+                <div>
+                    <h1>Pigging Schedule</h1>
+                    <a href="# "><img src="imgs/exit.png "></a>
+                    <a href="# "><img src="imgs/acct-info-wht.png "></a>
+                </div>
+            </header>
+            <div class="main pigging-schedule-container ">
+                <form id="piggingSchedule " action=" " method=" ">
+                    <div>
+                        <select name="pipeline-systems " required>
                     <option value="select-system ">Select Pipeline System</option>
                     <option value="system-one ">System One</option>
                     <option value="system-two ">System Two</option>
                     <option value="system-three ">System Three</option>
                     <option value="system-four ">System Four</option>
                 </select>
+                    </div>
+                    <div>
+                        <button form="piggingSchedule" type="submit ">Submit</button>
+                    </div>
+                    <hr>
+                </form>
+
+                <div class="schedule-results">
+
+                    <p class="due-today"><a href=" ">Pipeline Name One</a></p>
+                    <p><span class="due-today"><a href=" ">Pipeline Name Two</a></span></p>
+                    <p><span class="due-today"><a href=" ">Pipeline Name Three</a></span></p>
+                    <p><span class="due-today"><a href=" ">Pipeline Name Four</a></span></p>
+                    <p><span class="due-today"><a href=" ">Pipeline Name Five</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Six</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Seven</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Eight</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Nine</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Ten</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Eleven</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Twelve</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Thirteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Fourteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Fifteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Sixteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Seventeen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Eighteen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Nineteen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Twenty</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Eight</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Nine</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Ten</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Eleven</a></span></p>
+                    <p><span class="due-in-seven"><a href=" ">Pipeline Name Twelve</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Thirteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Fourteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Fifteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Sixteen</a></span></p>
+                    <p><span class="overdue-within-thirty"><a href=" ">Pipeline Name Seventeen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Eighteen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Nineteen</a></span></p>
+                    <p><span class="overdue-plus-thirty"><a href=" ">Pipeline Name Twenty</a></span></p>
+                </div>
             </div>
-            <div>
-                <button form="piggingSchedule " type="submit ">Submit</button>
+
+            <div class="ops-nav">
+                <div><a href="# ">Input Pigging</a></div>
             </div>
-            <hr>
-        </form>
 
-        <div class="schedule-results ">
-
-            <p><span class="due-today "><a href=" ">Pipeline Name One</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Two</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Three</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Four</a></span></p>
-            <p><span class="due-today "><a href=" ">Pipeline Name Five</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Six</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Seven</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eight</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Nine</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Ten</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Eleven</a></span></p>
-            <p><span class="due-in-seven "><a href=" ">Pipeline Name Twelve</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Thirteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fourteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Fifteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Sixteen</a></span></p>
-            <p><span class="overdue-within-thirty "><a href=" ">Pipeline Name Seventeen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Eighteen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Nineteen</a></span></p>
-            <p><span class="overdue-plus-thirty "><a href=" ">Pipeline Name Twenty</a></span></p>
-        </div>
-
-        <div class="ops-nav">
-            <div><a href="# ">Input Pigging</a></div>
-        </div>
-
-        <div class="ops-nav">
-            <div><a href="# ">Debris Reports</a></div>
-        </div>
-
-    </div>
-</section>
+            <!--
+            <div class="ops-nav">
+                <div><a href="# ">Debris Reports</a></div>
+            </div>
 -->
+        </section>
+
 
 
 
