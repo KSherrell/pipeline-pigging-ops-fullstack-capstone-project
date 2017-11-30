@@ -1105,7 +1105,7 @@ body {
     }
     section {
         width: 350px;
-        margin: 5% auto;
+        margin: 5% auto 0;
     }
     header {
         position: relative;
@@ -1113,6 +1113,13 @@ body {
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
+    /*
+    div.main {
+    padding: 50px 15px;
+    width: 350px;
+    margin: 0 auto;
+}
+*/
     div.main {
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
@@ -1132,5 +1139,11 @@ body {
     .user-login-container form div {
         margin-top: 0;
         padding-top: 1.5rem;
+    }
+    #pageCreateAcct div.main {
+        padding: 1rem 15px 3rem;
+    }
+    #pageUpdateAcct div.main {
+        padding: 1rem 15px 0;
     }
 }
