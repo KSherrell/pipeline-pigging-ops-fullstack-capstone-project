@@ -13,7 +13,7 @@ body {
     color: #1F1F1F;
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 200px) {
     body {
         font-size: 14px;
         font-family: 'Monda', sans-serif;
@@ -1008,6 +1008,11 @@ body {
         width: 350px;
         margin: auto;
     }
+    .pigging-schedule-container form {
+        position: sticky;
+        width: 350px;
+        top: 44px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -1052,8 +1057,11 @@ body {
     .pigging-schedule-container form {
         width: 99%;
         margin: 0 auto;
-        position: sticky;
         top: 0;
+    }
+    .pigging-schedule-container div.schedule-results {
+        margin: 1rem 0;
+        padding-left: 15px;
     }
     form#debrisReport {
         padding-left: 1rem;
