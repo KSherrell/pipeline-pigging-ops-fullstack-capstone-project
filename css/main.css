@@ -18,6 +18,7 @@ html {}
         position: relative;
         width: 100%;
         padding: 0 10px;
+        border: 1px solid red;
     }
     header {
         position: fixed;
@@ -65,8 +66,8 @@ html {}
         margin: .5rem .5rem 0 0;
     }
     section {
-        margin-top: 46px;
-        border: 0px solid red;
+        margin-top: 45px;
+        border: 1px solid purple;
     }
     h3 {
         font-size: 1rem;
@@ -118,9 +119,6 @@ html {}
     }
     button:active {
         box-shadow: inset 3px 3px 3px #1F1F1F;
-    }
-    button:focus {
-        outline: none;
     }
     a {
         color: #1f1f1f;
@@ -179,18 +177,14 @@ html {}
     }
     /*    USER RESET PASSWORD*/
     .user-reset-password-container form {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
     .user-reset-password-container div p {
-        width: 85%;
-        margin: 1rem auto;
+        margin: 1rem;
     }
     .user-reset-password-container hr {
         width: 85%;
         margin: 1.5rem auto;
-    }
-    .user-reset-password-container form input[type='password'] {
-        padding-left: 5px;
     }
     .user-reset-password-container .buttons {
         margin: 2rem auto 0;
@@ -909,7 +903,6 @@ html {}
     main {
         width: 350px;
         margin: auto;
-        border: 1px solid red;
     }
     header {}
     header>div {
