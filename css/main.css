@@ -978,6 +978,12 @@ html {}
 }
 
 @media only screen and (min-width: 414px) {
+    main {
+        border: 1px dashed #69D2E7;
+        border-top: none;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
     .pigging-schedule-container form {
         position: sticky;
         width: 350px;
@@ -988,6 +994,7 @@ html {}
 @media only screen and (min-width: 768px) {
     main {
         margin: 3% auto;
+        border: none;
     }
     header {
         position: relative;
@@ -996,6 +1003,7 @@ html {}
         border-top-right-radius: 6px;
     }
     section {
+        padding: 10px 10px 0;
         margin-top: 0;
         border: 1px dashed #69D2E7;
         border-top: none;
