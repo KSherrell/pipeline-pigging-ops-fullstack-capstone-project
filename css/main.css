@@ -46,11 +46,11 @@ html {}
         text-shadow: 2px 1px 0 #156d7f;
     }
     header.foreman-header h1 {
-        font-size: 1.35rem;
+        font-size: 1.4rem;
         float: left;
         color: #fff;
         text-shadow: 1px 1px 0 #1f1f1f;
-        margin: .65rem 0 0;
+        margin: .7rem 0 0;
         padding-left: .25rem;
         padding-top: 0;
     }
@@ -76,7 +76,6 @@ html {}
         font-size: 1.1rem;
         padding: .5rem 0 0;
     }
-
     form div input,
     form div select,
     p.auto-pop-site-name {
@@ -907,13 +906,17 @@ html {}
 }
 
 @media only screen and (min-width: 375px) {
-    header h1 {
-        font-size: 1.5rem;
+    main {
+        width: 350px;
+        margin: auto;
+        border: 1px solid red;
     }
-    header.foreman-header h1 {
-        font-size: 1.4rem;
-        margin-top: .7rem;
+    header {}
+    header>div {
+        width: 350px;
+        margin: auto;
     }
+    /*
     header.foreman-header img {
         margin: .5rem .75rem 0;
         float: right;
@@ -924,16 +927,14 @@ html {}
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0;
     }
-    section {
-        padding: 50px 15px;
-        width: 350px;
-        margin: 0 auto;
-    }
+*/
+    /*
     form div input,
     form div select,
     p.auto-pop-site-name {
         margin-top: 1rem;
     }
+*/
     /* OPERATOR INPUT PIGGING*/
     div.input-pigging-container {
         padding-top: 2rem;
@@ -985,10 +986,6 @@ html {}
 }
 
 @media only screen and (min-width: 414px) {
-    header>div {
-        width: 350px;
-        margin: auto;
-    }
     .pigging-schedule-container form {
         position: sticky;
         width: 350px;
@@ -998,7 +995,6 @@ html {}
 
 @media only screen and (min-width: 768px) {
     main {
-        width: 350px;
         margin: 3% auto;
     }
     header {
@@ -1008,16 +1004,19 @@ html {}
         border-top-right-radius: 6px;
     }
     section {
-        border-left: 1px dashed #69D2E7;
-        border-right: 1px dashed #69D2E7;
-        border-bottom: 1px dashed #69D2E7;
-    }
-    section.user-login-container {
-        border: 0;
-    }
-    section {
+        margin-top: 0;
+        border: 1px dashed #69D2E7;
+        border-top: none;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
+    }
+    /*    USER LOGIN    */
+    section.user-login-container {
+        border: 0;
+        margin-top: 1rem;
+    }
+    .user-login-container form#userLogin {
+        margin-top: 0;
     }
     div.ops-nav {
         position: relative;
@@ -1107,21 +1106,8 @@ html {}
     margin: 0 auto;
 }
 */
-    section.user-login-container,
-    #pageLogin div.user-login-container {
-        padding: 0 0 3rem;
-        border-left: 1px dashed #69D2E7;
-        border-right: 1px dashed #69D2E7;
-        border-bottom: 1px dashed #69D2E7;
-    }
-    .user-login-container form {
-        border: 0;
-        margin-top: 0;
-        height: auto;
-    }
-    .user-login-container form div {
-        margin-top: 0;
-        padding-top: 1.5rem;
+    main#pageLogin {
+        margin: 5% auto;
     }
     #pageCreateAcct section {
         padding: 1rem 15px 3rem;
