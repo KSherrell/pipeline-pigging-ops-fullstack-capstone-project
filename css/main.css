@@ -26,26 +26,25 @@ html {}
         left: 0;
         height: 45px;
         width: 100%;
-        padding: 10px 0 0 15px;
+        padding: 8px;
         z-index: 1;
         background-color: #69D2E7;
         border-bottom: 3px solid #68baca;
     }
     header>div {}
-    header img {
-        margin: 10px .3rem 10px 0;
-        float: right;
-    }
-    header a:nth-of-type(2) img {
-        margin: 10px 1rem 10px 0;
-    }
     header h1 {
         font-size: 1.5rem;
         float: left;
         margin: 0 auto;
         color: #fff;
-        /*        text-shadow: 2px 1px 0 #156d7f;*/
         text-shadow: 1px 1px 0 #1f1f1f;
+    }
+    header div div {
+        width: 67px;
+        float: right;
+    }
+    header img:first-of-type {
+        margin-right: 13px;
     }
     header.foreman-header h1 {
         font-size: 1.4rem;
@@ -69,6 +68,12 @@ html {}
     section {
         margin-top: 45px;
         border: 1px solid purple;
+    }
+    section::-webkit-scrollbar {
+        width: 5em;
+    }
+    section::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
     }
     h3 {
         font-size: 1rem;
@@ -906,7 +911,6 @@ html {}
         width: 350px;
         margin: auto;
     }
-    header {}
     header>div {
         width: 350px;
         margin: auto;
@@ -987,6 +991,9 @@ html {}
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
+    section {
+        padding: 10px 10px 0;
+    }
     .user-create-account-container div.buttons {
         margin: 2rem auto;
     }
@@ -1013,17 +1020,9 @@ html {}
     }
     section {
         width: 100%;
-        padding: 10px 10px 0;
         margin-top: 0;
         border: 1px dashed #69D2E7;
         border-top: none;
-    }
-    section::-webkit-scrollbar {
-        width: .5em;
-    }
-    section::-webkit-scrollbar-thumb {
-        background-color: darkgrey;
-        height: 3vh;
     }
     div.ops-nav {
         position: relative;
@@ -1041,10 +1040,6 @@ html {}
         margin-top: 0;
     }
     /*    INPUT PIGGING   */
-    section.input-pigging-container {
-        height: 70vh;
-        overflow-y: scroll;
-    }
     .input-pigging-container div.buttons {
         margin: 2rem auto;
     }
