@@ -8,15 +8,16 @@ html {}
     border: 0;
 }
 
-body {
-    color: #1F1F1F;
-}
-
 @media only screen and (min-width: 200px) {
     body {
-        font-size: 14px;
+        font-size: 16px;
         font-family: 'Monda', sans-serif;
         background-color: #ffffff;
+    }
+    main {
+        position: relative;
+        width: 100%;
+        padding: 0 10px;
     }
     header {
         position: fixed;
@@ -24,10 +25,12 @@ body {
         left: 0;
         height: 45px;
         width: 100%;
+        padding: 10px 0 0 15px;
         z-index: 1;
         background-color: #69D2E7;
         border-bottom: 3px solid #68baca;
     }
+    header>div {}
     header img {
         margin: 10px .3rem 10px 0;
         float: right;
@@ -35,29 +38,17 @@ body {
     header a:nth-of-type(2) img {
         margin: 10px 1rem 10px 0;
     }
-    h1 {
+    header h1 {
         font-size: 1.5rem;
-        font-family: 'Monda', sans-serif;
-        font-weight: normal;
         float: left;
         margin: 0 auto;
-        padding-left: .75rem;
-        padding-top: 10px;
         color: #fff;
-        text-shadow: 1px 1px 0 #156d7f;
-    }
-    h3 {
-        font-size: 1rem;
-        padding: 1rem 0;
-    }
-    h2 {
-        font-size: 1.1rem;
-        padding: .5rem 0 0;
+        text-shadow: 2px 1px 0 #156d7f;
     }
     header.foreman-header h1 {
         font-size: 1.35rem;
         float: left;
-        color: #ffffff;
+        color: #fff;
         text-shadow: 1px 1px 0 #1f1f1f;
         margin: .65rem 0 0;
         padding-left: .25rem;
@@ -73,24 +64,19 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0 0;
     }
-    section.main {
-        position: relative;
-        width: 100%;
-        padding: 50px 10px 0;
+    section {
+        margin-top: 46px;
+        border: 0px solid red;
+    }
+    h3 {
         font-size: 1rem;
+        padding: 1rem 0;
     }
-    p {
-        margin-top: 10px;
-    }
-    form {
-        margin-top: 2rem;
-    }
-    label {
+    h2 {
         font-size: 1.1rem;
+        padding: .5rem 0 0;
     }
-    form div {
-        margin-top: 2rem;
-    }
+
     form div input,
     form div select,
     p.auto-pop-site-name {
@@ -99,7 +85,7 @@ body {
         width: 100%;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
-        padding: 0 0 0 .5rem;
+        padding: 0 .5rem;
         margin-top: .7rem;
     }
     form div input:first-of-type {
@@ -112,7 +98,7 @@ body {
     }
     button {
         display: inline-block;
-        margin: 0 8%;
+        margin: 0 25px;
         padding: 13px;
         font-family: 'Monda', sans-serif;
         color: #1f1f1f;
@@ -166,23 +152,22 @@ body {
         text-decoration: none;
     }
     /*    USER LOGIN */
-    .user-login-container p {
-        margin-top: 2.5rem;
-        text-align: center;
-    }
-    .user-login-container p+p {
-        margin-top: 1.75rem;
-    }
     .user-login-container form {
-        border: 2px solid #A7DBD8;
-        margin-top: 2.5rem;
-        padding: 0 1.5rem;
-        height: 19rem;
-        font-size: .9rem;
+        border: 1px solid #A7DBD8;
+        padding: 1rem;
     }
-    .user-login-container form#forgotPassword {
-        margin-top: 1rem;
-        height: 12rem;
+    .user-login-container form#userLogin {
+        margin-top: 65px;
+    }
+    .user-login-container form div+div {
+        margin-top: 1.5rem;
+    }
+    .user-login-container form+div {
+        margin-top: 2rem;
+    }
+    .user-login-container p {
+        text-align: center;
+        margin: 1.5rem 0;
     }
     .user-login-container a {
         color: #20aac5;
@@ -191,7 +176,7 @@ body {
         color: #FA6900;
     }
     .user-login-container .buttons {
-        margin: 2rem auto 0;
+        margin: 1rem auto 0;
     }
     /*    USER RESET PASSWORD*/
     .user-reset-password-container form {
@@ -939,7 +924,7 @@ body {
     header.foreman-header a:nth-of-type(2) img {
         margin: .5rem .5rem 0;
     }
-    section.main {
+    section {
         padding: 50px 15px;
         width: 350px;
         margin: 0 auto;
