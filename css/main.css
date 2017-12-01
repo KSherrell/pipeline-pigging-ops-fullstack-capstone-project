@@ -305,16 +305,16 @@ html {}
     .pigging-schedule-container div.schedule-results p {
         margin-bottom: 1rem;
     }
-    .pigging-schedule-container span.due today {
+    .pigging-schedule-container p.due today {
         background-color: #ffffff;
     }
-    .pigging-schedule-container span.due-in-seven {
+    .pigging-schedule-container p.due-in-seven {
         background-color: #ffe552;
     }
-    .pigging-schedule-container span.overdue-within-thirty {
+    .pigging-schedule-container p.overdue-within-thirty {
         background-color: #ee7777;
     }
-    .pigging-schedule-container span.overdue-plus-thirty {
+    .pigging-schedule-container p.overdue-plus-thirty {
         background-color: #c0c0c0;
     }
     /* PREVIOUS LAUNCH */
@@ -966,6 +966,9 @@ html {}
         position: sticky;
         top: 44px;
     }
+    .pigging-schedule-container div.schedule-results {
+        margin: 0 0 75px;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -1021,14 +1024,13 @@ html {}
         overflow-y: scroll;
     }
     .pigging-schedule-container form {
-        width: 99%;
-        margin: 0 auto;
         top: 0;
     }
     .pigging-schedule-container div.schedule-results {
-        margin: 1rem 0;
-        padding-left: 15px;
+        padding:0 15px;
+        margin-bottom: auto;
     }
+
     /*    DEBRIS REPORT   */
     form#debrisReport {
         padding-left: 1rem;
