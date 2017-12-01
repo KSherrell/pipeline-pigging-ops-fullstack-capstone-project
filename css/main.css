@@ -350,25 +350,15 @@ html {}
         border-right: 1px solid #A7DBD8;
     }
     /* DEBRIS REPORTS*/
-    div.debris-report-container {
-        padding-top: 2rem;
-    }
-    .debris-report-container form div input[type='radio'] {
+
+  .debris-report-container form div input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
-        margin: 0;
+        margin: 1.5rem 10px 0 0;
     }
-    .debris-report-container form div label {
-        margin-left: 10px;
-    }
-    .debris-report-container form div div,
-    .debris-report-container form div select {
-        margin-top: .5rem
-    }
-    .debris-report-container form {
-        padding: 0;
-    }
+
+
     .debris-report-container hr {
         margin: 10px 0 0;
     }
@@ -998,7 +988,6 @@ html {}
         border-bottom-right-radius: 6px;
         height: 65px;
     }
-
     /*    USER LOGIN    */
     section.user-login-container {
         border: 0;
@@ -1027,10 +1016,9 @@ html {}
         top: 0;
     }
     .pigging-schedule-container div.schedule-results {
-        padding:0 15px;
+        padding: 0 15px;
         margin-bottom: auto;
     }
-
     /*    DEBRIS REPORT   */
     form#debrisReport {
         padding-left: 1rem;
