@@ -268,6 +268,9 @@ html {}
         font-size: 1rem;
         background-color: #FFF8DC;
     }
+    .input-pigging-container div.buttons {
+        margin: 2rem auto 75px;
+    }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
         margin-top: 0;
@@ -985,7 +988,7 @@ html {}
         border-bottom-right-radius: 6px;
     }
     .user-create-account-container div.buttons {
-            margin: 2rem auto;
+        margin: 2rem auto;
     }
     .user-reset-password-container div.buttons {
         margin: 2rem auto;
@@ -999,7 +1002,7 @@ html {}
 
 @media only screen and (min-width: 768px) {
     main {
-        margin: 3% auto;
+        margin: 5vh auto;
         border: none;
     }
     header {
@@ -1009,12 +1012,25 @@ html {}
         border-top-right-radius: 6px;
     }
     section {
+        width: 100%;
         padding: 10px 10px 0;
         margin-top: 0;
         border: 1px dashed #69D2E7;
         border-top: none;
+    }
+    section::-webkit-scrollbar {
+        width: .5em;
+    }
+    section::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        height: 3vh;
+    }
+    div.ops-nav {
+        position: relative;
+        top: -6px;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
+        height: 65px;
     }
     /*    USER LOGIN    */
     section.user-login-container {
@@ -1024,18 +1040,17 @@ html {}
     .user-login-container form#userLogin {
         margin-top: 0;
     }
-    div.ops-nav {
-        position: relative;
-        top: -6px;
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
-        height: 65px;
+    /*    INPUT PIGGING   */
+    section.input-pigging-container {
+        height: 70vh;
+        overflow-y: scroll;
     }
-    div.input-pigging-container form#inputPigging {
-        padding-bottom: 2rem;
+    .input-pigging-container div.buttons {
+        margin: 2rem auto;
     }
+    /*    PIGGING SCHEDULE   */
     #pagePiggingSchedule section {
-        height: 750px;
+        height: 70vh;
         padding: 0;
         margin-bottom: 0;
         overflow-y: scroll;
@@ -1049,6 +1064,7 @@ html {}
         margin: 1rem 0;
         padding-left: 15px;
     }
+    /*    DEBRIS REPORT   */
     form#debrisReport {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -1095,7 +1111,7 @@ html {}
 
 @media only screen and (min-width: 1024px) {
     main {
-        margin: 3% auto 0;
+        margin: 3vh auto 0;
     }
     /*
     header {
@@ -1113,7 +1129,7 @@ html {}
 }
 */
     main#pageLogin {
-        margin: 5% auto;
+        margin: 5vh auto;
     }
     #pageUpdateAcct section {
         padding: 1rem 15px 0;
