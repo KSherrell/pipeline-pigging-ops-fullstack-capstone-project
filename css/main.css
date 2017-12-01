@@ -331,10 +331,11 @@ html {}
     }
     /* PREVIOUS LAUNCH */
     .prev-launch-container hr {
-        margin: 10px 0 0;
+        width: 85%;
+        margin: 1rem auto 2rem;
     }
     .prev-launch-container div+div {
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
     .prev-launch-container span:nth-child(2) {
         color: #FA6900;
@@ -345,10 +346,11 @@ html {}
     }
     .prev-launch-container p.notes {
         color: #F38630;
+        padding-bottom: 1rem;
     }
     /* FOREMAN ADMIN MENU*/
-    .admin-menu-container {
-        margin-top: 1rem;
+    section.admin-menu-container {
+        margin-top: 3.5rem;
     }
     .admin-menu-container div p {
         margin: 0 auto 1rem;
@@ -358,9 +360,6 @@ html {}
         border-radius: 10px;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
-    }
-    .admin-menu-container div a {
-        text-decoration: none;
     }
     /* DEBRIS REPORTS*/
     div.debris-report-container {
@@ -934,14 +933,7 @@ html {}
         margin-top: 1rem;
     }
 */
-    /* OPERATOR INPUT PIGGING*/
-    div.input-pigging-container {
-        padding-top: 2rem;
-    }
     /* ADMIN MENU */
-    #pageAdminMenu section {
-        padding-top: 4rem;
-    }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
         font-size: 1rem;
@@ -987,7 +979,6 @@ html {}
 @media only screen and (min-width: 414px) {
     main {
         border: 1px dashed #69D2E7;
-        border-top: none;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
@@ -1042,6 +1033,11 @@ html {}
     /*    INPUT PIGGING   */
     .input-pigging-container div.buttons {
         margin: 2rem auto;
+    }
+    /*    ADMIN MENU   */
+    section.admin-menu-container {
+        margin-top: 0;
+        padding-top: 1rem;
     }
     /*    PIGGING SCHEDULE   */
     #pagePiggingSchedule section {
@@ -1105,9 +1101,6 @@ html {}
 }
 
 @media only screen and (min-width: 1024px) {
-    main {
-        margin: 3vh auto 0;
-    }
     /*
     header {
         position: relative;
@@ -1138,7 +1131,9 @@ html {}
     #pagePrevLaunch section {
         padding: 1rem 15px 2rem;
     }
+    /*
     #pageAdminMenu section {
         padding: 2rem 15px;
     }
+*/
 }
