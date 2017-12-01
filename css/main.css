@@ -44,7 +44,8 @@ html {}
         float: left;
         margin: 0 auto;
         color: #fff;
-        text-shadow: 2px 1px 0 #156d7f;
+        /*        text-shadow: 2px 1px 0 #156d7f;*/
+        text-shadow: 1px 1px 0 #1f1f1f;
     }
     header.foreman-header h1 {
         font-size: 1.4rem;
@@ -94,7 +95,7 @@ html {}
     .buttons {
         width: 100%;
         text-align: center;
-        margin: 0 auto;
+        margin: 2rem auto 0;
     }
     button {
         display: inline-block;
@@ -186,28 +187,26 @@ html {}
         width: 85%;
         margin: 1.5rem auto;
     }
-    .user-reset-password-container .buttons {
-        margin: 2rem auto 0;
-    }
     /* USER CREATE ACCOUNT */
     .user-create-account-container p {
         margin: 1rem 0 0;
         color: red;
     }
-    .user-create-account-container input {
-        padding-left: .5rem;
-    }
-    .user-create-account-container .buttons {
-        margin: 2rem auto 0;
+    form#userCreateAcct>div {
+        margin-top: 2rem;
     }
     /* USER UPDATE ACCOUNT INFO */
-    .user-account-info-container form {
-        padding: 0;
+    .user-update-account-container p {
+        margin: 1rem 0;
     }
-    .user-account-info-container input {
-        padding-left: 5px;
+    .user-update-account-container hr {
+        width: 85%;
+        margin: 1.5rem auto;
     }
-    .user-account-info-container .buttons {
+    form#userUpdateAcct>div {
+        margin-top: 2rem;
+    }
+    .user-update-account-container div.buttons {
         margin: 2rem auto;
     }
     /* OPERATOR INPUT PIGGING*/
