@@ -189,10 +189,10 @@ html {}
     }
     /* USER CREATE ACCOUNT */
     .user-create-account-container p {
-        margin: 1rem 0 0;
+        margin: 1rem 0 2rem;
         color: red;
     }
-    form#userCreateAcct>div {
+    form#userCreateAcct>div+div {
         margin-top: 2rem;
     }
     /* USER UPDATE ACCOUNT INFO */
@@ -984,6 +984,12 @@ html {}
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
+    .user-create-account-container div.buttons {
+            margin: 2rem auto;
+    }
+    .user-reset-password-container div.buttons {
+        margin: 2rem auto;
+    }
     .pigging-schedule-container form {
         position: sticky;
         width: 350px;
@@ -1108,9 +1114,6 @@ html {}
 */
     main#pageLogin {
         margin: 5% auto;
-    }
-    #pageCreateAcct section {
-        padding: 1rem 15px 3rem;
     }
     #pageUpdateAcct section {
         padding: 1rem 15px 0;
