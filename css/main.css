@@ -47,30 +47,18 @@ html {}
         margin-right: 13px;
     }
     header.foreman-header h1 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+    }
+    header.foreman-header img:first-of-type {
         float: left;
-        color: #fff;
-        text-shadow: 1px 1px 0 #1f1f1f;
-        margin: .7rem 0 0;
-        padding-left: .25rem;
-        padding-top: 0;
-    }
-    header.foreman-header img {
-        margin: .5rem .5rem 0;
-        float: right;
-    }
-    header.foreman-header a:first-child img {
-        float: left;
-    }
-    header.foreman-header a:nth-of-type(2) img {
-        margin: .5rem .5rem 0 0;
+        margin-right: 10px;
     }
     section {
         margin-top: 45px;
         border: 1px solid purple;
     }
     section::-webkit-scrollbar {
-        width: 5em;
+        width: .5em;
     }
     section::-webkit-scrollbar-thumb {
         background-color: darkgrey;
@@ -914,26 +902,9 @@ html {}
         width: 350px;
         margin: auto;
     }
-    /*
-    header.foreman-header img {
-        margin: .5rem .75rem 0;
-        float: right;
+    header.foreman-header h1 {
+        font-size: 1.5rem;
     }
-    header.foreman-header a:first-child img {
-        float: left;
-    }
-    header.foreman-header a:nth-of-type(2) img {
-        margin: .5rem .5rem 0;
-    }
-*/
-    /*
-    form div input,
-    form div select,
-    p.auto-pop-site-name {
-        margin-top: 1rem;
-    }
-*/
-    /* ADMIN MENU */
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
         font-size: 1rem;
@@ -993,7 +964,6 @@ html {}
     }
     .pigging-schedule-container form {
         position: sticky;
-        width: 350px;
         top: 44px;
     }
 }
@@ -1009,6 +979,9 @@ html {}
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
+    header>div {
+        width: auto;
+    }
     section {
         width: 100%;
         margin-top: 0;
@@ -1022,6 +995,7 @@ html {}
         border-bottom-right-radius: 6px;
         height: 65px;
     }
+
     /*    USER LOGIN    */
     section.user-login-container {
         border: 0;
