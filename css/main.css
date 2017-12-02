@@ -392,7 +392,6 @@ html {}
         padding: .5rem 0;
         border-bottom: 1px solid #A7DBD8;
     }
-
     .debris-report-container div.debris-results-header div>div,
     .debris-report-container div.debris-results-list div>div {
         width: 20%;
@@ -409,16 +408,20 @@ html {}
         margin: 0 auto;
         border: none;
     }
-    /*FOREMAN PIGGING ACTIVITY*/
+    /*  PIGGING ACTIVITY  */
+/*
+    .pigging-activity-container form {
+        padding: 1rem 0 0;
+    }
+*/
     .pigging-activity-container input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
-        margin: 0;
+        margin: 2rem 0 0;
     }
-    .pigging-activity-container div div,
-    .pigging-activity-container div select {
-        margin-top: .5rem
+    .pigging-activity-container form div select {
+        margin-top: 1rem;
     }
     .pigging-activity-container div.pigging-activity-results div:first-child {
         position: fixed;
@@ -428,14 +431,14 @@ html {}
         text-align: center;
         z-index: 1;
         margin: 0 auto;
-        padding: 0 0 .5rem;
+        padding: 0 .5rem .5rem;
         background-color: #ffffff;
     }
     .pigging-activity-container h3+p {
         width: 85%;
-        text-align: center;
+        /*        text-align: center;*/
         margin: auto;
-        padding-bottom: .5rem;
+        padding: .5rem 0 .5rem;
         border-bottom: 1px solid #A7DBD8;
     }
     .pigging-activity-container div.months-pigs {
@@ -908,27 +911,25 @@ html {}
         padding-top: 1rem;
     }
     .debris-report-container div.debris-results {
-/*        width: 350px;*/
+        /*        width: 350px;*/
         margin-top: 0;
     }
     .debris-report-container div.debris-results-header {
         position: sticky;
-/*        width: 100%;*/
+        /*        width: 100%;*/
     }
-/*
+    /*
     .debris-report-container div.debris-results-list {
         margin: 4rem 0 0;
         padding-bottom: 0;
     }
 */
-/*
+    /*
     .debris-report-container div.debris-results div.submit-reset {
         padding: 2rem 0;
     }
 */
-
-/*  VIEW HISTORY  */
-
+    /*  VIEW HISTORY  */
     #pageViewHistory section {
         padding-top: 1rem;
     }
@@ -1030,20 +1031,21 @@ html {}
         padding-bottom: 0;
     }
     .debris-report-container div.debris-results-list {
-/*        margin-top: 4rem;*/
+        /*        margin-top: 4rem;*/
     }
-
-/*    PIGGING ACTIVITY   */
+    /*    PIGGING ACTIVITY   */
+/*
     #pagePiggingActivity section {
         padding: 50px 15px 0;
     }
+*/
     .pigging-activity-container div.pigging-activity-results div:first-child {
         position: sticky;
     }
     .pigging-activity-container div.months-pigs {
-        margin-top: 0;}
-
-/*    VIEW HISTORY   */
+        margin-top: 0;
+    }
+    /*    VIEW HISTORY   */
     .view-history-container div.history-results div:first-child {
         position: sticky;
     }
