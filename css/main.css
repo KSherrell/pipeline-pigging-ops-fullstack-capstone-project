@@ -788,41 +788,41 @@ html {}
         margin: 0 2%;
     }
     /* FOREMAN ADD USER */
-    .assign-user-role-container form {
+    form#findUser {
         margin-top: 2rem;
-        padding: 0;
     }
-    .assign-user-role-container form div {
+    form#findUser div.submit-reset {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    form#assignRole div {
         margin-top: 1rem;
         padding: 0px;
     }
-    .assign-user-role-container form#findUser div {
-        margin-top: 0;
-    }
-    #assignRole div:first-of-type {
+    form#assignRole div:first-of-type {
         margin-bottom: 2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #E0E4CC;
     }
-    .assign-user-role-container form div input[type='email'] {
-        padding-left: .5rem;
+    form#assignRole div:first-of-type p {
+        margin-bottom: 1rem;
     }
-    .assign-user-role-container div.submit-reset {
-        text-align: center;
-        padding: 1.5rem 0 0;
-    }
-    .assign-user-role-container form div input[type='radio'] {
+    form#assignRole input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0 0 0 1rem;
         padding: 0px;
     }
-    .assign-user-role-container form div label {
+    form#assignRole label {
         vertical-align: baseline;
         margin-left: .5rem;
         padding: 0px;
         font-size: 1rem;
+    }
+    form#assignRole div.submit-reset {
+        text-align: center;
+        padding: 2rem 0;
     }
     /* FOREMAN UPDATE USER */
     .update-user-container form {
@@ -1105,7 +1105,7 @@ html {}
         width: 350px;
         margin: auto;
     }
-/*
+    /*
     section.update-pipeline-container {
         padding-top: 2rem;
         padding-bottom: 0;
