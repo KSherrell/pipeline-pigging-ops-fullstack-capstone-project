@@ -464,23 +464,17 @@ html {}
         background-color: #ffffff;
     }
     /* FOREMAN VIEW HISTORY */
-    main.view-history-container {
-        padding: 30px 10px;
+    .view-history-container form div {
+        margin: 1rem 0;
     }
-    .view-history-container form {
-        padding: 0;
-    }
-    .view-history-container form div+div {
-        margin: 0 0 1rem;
-    }
-    .view-history-container form div label {
+    .view-history-container form label {
         font-size: 1rem;
         vertical-align: middle;
     }
-    .view-history-container form div label+input {
-        width: 2rem;
+    .view-history-container form input[type='number'] {
+        width: 4rem;
         text-align: center;
-        margin: 0;
+        margin: 0 0 0 1rem;
     }
     .view-history-container div.history-results {
         margin-top: 6rem;
@@ -930,12 +924,18 @@ html {}
     }
 */
     /*  VIEW HISTORY  */
+/*
     #pageViewHistory section {
         padding-top: 1rem;
     }
+*/
+
+
+/*
     .view-history-container form div select {
         margin-top: 1.5rem;
     }
+*/
 }
 
 @media only screen and (min-width: 414px) {
