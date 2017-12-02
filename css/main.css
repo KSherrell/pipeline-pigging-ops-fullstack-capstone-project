@@ -614,15 +614,19 @@ html {}
         margin: 0 2%;
     }
     /* FOREMAN ADD PIPELINE */
-    #pageAddPipeline section {
-        padding-bottom: 5rem;
+    section.add-pipeline-container {
+        margin-bottom: 14vh;
     }
+    /*
     .add-pipeline-container form {
         margin-top: 0;
     }
+*/
+    /*
     .add-pipeline-container form div {
         margin-top: 0;
     }
+*/
     .add-pipeline-container form div select,
     .add-pipeline-container form div input {
         margin-top: 1rem;
@@ -633,9 +637,6 @@ html {}
     }
     .add-pipeline-container form input {
         vertical-align: baseline;
-    }
-    .add-pipeline-container form input[type='text'] {
-        padding-left: 5px;
     }
     .add-pipeline-container form input[type='number'] {
         vertical-align: baseline;
@@ -693,6 +694,8 @@ html {}
         bottom: 0px;
         left: 0px;
         width: 100%;
+        height: 14vh;
+        min-height: 80px;
         text-align: center;
         z-index: 1;
         margin: 0 auto;
@@ -701,10 +704,6 @@ html {}
         border-top: 1px solid #E0E4CC;
     }
     /* FOREMAN UPDATE PIPELINE */
-    #pageUpdatePipeline section {
-        padding-top: 1rem;
-        padding-bottom: 4.5rem;
-    }
     .update-pipeline-container form {
         padding: 0;
     }
@@ -789,7 +788,7 @@ html {}
         bottom: 0px;
         left: 0px;
         width: 100%;
-        /*        height: 14vh;*/
+        height: 14vh;
         min-height: 80px;
         text-align: center;
         z-index: 1;
@@ -1032,6 +1031,8 @@ html {}
         margin-top: 0;
         border: 1px dashed #69D2E7;
         border-top: none;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
     div.ops-nav {
         position: relative;
@@ -1102,10 +1103,6 @@ html {}
     .view-history-container div.submit-reset {
         height: 20vh;
         border: none;
-    }
-    #pageAddPipeline section {
-        padding-bottom: 1rem;
-        margin-bottom: 4rem;
     }
     .add-pipeline-container div.submit-reset>div {
         width: 350px;
