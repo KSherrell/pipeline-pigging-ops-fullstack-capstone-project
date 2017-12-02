@@ -991,6 +991,16 @@ html {}
         padding-top: 1rem;
         border-top: 1px solid #E0E4CC;
     }
+    .update-history-container div.submit-cancel-delete {
+        padding: 0 0 .75rem;
+        border-top: none;
+    }
+    .update-history-container div.submit-cancel-delete>div {
+        width: 375px;
+        margin: auto;
+        padding-top: 1rem;
+        border-top: 1px solid #E0E4CC;
+    }
 }
 
 @media only screen and (min-width: 768px) {
