@@ -686,7 +686,7 @@ html {}
         margin: 1rem auto;
         text-align: center;
         color: #bd0000;
-        border: 2px solid #bd0000;
+        border: 1px solid #bd0000;
         padding: .5rem;
     }
     .add-pipeline-container div.submit-reset {
@@ -704,11 +704,11 @@ html {}
         border-top: 1px solid #E0E4CC;
     }
     /* FOREMAN UPDATE PIPELINE */
-    .update-pipeline-container form {
-        padding: 0;
+    section.update-pipeline-container {
+        margin-bottom: 14vh;
     }
-    .update-pipeline-container form div {
-        margin-top: 0;
+    form#updateSearch {
+        margin-top: 1.5rem;
     }
     .update-pipeline-container form div select,
     .update-pipeline-container form div input {
@@ -719,17 +719,8 @@ html {}
         text-align: center;
         padding: 2rem 0;
     }
-    .update-pipeline-container form div input[type='text'] {
-        padding-left: 5px;
-    }
     .update-pipeline-container form label {
         font-size: 1rem;
-        padding-right: 5px;
-    }
-    .update-pipeline-container form input[type='number'] {
-        width: 3.5rem;
-        margin: 1rem 0 0;
-        padding-right: 0;
     }
     .update-pipeline-container form p {
         display: inline-block;
@@ -738,21 +729,18 @@ html {}
     }
     #updatePipeline>p:first-of-type {
         font-weight: normal;
+        margin-top: 1rem;
+    }
+    .update-pipeline-container form input[type='number'] {
+        width: 4rem;
     }
     .update-pipeline-container form div.warning p {
         margin: .25rem 0;
-        /*    line-height: 140%;*/
         font-weight: normal;
-    }
-    .update-pipeline-container form div div p {
-        margin: 1rem .5rem 0 0;
     }
     .update-pipeline-container div.checkboxes-pigs div {
         display: inline-block;
         width: 49%;
-    }
-    .update-pipeline-container form div.checkboxes-product {
-        padding-bottom: 2.5rem;
     }
     .update-pipeline-container div.checkboxes-product div {
         display: inline-block;
@@ -764,14 +752,10 @@ html {}
     }
     .update-pipeline-container form select:last-of-type {
         width: 200px;
-        vertical-align: baseline;
-        margin: 1rem 0 0;
     }
     .update-pipeline-container form input[type='checkbox'] {
         height: auto;
         width: auto;
-        vertical-align: baseline;
-        margin: 1rem 0 0;
     }
     .update-pipeline-container form input[type='checkbox']+label {
         padding-left: 5px;
@@ -780,8 +764,11 @@ html {}
         margin: 1rem auto;
         text-align: center;
         color: #bd0000;
-        border: 2px solid #bd0000;
+        border: 1px solid #bd0000;
         padding: .5rem;
+    }
+    .update-pipeline-container div.warning p {
+        margin: .3rem;
     }
     .update-pipeline-container div.submit-cancel-delete {
         position: fixed;
@@ -1010,6 +997,16 @@ html {}
         padding-top: 1rem;
         border-top: 1px solid #E0E4CC;
     }
+    .update-pipeline-container div.submit-cancel-delete {
+        padding: 0 0 .75rem;
+        border-top: none;
+    }
+    .update-pipeline-container div.submit-cancel-delete>div {
+        width: 375px;
+        margin: auto;
+        padding-top: 1rem;
+        border-top: 1px solid #E0E4CC;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -1108,10 +1105,12 @@ html {}
         width: 350px;
         margin: auto;
     }
-    #pageUpdatePipeline section {
+/*
+    section.update-pipeline-container {
         padding-top: 2rem;
         padding-bottom: 0;
     }
+*/
     form#updatePipeline {
         margin-top: 0;
     }
