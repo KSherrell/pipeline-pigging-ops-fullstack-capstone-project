@@ -409,7 +409,7 @@ html {}
         border: none;
     }
     /*  PIGGING ACTIVITY  */
-/*
+    /*
     .pigging-activity-container form {
         padding: 1rem 0 0;
     }
@@ -442,7 +442,7 @@ html {}
         border-bottom: 1px solid #A7DBD8;
     }
     .pigging-activity-container div.months-pigs {
-        margin: 5rem auto 0;
+        margin: 6rem auto 0;
         padding-left: 1rem;
     }
     .pigging-activity-container div.months-pigs p {
@@ -960,6 +960,13 @@ html {}
     .pigging-schedule-container div.schedule-results {
         margin: 0 0 75px;
     }
+    .pigging-activity-container div.pigging-activity-results div:first-child {
+        position: sticky;
+    }
+    .pigging-activity-container div.months-pigs {
+        margin: 1rem auto 0;
+        padding-left: 1rem;
+    }
 }
 
 @media only screen and (min-width: 768px) {
@@ -1034,16 +1041,9 @@ html {}
         /*        margin-top: 4rem;*/
     }
     /*    PIGGING ACTIVITY   */
-/*
-    #pagePiggingActivity section {
-        padding: 50px 15px 0;
-    }
-*/
     .pigging-activity-container div.pigging-activity-results div:first-child {
-        position: sticky;
-    }
-    .pigging-activity-container div.months-pigs {
-        margin-top: 0;
+        position: relative;
+        top: 0;
     }
     /*    VIEW HISTORY   */
     .view-history-container div.history-results div:first-child {
