@@ -825,47 +825,11 @@ html {}
         padding: 2rem 0;
     }
     /* FOREMAN UPDATE USER */
-    .update-user-container form {
-        margin-top: 2rem;
-        padding: 0;
-    }
-    .update-user-container form div {
-        margin-top: 0;
-        padding: 0px;
-    }
-    #updateRole div:first-of-type {
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #E0E4CC;
-    }
-    #updateRole div:first-of-type>p {
-        margin: .5rem 0;
-    }
-    .update-user-container form>p {
+    .update-user-container form#assignRole>p {
         font-weight: bolder;
     }
-    .update-user-container form p:nth-of-type(2) {
+    .update-user-container form#assignRole>p:nth-of-type(2) {
         margin-top: 2rem;
-    }
-    .update-user-container form div input[type='email'] {
-        padding-left: .5rem;
-    }
-    .update-user-container div.submit-reset {
-        text-align: center;
-        padding: 2rem 0 0;
-    }
-    .update-user-container form div input[type='radio'] {
-        height: auto;
-        width: auto;
-        vertical-align: baseline;
-        margin: 1rem 0 0 1rem;
-        padding: 0px;
-    }
-    .update-user-container form div label {
-        vertical-align: baseline;
-        margin-left: .5rem;
-        padding: 0px;
-        font-size: 1rem;
     }
 }
 
