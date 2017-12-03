@@ -167,7 +167,7 @@ html {}
         color: #FA6900;
     }
     .user-login-container .buttons {
-        margin: 1rem auto 0;
+        margin: 2rem auto 0;
     }
     /*    USER RESET PASSWORD*/
     .user-reset-password-container form {
@@ -401,20 +401,18 @@ html {}
     .debris-report-container div.debris-results-list div>div+div {
         width: 38%;
     }
-    .debris-report-container div.submit-reset {
-        position: relative;
+    .submit-reset {
+        background-color: #ffffff;
         padding: 2rem 0;
         width: 100%;
         text-align: center;
         margin: 0 auto;
+    }
+    .debris-report-container div.submit-reset {
+        position: relative;
         border: none;
     }
     /*  PIGGING ACTIVITY  */
-    /*
-    .pigging-activity-container form {
-        padding: 1rem 0 0;
-    }
-*/
     .pigging-activity-container input[type='radio'] {
         height: auto;
         width: auto;
@@ -458,13 +456,8 @@ html {}
     }
     .pigging-activity-container div.submit-reset {
         position: relative;
-        padding: 2rem 0;
-        width: 100%;
-        text-align: center;
-        margin: 0 auto;
-        background-color: #ffffff;
     }
-    /* FOREMAN VIEW HISTORY */
+    /*  VIEW HISTORY  */
     .view-history-container form div {
         margin: 1rem 0;
     }
@@ -499,7 +492,6 @@ html {}
     }
     .view-history-container div.history-results h3+p {
         width: 85%;
-        /*        text-align: center;*/
         color: #68baca;
         padding-bottom: .5rem;
         margin: 0 auto;
@@ -516,18 +508,15 @@ html {}
         position: fixed;
         bottom: 0px;
         left: 0px;
-        width: 100%;
-        text-align: center;
         z-index: 1;
         margin: 0 auto;
         padding: .75rem 0;
-        background-color: #ffffff;
         border-top: 1px solid #E0E4CC;
     }
-    .view-history-container form div.submit-reset {
+    .view-history-container form#piggingHistory div.submit-reset {
         position: relative;
-        padding: 2rem 0;
         border-top: none;
+        padding-top: 2rem;
     }
     /*  UPDATE HISTORY  */
     section.update-history-container {
@@ -617,16 +606,6 @@ html {}
     section.add-pipeline-container {
         margin-bottom: 14vh;
     }
-    /*
-    .add-pipeline-container form {
-        margin-top: 0;
-    }
-*/
-    /*
-    .add-pipeline-container form div {
-        margin-top: 0;
-    }
-*/
     .add-pipeline-container form div select,
     .add-pipeline-container form div input {
         margin-top: 1rem;
@@ -693,17 +672,13 @@ html {}
         position: fixed;
         bottom: 0px;
         left: 0px;
-        width: 100%;
         height: 14vh;
         min-height: 80px;
-        text-align: center;
         z-index: 1;
-        margin: 0 auto;
         padding: .75rem 0;
-        background-color: #ffffff;
         border-top: 1px solid #E0E4CC;
     }
-    /* FOREMAN UPDATE PIPELINE */
+    /*  UPDATE PIPELINE */
     section.update-pipeline-container {
         margin-bottom: 14vh;
     }
@@ -714,10 +689,6 @@ html {}
     .update-pipeline-container form div input {
         margin-top: 1rem;
         vertical-align: baseline;
-    }
-    .update-pipeline-container div.submit-reset {
-        text-align: center;
-        padding: 2rem 0;
     }
     .update-pipeline-container form label {
         font-size: 1rem;
@@ -787,17 +758,12 @@ html {}
     .update-pipeline-container div.submit-cancel-delete button {
         margin: 0 2%;
     }
-    /* FOREMAN ADD USER */
+    /*  ADD USER */
     form#findUser {
         margin-top: 2rem;
     }
-    form#findUser div.submit-reset {
-        text-align: center;
-        padding: 2rem 0;
-    }
     form#assignRole div {
         margin-top: 1rem;
-        padding: 0px;
     }
     form#assignRole div:first-of-type {
         margin-bottom: 2rem;
@@ -820,11 +786,7 @@ html {}
         padding: 0px;
         font-size: 1rem;
     }
-    form#assignRole div.submit-reset {
-        text-align: center;
-        padding: 2rem 0;
-    }
-    /* FOREMAN UPDATE USER */
+    /*  UPDATE USER */
     .update-user-container form#assignRole>p {
         font-weight: bolder;
     }
@@ -865,35 +827,11 @@ html {}
         padding-top: 1rem;
     }
     .debris-report-container div.debris-results {
-        /*        width: 350px;*/
         margin-top: 0;
     }
     .debris-report-container div.debris-results-header {
         position: sticky;
-        /*        width: 100%;*/
     }
-    /*
-    .debris-report-container div.debris-results-list {
-        margin: 4rem 0 0;
-        padding-bottom: 0;
-    }
-*/
-    /*
-    .debris-report-container div.debris-results div.submit-reset {
-        padding: 2rem 0;
-    }
-*/
-    /*  VIEW HISTORY  */
-    /*
-    #pageViewHistory section {
-        padding-top: 1rem;
-    }
-*/
-    /*
-    .view-history-container form div select {
-        margin-top: 1.5rem;
-    }
-*/
 }
 
 @media only screen and (min-width: 414px) {
@@ -1043,9 +981,7 @@ html {}
         margin: auto;
         padding-bottom: 0;
     }
-    .debris-report-container div.debris-results-list {
-        /*        margin-top: 4rem;*/
-    }
+    .debris-report-container div.debris-results-list {}
     /*    PIGGING ACTIVITY   */
     .pigging-activity-container div.pigging-activity-results div:first-child {
         position: relative;
@@ -1065,37 +1001,14 @@ html {}
         height: 20vh;
         border: none;
     }
+    /*   ADD PIPELINE   */
     .add-pipeline-container div.submit-reset>div {
         width: 350px;
         margin: auto;
     }
-    /*
-    section.update-pipeline-container {
-        padding-top: 2rem;
-        padding-bottom: 0;
-    }
-*/
-    form#updatePipeline {
-        margin-top: 0;
-    }
 }
 
 @media only screen and (min-width: 1024px) {
-    /*
-    header {
-        position: relative;
-        margin: 0 auto;
-        border-top-left-radius: 6px;
-        border-top-right-radius: 6px;
-    }
-*/
-    /*
-    section {
-    padding: 50px 15px;
-    width: 350px;
-    margin: 0 auto;
-}
-*/
     main#pageLogin {
         margin: 5vh auto;
     }
@@ -1111,9 +1024,4 @@ html {}
     #pagePrevLaunch section {
         padding: 1rem 15px 2rem;
     }
-    /*
-    #pageAdminMenu section {
-        padding: 2rem 15px;
-    }
-*/
 }
