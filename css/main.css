@@ -39,6 +39,9 @@
         width: 67px;
         float: right;
     }
+    header img:hover {
+        cursor: pointer;
+    }
     header img:first-of-type {
         margin-right: 13px;
     }

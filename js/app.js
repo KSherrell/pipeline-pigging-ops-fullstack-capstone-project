@@ -18,30 +18,32 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
     //  Login Page >> Submit > Operator
-//        $("form#userLogin").submit(function () {
-//            event.preventDefault();
-//            $(".jsHide").hide();
-//            $("#pageInputPigging").toggle();
-//            $(".")
-//        });
-
-
-    //  Login Page >> Submit > Foreman
     //    $("form#userLogin").submit(function () {
     //        event.preventDefault();
     //        $(".jsHide").hide();
-    //        $("#pageAdminMenu").toggle();
+    //        $("#pageInputPigging").toggle();
+    //        $(".select-launch").hide();
+    //        $(".select-receive").hide();
+    //        $(".select-exception").hide();
     //    });
 
-    //  Login Page >> Submit > Report Viewer
+
+    //  Login Page >> Submit > Foreman
     $("form#userLogin").submit(function () {
         event.preventDefault();
         $(".jsHide").hide();
-        $("#pagePiggingSchedule").toggle();
-        $(".foreman-header").hide();
-        $(".operator").hide();
-
+        $("#pageAdminMenu").toggle();
     });
+
+    //  Login Page >> Submit > Report Viewer
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pagePiggingSchedule").toggle();
+    //        $(".foreman-header").hide();
+    //        $(".operator").hide();
+    //
+    //    });
 
 
     //  Login Page >> Forgot Password
@@ -103,3 +105,50 @@ $(document).on('click', '#userCreateAcct .js-cancel', function () {
     $("#pageLogin").toggle();
     $("#forgotPassword").hide();
 });
+
+//  Header >> Account Info
+$(document).on('click', 'header img', function () {
+    $(".jsHide").hide();
+    $("#pageUpdateAcct").toggle();
+
+});
+
+//  Header >> Exit Application
+$(document).on('click', 'header img + img', function () {
+    $(".jsHide").hide();
+    $("#pageLogin").toggle();
+
+});
+
+//  Foreman Header >> Admin Menu
+$(document).on('click', '.foreman-header img:first-of-type', function () {
+    $(".jsHide").hide();
+    $("#pageAdminMenu").toggle();
+});
+
+//  Admin Menu >> View Pigging Schedule
+$(document).on('click', 'p.viewPigSched', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").toggle();
+    $("#pagePiggingSchedule .normal-header").hide();
+    $(".ops-nav").hide();
+});
+
+//  Admin Menu >> View Debris Report
+$(document).on('click', 'p.viewDebRep', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").toggle();
+    $("#pageDebrisReport .normal-header").hide();
+    $(".debris-results").hide();
+    $("#debrisReport select").hide();
+    $(".ops-nav").hide();
+
+});
+//  Admin Menu >> Pigging Activity
+//  Admin Menu >> View/Update History
+//  Admin Menu >> Add Pipeline
+//  Admin Menu >> Update/Remove Pipeline
+//  Admin Menu >> Add User
+//  Admin Menu >> Update/Remove User
+
+//  Input Pigging >>
