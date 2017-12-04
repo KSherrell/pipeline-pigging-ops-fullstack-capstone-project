@@ -121,7 +121,7 @@ $(document).on('click', 'header img + img', function () {
 });
 
 //  Foreman Header >> Admin Menu
-$(document).on('click', '.foreman-header img:first-of-type', function () {
+$(document).on('click', 'header.foreman-header>div>img', function () {
     $(".jsHide").hide();
     $("#pageAdminMenu").toggle();
 });
@@ -131,7 +131,7 @@ $(document).on('click', 'p.viewPigSched', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").toggle();
     $("#pagePiggingSchedule .normal-header").hide();
-    $(".ops-nav").hide();
+    $("#pagePiggingSchedule .ops-nav").hide();
 });
 
 //  Admin Menu >> View Debris Report
@@ -141,14 +141,45 @@ $(document).on('click', 'p.viewDebRep', function () {
     $("#pageDebrisReport .normal-header").hide();
     $(".debris-results").hide();
     $("#debrisReport select").hide();
-    $(".ops-nav").hide();
+    $("#pageDebrisReport .ops-nav").hide();
+});
+
+//  Admin Menu >> Pigging Activity
+$(document).on('click', 'p.viewPigAct', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingActivity").toggle();
+    $("#pagePiggingActivity select").hide();
+    $(".pigging-activity-results").hide();
+});
+
+
+//  Admin Menu >> Add Pipeline
+$(document).on('click', 'p.addPL', function () {
+    $(".jsHide").hide();
+    $("#pageAddPipeline").toggle();
+});
+
+//  Admin Menu >> Update/Remove Pipeline
+$(document).on('click', 'p.remPL', function () {
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").toggle();
+    $("#updatePipeline").hide();
+});
+
+//  Admin Menu >> Add User
+$(document).on('click', 'p.addUser', function () {
+    $(".jsHide").hide();
+    $("#pageAddUser").toggle();
+    $("#pageAddUser #assignRole").hide();
 
 });
-//  Admin Menu >> Pigging Activity
-//  Admin Menu >> View/Update History
-//  Admin Menu >> Add Pipeline
-//  Admin Menu >> Update/Remove Pipeline
-//  Admin Menu >> Add User
+
 //  Admin Menu >> Update/Remove User
+$(document).on('click', 'p.remUser', function () {
+    $(".jsHide").hide();
+    $("#pageUdateUser").toggle();
+    $("#pageUdateUser #assignRole").hide();
+
+});
 
 //  Input Pigging >>
