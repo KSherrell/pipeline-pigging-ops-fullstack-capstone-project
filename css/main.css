@@ -278,7 +278,7 @@
         width: 73%;
     }
     .pigging-schedule-container form div select {
-        font-size: .8rem;
+        font-size: .9rem;
         margin: 0;
         vertical-align: baseline;
     }
@@ -291,7 +291,7 @@
         border-radius: 6px;
         width: 100%;
         height: 2.1rem;
-        font-size: .8rem;
+        font-size: .9rem;
     }
     .pigging-schedule-container hr {
         margin: 10px 0 0;

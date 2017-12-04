@@ -18,11 +18,12 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
     //  Login Page >> Submit > Operator
-    //    $("form#userLogin").submit(function () {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pageInputPigging").toggle();
-    //    });
+//        $("form#userLogin").submit(function () {
+//            event.preventDefault();
+//            $(".jsHide").hide();
+//            $("#pageInputPigging").toggle();
+//            $(".")
+//        });
 
 
     //  Login Page >> Submit > Foreman
