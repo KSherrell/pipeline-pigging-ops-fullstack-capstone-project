@@ -12,10 +12,33 @@ $(document).ready(function () {
     //  Hides All
     $(".jsHide").hide();
 
-    //  Shows Loging Page
+    //  Shows Login Page
     $("#pageLogin").toggle();
     //Hides Forgot Password form
     $("#forgotPassword").hide();
+
+    //  Login Page >> Submit > Operator
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pageInputPigging").toggle();
+    //    });
+
+
+    //  Login Page >> Submit > Foreman
+//    $("form#userLogin").submit(function () {
+//        event.preventDefault();
+//        $(".jsHide").hide();
+//        $("#pageAdminMenu").toggle();
+//    });
+
+    //  Login Page >> Submit > Report Viewer
+    $("form#userLogin").submit(function () {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").toggle();
+
+    });
 
 
     //  Login Page >> Forgot Password
@@ -57,5 +80,23 @@ $(document).on('submit', '#userPwdReset', function (event) {
 $(document).on('click', '#userPwdReset .js-cancel', function () {
     $(".jsHide").hide();
     $("#pageLogin").toggle();
-    $("#forgotPassword").toggle();
+    $("#forgotPassword").hide();
+});
+
+
+//  Create Account Page >> Submit
+$(document).on('submit', '#userCreateAcct', function (event) {
+    event.preventDefault();
+
+    $(".jsHide").hide();
+    $("#pageLogin").toggle();
+    $("#forgotPassword").hide();
+    alert("Your account is waiting for approval.");
+});
+
+//  Create Account Page >> Cancel
+$(document).on('click', '#userCreateAcct .js-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageLogin").toggle();
+    $("#forgotPassword").hide();
 });

@@ -346,6 +346,10 @@
         border-radius: 10px;
         border-bottom: 1px solid #A7DBD8;
         border-right: 1px solid #A7DBD8;
+        cursor: pointer;
+    }
+    .admin-menu-container div p:hover {
+        background-color: #FA6900;
     }
     /* DEBRIS REPORTS*/
     .debris-report-container form div input[type='radio'] {
