@@ -26,17 +26,19 @@ $(document).ready(function () {
 
 
     //  Login Page >> Submit > Foreman
-//    $("form#userLogin").submit(function () {
-//        event.preventDefault();
-//        $(".jsHide").hide();
-//        $("#pageAdminMenu").toggle();
-//    });
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pageAdminMenu").toggle();
+    //    });
 
     //  Login Page >> Submit > Report Viewer
     $("form#userLogin").submit(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pagePiggingSchedule").toggle();
+        $(".foreman-header").hide();
+        $(".operator").hide();
 
     });
 
