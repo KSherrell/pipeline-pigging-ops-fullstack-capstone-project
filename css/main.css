@@ -6,6 +6,9 @@
     border: 0;
 }
 
+
+/*   REMINDER: FIX THE MARGINS ON THE ADD USER / UPDATE USER PAGES -- SEEMS TO NEED CORRECTIONS ON SOME OTHER PAGES AS WELL   */
+
 @media only screen and (min-width: 200px) {
     body {
         font-size: 16px;

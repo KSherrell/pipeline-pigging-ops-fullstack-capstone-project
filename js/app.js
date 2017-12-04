@@ -18,22 +18,22 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
     //  Login Page >> Submit > Operator
-    //    $("form#userLogin").submit(function () {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pageInputPigging").toggle();
-    //        $(".select-launch").hide();
-    //        $(".select-receive").hide();
-    //        $(".select-exception").hide();
-    //    });
-
-
-    //  Login Page >> Submit > Foreman
     $("form#userLogin").submit(function () {
         event.preventDefault();
         $(".jsHide").hide();
-        $("#pageAdminMenu").toggle();
+        $("#pageInputPigging").toggle();
+        $(".select-launch").hide();
+        $(".select-receive").hide();
+        $(".select-exception").hide();
     });
+
+
+    //  Login Page >> Submit > Foreman
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pageAdminMenu").toggle();
+    //    });
 
     //  Login Page >> Submit > Report Viewer
     //    $("form#userLogin").submit(function () {
@@ -171,7 +171,6 @@ $(document).on('click', 'p.addUser', function () {
     $(".jsHide").hide();
     $("#pageAddUser").toggle();
     $("#pageAddUser #assignRole").hide();
-
 });
 
 //  Admin Menu >> Update/Remove User
@@ -179,7 +178,6 @@ $(document).on('click', 'p.remUser', function () {
     $(".jsHide").hide();
     $("#pageUdateUser").toggle();
     $("#pageUdateUser #assignRole").hide();
-
 });
 
 //  Input Pigging >>
