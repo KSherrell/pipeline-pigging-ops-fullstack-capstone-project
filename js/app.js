@@ -22,9 +22,8 @@ $(document).ready(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pageInputPigging").toggle();
-        $(".select-launch").hide();
-        $(".select-receive").hide();
-        $(".select-exception").hide();
+        $("#pageInputPigging div.select-receive").hide();
+        $("#pageInputPigging div.select-exception").hide();
     });
 
 
@@ -180,4 +179,26 @@ $(document).on('click', 'p.remUser', function () {
     $("#pageUdateUser #assignRole").hide();
 });
 
-//  Input Pigging >>
+//  Input Pigging >> Radio Launch
+$(document).on('click', '#pageInputPigging input#radioLaunch', function () {
+    $("#pageInputPigging div.select-launch").toggle();
+    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging div.select-receive").hide();
+});
+
+//  Input Pigging >> Radio Receive
+$(document).on('click', '#pageInputPigging input#radioReceive', function () {
+    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging div.select-receive").toggle();
+});
+
+//  Input Pigging >> Radio Exception
+$(document).on('click', '#pageInputPigging input#radioException', function () {
+    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging div.select-exception").toggle();
+    $("#pageInputPigging div.select-receive").hide();
+});
+
+//  Input Pigging >> Submit
+//  Input Pigging >> Pigging Schedule
