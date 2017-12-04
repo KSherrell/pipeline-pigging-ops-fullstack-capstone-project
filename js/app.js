@@ -1,54 +1,61 @@
 "use strict";
-
-$(document).ready(function () {
-    hideAll();
-    pageLogin();
-});
-
-function hideAll() {
-    $(".jsHide").hide();
+//Step One: define functions, objects, variables
+function pageCreateAcct() {
+    $("#pageCreateAcct").toggle();
 }
 
-function pageLogin() {
+
+
+
+//Step Two: Use functions, object, variables (triggers)
+$(document).ready(function () {
+    //  Hides All
+    $(".jsHide").hide();
+
+    //  Shows Loging Page
     $("#pageLogin").toggle();
+    //Hides Forgot Password form
     $("#forgotPassword").hide();
-    $("p:first-of-type").click(function () {
+
+
+    //  Login Page >> Forgot Password
+    $("form#userLogin + p").click(function () {
         $("#forgotPassword").toggle();
     });
-    $("#forgotPassword").submit(function () {
-        pageResetPwd();
+
+    //  Login Page >> Create Account
+    $("form#forgotPassword + p").click(function () {
+        $(".jsHide").hide();
+        $("#pageCreateAcct").toggle();
     });
-
-    $("#forgotPassword .js-cancel").click(function () {
-        $("#forgotPassword").hide();
-        //console.log("Merry Christmas!");
-    });
-
-    $("p:nth-of-type(2)").click(function () {
-        pageCreateAcct();
-    });
+});
 
 
-}
+//  Login >> Forgot Your Password >> Cancel
+$(document).on('click', '#forgotPassword .js-cancel', function () {
+    $("#forgotPassword").hide();
+});
 
-function pageResetPwd() {
-    hideAll();
+//  Login >> Forgot Your Password >> Submit
+$(document).on('submit', '#forgotPassword', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
     $("#pageResetPwd").toggle();
-}
+});
 
-function pageCreateAcct() {
-    hideAll();
-    $("#pageCreateAcct").toggle();
-    console.log("Merry Christmas!");
+//  Password Reset Page >> Submit
+$(document).on('submit', '#userPwdReset', function (event) {
+    event.preventDefault();
 
-    $("#userCreateAcct").submit(function () {
-        console.log("Merry Christmas!");
-    });
+    $(".jsHide").hide();
+    $("#pageLogin").toggle();
+    $("#forgotPassword").toggle();
+    alert("Your password has been reset.");
+});
 
-    $("#userCreateAcct .js-cancel").click(function () {
-        hideAll()
-        pageLogin();
-        console.log("Merry Christmas!");
-    });
-
-}
+//  Password Reset Page  >> Cancel
+$(document).on('click', '#userPwdReset .js-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageLogin").toggle();
+    $("#forgotPassword").toggle();
+});
