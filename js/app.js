@@ -1,28 +1,54 @@
 "use strict";
 
 $(document).ready(function () {
-    $(".jsHide").hide();
-    appLogin();
+    hideAll();
+    pageLogin();
 });
 
-function toggleHide(e) {
+function hideAll() {
+    $(".jsHide").hide();
+}
+
+function pageLogin() {
+    $("#pageLogin").toggle();
+    $("#forgotPassword").hide();
+    $("p:first-of-type").click(function () {
+        $("#forgotPassword").toggle();
+    });
+    $("#forgotPassword").submit(function () {
+        pageResetPwd();
+    });
+
+    $("#forgotPassword .js-cancel").click(function () {
+        $("#forgotPassword").hide();
+        //console.log("Merry Christmas!");
+    });
+
+    $("p:nth-of-type(2)").click(function () {
+        pageCreateAcct();
+    });
+
 
 }
 
-function appLogin() {
+function pageResetPwd() {
+    hideAll();
+    $("#pageResetPwd").toggle();
+}
 
-    $("#pageLogin").toggle();
-    $("#forgotPassword").hide();
+function pageCreateAcct() {
+    hideAll();
+    $("#pageCreateAcct").toggle();
+    console.log("Merry Christmas!");
 
-    $("p:first-of-type").click(function () {
-
-        console.log("Merry Christmas @ click function");
-
-        $("#forgotPassword").toggle();
-
-        console.log($("#forgotPassword").css("visibility"));
-
+    $("#userCreateAcct").submit(function () {
+        console.log("Merry Christmas!");
     });
 
-    console.log("Merry Christmas @ login");
+    $("#userCreateAcct .js-cancel").click(function () {
+        hideAll()
+        pageLogin();
+        console.log("Merry Christmas!");
+    });
+
 }
