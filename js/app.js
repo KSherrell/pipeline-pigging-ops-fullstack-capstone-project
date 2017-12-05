@@ -18,14 +18,14 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
     //  Login Page >> Submit > Operator
-    $("form#userLogin").submit(function () {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageInputPigging").show();
-        $("#pageInputPigging #launchTime").prop('required', true);
-        $("#pageInputPigging div.select-receive").hide();
-        $("#pageInputPigging div.select-exception").hide();
-    });
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pageInputPigging").show();
+    //        $("#pageInputPigging #launchTime").prop('required', true);
+    //        $("#pageInputPigging div.select-receive").hide();
+    //        $("#pageInputPigging div.select-exception").hide();
+    //    });
 
 
     //  Login Page >> Submit > Foreman
@@ -36,14 +36,14 @@ $(document).ready(function () {
     //    });
 
     //  Login Page >> Submit > Report Viewer
-    //    $("form#userLogin").submit(function () {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pagePiggingSchedule").show();
-    //        $(".foreman-header").hide();
-    //        $(".js-operator").hide();
-    //
-    //    });
+    $("form#userLogin").submit(function () {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").show();
+        $(".foreman-header").hide();
+        $(".js-operator").hide();
+
+    });
 
 
     //  Login Page >> Forgot Password
@@ -256,15 +256,10 @@ $(document).on('click', '#pageInputPigging .ops-nav', function () {
 });
 
 
-//  Pigging Schedule (Operator) >> Submit
+//  Pigging Schedule >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function () {
     event.preventDefault();
     alert("Pipeline System selection has been submitted. Schedule results will update.");
-    //    $(".jsHide").hide();
-    //    $("#pagePiggingSchedule").show();
-    //    $("#pagePiggingSchedule .foreman-header").hide();
-    //    $("#pagePiggingSchedule .js-viewonly").hide();
-
 });
 
 
@@ -275,4 +270,21 @@ $(document).on('click', '#pagePiggingSchedule .js-operator', function () {
     $("#pageInputPigging #launchTime").prop('required', true);
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").hide();
+});
+
+//  Pigging Schedule (Report Viewer) >> Debris Report
+$(document).on('click', '#pagePiggingSchedule .js-viewonly', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .foreman-header").hide();
+    $(".debris-results").hide();
+    $("#debrisReport select").hide();
+});
+
+//  Debris Report (Report Viewer) >> Pigging Schedule
+$(document).on('click', '#pageDebrisReport .ops-nav', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .foreman-header").hide();
+    $("#pagePiggingSchedule .js-operator").hide();
 });
