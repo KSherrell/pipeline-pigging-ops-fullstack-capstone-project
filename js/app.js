@@ -238,12 +238,9 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function () {
     alert("Merry Christmas @ Input Pigging form");
-    //document.getElementById("inputPigging").reset();
+    document.getElementById("inputPigging").reset();
     $(".jsHide").hide();
     $("#pageInputPigging").show();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").hide();
-
 
 });
 
