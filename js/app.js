@@ -1,7 +1,7 @@
 "use strict";
 //Step One: define functions, objects, variables
 function pageCreateAcct() {
-    $("#pageCreateAcct").toggle();
+    $("#pageCreateAcct").show();
 }
 
 
@@ -13,7 +13,7 @@ $(document).ready(function () {
     $(".jsHide").hide();
 
     //  Shows Login Page
-    $("#pageLogin").toggle();
+    $("#pageLogin").show();
     //Hides Forgot Password form
     $("#forgotPassword").hide();
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("form#userLogin").submit(function () {
         event.preventDefault();
         $(".jsHide").hide();
-        $("#pageInputPigging").toggle();
+        $("#pageInputPigging").show();
         $("#pageInputPigging #launchTime").prop('required', true);
         $("#pageInputPigging div.select-receive").hide();
         $("#pageInputPigging div.select-exception").hide();
@@ -32,14 +32,14 @@ $(document).ready(function () {
     //    $("form#userLogin").submit(function () {
     //        event.preventDefault();
     //        $(".jsHide").hide();
-    //        $("#pageAdminMenu").toggle();
+    //        $("#pageAdminMenu").show();
     //    });
 
     //  Login Page >> Submit > Report Viewer
     //    $("form#userLogin").submit(function () {
     //        event.preventDefault();
     //        $(".jsHide").hide();
-    //        $("#pagePiggingSchedule").toggle();
+    //        $("#pagePiggingSchedule").show();
     //        $(".foreman-header").hide();
     //        $(".operator").hide();
     //
@@ -54,7 +54,7 @@ $(document).ready(function () {
     //  Login Page >> Create Account
     $("form#forgotPassword + p").click(function () {
         $(".jsHide").hide();
-        $("#pageCreateAcct").toggle();
+        $("#pageCreateAcct").show();
     });
 });
 
@@ -68,7 +68,7 @@ $(document).on('click', '#forgotPassword .js-cancel', function () {
 $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    $("#pageResetPwd").toggle();
+    $("#pageResetPwd").show();
 });
 
 //  Password Reset Page >> Submit
@@ -76,15 +76,15 @@ $(document).on('submit', '#userPwdReset', function (event) {
     event.preventDefault();
 
     $(".jsHide").hide();
-    $("#pageLogin").toggle();
-    $("#forgotPassword").toggle();
+    $("#pageLogin").show();
+    $("#forgotPassword").show();
     alert("Your password has been reset.");
 });
 
 //  Password Reset Page  >> Cancel
 $(document).on('click', '#userPwdReset .js-cancel', function () {
     $(".jsHide").hide();
-    $("#pageLogin").toggle();
+    $("#pageLogin").show();
     $("#forgotPassword").hide();
 });
 
@@ -94,50 +94,62 @@ $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
 
     $(".jsHide").hide();
-    $("#pageLogin").toggle();
+    $("#pageLogin").show();
     $("#forgotPassword").hide();
-    alert("Your account is waiting for approval.");
+    alert("Your account request has been sent to the Pipeline Foreman for approval.");
 });
 
 //  Create Account Page >> Cancel
 $(document).on('click', '#userCreateAcct .js-cancel', function () {
     $(".jsHide").hide();
-    $("#pageLogin").toggle();
+    $("#pageLogin").show();
     $("#forgotPassword").hide();
 });
 
 //  Header >> Account Info
 $(document).on('click', 'header img', function () {
     $(".jsHide").hide();
-    $("#pageUpdateAcct").toggle();
-
+    $("#pageUpdateAcct").show();
 });
 
 //  Header >> Exit Application
 $(document).on('click', 'header img + img', function () {
     $(".jsHide").hide();
-    $("#pageLogin").toggle();
+    $("#pageLogin").show();
+});
 
+//  Update Account >> Submit
+$(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
+    alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after submitting the udated account info");
+    $(".jsHide").hide();
+    $("#pageLogin").show();
+});
+
+//  Update Account >> Cancel
+$(document).on('click', '#pageUpdateAcct .js-cancel', function () {
+    alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after clicking Cancel on this page");
+    $(".jsHide").hide();
+    $("#pageLogin").show();
 });
 
 //  Foreman Header >> Admin Menu
 $(document).on('click', 'header.foreman-header>div>img', function () {
     $(".jsHide").hide();
-    $("#pageAdminMenu").toggle();
+    $("#pageAdminMenu").show();
 });
 
 //  Admin Menu >> View Pigging Schedule
 $(document).on('click', 'p.viewPigSched', function () {
     $(".jsHide").hide();
-    $("#pagePiggingSchedule").toggle();
-    $("#pagePiggingSchedule .normal-header").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .foreman-header").show();
     $("#pagePiggingSchedule .ops-nav").hide();
 });
 
 //  Admin Menu >> View Debris Report
 $(document).on('click', 'p.viewDebRep', function () {
     $(".jsHide").hide();
-    $("#pageDebrisReport").toggle();
+    $("#pageDebrisReport").show();
     $("#pageDebrisReport .normal-header").hide();
     $(".debris-results").hide();
     $("#debrisReport select").hide();
@@ -147,7 +159,7 @@ $(document).on('click', 'p.viewDebRep', function () {
 //  Admin Menu >> Pigging Activity
 $(document).on('click', 'p.viewPigAct', function () {
     $(".jsHide").hide();
-    $("#pagePiggingActivity").toggle();
+    $("#pagePiggingActivity").show();
     $("#pagePiggingActivity select").hide();
     $(".pigging-activity-results").hide();
 });
@@ -156,32 +168,32 @@ $(document).on('click', 'p.viewPigAct', function () {
 //  Admin Menu >> Add Pipeline
 $(document).on('click', 'p.addPL', function () {
     $(".jsHide").hide();
-    $("#pageAddPipeline").toggle();
+    $("#pageAddPipeline").show();
 });
 
 //  Admin Menu >> Update/Remove Pipeline
 $(document).on('click', 'p.remPL', function () {
     $(".jsHide").hide();
-    $("#pageUpdatePipeline").toggle();
+    $("#pageUpdatePipeline").show();
     $("#updatePipeline").hide();
 });
 
 //  Admin Menu >> Add User
 $(document).on('click', 'p.addUser', function () {
     $(".jsHide").hide();
-    $("#pageAddUser").toggle();
+    $("#pageAddUser").show();
     $("#pageAddUser #assignRole").hide();
 });
 
 //  Admin Menu >> Update/Remove User
 $(document).on('click', 'p.remUser', function () {
     $(".jsHide").hide();
-    $("#pageUdateUser").toggle();
+    $("#pageUdateUser").show();
     $("#pageUdateUser #assignRole").hide();
 });
 
 //  Input Pigging >> Radio Launch
-$(document).on('click', '#pageInputPigging input#radioLaunch', function () {
+$(document).on('click', '#pageInputPigging #radioLaunch', function () {
     $("#pageInputPigging div.select-launch").show();
     $("#pageInputPigging #launchTime").prop('required', true);
 
@@ -195,7 +207,7 @@ $(document).on('click', '#pageInputPigging input#radioLaunch', function () {
 });
 
 //  Input Pigging >> Radio Receive
-$(document).on('click', '#pageInputPigging input#radioReceive', function () {
+$(document).on('click', '#pageInputPigging #radioReceive', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging #launchTime").prop('required', false);
 
@@ -208,7 +220,7 @@ $(document).on('click', '#pageInputPigging input#radioReceive', function () {
 });
 
 //  Input Pigging >> Radio Exception
-$(document).on('click', '#pageInputPigging input#radioException', function () {
+$(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging #launchTime").prop('required', false);
 
@@ -226,10 +238,11 @@ $(document).on('click', '#pageInputPigging input#radioException', function () {
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function () {
     alert("Merry Christmas @ Input Pigging form");
-    //    document.getElementById("inputPigging").reset();
-    //    $("#pageInputPigging").toggle();
-    //    $("#pageInputPigging div.select-receive").hide();
-    //    $("#pageInputPigging div.select-exception").hide();
+    //document.getElementById("inputPigging").reset();
+    $(".jsHide").hide();
+    $("#pageInputPigging").show();
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging div.select-exception").hide();
 
 
 });
