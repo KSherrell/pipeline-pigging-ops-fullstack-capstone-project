@@ -41,7 +41,7 @@ $(document).ready(function () {
     //        $(".jsHide").hide();
     //        $("#pagePiggingSchedule").show();
     //        $(".foreman-header").hide();
-    //        $(".operator").hide();
+    //        $(".js-operator").hide();
     //
     //    });
 
@@ -120,6 +120,7 @@ $(document).on('click', 'header img + img', function () {
 
 //  Update Account >> Submit
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
+    event.preventDefault();
     alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after submitting the udated account info");
     $(".jsHide").hide();
     $("#pageLogin").show();
@@ -127,6 +128,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
 
 //  Update Account >> Cancel
 $(document).on('click', '#pageUpdateAcct .js-cancel', function () {
+
     alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after clicking Cancel on this page");
     $(".jsHide").hide();
     $("#pageLogin").show();
@@ -237,6 +239,7 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
 
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function () {
+    event.preventDefault();
     alert("Merry Christmas @ Input Pigging form");
     document.getElementById("inputPigging").reset();
     $(".jsHide").hide();
@@ -244,4 +247,33 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function () {
 
 });
 
-//  Input Pigging >> Pigging Schedule
+//  Input Pigging >> Pigging Schedule (Operator)
+$(document).on('click', '#pageInputPigging .ops-nav', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .foreman-header").hide();
+    $("#pagePiggingSchedule .js-viewonly").hide();
+
+});
+
+
+//  Pigging Schedule (Operator) >> Submit
+$(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function () {
+    event.preventDefault();
+    alert("Pipeline System selection has been submitted.");
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .foreman-header").hide();
+    $("#pagePiggingSchedule .js-viewonly").hide();
+
+});
+
+
+//  Pigging Schedule (Operator) >> Input Pigging
+$(document).on('click', '#pagePiggingSchedule .js-operator', function () {
+    $(".jsHide").hide();
+    $("#pageInputPigging").show();
+    $("#pageInputPigging #launchTime").prop('required', true);
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging div.select-exception").hide();
+});

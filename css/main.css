@@ -109,6 +109,7 @@
     }
     button:hover {
         background-color: #FA6900;
+        cursor: pointer;
     }
     .button-delete:hover {
         background-color: #000000;
@@ -140,6 +141,7 @@
     }
     div.ops-nav div:hover {
         background-color: #F38630;
+        cursor: pointer;
     }
     .ops-nav div a {
         text-decoration: none;
