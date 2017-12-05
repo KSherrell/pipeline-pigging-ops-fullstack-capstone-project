@@ -6,7 +6,6 @@ function pageCreateAcct() {
 
 
 
-
 //Step Two: Use functions, object, variables (triggers)
 $(document).ready(function () {
     //  Hides All
@@ -252,7 +251,6 @@ $(document).on('click', '#pageInputPigging .ops-nav', function () {
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .js-viewonly").hide();
-
 });
 
 
@@ -288,3 +286,19 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function () {
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .js-operator").hide();
 });
+
+//  Debris Report >> Radio Debris by System
+$(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
+    $("#pageInputPigging div.select-launch").show();
+    $("#pageInputPigging #launchTime").prop('required', true);
+
+
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #receiveTime").prop('required', false);
+
+    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging #exceptionTime").prop('required', false);
+
+});
+
+//  Debris Report >> Radio Debris by Pipeline
