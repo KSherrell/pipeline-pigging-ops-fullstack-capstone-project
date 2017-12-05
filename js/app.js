@@ -276,7 +276,9 @@ $(document).on('click', '#pagePiggingSchedule .js-viewonly', function () {
     $("#pageDebrisReport").show();
     $("#pageDebrisReport .foreman-header").hide();
     $(".debris-results").hide();
-    $("#debrisReport select").hide();
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").hide();
+
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule
@@ -289,16 +291,12 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function () {
 
 //  Debris Report >> Radio Debris by System
 $(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
-    $("#pageInputPigging div.select-launch").show();
-    $("#pageInputPigging #launchTime").prop('required', true);
-
-
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging #receiveTime").prop('required', false);
-
-    $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging #exceptionTime").prop('required', false);
-
+    $("#debrisReport .js-system-debris").show();
+    $("#debrisReport .js-pipeline-debris").hide();
 });
 
 //  Debris Report >> Radio Debris by Pipeline
+$(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").show();
+});

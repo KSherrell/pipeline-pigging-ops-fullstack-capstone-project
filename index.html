@@ -507,7 +507,7 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system"><label for="radioSystemDebris">Total Debris by System</label>
-                    <div>
+                    <div class="js-system-debris">
                         <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
                                     <option value="debris-system-one">System One</option>
@@ -519,23 +519,25 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioPipelineDebris" value="debris-by-pipeline"><label for="radioPipelineDebris">Total Debris by Pipeline</label>
-                    <div>
-                        <select name="select-debris-system">
+                    <div class="js-pipeline-debris">
+                        <div>
+                            <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
                                     <option value="debris-system-one">System One</option>
                                     <option value="debris-system-two">System Two</option>
                                     <option value="debris-system-three">System Three</option>
                                     <option value="debris-system-four">System Four</option>
                                 </select>
-                    </div>
-                    <div>
-                        <select name="select-debris-pipeline">
+                        </div>
+                        <div>
+                            <select name="select-debris-pipeline">
                                     <option value="select-debris-pipeline">Select Pipeline</option>
                                     <option value="debris-pipeline-one">Pipeline One</option>
                                     <option value="debris-pipeline-two">Pipeline Two</option>
                                     <option value="debris-pipeline-three">Pipeline Three</option>
                                     <option value="debris-pipeline-four">Pipeline Four</option>
                                 </select>
+                        </div>
                     </div>
                 </div>
 
