@@ -121,7 +121,8 @@ $(document).on('click', 'header img + img', function () {
 //  Update Account >> Submit
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
     event.preventDefault();
-    alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after submitting the udated account info");
+    alert("SUBMIT clicked. I will create a BACK function that takes the user back to her previous page after submitting the udated account info");
+    document.getElementById("userUpdateAcct").reset();
     $(".jsHide").hide();
     $("#pageLogin").show();
 });
@@ -129,7 +130,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
 //  Update Account >> Cancel
 $(document).on('click', '#pageUpdateAcct .js-cancel', function () {
 
-    alert("Will create a BACK function that grabs the page id and uses that to take the user back to her previous page after clicking Cancel on this page");
+    alert("CANCEL clicked. I will create a BACK function that takes the user back to her previous page after clicking Cancel on this page");
     $(".jsHide").hide();
     $("#pageLogin").show();
 });
@@ -240,10 +241,8 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function () {
     event.preventDefault();
-    alert("Merry Christmas @ Input Pigging form");
+    alert("Pigging activity has been submitted.");
     document.getElementById("inputPigging").reset();
-    $(".jsHide").hide();
-    $("#pageInputPigging").show();
 
 });
 
@@ -260,11 +259,11 @@ $(document).on('click', '#pageInputPigging .ops-nav', function () {
 //  Pigging Schedule (Operator) >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function () {
     event.preventDefault();
-    alert("Pipeline System selection has been submitted.");
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .js-viewonly").hide();
+    alert("Pipeline System selection has been submitted. Schedule results will update.");
+    //    $(".jsHide").hide();
+    //    $("#pagePiggingSchedule").show();
+    //    $("#pagePiggingSchedule .foreman-header").hide();
+    //    $("#pagePiggingSchedule .js-viewonly").hide();
 
 });
 
