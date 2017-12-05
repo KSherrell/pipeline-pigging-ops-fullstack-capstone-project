@@ -22,6 +22,7 @@ $(document).ready(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pageInputPigging").toggle();
+        $("#pageInputPigging #launchTime").prop('required', true);
         $("#pageInputPigging div.select-receive").hide();
         $("#pageInputPigging div.select-exception").hide();
     });
@@ -181,38 +182,43 @@ $(document).on('click', 'p.remUser', function () {
 
 //  Input Pigging >> Radio Launch
 $(document).on('click', '#pageInputPigging input#radioLaunch', function () {
-    $("#pageInputPigging div.select-launch").toggle();
+    $("#pageInputPigging div.select-launch").show();
     $("#pageInputPigging #launchTime").prop('required', true);
 
-    //    $("#pageInputPigging div.select-exception").hide();
+
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #receiveTime").prop('required', false);
+
+    $("#pageInputPigging div.select-exception").hide();
     $("#pageInputPigging #exceptionTime").prop('required', false);
 
-    //    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging #receiveTime").prop('required', false);
-});
-
-//  Input Pigging >> Radio Exception
-$(document).on('click', '#pageInputPigging input#radioException', function () {
-    //    $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging #radioLaunch").prop('required', false);
-
-    $("#pageInputPigging div.select-exception").toggle();
-    $("#pageInputPigging #radioException").prop('required', true);
-
-    //    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging #radioReceive").prop('required', false);
 });
 
 //  Input Pigging >> Radio Receive
 $(document).on('click', '#pageInputPigging input#radioReceive', function () {
-    //    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging #launchTime").prop('required', false);
 
-    //    $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging #exceptionTime").prop('required', false);
-
-    $("#pageInputPigging div.select-receive").toggle();
+    $("#pageInputPigging div.select-receive").show();
     $("#pageInputPigging #receiveTime").prop('required', true);
+
+    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging #exeptionTime").prop('required', false);
+
+});
+
+//  Input Pigging >> Radio Exception
+$(document).on('click', '#pageInputPigging input#radioException', function () {
+    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging #launchTime").prop('required', false);
+
+
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #receiveTime").prop('required', false);
+
+    $("#pageInputPigging div.select-exception").show();
+    $("#pageInputPigging #exceptionTime").prop('required', true);
+
 });
 
 
