@@ -182,23 +182,50 @@ $(document).on('click', 'p.remUser', function () {
 //  Input Pigging >> Radio Launch
 $(document).on('click', '#pageInputPigging input#radioLaunch', function () {
     $("#pageInputPigging div.select-launch").toggle();
-    $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging div.select-receive").hide();
-});
+    $("#pageInputPigging #launchTime").prop('required', true);
 
-//  Input Pigging >> Radio Receive
-$(document).on('click', '#pageInputPigging input#radioReceive', function () {
-    $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging div.select-receive").toggle();
+    //    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging #exceptionTime").prop('required', false);
+
+    //    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #receiveTime").prop('required', false);
 });
 
 //  Input Pigging >> Radio Exception
 $(document).on('click', '#pageInputPigging input#radioException', function () {
-    $("#pageInputPigging div.select-launch").hide();
+    //    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging #radioLaunch").prop('required', false);
+
     $("#pageInputPigging div.select-exception").toggle();
-    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #radioException").prop('required', true);
+
+    //    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging #radioReceive").prop('required', false);
 });
 
+//  Input Pigging >> Radio Receive
+$(document).on('click', '#pageInputPigging input#radioReceive', function () {
+    //    $("#pageInputPigging div.select-launch").hide();
+    $("#pageInputPigging #launchTime").prop('required', false);
+
+    //    $("#pageInputPigging div.select-exception").hide();
+    $("#pageInputPigging #exceptionTime").prop('required', false);
+
+    $("#pageInputPigging div.select-receive").toggle();
+    $("#pageInputPigging #receiveTime").prop('required', true);
+});
+
+
+
 //  Input Pigging >> Submit
+$(document).on('submit', '#pageInputPigging #inputPigging', function () {
+    alert("Merry Christmas @ Input Pigging form");
+    //    document.getElementById("inputPigging").reset();
+    //    $("#pageInputPigging").toggle();
+    //    $("#pageInputPigging div.select-receive").hide();
+    //    $("#pageInputPigging div.select-exception").hide();
+
+
+});
+
 //  Input Pigging >> Pigging Schedule

@@ -184,7 +184,7 @@
                     <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
                 </div>
                 <div>
-                    <select name="pipeline-systems" required>
+                    <select name="pipeline-systems">
                                 <option value="select-system">Select Pipeline System</option>
                                 <option value="system-one">System One</option>
                                 <option value="system-two">System Two</option>
@@ -193,7 +193,7 @@
                             </select>
                 </div>
                 <div>
-                    <select name="pipeline-names" required>
+                    <select name="pipeline-names">
                                 <option value="select-name">Select Pipeline Name</option>
                                 <option value="system-one">Name One</option>
                                 <option value="system-two">Name Two</option>
@@ -206,14 +206,14 @@
                 </div>
                 <div>
 
-                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch" checked="checked" required><label for="radioLaunch">Launch</label>
+                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch" checked="checked"><label for="radioLaunch">Launch</label>
 
                     <div class="select-launch">
                         <div>
-                            <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                            <p>Time: <span><input type="time" name="launch-time" id="launchTime"></span></p>
                         </div>
                         <div>
-                            <select name="pig-types" required>
+                            <select name="pig-types">
                                         <option value="select-pig">Select Pig Type</option>
                                         <option value="pig-one">Pig Type One</option>
                                         <option value="pig-two">Pig Type Two</option>
@@ -225,12 +225,12 @@
 
 
                     <br/>
-                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive" required><label for="radioReceive">Receive</label>
+                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive"><label for="radioReceive">Receive</label>
 
 
                     <div class="select-receive">
                         <div>
-                            <p>Time: <span><input type="time" name="receive-time" required></span></p>
+                            <p>Time: <span><input type="time" name="receive-time" id="receiveTime"></span></p>
                         </div>
 
                         <div class="input-debris">
@@ -242,14 +242,14 @@
 
 
                     <br/>
-                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception" required><label for="radioException">Exception</label>
+                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception"><label for="radioException">Exception</label>
 
                     <div class="select-exception">
                         <div>
-                            <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                            <p>Time: <span><input type="time" name="exception-time" id="exceptionTime"></span></p>
                         </div>
                         <div>
-                            <select name="exceptions" required>
+                            <select name="exceptions">
                                         <option value="select-exception">Select Exception</option>
                                         <option value="exception-one">Exception One</option>
                                         <option value="exception-two">Exception Two</option>
