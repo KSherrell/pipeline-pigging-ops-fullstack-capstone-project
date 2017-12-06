@@ -275,10 +275,10 @@ $(document).on('click', '#pagePiggingSchedule .js-viewonly', function () {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
     $("#pageDebrisReport .foreman-header").hide();
+    $("#pageDebrisReport #debrisReport").show();
     $(".debris-results").hide();
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").hide();
-
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule
@@ -299,4 +299,22 @@ $(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
 $(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").show();
+});
+
+//  Debris Report >> Submit
+$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
+    event.preventDefault();
+    $("#pageDebrisReport #debrisReport").hide();
+    $("#pageDebrisReport .debris-results").show();
+});
+
+//  Debris Report >> Reset
+$(document).on('click', '#pageDebrisReport .submit-reset', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .foreman-header").hide();
+    $("#pageDebrisReport #debrisReport").show();
+    $(".debris-results").hide();
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").hide();
 });
