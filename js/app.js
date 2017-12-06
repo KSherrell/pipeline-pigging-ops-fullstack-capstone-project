@@ -28,21 +28,21 @@ $(document).ready(function () {
 
 
     //  Login Page >> Submit > Foreman
-    //    $("form#userLogin").submit(function () {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pageAdminMenu").show();
-    //    });
-
-    //  Login Page >> Submit > Report Viewer
     $("form#userLogin").submit(function () {
         event.preventDefault();
         $(".jsHide").hide();
-        $("#pagePiggingSchedule").show();
-        $(".foreman-header").hide();
-        $(".js-operator").hide();
-
+        $("#pageAdminMenu").show();
     });
+
+    //  Login Page >> Submit > Report Viewer
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pagePiggingSchedule").show();
+    //        $(".foreman-header").hide();
+    //        $(".js-operator").hide();
+    //
+    //    });
 
 
     //  Login Page >> Forgot Password
@@ -145,6 +145,7 @@ $(document).on('click', 'p.viewPigSched', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .foreman-header").show();
+    $("#pagePiggingSchedule .normal-header").hide();
     $("#pagePiggingSchedule .ops-nav").hide();
 });
 
