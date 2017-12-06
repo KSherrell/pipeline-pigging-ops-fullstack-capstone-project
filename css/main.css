@@ -308,7 +308,8 @@
         margin: 120px 0 75px;
     }
     .pigging-schedule-container div.schedule-results p {
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
+        cursor: pointer;
     }
     .pigging-schedule-container p.due today {
         background-color: #ffffff;

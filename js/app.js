@@ -17,22 +17,22 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
     //  Login Page >> Submit > Operator
-    //    $("form#userLogin").submit(function () {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pageInputPigging").show();
-    //        $("#pageInputPigging #launchTime").prop('required', true);
-    //        $("#pageInputPigging div.select-receive").hide();
-    //        $("#pageInputPigging div.select-exception").hide();
-    //    });
+//    $("form#userLogin").submit(function () {
+//        event.preventDefault();
+//        $(".jsHide").hide();
+//        $("#pageInputPigging").show();
+//        $("#pageInputPigging #launchTime").prop('required', true);
+//        $("#pageInputPigging div.select-receive").hide();
+//        $("#pageInputPigging div.select-exception").hide();
+//    });
 
 
     //  Login Page >> Submit > Foreman
-    $("form#userLogin").submit(function () {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
+        $("form#userLogin").submit(function () {
+            event.preventDefault();
+            $(".jsHide").hide();
+            $("#pageAdminMenu").show();
+        });
 
     //  Login Page >> Submit > Report Viewer
     //    $("form#userLogin").submit(function () {
@@ -153,9 +153,11 @@ $(document).on('click', 'p.viewPigSched', function () {
 $(document).on('click', 'p.viewDebRep', function () {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
+    $("#pageDebrisReport #debrisReport").show();
     $("#pageDebrisReport .normal-header").hide();
     $(".debris-results").hide();
-    $("#debrisReport select").hide();
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").hide();
     $("#pageDebrisReport .ops-nav").hide();
 });
 
@@ -261,6 +263,13 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function () {
     alert("Pipeline System selection has been submitted. Schedule results will update.");
 });
 
+//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
+$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () {
+    $(".jsHide").hide();
+    $("#pagePrevLaunch").show();
+    $("#pagePrevLaunch header").show();
+    //    $(".ops-nav, .back").show();
+});
 
 //  Pigging Schedule (Operator) >> Input Pigging
 $(document).on('click', '#pagePiggingSchedule .js-operator', function () {
@@ -280,6 +289,23 @@ $(document).on('click', '#pagePiggingSchedule .js-viewonly', function () {
     $(".debris-results").hide();
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").hide();
+});
+
+//  Previous Launch >> Back (to Pigging Schedule (Foreman))
+$(document).on('click', '#pagePrevLaunch .ops-nav', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .foreman-header").show();
+    $("#pagePiggingSchedule .js-operator").hide();
+});
+
+//  Previous Launch >> Back (to Pigging Schedule (Operator))
+$(document).on('click', '#pagePrevLaunch .ops-nav', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .normal-header").show();
+    $("#pagePiggingSchedule .foreman-header").hide();
+    $("#pagePiggingSchedule .js-operator").show();
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule
@@ -309,6 +335,14 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function () {
     $("#pageDebrisReport .debris-results").show();
 });
 
+//  Debris Report (Foreman) >> Submit
+$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
+    event.preventDefault();
+    $("#pageDebrisReport #debrisReport").hide();
+    $("#pageDebrisReport .debris-results").show();
+    $("#pageDebrisReport .foreman-header").show();
+});
+
 //  Debris Report >> Reset
 $(document).on('click', '#pageDebrisReport .submit-reset', function () {
     $(".jsHide").hide();
@@ -318,4 +352,17 @@ $(document).on('click', '#pageDebrisReport .submit-reset', function () {
     $(".debris-results").hide();
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").hide();
+    document.getElementById("debrisReport").reset();
+});
+
+//  Debris Report (Foreman) >> Reset
+$(document).on('click', '#pageDebrisReport .submit-reset', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport #debrisReport").show();
+    $(".debris-results").hide();
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").hide();
+    $("#pageDebrisReport .foreman-header").show();
+    document.getElementById("debrisReport").reset();
 });
