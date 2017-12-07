@@ -473,7 +473,7 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system"><label for="radioSystemDebris">Total Debris by System</label>
-                    <div class="js-system-debris jsHide">
+                    <div class="js-system-select jsHide">
                         <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
                                     <option value="debris-system-one">System One</option>
@@ -485,7 +485,7 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioPipelineDebris" value="debris-by-pipeline"><label for="radioPipelineDebris">Total Debris by Pipeline</label>
-                    <div class="js-pipeline-debris jsHide">
+                    <div class="js-pipeline-select jsHide">
                         <div>
                             <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
@@ -700,41 +700,43 @@
         <section class="pigging-activity-container">
 
 
-            <form id="piggingActivity" action="" method="">
+            <form id="piggingActivity" class="jsHide" action="" method="">
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radio-total-pigs" value="total-pigs" checked="checked" required><label for="radio-total-pigs">Total Pigs</label>
+                    <input type="radio" name="radio-pigging-activity" id="radioTotalPigs" value="total-pigs" checked="checked" required><label for="radioTotalPigs">Total Pigs</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-system" value="pigs-by-system" required><label for="radio-pigs-by-system">Total Pigs by System</label>
-                    <div>
-                        <select name="select-debris-system" required>
-                                    <option value="select-debris-system">Select System</option>
-                                    <option value="debris-system-one">System One</option>
-                                    <option value="debris-system-two">System Two</option>
-                                    <option value="debris-system-three">System Three</option>
-                                    <option value="debris-system-four">System Four</option>
+                    <input type="radio" name="radio-pigging-activity" id="radioSystemPigs" value="pigs-by-system" required><label for="radioSystemPigs">Total Pigs by System</label>
+                    <div class="js-system-select jsHide">
+                        <select name="select-system" required>
+                                    <option value="select-system">Select System</option>
+                                    <option value="system-one">System One</option>
+                                    <option value="system-two">System Two</option>
+                                    <option value="system-three">System Three</option>
+                                    <option value="system-four">System Four</option>
                                 </select>
                     </div>
                 </div>
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radio-pigs-by-pipeline" value="pigs-by-pipeline" required><label for="radio-pigs-by-pipeline">Total Pigs by Pipeline</label>
-                    <div>
-                        <select name="select-debris-system" required>
-                                    <option value="select-debris-system">Select System</option>
-                                    <option value="debris-system-one">System One</option>
-                                    <option value="debris-system-two">System Two</option>
-                                    <option value="debris-system-three">System Three</option>
-                                    <option value="debris-system-four">System Four</option>
+                    <input type="radio" name="radio-pigging-activity" id="radioPipelinePigs" value="pigs-by-pipeline" required><label for="radioPipelinePigs">Total Pigs by Pipeline</label>
+                    <div class="js-pipeline-select jsHide">
+                        <div>
+                            <select name="select-system" required>
+                                    <option value="debris-system">Select System</option>
+                                    <option value="system-one">System One</option>
+                                    <option value="system-two">System Two</option>
+                                    <option value="system-three">System Three</option>
+                                    <option value="system-four">System Four</option>
                                 </select>
-                    </div>
-                    <div>
-                        <select name="select-debris-pipeline" required>
-                                    <option value="select-debris-pipeline">Select Pipeline</option>
-                                    <option value="debris-pipeline-one">Pipeline One</option>
-                                    <option value="debris-pipeline-two">Pipeline Two</option>
-                                    <option value="debris-pipeline-three">Pipeline Three</option>
-                                    <option value="debris-pipeline-four">Pipeline Four</option>
+                        </div>
+                        <div>
+                            <select name="select-pipeline" required>
+                                    <option value="select-pipeline">Select Pipeline</option>
+                                    <option value="pipeline-one">Pipeline One</option>
+                                    <option value="pipeline-two">Pipeline Two</option>
+                                    <option value="pipeline-three">Pipeline Three</option>
+                                    <option value="pipeline-four">Pipeline Four</option>
                                 </select>
+                        </div>
                     </div>
                 </div>
                 <div class="submit-reset">
@@ -744,7 +746,7 @@
 
 
 
-            <div class="pigging-activity-results">
+            <div class="pigging-activity-results jsHide">
                 <div>
                     <h3>Name of Search</h3>
                     <p>Total Monthly Pigs</p>

@@ -149,12 +149,72 @@ $(document).on('click', 'p.gotoPiggingSchedule', function () {
     $("#pagePiggingSchedule .show-to-foreman").show();
 });
 
+//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
+$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () {
+    $(".jsHide").hide();
+    $("#pagePrevLaunch").show();
+    $("#pagePrevLaunch header").show();
+    $("#pagePrevLaunch .show-to-foreman").show();
+});
+
+//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
+$(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+    //    $("#pagePiggingSchedule .show-to-foreman").show();
+});
+
+//  Admin Menu >> View Debris Report
+$(document).on('click', 'p.gotoDebrisReport', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport  #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+});
+
+//  Debris Report, Activity Report >> Radio Select by System
+$(document).on('click', '#radioSystemDebris, #radioSystemPigs', function () {
+    $(".js-system-select").show();
+    $(".js-pipeline-select").hide();
+});
+
+//  Debris Report, Activity Report >> Radio Select by Pipeline
+$(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function () {
+    $(".js-system-select").hide();
+    $(".js-pipeline-select").show();
+});
+
+//  Debris Report >> Radio Other Selections
+$(document).on('click', '#pageDebrisReport .radio-other-selection', function () {
+    $("#debrisReport .jsHide").hide();
+});
+
+//  Debris Report (Foreman) >> Submit
+$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    $(".debris-results").show();
+
+});
+//  Debris Report (Foreman) >> Reset
+$(document).on('click', '#pageDebrisReport .submit-reset', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    document.getElementById("debrisReport").reset();
+});
+
 
 
 //  Admin Menu >> Pigging Activity
 $(document).on('click', 'p.gotoPiggingActivity', function () {
     $(".jsHide").hide();
     $("#pagePiggingActivity").show();
+    $("#pagePiggingActivity #piggingActivity").show();
+
 
 });
 
@@ -186,63 +246,8 @@ $(document).on('click', 'p.gotoUpdateUser', function () {
 
 });
 
-//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () {
-    $(".jsHide").hide();
-    $("#pagePrevLaunch").show();
-    $("#pagePrevLaunch header").show();
-    $("#pagePrevLaunch .show-to-foreman").show();
-});
 
-//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
-$(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
-    //    $("#pagePiggingSchedule .show-to-foreman").show();
-});
 
-//  Admin Menu >> View Debris Report
-$(document).on('click', 'p.gotoDebrisReport', function () {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport  #debrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-});
-
-//  Debris Report >> Radio Debris by System
-$(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
-    $("#debrisReport .js-system-debris").show();
-    $("#debrisReport .js-pipeline-debris").hide();
-});
-
-//  Debris Report >> Radio Debris by Pipeline
-$(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").show();
-});
-
-//  Debris Report >> Radio Other Selections
-$(document).on('click', '#pageDebrisReport .radio-other-selection', function () {
-    $("#debrisReport .jsHide").hide();
-});
-
-//  Debris Report (Foreman) >> Submit
-$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    $(".debris-results").show();
-
-});
-//  Debris Report (Foreman) >> Reset
-$(document).on('click', '#pageDebrisReport .submit-reset', function () {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport #debrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    document.getElementById("debrisReport").reset();
-});
 
 
 
@@ -353,16 +358,4 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function () {
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .js-operator").hide();
-});
-
-//  Debris Report >> Radio Debris by System
-$(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
-    $("#debrisReport .js-system-debris").show();
-    $("#debrisReport .js-pipeline-debris").hide();
-});
-
-//  Debris Report >> Radio Debris by Pipeline
-$(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").show();
 });
