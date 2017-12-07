@@ -140,6 +140,7 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function () {
 $(document).on('click', 'header.foreman-header>div>img', function () {
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
+    document.getElementsByTagName("form").reset();
 });
 
 //  Admin Menu >> View Pigging Schedule
@@ -184,9 +185,9 @@ $(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function () 
     $(".js-pipeline-select").show();
 });
 
-//  Debris Report >> Radio Other Selections
-$(document).on('click', '#pageDebrisReport .radio-other-selection', function () {
-    $("#debrisReport .jsHide").hide();
+//  Debris Report, Activity Report >> Radio Other Selections
+$(document).on('click', '.radio-other-selection', function () {
+    $("form .jsHide").hide();
 });
 
 //  Debris Report (Foreman) >> Submit
@@ -213,10 +214,26 @@ $(document).on('click', '#pageDebrisReport .submit-reset', function () {
 $(document).on('click', 'p.gotoPiggingActivity', function () {
     $(".jsHide").hide();
     $("#pagePiggingActivity").show();
-    $("#pagePiggingActivity #piggingActivity").show();
-
-
+    $("#piggingActivity").show();
 });
+
+//  Pigging Activity >> Submit
+$(document).on('submit', '#piggingActivity', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePiggingActivity").show();
+    $(".pigging-activity-results").show();
+    document.getElementById("piggingActivity").reset();
+});
+
+//  Pigging Activity >> Reset
+$(document).on('click', '#pagePiggingActivity button[type="button"]',
+    function () {
+        $(".jsHide").hide();
+        $("#pagePiggingActivity").show();
+        $("#piggingActivity").show();
+    });
+
 
 
 //  Admin Menu >> Add Pipeline
