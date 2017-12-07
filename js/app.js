@@ -143,21 +143,22 @@ $(document).on('click', 'header.foreman-header>div>img', function () {
 });
 
 //  Admin Menu >> View Pigging Schedule
-$(document).on('click', 'p.viewPigSched', function () {
+$(document).on('click', 'p.gotoPiggingSchedule', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .show-to-foreman").show();
 });
 
 //  Admin Menu >> View Debris Report
-$(document).on('click', 'p.viewDebRep', function () {
+$(document).on('click', 'p.gotoDebrisReport', function () {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
 
 });
 
 //  Admin Menu >> Pigging Activity
-$(document).on('click', 'p.viewPigAct', function () {
+$(document).on('click', 'p.gotoPiggingActivity', function () {
     $(".jsHide").hide();
     $("#pagePiggingActivity").show();
 
@@ -165,27 +166,27 @@ $(document).on('click', 'p.viewPigAct', function () {
 
 
 //  Admin Menu >> Add Pipeline
-$(document).on('click', 'p.addPL', function () {
+$(document).on('click', 'p.gotoAddPipeline', function () {
     $(".jsHide").hide();
     $("#pageAddPipeline").show();
 });
 
 //  Admin Menu >> Update/Remove Pipeline
-$(document).on('click', 'p.remPL', function () {
+$(document).on('click', 'p.gotoUdatePipeline', function () {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
 
 });
 
 //  Admin Menu >> Add User
-$(document).on('click', 'p.addUser', function () {
+$(document).on('click', 'p.gotoAddUser', function () {
     $(".jsHide").hide();
     $("#pageAddUser").show();
 
 });
 
 //  Admin Menu >> Update/Remove User
-$(document).on('click', 'p.remUser', function () {
+$(document).on('click', 'p.gotoUpdateUser', function () {
     $(".jsHide").hide();
     $("#pageUdateUser").show();
 

@@ -332,13 +332,13 @@
         </header>
         <section class="admin-menu-container">
             <div>
-                <p class="viewPigSched">View Pigging Schedule</p>
-                <p class="viewDebRep">View Debris Report</p>
-                <p class="viewPigAct">Pigging Activity</p>
-                <p class="addPL">Add Pipeline</p>
-                <p class="remPL">Update / Remove Pipeline</p>
-                <p class="addUser">Add User</p>
-                <p class="remUser">Update / Remove User</p>
+                <p class="gotoPiggingSchedule">View Pigging Schedule</p>
+                <p class="gotoDebrisReport">View Debris Report</p>
+                <p class="gotoPiggingActivity">Pigging Activity</p>
+                <p class="gotoAddPipeline">Add Pipeline</p>
+                <p class="gotoUdatePipeline">Update / Remove Pipeline</p>
+                <p class="gotoAddUser">Add User</p>
+                <p class="gotoUpdateUser">Update / Remove User</p>
             </div>
 
         </section>
@@ -435,7 +435,7 @@
 
     <main id="pageDebrisReport" class="jsHide">
 
-        <header class="normal-header">
+        <header class="normal-header jsHide">
             <div>
                 <h1>Debris Reports</h1>
                 <div>
@@ -446,7 +446,7 @@
         </header>
 
 
-        <header class="foreman-header show-to-foreman">
+        <header class="foreman-header jsHide show-to-foreman">
             <div>
                 <img src="imgs/admin-menu-wht.png">
                 <h1>Debris Reports</h1>
@@ -473,7 +473,7 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system"><label for="radioSystemDebris">Total Debris by System</label>
-                    <div class="js-system-debris">
+                    <div class="js-system-debris jsHide">
                         <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
                                     <option value="debris-system-one">System One</option>
@@ -485,7 +485,7 @@
                 </div>
                 <div>
                     <input type="radio" name="radio-debris-report" id="radioPipelineDebris" value="debris-by-pipeline"><label for="radioPipelineDebris">Total Debris by Pipeline</label>
-                    <div class="js-pipeline-debris">
+                    <div class="js-pipeline-debris jsHide">
                         <div>
                             <select name="select-debris-system">
                                     <option value="select-debris-system">Select System</option>
@@ -517,6 +517,7 @@
 
             <div class="debris-results">
                 <div class="debris-results-header">
+                    <!--  REMINDER: CORRECT THE RESULTS-HEADER SCROLL ISSUE   -->
                     <h3>Wells Ranch Something Here and Something Else Too</h3>
                     <div>
                         <div>
