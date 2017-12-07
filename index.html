@@ -832,7 +832,27 @@
                 </div>
                 <div class="activity-records">
                     <p>Date of Record: <span>(date of record)</span></p>
-                    <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                    <p class="history-record-id">Record ID: <span>(database ID)</span></p>
+                    <p>Launch: <span>('yes' or '--')</span></p>
+                    <p>Operator name: <span>(name or '--')</span></p>
+                    <p>Type of pig: <span>(pig type or '--')</span></p>
+                    <p>Receive: <span>('yes' or '--')</span></p>
+                    <p>Operator name: <span>(name or '--')</span></p>
+                    <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
+                    <p>Sand lbs: <span>(# of lbs or '--')</span></p>
+                    <p>Exception: <span>(exception type or '--')</span></p>
+                    <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
+                                .foreman-add-pipeline-container {}
+                                .foreman-update-pipeline-container {}
+                                .foreman-assign-user-role-container {}
+                                .foreman-update-user-container {}
+                                .viewonly-schedule-container {}
+                                .viewonly-debris-container {}
+                                footer {}</span></p>
+                </div>
+                <div class="activity-records">
+                    <p>Date of Record: <span>(date of record)</span></p>
+                    <p class="history-record-id">Record ID:<span>(database ID)</span></p>
                     <p>Launch: <span>('yes' or '--')</span></p>
                     <p>Operator name: <span>(name or '--')</span></p>
                     <p>Type of pig:<span>(pig type or '--')</span></p>
@@ -852,27 +872,7 @@
                 </div>
                 <div class="activity-records">
                     <p>Date of Record: <span>(date of record)</span></p>
-                    <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
-                    <p>Launch: <span>('yes' or '--')</span></p>
-                    <p>Operator name: <span>(name or '--')</span></p>
-                    <p>Type of pig:<span>(pig type or '--')</span></p>
-                    <p>Receive: <span>('yes' or '--')</span></p>
-                    <p>Operator name: <span>(name or '--')</span></p>
-                    <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
-                    <p>Sand lbs: <span>(# of lbs or '--')</span></p>
-                    <p>Exception: <span>(exception type or '--')</span></p>
-                    <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
-                                .foreman-add-pipeline-container {}
-                                .foreman-update-pipeline-container {}
-                                .foreman-assign-user-role-container {}
-                                .foreman-update-user-container {}
-                                .viewonly-schedule-container {}
-                                .viewonly-debris-container {}
-                                footer {}</span></p>
-                </div>
-                <div class="activity-records">
-                    <p>Date of Record: <span>(date of record)</span></p>
-                    <p>Record ID:<a href="#0"><span>(database ID)</span></a></p>
+                    <p class="history-record-id">Record ID: <span>(database ID)</span></p>
                     <p>Launch: <span>('yes' or '--')</span></p>
                     <p>Operator name: <span>(name or '--')</span></p>
                     <p>Type of pig:<span>(pig type or '--')</span></p>
@@ -927,16 +927,16 @@
             </div>
             <form id="updateHistory" method="">
                 <div>
-                    <p>Date: <span><input type="date" name="pigging-date" id="piggingDate" required></span></p>
+                    <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
                 </div>
                 <div>
-                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch" required><label for="radio-launch">Launch</label>
+                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch"><label for="radio-launch">Launch</label>
                     <div class="select-launch">
                         <div>
-                            <p>Time: <span><input type="time" name="launch-time" required></span></p>
+                            <p>Time: <span><input type="time" name="launch-time"></span></p>
                         </div>
                         <div>
-                            <select name="pig-types" required>
+                            <select name="pig-types">
                                         <option value="select-pig">Select Pig Type</option>
                                         <option value="pig-one">Pig Type One</option>
                                         <option value="pig-two">Pig Type Two</option>
@@ -947,10 +947,10 @@
                     </div>
                     <br/>
 
-                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive" required><label for="radio-receive">Receive</label>
+                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive"><label for="radio-receive">Receive</label>
                     <div class="select-receive">
                         <div>
-                            <p>Time: <span><input type="time" name="receive-time" required></span></p>
+                            <p>Time: <span><input type="time" name="receive-time"></span></p>
                         </div>
 
                         <div class="input-debris">
@@ -960,13 +960,13 @@
                         </div>
                     </div>
                     <br/>
-                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception" required><label for="radio-exception">Exception</label>
+                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception"><label for="radio-exception">Exception</label>
                     <div class="select-exception">
                         <div>
-                            <p>Time: <span><input type="time" name="exception-time" required></span></p>
+                            <p>Time: <span><input type="time" name="exception-time"></span></p>
                         </div>
                         <div>
-                            <select name="exceptions" required>
+                            <select name="exceptions">
                                         <option value="select-exception">Select Exception</option>
                                         <option value="exception-one">Exception One</option>
                                         <option value="exception-two">Exception Two</option>
@@ -984,8 +984,8 @@
             <div class="submit-cancel-delete">
                 <div>
                     <button form="updateHistory" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                    <button form="updateHistory" type="submit" class="button-delete">Delete</button>
+                    <button type="button" class="button-cancel">Cancel</button>
+                    <button type="button" class="button-delete">Delete</button>
                 </div>
             </div>
 

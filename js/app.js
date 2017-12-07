@@ -244,7 +244,7 @@ $(document).on('submit', '#piggingHistory', function () {
     $("#pageViewHistory").show();
     $(".history-results").show();
     $("#pageViewHistory .bottom-nav").show();
-    document.getElementById("piggingActivity").reset();
+    document.getElementById("piggingHistory").reset();
 });
 
 //  Pigging History >> Reset
@@ -253,6 +253,45 @@ $(document).on('click', '#pageViewHistory .bottom-nav', function () {
     $("#pageViewHistory").show();
     $("#piggingHistory").show();
 });
+
+//  Pigging History >> Update Pigging History (via link from history record)
+$(document).on('click', '#pageViewHistory p.history-record-id', function () {
+    $(".jsHide").hide();
+    $("#pageUpdateHistory").show();
+});
+
+//  Update History >> Submit
+$(document).on('submit', '#updateHistory', function () {
+    event.preventDefault();
+    alert("Updates submitted successfully.");
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
+
+//  Update History >> Cancel
+$(document).on('click', '#pageUpdateHistory .button-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
+
+//  Update History >> Delete
+$(document).on('click', '#pageUpdateHistory .button-delete', function () {
+    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
+        alert("Record has be sucessfully deleted.");
+
+    } else {
+        $(".jsHide").hide();
+        $("#pageUpdateHistory").show();
+    }
+});
+
+
+
 
 //*** Admin Menu >> Add Pipeline
 $(document).on('click', 'p.gotoAddPipeline', function () {
