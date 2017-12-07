@@ -140,10 +140,9 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function () {
 $(document).on('click', 'header.foreman-header>div>img', function () {
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
-    document.getElementsByTagName("form").reset();
 });
 
-//  Admin Menu >> View Pigging Schedule
+//*** Admin Menu >> View Pigging Schedule
 $(document).on('click', 'p.gotoPiggingSchedule', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
@@ -165,7 +164,7 @@ $(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
     //    $("#pagePiggingSchedule .show-to-foreman").show();
 });
 
-//  Admin Menu >> View Debris Report
+//*** Admin Menu >> View Debris Report
 $(document).on('click', 'p.gotoDebrisReport', function () {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
@@ -197,7 +196,6 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function () {
     $("#pageDebrisReport").show();
     $("#pageDebrisReport .show-to-foreman").show();
     $(".debris-results").show();
-
 });
 //  Debris Report (Foreman) >> Reset
 $(document).on('click', '#pageDebrisReport .submit-reset', function () {
@@ -208,9 +206,7 @@ $(document).on('click', '#pageDebrisReport .submit-reset', function () {
     document.getElementById("debrisReport").reset();
 });
 
-
-
-//  Admin Menu >> Pigging Activity
+//*** Admin Menu >> Pigging Activity
 $(document).on('click', 'p.gotoPiggingActivity', function () {
     $(".jsHide").hide();
     $("#pagePiggingActivity").show();
@@ -234,12 +230,42 @@ $(document).on('click', '#pagePiggingActivity button[type="button"]',
         $("#piggingActivity").show();
     });
 
+//*** Admin Menu >> View Pigging History
+$(document).on('click', 'p.gotoViewHistory', function () {
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
+//  Pigging History >> Submit
+$(document).on('submit', '#piggingHistory', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $(".history-results").show();
+    $("#pageViewHistory .bottom-nav").show();
+    document.getElementById("piggingActivity").reset();
+});
 
-//  Admin Menu >> Add Pipeline
+//  Pigging History >> Reset
+$(document).on('click', '#pageViewHistory .bottom-nav', function () {
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
+
+//*** Admin Menu >> Add Pipeline
 $(document).on('click', 'p.gotoAddPipeline', function () {
     $(".jsHide").hide();
     $("#pageAddPipeline").show();
+
+});
+
+//   Add Pipeline >> Submit
+$(document).on('submit', 'p.gotoAddPipeline', function () {
+    $(".jsHide").hide();
+    $("#pageAddPipeline").show();
+    document.getElementById("addPipeline").reset();
 });
 
 //  Admin Menu >> Update/Remove Pipeline

@@ -335,6 +335,7 @@
                 <p class="gotoPiggingSchedule">View Pigging Schedule</p>
                 <p class="gotoDebrisReport">View Debris Report</p>
                 <p class="gotoPiggingActivity">Pigging Activity</p>
+                <p class="gotoViewHistory">View Pigging History</p>
                 <p class="gotoAddPipeline">Add Pipeline</p>
                 <p class="gotoUdatePipeline">Update / Remove Pipeline</p>
                 <p class="gotoAddUser">Add User</p>
@@ -793,7 +794,7 @@
         <section class="view-history-container jsForemanPage">
 
 
-            <form id="piggingHistory" method="">
+            <form id="piggingHistory" class="jsHide" method="">
                 <div>
                     <select name="pipeline-systems" required>
                                 <option value="select-system">Select Pipeline System</option>
@@ -824,7 +825,7 @@
 
 
 
-            <div class="history-results">
+            <div class="history-results jsHide">
                 <div>
                     <h3>Pipeline Name Pipeline Name Pipeline Name Pipeline Name</h3>
                     <p>Activity Records</p>
@@ -892,9 +893,9 @@
             </div>
 
 
-            <div class="submit-reset">
+            <div class="submit-reset jsHide bottom-nav">
                 <div>
-                    <button form="piggingHistory" type="reset">Reset</button>
+                    <button type="button">Reset</button>
                 </div>
             </div>
 
