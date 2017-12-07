@@ -16,23 +16,23 @@ $(document).ready(function () {
     //Hides Forgot Password form
     $("#forgotPassword").hide();
 
-    //  Login Page >> Submit > Operator
-//    $("form#userLogin").submit(function () {
-//        event.preventDefault();
-//        $(".jsHide").hide();
-//        $("#pageInputPigging").show();
-//        $("#pageInputPigging #launchTime").prop('required', true);
-//        $("#pageInputPigging div.select-receive").hide();
-//        $("#pageInputPigging div.select-exception").hide();
-//    });
-
 
     //  Login Page >> Submit > Foreman
-        $("form#userLogin").submit(function () {
-            event.preventDefault();
-            $(".jsHide").hide();
-            $("#pageAdminMenu").show();
-        });
+    $("form#userLogin").submit(function () {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    });
+
+    //  Login Page >> Submit > Operator
+    //    $("form#userLogin").submit(function () {
+    //        event.preventDefault();
+    //        $(".jsHide").hide();
+    //        $("#pageInputPigging").show();
+    //        $("#pageInputPigging #launchTime").prop('required', true);
+    //        $("#pageInputPigging div.select-receive").hide();
+    //        $("#pageInputPigging div.select-exception").hide();
+    //    });
 
     //  Login Page >> Submit > Report Viewer
     //    $("form#userLogin").submit(function () {
@@ -76,8 +76,8 @@ $(document).on('submit', '#userPwdReset', function (event) {
 
     $(".jsHide").hide();
     $("#pageLogin").show();
-    $("#forgotPassword").show();
-    alert("Your password has been reset.");
+    $("#forgotPassword").hide();
+    alert("Your password has been reset. Please return to the Login page.");
 });
 
 //  Password Reset Page  >> Cancel
@@ -105,19 +105,19 @@ $(document).on('click', '#userCreateAcct .js-cancel', function () {
     $("#forgotPassword").hide();
 });
 
-//  Header >> Account Info
+//  Normal Header >> Account Info
 $(document).on('click', 'header img', function () {
     $(".jsHide").hide();
     $("#pageUpdateAcct").show();
 });
 
-//  Header >> Exit Application
+//  Normal Header >> Exit Application
 $(document).on('click', 'header img + img', function () {
     $(".jsHide").hide();
     $("#pageLogin").show();
 });
 
-//  Update Account >> Submit
+//  Update Account Info >> Submit
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
     event.preventDefault();
     alert("SUBMIT clicked. I will create a BACK function that takes the user back to her previous page after submitting the udated account info");
@@ -126,13 +126,15 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function () {
     $("#pageLogin").show();
 });
 
-//  Update Account >> Cancel
+//  Update Account Info >> Cancel
 $(document).on('click', '#pageUpdateAcct .js-cancel', function () {
 
     alert("CANCEL clicked. I will create a BACK function that takes the user back to her previous page after clicking Cancel on this page");
     $(".jsHide").hide();
     $("#pageLogin").show();
 });
+
+// USER = FOREMAN
 
 //  Foreman Header >> Admin Menu
 $(document).on('click', 'header.foreman-header>div>img', function () {
@@ -144,29 +146,21 @@ $(document).on('click', 'header.foreman-header>div>img', function () {
 $(document).on('click', 'p.viewPigSched', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .foreman-header").show();
-    $("#pagePiggingSchedule .normal-header").hide();
-    $("#pagePiggingSchedule .ops-nav").hide();
+    $("#pagePiggingSchedule .show-to-foreman").show();
 });
 
 //  Admin Menu >> View Debris Report
 $(document).on('click', 'p.viewDebRep', function () {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
-    $("#pageDebrisReport #debrisReport").show();
-    $("#pageDebrisReport .normal-header").hide();
-    $(".debris-results").hide();
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").hide();
-    $("#pageDebrisReport .ops-nav").hide();
+
 });
 
 //  Admin Menu >> Pigging Activity
 $(document).on('click', 'p.viewPigAct', function () {
     $(".jsHide").hide();
     $("#pagePiggingActivity").show();
-    $("#pagePiggingActivity select").hide();
-    $(".pigging-activity-results").hide();
+
 });
 
 
@@ -180,22 +174,41 @@ $(document).on('click', 'p.addPL', function () {
 $(document).on('click', 'p.remPL', function () {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
-    $("#updatePipeline").hide();
+
 });
 
 //  Admin Menu >> Add User
 $(document).on('click', 'p.addUser', function () {
     $(".jsHide").hide();
     $("#pageAddUser").show();
-    $("#pageAddUser #assignRole").hide();
+
 });
 
 //  Admin Menu >> Update/Remove User
 $(document).on('click', 'p.remUser', function () {
     $(".jsHide").hide();
     $("#pageUdateUser").show();
-    $("#pageUdateUser #assignRole").hide();
+
 });
+
+//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
+$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () {
+    $(".jsHide").hide();
+    $("#pagePrevLaunch").show();
+    $("#pagePrevLaunch header").show();
+    $("#pagePrevLaunch .show-to-foreman").show();
+});
+
+//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
+$(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+    //    $("#pagePiggingSchedule .show-to-foreman").show();
+});
+
+
+
+
 
 //  Input Pigging >> Radio Launch
 $(document).on('click', '#pageInputPigging #radioLaunch', function () {
@@ -263,13 +276,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function () {
     alert("Pipeline System selection has been submitted. Schedule results will update.");
 });
 
-//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () {
-    $(".jsHide").hide();
-    $("#pagePrevLaunch").show();
-    $("#pagePrevLaunch header").show();
-    //    $(".ops-nav, .back").show();
-});
+
 
 //  Pigging Schedule (Operator) >> Input Pigging
 $(document).on('click', '#pagePiggingSchedule .js-operator', function () {
@@ -291,21 +298,15 @@ $(document).on('click', '#pagePiggingSchedule .js-viewonly', function () {
     $("#debrisReport .js-pipeline-debris").hide();
 });
 
-//  Previous Launch >> Back (to Pigging Schedule (Foreman))
-$(document).on('click', '#pagePrevLaunch .ops-nav', function () {
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .foreman-header").show();
-    $("#pagePiggingSchedule .js-operator").hide();
-});
+
 
 //  Previous Launch >> Back (to Pigging Schedule (Operator))
-$(document).on('click', '#pagePrevLaunch .ops-nav', function () {
+$(document).on('click', '#pagePrevLaunch .show-to-operator', function () {
     $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .normal-header").show();
-    $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .js-operator").show();
+    //    $("#pagePiggingSchedule").show();
+    //    $("#pagePiggingSchedule .normal-header").show();
+    //    $("#pagePiggingSchedule .foreman-header").hide();
+    //    $("#pagePiggingSchedule .js-operator").show();
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule

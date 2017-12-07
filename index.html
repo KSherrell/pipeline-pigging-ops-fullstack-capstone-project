@@ -84,12 +84,6 @@
 
 
 
-
-
-
-
-
-
     <main id="pageCreateAcct" class="jsHide">
         <header class="normal-header">
             <div>
@@ -280,10 +274,6 @@
 
 
 
-
-
-
-
     <main id="pagePrevLaunch" class="jsHide">
         <header class="normal-header">
             <div>
@@ -317,13 +307,16 @@
             </div>
 
         </section>
-        <div class="ops-nav">
-            <div><a href="#">Back</a></div>
+        <div class="ops-nav jsHide show-to-foreman">
+            <div>Back</div>
+        </div>
+        <div class="ops-nav jsHide show-to-operator">
+            <div>Back</div>
+        </div>
+        <div class="ops-nav jsHide show-to-report-viewer">
+            <div>Back</div>
         </div>
     </main>
-
-
-
 
 
 
@@ -352,15 +345,9 @@
     </main>
 
 
-
-
-
-
-
-
     <main id="pagePiggingSchedule" class="jsHide">
 
-        <header class="foreman-header">
+        <header class="foreman-header jsHide show-to-foreman">
             <div>
                 <img src="imgs/admin-menu-wht.png">
                 <h1>Pigging Schedule</h1>
@@ -373,7 +360,7 @@
         </header>
 
 
-        <header class="normal-header">
+        <header class="normal-header jsHide">
             <div>
                 <h1>Pigging Schedule</h1>
                 <div>
@@ -427,22 +414,20 @@
             </div>
         </section>
 
-        <div class="ops-nav js-operator">
+        <div class="ops-nav jsHide show-to-operator">
             <div>
                 <p>Input Pigging</p>
             </div>
         </div>
 
 
-        <div class="ops-nav js-viewonly">
+        <div class="ops-nav jsHide show-to-report-viewer">
             <div>
                 <p>Debris Reports</p>
             </div>
         </div>
 
     </main>
-
-
 
 
 
@@ -461,7 +446,7 @@
         </header>
 
 
-        <header class="foreman-header">
+        <header class="foreman-header show-to-foreman">
             <div>
                 <img src="imgs/admin-menu-wht.png">
                 <h1>Debris Reports</h1>
@@ -689,17 +674,12 @@
             </div>
 
         </section>
-        <div class="ops-nav">
+        <div class="ops-nav show-to-operator show-to-report-viewer">
             <div><a href="#">Pigging Schedule</a></div>
         </div>
 
 
     </main>
-
-
-
-
-
 
 
 
@@ -790,11 +770,6 @@
 
         </section>
     </main>
-
-
-
-
-
 
 
 
@@ -922,11 +897,6 @@
 
         </section>
     </main>
-
-
-
-
-
 
 
 
