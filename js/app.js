@@ -326,11 +326,11 @@ $(document).on('submit', '#updateSearch', function () {
     $("#pageUpdatePipeline").show();
     $("#updatePipeline").show();
     $("#pageUpdatePipeline .submit-cancel-delete").show();
+    document.getElementById("updateSearch").reset();
 });
 
-//  Update/Remove Pipeline (Search form) >> Cancel
+//  Update/Remove Pipeline >> Cancel
 $(document).on('click', '#pageUpdatePipeline .button-cancel', function () {
-    event.preventDefault();
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
@@ -339,10 +339,21 @@ $(document).on('click', '#pageUpdatePipeline .button-cancel', function () {
 $(document).on('submit', '#updatePipeline', function () {
     event.preventDefault();
     alert("Pipeline information updated successfully.");
+    document.getElementById("updateSearch").reset();
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
-    $("#updatePipeline").show();
-    $("#pageUpdatePipeline .submit-cancel-delete").show();
+    $("#updateSearch").show();
+});
+
+
+//  Update/Remove Pipeline (Update form) >> Delete
+$(document).on('click', '#pageUpdatePipeline .button-delete', function () {
+    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
+        alert("Record has be sucessfully deleted.");
+    }
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").show();
+    $("#updateSearch").show();
 });
 
 //  Admin Menu >> Add User

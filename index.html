@@ -1136,21 +1136,21 @@
             <form id="updatePipeline" class="jsHide" method="">
                 <p>To update the pipeline data, modify the information shown below.</p>
                 <div>
-                    <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
-                    <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name" required>
-                    <input type="text" id="receiverName" name="receiverName" placeholder="Current Receiver name" required>
+                    <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name">
+                    <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name">
+                    <input type="text" id="receiverName" name="receiverName" placeholder="Current Receiver name">
                 </div>
 
                 <div>
-                    <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                    <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency">
                 </div>
 
                 <div>
-                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
+                    <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size">
                 </div>
                 <div>
                     <p>Closure:</p>
-                    <select name="pipeline-closures" required>
+                    <select name="pipeline-closures">
                                 <option value="current-closure">Current Closure</option>
                                 <option value="closure-one">Closure One</option>
                                 <option value="closure-two">Closure Two</option>
@@ -1186,8 +1186,8 @@
             <div class="submit-cancel-delete jsHide">
                 <div>
                     <button form="updatePipeline" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
-                    <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
+                    <button type="button" class="button-cancel">Cancel</button>
+                    <button type="button" class="button-delete">Delete</button>
                 </div>
             </div>
         </section>
