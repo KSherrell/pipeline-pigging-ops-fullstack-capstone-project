@@ -286,9 +286,6 @@ $(document).on('click', '#pageUpdateHistory .button-delete', function () {
     $("#piggingHistory").show();
 });
 
-
-
-
 //*** Admin Menu >> Add Pipeline
 $(document).on('click', 'p.gotoAddPipeline', function () {
     $(".jsHide").hide();
@@ -297,13 +294,25 @@ $(document).on('click', 'p.gotoAddPipeline', function () {
 });
 
 //   Add Pipeline >> Submit
-$(document).on('submit', 'p.gotoAddPipeline', function () {
-    $(".jsHide").hide();
-    $("#pageAddPipeline").show();
-    document.getElementById("addPipeline").reset();
+$(document).on('submit', '#pageAddPipeline', function () {
+    event.preventDefault();
+    if (window.confirm("Pipeline added successfully. Would you like to add another pipeline?")) {
+        $(".jsHide").hide();
+        $("#pageAddPipeline").show();
+        document.getElementById("addPipeline").reset();
+    } else {
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    }
 });
 
-//  Admin Menu >> Update/Remove Pipeline
+//   Add Pipeline >> Cancel
+$(document).on('click', '#pageAddPipeline .button-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
+
+//*** Admin Menu >> Update/Remove Pipeline
 $(document).on('click', 'p.gotoUdatePipeline', function () {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();

@@ -1030,13 +1030,13 @@
 
                     <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
                     <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
-                    <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name" required>
+                    <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name">
                     <div>
                         <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
                     </div>
                     <div>
                         <p>Closure:</p>
-                        <select name="pipeline-closures" class="select-closure" required>
+                        <select name="pipeline-closures" class="select-closure">
                                     <option value="select-closure">Select Closure</option>
                                     <option value="closure-one">Closure One</option>
                                     <option value="closure-two">Closure Two</option>
@@ -1073,7 +1073,7 @@
             </div>
             <div class="submit-reset">
                 <div>
-                    <button form="addPipeline" type="submit">Submit</button><button type="button">Cancel</button>
+                    <button form="addPipeline" type="submit">Submit</button><button type="button" class="button-cancel">Cancel</button>
                 </div>
             </div>
         </section>
@@ -1101,7 +1101,7 @@
 
 
 
-            <form id="updateSearch" method="">
+            <form id="updateSearch" class="jsHide" method="">
                 <label for="updateSearch">Search for pipeline to update.</label>
 
                 <div>
@@ -1133,7 +1133,7 @@
             </form>
 
 
-            <form id="updatePipeline" method="">
+            <form id="updatePipeline" class="jsHide" method="">
                 <p>To update the pipeline data, modify the information shown below.</p>
                 <div>
                     <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name" required>
@@ -1182,16 +1182,14 @@
                     <p>PERMANENTLY REPLACE</p>
                     <p> the current data.</p>
                 </div>
-                <div class="submit-cancel-delete">
-                    <div>
-                        <button form="updatePipeline" type="submit">Submit</button>
-                        <button type="button">Cancel</button>
-                        <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
-                    </div>
-                </div>
-
             </form>
-
+            <div class="submit-cancel-delete jsHide">
+                <div>
+                    <button form="updatePipeline" type="submit">Submit</button>
+                    <button type="button">Cancel</button>
+                    <button form="updatePipeline" type="submit" class="button-delete">Delete</button>
+                </div>
+            </div>
         </section>
     </main>
 
