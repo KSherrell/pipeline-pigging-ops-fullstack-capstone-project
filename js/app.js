@@ -279,15 +279,11 @@ $(document).on('click', '#pageUpdateHistory .button-cancel', function () {
 //  Update History >> Delete
 $(document).on('click', '#pageUpdateHistory .button-delete', function () {
     if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
         alert("Record has be sucessfully deleted.");
-
-    } else {
-        $(".jsHide").hide();
-        $("#pageUpdateHistory").show();
-    }
+    };
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
 });
 
 
