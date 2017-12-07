@@ -775,38 +775,38 @@
         margin: 0 2%;
     }
     /*  ADD USER */
-    form#findUser {
+    form.findUser {
         margin-top: 2rem;
     }
-    form#assignRole div {
+    form.assignRole div {
         margin-top: 1rem;
     }
-    form#assignRole div:first-of-type {
+    form.assignRole div:first-of-type {
         margin-bottom: 2rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #E0E4CC;
     }
-    form#assignRole div:first-of-type p {
+    form.assignRole div:first-of-type p {
         margin-bottom: 1rem;
     }
-    form#assignRole input[type='radio'] {
+    form.assignRole input[type='radio'] {
         height: auto;
         width: auto;
         vertical-align: baseline;
         margin: 0 0 0 1rem;
         padding: 0px;
     }
-    form#assignRole label {
+    form.assignRole label {
         vertical-align: baseline;
         margin-left: .5rem;
         padding: 0px;
         font-size: 1rem;
     }
     /*  UPDATE USER */
-    .update-user-container form#assignRole>p {
+    .update-user-container form.assignRole>p {
         font-weight: bolder;
     }
-    .update-user-container form#assignRole>p:nth-of-type(2) {
+    .update-user-container form.assignRole>p:nth-of-type(2) {
         margin-top: 2rem;
     }
 }

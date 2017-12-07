@@ -1213,7 +1213,7 @@
         <section class="assign-user-role-container">
 
 
-            <form id="findUser" class="jsHide" action="" method="">
+            <form id="findUser" class="findUser jsHide" action="" method="">
                 <label for="findUser">Find User</label>
                 <div>
                     <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
@@ -1226,7 +1226,7 @@
 
 
 
-            <form id="assignRole" class="jsHide" action="" method="">
+            <form id="assignRole" class="assignRole jsHide" action="" method="">
                 <div>
                     <p id="userID">User Database ID</p>
                     <p id="userFirstName">User First Name</p>
@@ -1260,7 +1260,7 @@
 
 
 
-    <main id="pageUdateUser" class="jsHide">
+    <main id="pageUpdateUser" class="jsHide">
         <header class="foreman-header">
             <div>
                 <img src="imgs/admin-menu-wht.png">
@@ -1274,19 +1274,19 @@
         </header>
         <section class="update-user-container">
 
-            <form id="findUser" class="jsHide" action="" method="">
-                <label for="findUser">Find User</label>
+            <form id="findUpdateUser" class="findUser jsHide" action="" method="">
+                <label for="findUpdateUser">Find User</label>
                 <div>
                     <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
                 </div>
                 <div class="submit-reset">
-                    <button form="findUser" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
+                    <button form="findUpdateUser" type="submit">Submit</button>
+                    <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
 
 
-            <form id="assignRole" class="jsHide" action="" method="">
+            <form id="updateRole" class="assignRole jsHide" action="" method="">
                 <div>
                     <p id="userID">User Database ID</p>
                     <p id="userFirstName">User First Name</p>
@@ -1294,22 +1294,22 @@
                 </div>
                 <p>Update User Role:</p>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+                    <input type="radio" name="radio-update-user-role" id="radioOperatorRole" value="operator-role"><label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+                    <input type="radio" name="radio-update-user-role" id="radioForemanRole" value="foreman-role"><label for="radioForemanRole">Foreman</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+                    <input type="radio" name="radio-update-user-role" id="radioViewOnlyRole" value="view-only-role"><label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <p>Change User Status:</p>
                 <div>
-                    <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" checked="checked" required><label for="radioUserActive">Active</label>
-                    <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" required><label for="radioUserInactive">Inactive</label>
+                    <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active"><label for="radioUserActive">Active</label>
+                    <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive"><label for="radioUserInactive">Inactive</label>
                 </div>
                 <div class="submit-reset">
-                    <button form="assignRol" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
+                    <button form="updateRole" type="submit">Submit</button>
+                    <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
 

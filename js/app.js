@@ -390,8 +390,33 @@ $(document).on('submit', '#assignRole', function () {
 //*** Admin Menu >> Update/Remove User
 $(document).on('click', 'p.gotoUpdateUser', function () {
     $(".jsHide").hide();
-    $("#pageUdateUser").show();
+    $("#pageUpdateUser").show();
+    $("#findUpdateUser").show();
+});
 
+//  Update User (Search form) >> Submit
+$(document).on('submit', '#findUpdateUser', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageUpdateUser").show();
+    $("#updateRole").show();
+    document.getElementById("findUpdateUser").reset();
+});
+
+//  Update User (Update form) >> Submit
+$(document).on('submit', '#updateRole', function () {
+    event.preventDefault();
+    alert("User role and/or status has been updated.");
+    document.getElementById("findUpdateUser").reset();
+    $(".jsHide").hide();
+    $("#pageUpdateUser").show();
+    $("#findUpdateUser").show();
+});
+
+//  Update User >> Cancel (for both Cancel buttons on page)
+$(document).on('click', '#pageUpdateUser .button-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
 });
 
 
