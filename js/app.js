@@ -316,13 +316,40 @@ $(document).on('click', '#pageAddPipeline .button-cancel', function () {
 $(document).on('click', 'p.gotoUdatePipeline', function () {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
+    $("#updateSearch").show();
+});
 
+//  Update/Remove Pipeline (Search form) >> Submit
+$(document).on('submit', '#updateSearch', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").show();
+    $("#updatePipeline").show();
+    $("#pageUpdatePipeline .submit-cancel-delete").show();
+});
+
+//  Update/Remove Pipeline (Search form) >> Cancel
+$(document).on('click', '#pageUpdatePipeline .button-cancel', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
+
+//  Update/Remove Pipeline (Update form) >> Submit
+$(document).on('submit', '#updatePipeline', function () {
+    event.preventDefault();
+    alert("Pipeline information updated successfully.");
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").show();
+    $("#updatePipeline").show();
+    $("#pageUpdatePipeline .submit-cancel-delete").show();
 });
 
 //  Admin Menu >> Add User
 $(document).on('click', 'p.gotoAddUser', function () {
     $(".jsHide").hide();
     $("#pageAddUser").show();
+
 
 });
 
