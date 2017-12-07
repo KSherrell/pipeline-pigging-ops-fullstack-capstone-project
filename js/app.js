@@ -149,13 +149,7 @@ $(document).on('click', 'p.gotoPiggingSchedule', function () {
     $("#pagePiggingSchedule .show-to-foreman").show();
 });
 
-//  Admin Menu >> View Debris Report
-$(document).on('click', 'p.gotoDebrisReport', function () {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
 
-});
 
 //  Admin Menu >> Pigging Activity
 $(document).on('click', 'p.gotoPiggingActivity', function () {
@@ -205,6 +199,49 @@ $(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
     //    $("#pagePiggingSchedule .show-to-foreman").show();
+});
+
+//  Admin Menu >> View Debris Report
+$(document).on('click', 'p.gotoDebrisReport', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport  #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+});
+
+//  Debris Report >> Radio Debris by System
+$(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
+    $("#debrisReport .js-system-debris").show();
+    $("#debrisReport .js-pipeline-debris").hide();
+});
+
+//  Debris Report >> Radio Debris by Pipeline
+$(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
+    $("#debrisReport .js-system-debris").hide();
+    $("#debrisReport .js-pipeline-debris").show();
+});
+
+//  Debris Report >> Radio Other Selections
+$(document).on('click', '#pageDebrisReport .radio-other-selection', function () {
+    $("#debrisReport .jsHide").hide();
+});
+
+//  Debris Report (Foreman) >> Submit
+$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    $(".debris-results").show();
+
+});
+//  Debris Report (Foreman) >> Reset
+$(document).on('click', '#pageDebrisReport .submit-reset', function () {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    document.getElementById("debrisReport").reset();
 });
 
 
@@ -328,43 +365,4 @@ $(document).on('click', '#pageDebrisReport #radioSystemDebris', function () {
 $(document).on('click', '#pageDebrisReport #radioPipelineDebris', function () {
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").show();
-});
-
-//  Debris Report >> Submit
-$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
-    event.preventDefault();
-    $("#pageDebrisReport #debrisReport").hide();
-    $("#pageDebrisReport .debris-results").show();
-});
-
-//  Debris Report (Foreman) >> Submit
-$(document).on('submit', '#pageDebrisReport #debrisReport', function () {
-    event.preventDefault();
-    $("#pageDebrisReport #debrisReport").hide();
-    $("#pageDebrisReport .debris-results").show();
-    $("#pageDebrisReport .foreman-header").show();
-});
-
-//  Debris Report >> Reset
-$(document).on('click', '#pageDebrisReport .submit-reset', function () {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .foreman-header").hide();
-    $("#pageDebrisReport #debrisReport").show();
-    $(".debris-results").hide();
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").hide();
-    document.getElementById("debrisReport").reset();
-});
-
-//  Debris Report (Foreman) >> Reset
-$(document).on('click', '#pageDebrisReport .submit-reset', function () {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport #debrisReport").show();
-    $(".debris-results").hide();
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").hide();
-    $("#pageDebrisReport .foreman-header").show();
-    document.getElementById("debrisReport").reset();
 });
