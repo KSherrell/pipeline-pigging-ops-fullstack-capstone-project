@@ -1213,20 +1213,20 @@
         <section class="assign-user-role-container">
 
 
-            <form id="findUser" action="" method="">
+            <form id="findUser" class="jsHide" action="" method="">
                 <label for="findUser">Find User</label>
                 <div>
                     <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
                 </div>
                 <div class="submit-reset">
                     <button form="findUser" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
+                    <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
 
 
 
-            <form id="assignRole" action="" method="">
+            <form id="assignRole" class="jsHide" action="" method="">
                 <div>
                     <p id="userID">User Database ID</p>
                     <p id="userFirstName">User First Name</p>
@@ -1235,18 +1235,18 @@
 
                 <p>Assign User Role:</p>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" required><label for="radioViewOnlyRole">Report Viewer</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="view-only-role" checked><label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role" required><label for="radioOperatorRole">Operator</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator-role"><label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role" required><label for="radioForemanRole">Foreman</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman-role"><label for="radioForemanRole">Foreman</label>
                 </div>
 
                 <div class="submit-reset">
                     <button form="assignRole" type="submit">Submit</button>
-                    <button type="button">Cancel</button>
+                    <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
 
@@ -1274,7 +1274,7 @@
         </header>
         <section class="update-user-container">
 
-            <form id="findUser" action="" method="">
+            <form id="findUser" class="jsHide" action="" method="">
                 <label for="findUser">Find User</label>
                 <div>
                     <input type="email" id="userEmail" name="user-email" placeholder="Enter User Email" required>
@@ -1286,7 +1286,7 @@
             </form>
 
 
-            <form id="assignRole" action="" method="">
+            <form id="assignRole" class="jsHide" action="" method="">
                 <div>
                     <p id="userID">User Database ID</p>
                     <p id="userFirstName">User First Name</p>

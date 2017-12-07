@@ -356,15 +356,38 @@ $(document).on('click', '#pageUpdatePipeline .button-delete', function () {
     $("#updateSearch").show();
 });
 
-//  Admin Menu >> Add User
+//*** Admin Menu >> Add User
 $(document).on('click', 'p.gotoAddUser', function () {
     $(".jsHide").hide();
     $("#pageAddUser").show();
-
-
+    $("#findUser").show();
 });
 
-//  Admin Menu >> Update/Remove User
+//  Add User (Search form) >> Submit
+$(document).on('submit', '#findUser', function () {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#assignRole").show();
+    document.getElementById("findUser").reset();
+});
+
+//  Add User >> Cancel (for both Cancel buttons on page)
+$(document).on('click', '#pageAddUser .button-cancel', function () {
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
+
+//  Add User (Assign Role form) >> Submit
+$(document).on('submit', '#assignRole', function () {
+    event.preventDefault();
+    alert("User added successfully.")
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#findUser").show();
+});
+
+//*** Admin Menu >> Update/Remove User
 $(document).on('click', 'p.gotoUpdateUser', function () {
     $(".jsHide").hide();
     $("#pageUdateUser").show();
