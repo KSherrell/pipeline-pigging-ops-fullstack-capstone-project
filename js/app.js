@@ -161,7 +161,7 @@ $(document).on('click', '#pagePiggingSchedule .schedule-results>p', function () 
 $(document).on('click', '#pagePrevLaunch .show-to-foreman', function () {
     $(".jsHide").hide();
     $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
-    //    $("#pagePiggingSchedule .show-to-foreman").show();
+
 });
 
 //*** Admin Menu >> View Debris Report
@@ -418,10 +418,6 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function () {
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
-
-
-
-
 
 
 
