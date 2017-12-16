@@ -9,8 +9,6 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
 const express = require('express');
-//const binding = require('node-gyp-build')(__dirname);
-//const bindings = require('bindings')('binding.node')
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
