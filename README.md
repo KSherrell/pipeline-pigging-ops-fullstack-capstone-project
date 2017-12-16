@@ -139,7 +139,7 @@ The app's functionality includes the following abilities:
 - create debris reports which trend type and amount of debris collected within specific timeframes
 
 ## Wireframes
-![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_login.png)
+![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_login.png)
 
 ![Wireframe _Reset Password](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_reset_password.png)
 
