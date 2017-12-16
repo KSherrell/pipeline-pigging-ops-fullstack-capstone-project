@@ -159,7 +159,7 @@ The app's functionality includes the following abilities:
 
 ![Wireframe _Foreman Previous Launch](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_prev_launch.png)
 
-![Wireframe _Foreman Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_debris_reports.png)
+![Wireframe _Foreman Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_debris_reports.png)
 
 ![Wireframe _Foreman Pigging Activity](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_pigging_activity.png)
 
