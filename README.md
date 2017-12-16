@@ -141,43 +141,43 @@ The app's functionality includes the following abilities:
 ## Wireframes
 ![Wireframe _User Login](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_login.png)
 
-![Wireframe _Reset Password](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_reset_password.png)
+![Wireframe _Reset Password](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_reset_password.png)
 
-![Wireframe _Create Account](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_create_account.png)
+![Wireframe _Create Account](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_create_account.png)
 
-![Wireframe _Account Info](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_account_info.png)
+![Wireframe _Account Info](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_account_info.png)
 
-![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_input_pigging.png)
+![Wireframe _Operator Input Pigging](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_input_pigging.png)
 
-![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_operator_pigging_schedule.png)
+![Wireframe _Operator Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_operator_pigging_schedule.png)
 
-![Wireframe _Operator Previous Launch ](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_operator_prev_launch.png)
+![Wireframe _Operator Previous Launch ](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_operator_prev_launch.png)
 
-![Wireframe _Foreman Admin Menu](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_admin_menu.png)
+![Wireframe _Foreman Admin Menu](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_admin_menu.png)
 
-![Wireframe _Foreman Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_pigging_schedule.png)
+![Wireframe _Foreman Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_pigging_schedule.png)
 
-![Wireframe _Foreman Previous Launch](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_prev_launch.png)
+![Wireframe _Foreman Previous Launch](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_prev_launch.png)
 
 ![Wireframe _Foreman Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_debris_reports.png)
 
-![Wireframe _Foreman Pigging Activity](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_pigging_activity.png)
+![Wireframe _Foreman Pigging Activity](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_pigging_activity.png)
 
-![Wireframe _Foreman Pigging History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_pigging_history.png)
+![Wireframe _Foreman Pigging History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_pigging_history.png)
 
-![Wireframe _Foreman Update History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_update_history.png)
+![Wireframe _Foreman Update History](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_update_history.png)
 
-![Wireframe _Foreman Add Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_add_pipeline.png)
+![Wireframe _Foreman Add Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_add_pipeline.png)
 
-![Wireframe _Foreman Update Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_update_pipeline.png)
+![Wireframe _Foreman Update Pipeline](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_update_pipeline.png)
 
-![Wireframe _Foreman Add User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_add_user.png)
+![Wireframe _Foreman Add User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_add_user.png)
 
-![Wireframe _Foreman Update User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_foreman_update_user.png)
+![Wireframe _Foreman Update User](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_foreman_update_user.png)
 
-![Wireframe _View Only Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_viewonly_pigging_schedule.png)
+![Wireframe _View Only Pigging Schedule](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_viewonly_pigging_schedule.png)
 
-![Wireframe _View Only Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/imgs/wireframes/wireframes_viewonly_debris_reports.png)
+![Wireframe _View Only Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_viewonly_debris_reports.png)
 
 
 
