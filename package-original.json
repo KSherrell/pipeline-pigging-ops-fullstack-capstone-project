@@ -2,7 +2,7 @@
   "name": "pigging-schedule",
   "version": "1.0.0",
   "description": "Thinkful fullstack capstone project, a pipeline pigging history and scheduling app",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha",
     "start": "node server.js",
