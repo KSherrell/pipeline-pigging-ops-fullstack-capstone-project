@@ -1,3 +1,6 @@
+"use strict";
+
+
 const User = require('./models/user');
 const bodyParser = require('body-parser');
 const config = require('./config');

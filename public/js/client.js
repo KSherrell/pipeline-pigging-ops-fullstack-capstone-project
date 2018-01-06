@@ -52,7 +52,9 @@ $(document).ready(function () {
     });
 
     //  Login Page >> Create Account
-    $("form#forgotPassword + p").click(function () {
+    $("form#forgotPassword + p a").click(function (event) {
+        event.preventDefault();
+        alert("Clicked the Create Account link");
         $(".jsHide").hide();
         $("#pageCreateAcct").show();
     });
