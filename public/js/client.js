@@ -1,4 +1,5 @@
 "use strict";
+
 //Step One: define functions, objects, variables
 //function pageCreateAcct() {
 //    $("#pageCreateAcct").show();
