@@ -21,8 +21,28 @@ $(document).ready(function () {
     //  Login Page >> Submit > Foreman
     $("form#userLogin").submit(function (event) {
         event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
+
+        const email = $(this).parent().parent().find('#email-login').val();
+        const password = $(this).parent().parent().find('#pwd-login').val();
+
+        //    console.log(email, password);
+
+        $(this).parent().parent('input').blur();
+
+        if (!email || !password) {
+            alert("Both fields are required.");
+            if (!email) {
+                $('#email-login').focus();
+            } else
+            if (!password) {
+                $('#pwd-login').focus();
+            };
+        } else {
+
+            //Success Scenario for Foreman
+            $(".jsHide").hide();
+            $("#pageAdminMenu").show();
+        };
     });
 
     //  Login Page >> Submit > Operator
@@ -47,7 +67,7 @@ $(document).ready(function () {
 
 
     //  Login Page >> Forgot Password
-    $("form#userLogin + p").click(function (event) {
+    $("form#userLogin + p a").click(function (event) {
         event.preventDefault();
         $("#forgotPassword").toggle();
     });
@@ -128,6 +148,7 @@ $(document).on('submit', '#userCreateAcct', function (event) {
         $(".jsHide").hide();
         $("#pageLogin").show();
         $("#forgotPassword").hide();
+        $("form#forgotPassword + p").hide();
         alert("Your account request has been sent to the Pipeline Foreman for approval.");
     };
 
