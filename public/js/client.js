@@ -22,13 +22,12 @@ $(document).ready(function () {
     $("form#userLogin").submit(function (event) {
         event.preventDefault();
 
-        const email = $(this).parent().parent().find('#email-login').val();
-        const password = $(this).parent().parent().find('#pwd-login').val();
+        let email = $(this).parent().parent('#email-login').val();
+        let password = $(this).parent().parent('#pwd-login').val();
 
-        //    console.log(email, password);
+        console.log(email, password);
 
         $(this).parent().parent('input').blur();
-
         if (!email || !password) {
             alert("Both fields are required.");
             if (!email) {
@@ -113,22 +112,21 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
 });
 
 
-//  Create Account Page >> Submit
+//  Create Account Page  >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
-    const fname = $(this).parent().parent().find('#fName-createAcct').val();
-    const lname = $(this).parent().parent().find('#lName-createAcct').val();
-    const email = $(this).parent().parent().find('#email-createAcct').val();
-    const password = $(this).parent().parent().find('#pwd-createAcct').val();
-    const pwdConfirm = $(this).parent().parent().find('#pwd-confirm-createAcct').val();
-    //    console.log(fname, lname, email, password, pwdConfirm);
+    let fname = $(this).parent().parent().find('#fName-createAcct').val();
+    let lname = $(this).parent().parent().find('#lName-createAcct').val();
+    let email = $(this).parent().parent().find('#email-createAcct').val();
+    let password = $(this).parent().parent().find('#pwd-createAcct').val();
+    let pwdConfirm = $(this).parent().parent().find('#pwd-confirm-createAcct').val();
+
     $(this).parent().parent('input').blur();
 
     if (!fname || !lname || !email || !password || !pwdConfirm) {
         alert("All fields are required.");
         if (!fname) {
             $('#fName-createAcct').focus();
-
         } else
         if (!lname) {
             $('#lName-createAcct').focus();
@@ -145,18 +143,45 @@ $(document).on('submit', '#userCreateAcct', function (event) {
     } else if (password !== pwdConfirm) {
         alert("The passwords must match exactly.");
         $('#pwd-confirm-createAcct').focus().val("");
-
     } else {
-
         //Success Scenario
-        $(".jsHide").hide();
-        $("#pageLogin").show();
-        $("#forgotPassword").hide();
-        $("form#forgotPassword + p").hide();
-        alert("Your account request has been sent to the Pipeline Foreman for approval.");
+        registerNewUser(fname, lname, email, password);
     };
 
 });
+
+function registerNewUser(fname, lname, email, password) {
+    let newUserObj = {
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password
+    };
+
+
+    $.ajax({
+            type: 'POST',
+            url: '/users/create',
+            dataType: 'json',
+            data: JSON.stringify(newUserObj),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+            alert("Your account request has been sent to the Pipeline Foreman for approval.");
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
+
 
 //  Create Account Page >> Cancel
 $(document).on('click', '#userCreateAcct .js-cancel', function (event) {

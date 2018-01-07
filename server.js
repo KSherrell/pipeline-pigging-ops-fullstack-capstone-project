@@ -57,27 +57,35 @@ function closeServer() {
 // POST -----------------------------------
 // creating a new user
 app.post('/users/create', (req, res) => {
-    let username = req.body.username;
-    username = username.trim();
+    // the following variables should match the ones in the ajax call
+    let fname = req.body.fname;
+    let lname = req.body.lname;
+
+    let email = req.body.email;
+    email = email.trim();
     let password = req.body.password;
     password = password.trim();
+    //create encryption key
     bcrypt.genSalt(10, (err, salt) => {
         if (err) {
             return res.status(500).json({
                 message: 'Internal server error'
             });
         }
-
+        //apply encryption key to current password
         bcrypt.hash(password, salt, (err, hash) => {
             if (err) {
                 return res.status(500).json({
                     message: 'Internal server error'
                 });
             }
-
+            //using Mongoose schema to create new user based on above variables
             User.create({
-                username,
+                fname,
+                lname,
+                email,
                 password: hash,
+                approved: 0,
             }, (err, item) => {
                 if (err) {
                     return res.status(500).json({
@@ -85,7 +93,7 @@ app.post('/users/create', (req, res) => {
                     });
                 }
                 if (item) {
-                    console.log(`User \`${username}\` created.`);
+                    console.log(`User \`${email}\` created.`);
                     return res.json(item);
                 }
             });
