@@ -142,6 +142,10 @@ $(document).on('submit', '#userCreateAcct', function (event) {
         if (!pwdConfirm) {
             $('#pwd-confirm-createAcct').focus();
         };
+    } else if (password !== pwdConfirm) {
+        alert("The passwords must match exactly.");
+        $('#pwd-confirm-createAcct').focus().val("");
+
     } else {
 
         //Success Scenario
