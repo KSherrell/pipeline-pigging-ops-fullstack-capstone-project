@@ -54,7 +54,6 @@ $(document).ready(function () {
     //  Login Page >> Create Account
     $("form#forgotPassword + p a").click(function (event) {
         event.preventDefault();
-        alert("Clicked the Create Account link");
         $(".jsHide").hide();
         $("#pageCreateAcct").show();
     });
@@ -94,11 +93,41 @@ $(document).on('click', '#userPwdReset .js-cancel', function () {
 //  Create Account Page >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
+    const fname = $(this).parent().parent().find('#fName-createAcct').val();
+    const lname = $(this).parent().parent().find('#lName-createAcct').val();
+    const email = $(this).parent().parent().find('#email-createAcct').val();
+    const password = $(this).parent().parent().find('#pwd-createAcct').val();
+    const pwdConfirm = $(this).parent().parent().find('#pwd-confirm-createAcct').val();
+    //    console.log(fname, lname, email, password, pwdConfirm);
+    $(this).parent().parent('input').blur();
 
-    $(".jsHide").hide();
-    $("#pageLogin").show();
-    $("#forgotPassword").hide();
-    alert("Your account request has been sent to the Pipeline Foreman for approval.");
+    if (!fname || !lname || !email || !password || !pwdConfirm) {
+        alert("All fields are required.");
+        if (!fname) {
+            $('#fName-createAcct').focus();
+
+        } else
+        if (!lname) {
+            $('#lName-createAcct').focus();
+        } else
+        if (!email) {
+            $('#email-createAcct').focus();
+        } else
+        if (!password) {
+            $('#pwd-createAcct').focus();
+        } else
+        if (!pwdConfirm) {
+            $('#pwd-confirm-createAcct').focus();
+        };
+    } else {
+
+        //Success Scenario
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+        alert("Your account request has been sent to the Pipeline Foreman for approval.");
+    };
+
 });
 
 //  Create Account Page >> Cancel

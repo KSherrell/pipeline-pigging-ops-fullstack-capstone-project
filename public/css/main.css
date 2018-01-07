@@ -72,6 +72,10 @@
         font-size: 1.1rem;
         padding: .5rem 0 0;
     }
+
+    input:focus {
+        background-color: #69D2E7;
+    }
     form div input,
     form div select,
     p.auto-pop-site-name {
@@ -87,6 +91,7 @@
     form div input:first-of-type {
         margin-top: .3rem;
     }
+
     .buttons {
         width: 100%;
         text-align: center;
@@ -154,10 +159,10 @@
     .user-login-container form#userLogin {
         margin-top: 65px;
     }
-    .user-login-container form div+div {
+    .user-login-container form div + div {
         margin-top: 1.5rem;
     }
-    .user-login-container form+div {
+    .user-login-container form + div {
         margin-top: 2rem;
     }
     .user-login-container p {
@@ -189,7 +194,7 @@
         margin: 1rem 0 2rem;
         color: red;
     }
-    form#userCreateAcct>div+div {
+    form#userCreateAcct > div + div {
         margin-top: 2rem;
     }
     /* USER UPDATE ACCOUNT INFO */
@@ -200,7 +205,7 @@
         width: 85%;
         margin: 1.5rem auto;
     }
-    form#userUpdateAcct>div {
+    form#userUpdateAcct > div {
         margin-top: 2rem;
     }
     .user-update-account-container div.buttons {
@@ -290,7 +295,7 @@
         margin: 0;
         vertical-align: baseline;
     }
-    .pigging-schedule-container form div+div {
+    .pigging-schedule-container form div + div {
         width: 25%;
     }
     .pigging-schedule-container button {
@@ -328,7 +333,7 @@
         width: 85%;
         margin: 1rem auto 2rem;
     }
-    .prev-launch-container div+div {
+    .prev-launch-container div + div {
         margin-top: 2rem;
     }
     .prev-launch-container span:nth-child(2) {
@@ -385,7 +390,7 @@
     .debris-report-container div.debris-results-header h3 {
         padding: 1rem 0 0;
     }
-    .debris-report-container div.debris-results-header>h3 {
+    .debris-report-container div.debris-results-header > h3 {
         padding-bottom: .5rem;
         color: #69D2E7;
     }
@@ -393,21 +398,21 @@
         width: 100%;
         margin: 8rem 0 60px;
     }
-    .debris-report-container div.debris-results-header div>div,
-    .debris-report-container div.debris-results-list div>div {
+    .debris-report-container div.debris-results-header div > div,
+    .debris-report-container div.debris-results-list div > div {
         display: inline-block;
         text-align: center;
     }
-    .debris-report-container div.debris-results-list>div {
+    .debris-report-container div.debris-results-list > div {
         padding: .5rem 0;
         border-bottom: 1px solid #A7DBD8;
     }
-    .debris-report-container div.debris-results-header div>div,
-    .debris-report-container div.debris-results-list div>div {
+    .debris-report-container div.debris-results-header div > div,
+    .debris-report-container div.debris-results-list div > div {
         width: 20%;
     }
-    .debris-report-container div.debris-results-header div>div+div,
-    .debris-report-container div.debris-results-list div>div+div {
+    .debris-report-container div.debris-results-header div > div + div,
+    .debris-report-container div.debris-results-list div > div + div {
         width: 38%;
     }
     .submit-reset {
@@ -442,7 +447,7 @@
         padding: 0 .5rem .5rem;
         background-color: #ffffff;
     }
-    .pigging-activity-container h3+p {
+    .pigging-activity-container h3 + p {
         width: 85%;
         /*        text-align: center;*/
         margin: auto;
@@ -499,7 +504,7 @@
     .view-history-container div.history-results div:nth-child(even) {
         background-color: #f5f5f5;
     }
-    .view-history-container div.history-results h3+p {
+    .view-history-container div.history-results h3 + p {
         width: 85%;
         color: #68baca;
         padding-bottom: .5rem;
@@ -674,7 +679,7 @@
         vertical-align: baseline;
         margin: 1rem 0 0;
     }
-    .add-pipeline-container form input[type='checkbox']+label {
+    .add-pipeline-container form input[type='checkbox'] + label {
         padding-left: 5px;
     }
     .add-pipeline-container div.warning {
@@ -714,7 +719,7 @@
         margin: 2rem .5rem 0 0;
         font-weight: bold;
     }
-    #updatePipeline>p:first-of-type {
+    #updatePipeline > p:first-of-type {
         font-weight: normal;
         margin-top: 1rem;
     }
@@ -744,7 +749,7 @@
         height: auto;
         width: auto;
     }
-    .update-pipeline-container form input[type='checkbox']+label {
+    .update-pipeline-container form input[type='checkbox'] + label {
         padding-left: 5px;
     }
     .update-pipeline-container div.warning {
@@ -803,10 +808,10 @@
         font-size: 1rem;
     }
     /*  UPDATE USER */
-    .update-user-container form.assignRole>p {
+    .update-user-container form.assignRole > p {
         font-weight: bolder;
     }
-    .update-user-container form.assignRole>p:nth-of-type(2) {
+    .update-user-container form.assignRole > p:nth-of-type(2) {
         margin-top: 2rem;
     }
 }
@@ -816,7 +821,7 @@
         width: 350px;
         margin: auto;
     }
-    header>div {
+    header > div {
         width: 350px;
         margin: auto;
     }
@@ -889,7 +894,7 @@
         padding: 0 0 .75rem;
         border-top: none;
     }
-    .view-history-container div.submit-reset>div {
+    .view-history-container div.submit-reset > div {
         width: 375px;
         margin: auto;
         padding-top: 1rem;
@@ -899,7 +904,7 @@
         padding: 0 0 .75rem;
         border-top: none;
     }
-    .update-history-container div.submit-cancel-delete>div {
+    .update-history-container div.submit-cancel-delete > div {
         width: 375px;
         margin: auto;
         padding-top: 1rem;
@@ -909,7 +914,7 @@
         padding: 0 0 .75rem;
         border-top: none;
     }
-    .add-pipeline-container div.submit-reset>div {
+    .add-pipeline-container div.submit-reset > div {
         width: 375px;
         margin: auto;
         padding-top: 1rem;
@@ -919,7 +924,7 @@
         padding: 0 0 .75rem;
         border-top: none;
     }
-    .update-pipeline-container div.submit-cancel-delete>div {
+    .update-pipeline-container div.submit-cancel-delete > div {
         width: 375px;
         margin: auto;
         padding-top: 1rem;
@@ -938,7 +943,7 @@
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
-    header>div {
+    header > div {
         width: auto;
     }
     section {
@@ -1018,7 +1023,7 @@
         border: none;
     }
     /*   ADD PIPELINE   */
-    .add-pipeline-container div.submit-reset>div {
+    .add-pipeline-container div.submit-reset > div {
         width: 350px;
         margin: auto;
     }
