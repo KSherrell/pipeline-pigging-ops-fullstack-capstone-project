@@ -60,7 +60,6 @@ app.post('/users/create', (req, res) => {
     // the following variables should match the ones in the ajax call
     let fname = req.body.fname;
     let lname = req.body.lname;
-
     let email = req.body.email;
     email = email.trim();
     let password = req.body.password;
@@ -103,11 +102,11 @@ app.post('/users/create', (req, res) => {
 
 // signing in a user
 app.post('/signin', function (req, res) {
-    const user = req.body.username;
-    const pw = req.body.password;
+    let email = req.body.email;
+    let password = req.body.password;
     User
         .findOne({
-            username: req.body.username
+            email: req.body.email
         }, function (err, items) {
             if (err) {
                 return res.status(500).json({
@@ -117,7 +116,7 @@ app.post('/signin', function (req, res) {
             if (!items) {
                 // bad username
                 return res.status(401).json({
-                    message: "Not found!"
+                    message: "User not found"
                 });
             } else {
                 items.validatePassword(req.body.password, function (err, isValid) {
@@ -138,108 +137,7 @@ app.post('/signin', function (req, res) {
         });
 });
 
-//
-//// -------------ACHIEVEMENT ENDPOINTS------------------------------------------------
-//// POST -----------------------------------------
-//// creating a new achievement
-//app.post('/new/create', (req, res) => {
-//    let achieveWhat = req.body.achieveWhat;
-//    achieveWhat = achieveWhat.trim();
-//    let achieveHow = req.body.achieveHow;
-//    let achieveWhy = req.body.achieveWhy;
-//    let achieveWhen = req.body.achieveWhen;
-//    let user = req.body.user;
-//
-//    Achievement.create({
-//        user,
-//        achieveWhat,
-//        achieveHow,
-//        achieveWhen,
-//        achieveWhy
-//    }, (err, item) => {
-//        if (err) {
-//            return res.status(500).json({
-//                message: 'Internal Server Error'
-//            });
-//        }
-//        if(item) {
-//            console.log(`Achievement \`${achieveWhat}\` added.`);
-//            return res.json(item);
-//        }
-//    });
-//});
-//
-//// PUT --------------------------------------
-//app.put('/achievement/:id', function (req, res) {
-//    let toUpdate = {};
-//    let updateableFields = ['achieveWhat', 'achieveHow', 'achieveWhen', 'achieveWhy'];
-//    updateableFields.forEach(function(field) {
-//        if (field in req.body) {
-//            toUpdate[field] = req.body[field];
-//        }
-//    });
-//    Achievement
-//        .findByIdAndUpdate(req.params.id, {
-//        $set: toUpdate
-//    }).exec().then(function(achievement) {
-//        return res.status(204).end();
-//    }).catch(function(err) {
-//        return res.status(500).json({
-//            message: 'Internal Server Error'
-//        });
-//    });
-//});
-//
-//// GET ------------------------------------
-//// accessing all of a user's achievements
-//app.get('/achievements/:user', function (req, res) {
-//    Achievement
-//        .find()
-//        .sort('achieveWhen')
-//        .then(function (achievements) {
-//        let achievementOutput = [];
-//        achievements.map(function (achievement) {
-//            if (achievement.user == req.params.user) {
-//                achievementOutput.push(achievement);
-//            }
-//        });
-//        res.json({
-//            achievementOutput
-//        });
-//    })
-//        .catch(function (err) {
-//        console.error(err);
-//        res.status(500).json({
-//            message: 'Internal server error'
-//        });
-//    });
-//});
-//
-//// accessing a single achievement by id
-//app.get('/achievement/:id', function (req, res) {
-//    Achievement
-//        .findById(req.params.id).exec().then(function (achievement) {
-//        return res.json(achievement);
-//    })
-//        .catch(function (achievements) {
-//        console.error(err);
-//        res.status(500).json({
-//            message: 'Internal Server Error'
-//        });
-//    });
-//});
-//
-//// DELETE ----------------------------------------
-//// deleting an achievement by id
-//app.delete('/achievement/:id', function(req, res) {
-//    Achievement.findByIdAndRemove(req.params.id).exec().then(function(achievement) {
-//        return res.status(204).end();
-//    }).catch(function(err) {
-//        return res.status(500).json({
-//            message: 'Internal Server Error'
-//        });
-//    });
-//});
+
 
 // MISC ------------------------------------------
 // catch-all endpoint if client makes request to non-existent endpoint

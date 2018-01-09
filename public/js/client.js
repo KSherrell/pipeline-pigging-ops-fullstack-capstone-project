@@ -18,12 +18,12 @@ $(document).ready(function () {
     $("#forgotPassword").hide();
 
 
-    //  Login Page >> Submit > Foreman
+    //  Login Page >> Submit
     $("form#userLogin").submit(function (event) {
         event.preventDefault();
 
-        let email = $(this).parent().parent('#email-login').val();
-        let password = $(this).parent().parent('#pwd-login').val();
+        let email = $(this).parent().parent().find('#email-login').val();
+        let password = $(this).parent().parent().find('#pwd-login').val();
 
         console.log(email, password);
 
@@ -38,21 +38,20 @@ $(document).ready(function () {
             };
         } else {
 
-            //Success Scenario for Foreman
+            //            Success Scenario for Foreman
+            //            $(".jsHide").hide();
+            //            $("#pageAdminMenu").show();
+            //        };
+            //    });
+
+            //Success Scenario for Operator
             $(".jsHide").hide();
-            $("#pageAdminMenu").show();
+            $("#pageInputPigging").show();
+            $("#pageInputPigging #launchTime").prop('required', true);
+            $("#pageInputPigging div.select-receive").hide();
+            $("#pageInputPigging div.select-exception").hide();
         };
     });
-
-    //  Login Page >> Submit > Operator
-    //    $("form#userLogin").submit(function (event) {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pageInputPigging").show();
-    //        $("#pageInputPigging #launchTime").prop('required', true);
-    //        $("#pageInputPigging div.select-receive").hide();
-    //        $("#pageInputPigging div.select-exception").hide();
-    //    });
 
     //  Login Page >> Submit > Report Viewer
     //    $("form#userLogin").submit(function (event) {
@@ -115,13 +114,13 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
 //  Create Account Page  >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
-    let fname = $(this).parent().parent().find('#fName-createAcct').val();
-    let lname = $(this).parent().parent().find('#lName-createAcct').val();
-    let email = $(this).parent().parent().find('#email-createAcct').val();
-    let password = $(this).parent().parent().find('#pwd-createAcct').val();
-    let pwdConfirm = $(this).parent().parent().find('#pwd-confirm-createAcct').val();
+    let fname = $('#fName-createAcct').val();
+    let lname = $('#lName-createAcct').val();
+    let email = $('#email-createAcct').val();
+    let password = $('#pwd-createAcct').val();
+    let pwdConfirm = $('#pwd-confirm-createAcct').val();
 
-    $(this).parent().parent('input').blur();
+    $('input').blur();
 
     if (!fname || !lname || !email || !password || !pwdConfirm) {
         alert("All fields are required.");
@@ -159,6 +158,7 @@ function registerNewUser(fname, lname, email, password) {
     };
 
 
+
     $.ajax({
             type: 'POST',
             url: '/users/create',
@@ -172,7 +172,7 @@ function registerNewUser(fname, lname, email, password) {
             $("#pageLogin").show();
             $("#forgotPassword").hide();
             $("form#forgotPassword + p").hide();
-            alert("Your account request has been sent to the Pipeline Foreman for approval.");
+            alert("Your Create Account request has been sent to the Pipeline Foreman for approval.");
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -536,8 +536,8 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 
 
 //  Input Pigging >> Radio Launch
-$(document).on('click', '#pageInputPigging #radioLaunch', function (event) {
-    event.preventDefault();
+$(document).on('click', '#pageInputPigging #radioLaunch', function () {
+
     $("#pageInputPigging div.select-launch").show();
     $("#pageInputPigging #launchTime").prop('required', true);
 
@@ -551,8 +551,7 @@ $(document).on('click', '#pageInputPigging #radioLaunch', function (event) {
 });
 
 //  Input Pigging >> Radio Receive
-$(document).on('click', '#pageInputPigging #radioReceive', function (event) {
-    event.preventDefault();
+$(document).on('click', '#pageInputPigging #radioReceive', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging #launchTime").prop('required', false);
 
@@ -565,8 +564,7 @@ $(document).on('click', '#pageInputPigging #radioReceive', function (event) {
 });
 
 //  Input Pigging >> Radio Exception
-$(document).on('click', '#pageInputPigging #radioException', function (event) {
-    event.preventDefault();
+$(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging #launchTime").prop('required', false);
 
