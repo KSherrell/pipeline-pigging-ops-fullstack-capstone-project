@@ -1,6 +1,5 @@
 "use strict";
 
-
 const User = require('./models/user');
 const bodyParser = require('body-parser');
 const config = require('./config');
@@ -55,7 +54,7 @@ function closeServer() {
 
 // ---------------USER ENDPOINTS-------------------------------------
 // POST -----------------------------------
-// creating a new user
+// CREATE ACCOUNT (USER)
 app.post('/users/create', (req, res) => {
     // the following variables should match the ones in the ajax call
     let fname = req.body.fname;
@@ -85,6 +84,7 @@ app.post('/users/create', (req, res) => {
                 email,
                 password: hash,
                 approved: 0,
+                role: ""
             }, (err, item) => {
                 if (err) {
                     return res.status(500).json({
@@ -100,8 +100,8 @@ app.post('/users/create', (req, res) => {
     });
 });
 
-// signing in a user
-app.post('/signin', function (req, res) {
+// LOGIN
+app.post('/users/login', function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
     User
@@ -128,14 +128,51 @@ app.post('/signin', function (req, res) {
                             message: "Not found"
                         });
                     } else {
-                        var logInTime = new Date();
-                        console.log("User logged in: " + req.body.username + ' at ' + logInTime);
+
                         return res.json(items);
                     }
                 });
             };
         });
 });
+
+
+// RESET PASSWORD
+app.post('/users/resetPwd', function (req, res) {
+    let email = req.body.email;
+    let password = req.body.password;
+    User
+        .findOne({
+        email: req.body.email
+    }, function (err, items) {
+        if (err) {
+            return res.status(500).json({
+                message: "Internal server error"
+            });
+        }
+        if (!items) {
+            // bad username
+            return res.status(401).json({
+                message: "User not found"
+            });
+        } else {
+            items.validatePassword(req.body.password, function (err, isValid) {
+                if (err) {
+                    console.log('There was an error validating the password.');
+                }
+                if (!isValid) {
+                    return res.status(401).json({
+                        message: "Not found"
+                    });
+                } else {
+
+                    return res.json(items);
+                }
+            });
+        };
+    });
+});
+
 
 
 

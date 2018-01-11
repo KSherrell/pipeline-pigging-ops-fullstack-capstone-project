@@ -1,11 +1,61 @@
 "use strict";
 
 //Step One: define functions, objects, variables
-//function pageCreateAcct() {
-//    $("#pageCreateAcct").show();
-//}
 
+let currentUserFName = "";
+let currentUserLName = "";
+let currentUserEmail = "";
+let currentUserRole = "";
 
+function loginUser(email, password) {
+    const loginObject = {
+        email: email,
+        password: password
+    };
+    $.ajax({
+            type: "POST",
+            url: "/users/login",
+            dataType: 'json',
+            data: JSON.stringify(loginObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+            currentUserFName = result.fname;
+            currentUserLName = result.lname;
+            currentUserEmail = result.email;
+            currentUserRole = result.role;
+            console.log(currentUserFName, currentUserLName, currentUserEmail, currentUserRole);
+
+            if (currentUserRole == "foreman") {
+                $(".jsHide").hide();
+                $("#pageAdminMenu").show();
+            } else if (currentUserRole == "operator") {
+                $(".jsHide").hide();
+                $("#pageInputPigging").show();
+                //$("#pageInputPigging #launchTime").prop('required', true);
+                $("#pageInputPigging div.select-receive").hide();
+                $("#pageInputPigging div.select-exception").hide();
+                selectPipeline();
+
+            } else if (currentUserRole == "reportViewer") {
+                $(".jsHide").hide();
+                $("#pagePiggingSchedule").show();
+                $(".foreman-header").hide();
+                $(".js-operator").hide();
+
+            } else {
+                alert("unknown user role");
+            }
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Invalid username and password combination. Please check your username and password and try again.');
+        });
+}
 
 //Step Two: Use functions, object, variables (triggers)
 $(document).ready(function () {
@@ -22,47 +72,24 @@ $(document).ready(function () {
     $("form#userLogin").submit(function (event) {
         event.preventDefault();
 
-        let email = $(this).parent().parent().find('#email-login').val();
-        let password = $(this).parent().parent().find('#pwd-login').val();
+        let email = $('#pageLogin #userLogin #userEmail').val();
+        let password = $('#pageLogin #userLogin #userPwd').val();
 
-        console.log(email, password);
+        console.log('regular login:  ' + email, password);
 
         $(this).parent().parent('input').blur();
         if (!email || !password) {
             alert("Both fields are required.");
             if (!email) {
-                $('#email-login').focus();
+                $('#pageLogin #userLogin #userEmail').focus();
             } else
             if (!password) {
-                $('#pwd-login').focus();
+                $('#pageLogin #userLogin #userPwd').focus();
             };
         } else {
-
-            //            Success Scenario for Foreman
-            //            $(".jsHide").hide();
-            //            $("#pageAdminMenu").show();
-            //        };
-            //    });
-
-            //Success Scenario for Operator
-            $(".jsHide").hide();
-            $("#pageInputPigging").show();
-            $("#pageInputPigging #launchTime").prop('required', true);
-            $("#pageInputPigging div.select-receive").hide();
-            $("#pageInputPigging div.select-exception").hide();
+            loginUser(email, password);
         };
     });
-
-    //  Login Page >> Submit > Report Viewer
-    //    $("form#userLogin").submit(function (event) {
-    //        event.preventDefault();
-    //        $(".jsHide").hide();
-    //        $("#pagePiggingSchedule").show();
-    //        $(".foreman-header").hide();
-    //        $(".js-operator").hide();
-    //
-    //    });
-
 
     //  Login Page >> Forgot Password
     $("form#userLogin + p a").click(function (event) {
@@ -88,8 +115,18 @@ $(document).on('click', '#forgotPassword .js-cancel', function (event) {
 //  Login >> Forgot Your Password >> Submit
 $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageResetPwd").show();
+
+    let email = $('#pageLogin #forgotPassword #userEmail').val();
+    console.log('forgot pwd: ' + email);
+
+    if (!email) {
+        alert("Please enter your email address.");
+        $('#pageLogin #forgotPassword #userEmail').focus();
+    } else {
+
+        $(".jsHide").hide();
+        $("#pageResetPwd").show();
+    }
 });
 
 //  Password Reset Page >> Submit
@@ -532,6 +569,41 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
     $("#pageAdminMenu").show();
 });
 
+//Input Pigging System and Pipeline Selection
+//need to target document not the form bc the form is hidden when the page loads
+$(document).change("#systems", function (event) {
+
+    //get value from system selection input, make api call which will return the list of pipelines
+})
+
+function selectPipeline() {
+
+    let selectOptions = {
+        "System 1": ["Alabama Pipeline",
+                "Alaska Pipeline",
+                "Arizona Pipeline"
+            ],
+
+        "System 2": ["California Pipeline",
+                "Colorado Pipeline",
+                "Connecticut Pipeline"
+            ],
+        "System 3": ["Idaho Pipeline",
+                "Illinois Pipeline",
+                "Indiana Pipeline"
+            ]
+    };
+
+
+    let systemsOptions = Object.keys(selectOptions);
+    console.log(systemsOptions);
+
+
+    let pipelinesOptions = Object.values(selectOptions[0]);
+    console.log(pipelinesOptions);
+
+
+};
 
 
 
@@ -539,41 +611,25 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 $(document).on('click', '#pageInputPigging #radioLaunch', function () {
 
     $("#pageInputPigging div.select-launch").show();
-    $("#pageInputPigging #launchTime").prop('required', true);
-
-
     $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging #receiveTime").prop('required', false);
-
     $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging #exceptionTime").prop('required', false);
+
 
 });
 
 //  Input Pigging >> Radio Receive
 $(document).on('click', '#pageInputPigging #radioReceive', function () {
     $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging #launchTime").prop('required', false);
-
     $("#pageInputPigging div.select-receive").show();
-    $("#pageInputPigging #receiveTime").prop('required', true);
-
     $("#pageInputPigging div.select-exception").hide();
-    $("#pageInputPigging #exeptionTime").prop('required', false);
 
 });
 
 //  Input Pigging >> Radio Exception
 $(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging #launchTime").prop('required', false);
-
-
     $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging #receiveTime").prop('required', false);
-
     $("#pageInputPigging div.select-exception").show();
-    $("#pageInputPigging #exceptionTime").prop('required', true);
 
 });
 
@@ -647,3 +703,12 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .js-operator").hide();
 });
+
+
+// show the signout link in header as soon as user is signed in
+//        $('#js-signout-link').show();
+//        if (newUserToggle === true) {
+//            showAddPage();
+//        } else {
+//            showHomePage();
+//        }

@@ -27,11 +27,11 @@
             <form id="userLogin" action="" method="">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email-login" name="user-email" value="jim@email.com">
+                    <input type="email" id="userEmail" name="user-email" value="jim@email.com">
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="pwd-login" name="user-password" value="1234">
+                    <input type="password" id="userPwd" name="user-password" value="1234">
                 </div>
                 <div class="buttons">
                     <button form="userLogin" type="submit">Submit</button>
@@ -41,7 +41,7 @@
             <form id="forgotPassword" action="" method="">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="user-email" required>
+                    <input type="email" id="userEmail" name="user-email">
                 </div>
                 <div class="buttons">
                     <button form="forgotPassword" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
@@ -54,7 +54,7 @@
 
 
 
-<!--
+
 
     <main id="pageResetPwd" class="jsHide">
         <header class="normal-header">
@@ -64,8 +64,8 @@
         </header>
         <section class="user-reset-password-container">
             <div>
-                <p>User ID: <span></span></p>
-                <p>Email Address: <span></span></p>
+                <p>User ID: <span id="userID"></span></p>
+                <p>Email Address: <span id="userEmail"></span></p>
             </div>
             <hr>
             <form id="userPwdReset" action="" method="">
@@ -82,10 +82,10 @@
         </section>
     </main>
 
--->
 
 
-<!--
+
+
     <main id="pageCreateAcct" class="jsHide">
         <header class="normal-header">
             <div>
@@ -157,9 +157,6 @@
 
         </section>
     </main>
--->
-
-
 
     <main id="pageInputPigging" class="jsHide">
         <header class="normal-header">
@@ -173,14 +170,15 @@
         </header>
 
 
+
         <section class="input-pigging-container">
             <form id="inputPigging" action="" method="">
                 <div>
                     <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
                 </div>
                 <div>
-                    <select name="pipeline-systems">
-                                <option value="select-system">Select Pipeline System</option>
+                    <select id="systems" name="systems">
+                                <option value="select-system">Select Pipeline Systems</option>
                                 <option value="system-one">System One</option>
                                 <option value="system-two">System Two</option>
                                 <option value="system-three">System Three</option>
@@ -188,12 +186,12 @@
                             </select>
                 </div>
                 <div>
-                    <select name="pipeline-names">
+                    <select id="pipelines" name="pipelines">
                                 <option value="select-name">Select Pipeline Name</option>
-                                <option value="system-one">Name One</option>
-                                <option value="system-two">Name Two</option>
-                                <option value="system-three">Name Three</option>
-                                <option value="system-four">Name Four</option>
+                                <option value="0">Pipeline Object 1</option>
+                                <option value="1">Pipeline Object 2</option>
+                                <option value="2">Name Three</option>
+                                <option value="3">Name Four</option>
                             </select>
                 </div>
                 <div>
@@ -278,7 +276,7 @@
 
 
 
-<!--
+
     <main id="pagePrevLaunch" class="jsHide">
         <header class="normal-header">
             <div>
@@ -523,7 +521,7 @@
 
             <div class="debris-results jsHide">
                 <div class="debris-results-header">
-                      REMINDER: CORRECT THE RESULTS-HEADER SCROLL ISSUE
+                    REMINDER: CORRECT THE RESULTS-HEADER SCROLL ISSUE
                     <h3>Wells Ranch Something Here and Something Else Too</h3>
                     <div>
                         <div>
@@ -906,12 +904,12 @@
 
         </section>
     </main>
--->
 
 
 
 
-<!--
+
+
     <main id="pageUpdateHistory" class="jsHide">
         <header class="normal-header">
             <div>
@@ -998,9 +996,9 @@
 
         </section>
     </main>
--->
 
-<!--
+
+
 
 
     <main id="pageAddPipeline" class="jsHide">
@@ -1325,7 +1323,7 @@
 
         </section>
     </main>
--->
+
 
 </body>
 

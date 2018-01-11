@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     approved: {
         type: String,
         required: false
+    },
+    role: {
+        type: String,
+        required: false
     }
 });
 
