@@ -57,6 +57,31 @@ function loginUser(email, password) {
         });
 }
 
+function getUserID(email) {
+    const userIdObject = {
+        email: email
+    };
+    $.ajax({
+            type: "GET",
+            url: "/users/:id",
+            dataType: 'json',
+            data: JSON.stringify(userIdObject),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Invalid username and password combination. Please check your username and password and try again.');
+        });
+}
+
+
 //Step Two: Use functions, object, variables (triggers)
 $(document).ready(function () {
     //  Hides All
@@ -117,17 +142,45 @@ $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
 
     let email = $('#pageLogin #forgotPassword #userEmail').val();
-    console.log('forgot pwd: ' + email);
+    //console.log('forgot pwd: ' + email);
 
     if (!email) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
+        $.ajax({
+                type: "GET",
+                url: "/users/check-email/" + email,
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                if (result.approved == 0) {
 
-        $(".jsHide").hide();
-        $("#pageResetPwd").show();
+                    //user found but not active
+                    alert('user found not active');
+                } else {
+                    //user found and active
+
+                    $(".jsHide").hide();
+                    $("#pageResetPwd").show();
+                }
+
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                alert('user not found');
+            });
+
     }
+
 });
+
+
 
 //  Password Reset Page >> Submit
 $(document).on('submit', '#userPwdReset', function (event) {

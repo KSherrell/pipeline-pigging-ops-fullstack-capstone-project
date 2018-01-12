@@ -138,42 +138,26 @@ app.post('/users/login', function (req, res) {
 
 
 // RESET PASSWORD
-app.post('/users/resetPwd', function (req, res) {
-    let email = req.body.email;
-    let password = req.body.password;
+app.get('/users/check-email/:email', function (req, res) {
     User
         .findOne({
-        email: req.body.email
-    }, function (err, items) {
-        if (err) {
-            return res.status(500).json({
-                message: "Internal server error"
-            });
-        }
-        if (!items) {
-            // bad username
-            return res.status(401).json({
-                message: "User not found"
-            });
-        } else {
-            items.validatePassword(req.body.password, function (err, isValid) {
-                if (err) {
-                    console.log('There was an error validating the password.');
-                }
-                if (!isValid) {
-                    return res.status(401).json({
-                        message: "Not found"
-                    });
-                } else {
-
-                    return res.json(items);
-                }
-            });
-        };
-    });
+            email: req.params.email
+        }, function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                // bad email
+                return res.status(401).json({
+                    message: "User not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
 });
-
-
 
 
 // MISC ------------------------------------------
