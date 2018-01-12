@@ -45,7 +45,7 @@ function loginUser(email, password) {
                 $(".js-operator").hide();
 
             } else {
-                alert("unknown user role");
+                alert("User found but not active. Please contact the Pipeline Foreman.");
             }
 
         })
@@ -57,28 +57,32 @@ function loginUser(email, password) {
         });
 }
 
-function getUserID(email) {
-    const userIdObject = {
-        email: email
-    };
+function getUserByEmail(email) {
     $.ajax({
             type: "GET",
-            url: "/users/:id",
+            url: "/users/check-email/" + email,
             dataType: 'json',
-            data: JSON.stringify(userIdObject),
             contentType: 'application/json'
         })
         .done(function (result) {
             console.log(result);
+            if (result.approved == 0) {
+                //user found but not active
+                return 1;
+            } else {
+                //user found and active
+                return 2;
+            }
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
-            alert('Invalid username and password combination. Please check your username and password and try again.');
+            //user not found
+            return 0;
         });
-}
-
+};
 
 //Step Two: Use functions, object, variables (triggers)
 $(document).ready(function () {
@@ -140,41 +144,63 @@ $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
 
     let email = $('#pageLogin #forgotPassword #userEmail').val();
-    //console.log('forgot pwd: ' + email);
 
     if (!email) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
-        $.ajax({
-                type: "GET",
-                url: "/users/check-email/" + email,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                console.log(result);
-                if (result.approved == 0) {
+        let userStatus = getUserByEmail(email);
+        if (userStatus == 0) {
+            alert('User not found.');
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
 
-                    //user found but not active
-                    alert('User found but not active. Please contact the Pipeline Foreman.');
-                } else {
-                    //user found and active
-
-                    $(".jsHide").hide();
-                    $("#pageResetPwd").show();
-                }
-
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                //user not found
-                alert('User not found.');
-            });
-
+        } else if userStatus == 1) {
+        alert("User found but not active. Please contact the Pipeline Foreman.");
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+        $("form#forgotPassword + p").hide();
+    } else {
+        //Submit PUT request to change user password
+        alert('we found you -- password changed! login with new password.');
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+        $("form#forgotPassword + p").hide();
     }
+
+//    $.ajax({
+            //            type: "GET",
+            //            url: "/users/check-email/" + email,
+            //            dataType: 'json',
+            //            contentType: 'application/json'
+            //        })
+            //        .done(function (result) {
+            //            console.log(result);
+            //            if (result.approved == 0) {
+            //
+            //                //user found but not active
+            //                alert('User found but not active. Please contact the Pipeline Foreman.');
+            //            } else {
+            //
+            //                //user found and active
+            //                $(".jsHide").hide();
+            //                $("#pageResetPwd").show();
+            //            }
+            //
+            //        })
+            //        .fail(function (jqXHR, error, errorThrown) {
+            //            console.log(jqXHR);
+            //            console.log(error);
+            //            console.log(errorThrown);
+            //            //user not found
+            //            alert('User not found.');
+            //        });
+
+}
 
 });
 
@@ -232,40 +258,25 @@ $(document).on('submit', '#userCreateAcct', function (event) {
         $('#pageCreateAcct #pwdConfirm').focus().val("");
     } else {
         //does user already exist?
-        function getUserByEmail(email) {
-            $.ajax({
-                    type: "GET",
-                    url: "/users/check-email/" + email,
-                    dataType: 'json',
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    console.log(result);
-                    if (result.approved == 0) {
-                        //user found but not active
-                        alert('User found but not active. Please contact the Pipeline Foreman.');
-                        return 1;
-                    } else {
-                        //user found and active
-                        return 2;
-                        //$(".jsHide").hide();
-                        //$("#pageResetPwd").show();
-                    }
 
-                })
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                    //user not found
-                    alert('User not found.');
-                    return 0;
-                });
-
-            //Success Scenario
+        if (getUserByEmail(email) == 0) {
             registerNewUser(fname, lname, email, password);
-        };
+        } else if (getUserByEmail(email) == 1) {
+            alert("User found but not active. Please contact the Pipeline Foreman.");
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        } else {
+            alert("User account already exists. Please login normally or reset your password.")
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        }
     }
+
+}
 });
 
 function registerNewUser(fname, lname, email, password) {
@@ -275,8 +286,6 @@ function registerNewUser(fname, lname, email, password) {
         email: email,
         password: password
     };
-
-
 
     $.ajax({
             type: 'POST',
