@@ -70,8 +70,6 @@ function getUserID(email) {
         })
         .done(function (result) {
             console.log(result);
-
-
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -159,7 +157,7 @@ $(document).on('submit', '#forgotPassword', function (event) {
                 if (result.approved == 0) {
 
                     //user found but not active
-                    alert('user found not active');
+                    alert('User found but not active. Please contact the Pipeline Foreman.');
                 } else {
                     //user found and active
 
@@ -173,7 +171,7 @@ $(document).on('submit', '#forgotPassword', function (event) {
                 console.log(error);
                 console.log(errorThrown);
                 //user not found
-                alert('user not found');
+                alert('User not found.');
             });
 
     }
@@ -204,39 +202,70 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
 //  Create Account Page  >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
-    let fname = $('#fName-createAcct').val();
-    let lname = $('#lName-createAcct').val();
-    let email = $('#email-createAcct').val();
-    let password = $('#pwd-createAcct').val();
-    let pwdConfirm = $('#pwd-confirm-createAcct').val();
+    let fname = $('#pageCreateAcct #fName').val();
+    let lname = $('#pageCreateAcct #lName').val();
+    let email = $('#pageCreateAcct #userEmail').val();
+    let password = $('#pageCreateAcct #userPwd').val();
+    let pwdConfirm = $('#pageCreateAcct #pwdConfirm').val();
 
-    $('input').blur();
+    $('#pageCreateAcct input').blur();
 
     if (!fname || !lname || !email || !password || !pwdConfirm) {
         alert("All fields are required.");
         if (!fname) {
-            $('#fName-createAcct').focus();
+            $('#pageCreateAcct #fName').focus();
         } else
         if (!lname) {
-            $('#lName-createAcct').focus();
+            $('#pageCreateAcct #lName').focus();
         } else
         if (!email) {
-            $('#email-createAcct').focus();
+            $('#pageCreateAcct #userEmail').focus();
         } else
         if (!password) {
-            $('#pwd-createAcct').focus();
+            $('#pageCreateAcct #userPwd').focus();
         } else
         if (!pwdConfirm) {
-            $('#pwd-confirm-createAcct').focus();
+            $('#pageCreateAcct #pwdConfirm').focus();
         };
     } else if (password !== pwdConfirm) {
         alert("The passwords must match exactly.");
-        $('#pwd-confirm-createAcct').focus().val("");
+        $('#pageCreateAcct #pwdConfirm').focus().val("");
     } else {
-        //Success Scenario
-        registerNewUser(fname, lname, email, password);
-    };
+        //does user already exist?
+        function getUserByEmail(email) {
+            $.ajax({
+                    type: "GET",
+                    url: "/users/check-email/" + email,
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result);
+                    if (result.approved == 0) {
+                        //user found but not active
+                        alert('User found but not active. Please contact the Pipeline Foreman.');
+                        return 1;
+                    } else {
+                        //user found and active
+                        return 2;
+                        //$(".jsHide").hide();
+                        //$("#pageResetPwd").show();
+                    }
 
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert('User not found.');
+                    return 0;
+                });
+
+            //Success Scenario
+            registerNewUser(fname, lname, email, password);
+        };
+    }
 });
 
 function registerNewUser(fname, lname, email, password) {
