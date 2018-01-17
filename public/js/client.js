@@ -57,8 +57,8 @@ function loginUser(email, password) {
         });
 }
 
-function getUserByEmail(email) {
-    console.log("line 61 getUserByEmail: " + email);
+function getUserByEmail(email, origin) {
+    console.log(email, origin);
     $.ajax({
             type: "GET",
             url: "/users/check-email/" + email,
@@ -66,25 +66,60 @@ function getUserByEmail(email) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            //            console.log(result);
-            //            console.log(result.approved);
+            console.log(result); //userObject
+            let userID = result._id;
+        if (origin == )
             if (result.approved == "0") {
                 //user found but not active
-                return 1;
+                analyzeGetUserByEmail(email, 1);
             } else {
                 //user found and active
-                return 2;
+                analyzeGetUserByEmail(email, 2);
             }
-
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
             //user not found
-            return 0;
-        });
+            analyzeGetUserByEmail(email, 0);
+        })
+
 };
+
+function analyzeGetUserByEmail(email, userStatus) {
+    console.log(email, userStatus, userID);
+
+    if (userStatus == 0) {
+        alert('User not found.');
+        //for later in code
+        //        if (currentUserRole == "foreman") {
+        //            //then foreman pages triggered
+        //        } else if (currentUserRole == "operator") {
+        //            // operator pages triggered
+        //        } else {
+        //            //reportViewer is the user role
+        //        }
+
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+
+    } else if (userStatus == 1) {
+        alert("User found but not active. Please contact the Pipeline Foreman.");
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+        $("form#forgotPassword + p").hide();
+    } else {
+        // alert('user found and active -- go ahead and submit password change.');
+        $("#pageResetPwd #userEmail").text(email);
+        $("#pageResetPwd #userEmailInput").val(email);
+        $(".jsHide").hide();
+        $("#pageResetPwd").show();
+
+    };
+}
 
 function registerNewUser(fname, lname, email, password) {
     let newUserObj = {
@@ -175,46 +210,46 @@ $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
 
     let email = $('#pageLogin #forgotPassword #userEmail').val();
-    let userStatus = getUserByEmail(email);
-    console.log(userStatus);
 
     if (!email) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
-        if (userStatus == 0) {
-            alert('User not found.');
-            $(".jsHide").hide();
-            $("#pageLogin").show();
-            $("#forgotPassword").hide();
-            $("form#forgotPassword + p").hide();
+        getUserByEmail(email);
 
-        } else if (userStatus == 1) {
-            alert("User found but not active. Please contact the Pipeline Foreman.");
-            $(".jsHide").hide();
-            $("#pageLogin").show();
-            $("#forgotPassword").hide();
-            $("form#forgotPassword + p").hide();
-        } else {
-            //Submit PUT request to change user password
-            alert('user found and active -- go ahead and submit password change.');
-            $(".jsHide").hide();
-            $("#pageResetPwd").show();
-        };
     };
-
 });
+
 
 
 
 //  Password Reset Page >> Submit
 $(document).on('submit', '#userPwdReset', function (event) {
     event.preventDefault();
+    let origin = "pwdreset";
+    let newPwd = $("#pageResetPwd #newPwd").val();
+    let newPwdReenter = $("#pageResetPwd #newPwdReenter").val();
+    let userEmailInput = $("#pageResetPwd #userEmailInput").val();
+    console.log(newPwd, newPwdReenter, userEmailInput);
+    if (!newPwd || !newPwdReenter) {
+        alert("Both fields are required.");
+        if (!newPwd) {
+            $('#pageResetPwd #newPwd').focus();
+        } else
+        if (!newPwdReenter) {
+            $('#pageResetPwd #newPwdReenter').focus();
+        };
+    } else if (newPwd !== newPwdReenter) {
+        alert("Passwords must match exactly.");
+        $('#pageResetPwd #newPwdReenter').focus().val("");
+    } else {
+        getUserByEmail(userEmailInput, origin);
 
-    $(".jsHide").hide();
-    $("#pageLogin").show();
-    $("#forgotPassword").hide();
-    alert("Your password has been reset. Please return to the Login page.");
+        $(".jsHide").hide();
+        $("#pageLogin").show();
+        $("#forgotPassword").hide();
+        alert("Your password has been reset. Please return to the Login page.");
+    };
 });
 
 //  Password Reset Page  >> Cancel
@@ -227,57 +262,58 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
 
 
 //  Create Account Page  >> Submit
-//$(document).on('submit', '#userCreateAcct', function (event) {
-//    event.preventDefault();
-//    let fname = $('#pageCreateAcct #fName').val();
-//    let lname = $('#pageCreateAcct #lName').val();
-//    let email = $('#pageCreateAcct #userEmail').val();
-//    let password = $('#pageCreateAcct #userPwd').val();
-//    let pwdConfirm = $('#pageCreateAcct #pwdConfirm').val();
-//
-//    $('#pageCreateAcct input').blur();
-//
-//    if (!fname || !lname || !email || !password || !pwdConfirm) {
-//        alert("All fields are required.");
-//        if (!fname) {
-//            $('#pageCreateAcct #fName').focus();
-//        } else
-//        if (!lname) {
-//            $('#pageCreateAcct #lName').focus();
-//        } else
-//        if (!email) {
-//            $('#pageCreateAcct #userEmail').focus();
-//        } else
-//        if (!password) {
-//            $('#pageCreateAcct #userPwd').focus();
-//        } else
-//        if (!pwdConfirm) {
-//            $('#pageCreateAcct #pwdConfirm').focus();
-//        };
-//    } else if (password !== pwdConfirm) {
-//        alert("The passwords must match exactly.");
-//        $('#pageCreateAcct #pwdConfirm').focus().val("");
-//    } else {
-//        //does user already exist?
-//
-//        if (getUserByEmail(email) == 0) {
-//            registerNewUser(fname, lname, email, password);
-//        } else if (getUserByEmail(email) == 1) {
-//            alert("User found but not active. Please contact the Pipeline Foreman.");
-//            $(".jsHide").hide();
-//            $("#pageLogin").show();
-//            $("#forgotPassword").hide();
-//            $("form#forgotPassword + p").hide();
-//        } else {
-//            alert("User account already exists. Please login normally or reset your password.")
-//            $(".jsHide").hide();
-//            $("#pageLogin").show();
-//            $("#forgotPassword").hide();
-//            $("form#forgotPassword + p").hide();
-//        }
-//    };
-//
-//});
+$(document).on('submit', '#userCreateAcct', function (event) {
+    event.preventDefault();
+    let origin = "createacct";
+    let fname = $('#pageCreateAcct #fName').val();
+    let lname = $('#pageCreateAcct #lName').val();
+    let email = $('#pageCreateAcct #userEmail').val();
+    let password = $('#pageCreateAcct #userPwd').val();
+    let pwdConfirm = $('#pageCreateAcct #pwdConfirm').val();
+
+    $('#pageCreateAcct input').blur();
+
+    if (!fname || !lname || !email || !password || !pwdConfirm) {
+        alert("All fields are required.");
+        if (!fname) {
+            $('#pageCreateAcct #fName').focus();
+        } else
+        if (!lname) {
+            $('#pageCreateAcct #lName').focus();
+        } else
+        if (!email) {
+            $('#pageCreateAcct #userEmail').focus();
+        } else
+        if (!password) {
+            $('#pageCreateAcct #userPwd').focus();
+        } else
+        if (!pwdConfirm) {
+            $('#pageCreateAcct #pwdConfirm').focus();
+        };
+    } else if (password !== pwdConfirm) {
+        alert("The passwords must match exactly.");
+        $('#pageCreateAcct #pwdConfirm').focus().val("");
+    } else {
+        //does user already exist?
+
+        if (getUserByEmail(email) == 0) {
+            registerNewUser(fname, lname, email, password);
+        } else if (getUserByEmail(email) == 1) {
+            alert("User found but not active. Please contact the Pipeline Foreman.");
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        } else {
+            alert("User account already exists. Please login normally or reset your password.")
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        }
+    };
+
+});
 
 //  Create Account Page >> Cancel
 $(document).on('click', '#userCreateAcct .js-cancel', function (event) {

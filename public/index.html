@@ -52,10 +52,6 @@
     </main>
 
 
-
-
-
-
     <main id="pageResetPwd" class="jsHide">
         <header class="normal-header">
             <div>
@@ -64,15 +60,15 @@
         </header>
         <section class="user-reset-password-container">
             <div>
-                <p>User ID: <span id="userID"></span></p>
                 <p>Email Address: <span id="userEmail"></span></p>
             </div>
             <hr>
             <form id="userPwdReset" action="" method="">
                 <div>
                     <label for="newPwd">Reset Password</label>
-                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password" required>
-                    <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password">
+                    <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password">
+                    <input type="hidden" id="userEmailInput" value="">
                 </div>
                 <div class="buttons">
                     <button form="userPwdReset" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
