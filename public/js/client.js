@@ -68,13 +68,19 @@ function getUserByEmail(email, origin) {
         .done(function (result) {
             console.log(result); //userObject
             let userID = result._id;
-        if (origin == )
-            if (result.approved == "0") {
-                //user found but not active
-                analyzeGetUserByEmail(email, 1);
-            } else {
-                //user found and active
-                analyzeGetUserByEmail(email, 2);
+            if (origin == 0) {
+                if (result.approved == "0") {
+                    //user found but not active
+                    analyzeGetUserByEmail(email, 1);
+                } else {
+                    //user found and active
+                    analyzeGetUserByEmail(email, 2);
+                }
+            } else if (origin == 1) {
+                console.log("origin = 1");
+
+            } else if (origin == 2) {
+                console.log("origin = 2, goto line 303 and create a function");
             }
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -88,7 +94,7 @@ function getUserByEmail(email, origin) {
 };
 
 function analyzeGetUserByEmail(email, userStatus) {
-    console.log(email, userStatus, userID);
+    console.log(email, userStatus);
 
     if (userStatus == 0) {
         alert('User not found.');
@@ -208,14 +214,13 @@ $(document).on('click', '#forgotPassword .js-cancel', function (event) {
 //  Login >> Forgot Your Password >> Submit
 $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
-
     let email = $('#pageLogin #forgotPassword #userEmail').val();
 
     if (!email) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
-        getUserByEmail(email);
+        getUserByEmail(email, 0);
 
     };
 });
@@ -226,11 +231,11 @@ $(document).on('submit', '#forgotPassword', function (event) {
 //  Password Reset Page >> Submit
 $(document).on('submit', '#userPwdReset', function (event) {
     event.preventDefault();
-    let origin = "pwdreset";
+
     let newPwd = $("#pageResetPwd #newPwd").val();
     let newPwdReenter = $("#pageResetPwd #newPwdReenter").val();
     let userEmailInput = $("#pageResetPwd #userEmailInput").val();
-    console.log(newPwd, newPwdReenter, userEmailInput);
+    console.log(newPwd, newPwdReenter, userEmailInput, origin);
     if (!newPwd || !newPwdReenter) {
         alert("Both fields are required.");
         if (!newPwd) {
@@ -243,7 +248,7 @@ $(document).on('submit', '#userPwdReset', function (event) {
         alert("Passwords must match exactly.");
         $('#pageResetPwd #newPwdReenter').focus().val("");
     } else {
-        getUserByEmail(userEmailInput, origin);
+        getUserByEmail(userEmailInput, 1);
 
         $(".jsHide").hide();
         $("#pageLogin").show();
@@ -264,7 +269,7 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
 //  Create Account Page  >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
-    let origin = "createacct";
+
     let fname = $('#pageCreateAcct #fName').val();
     let lname = $('#pageCreateAcct #lName').val();
     let email = $('#pageCreateAcct #userEmail').val();
@@ -296,9 +301,9 @@ $(document).on('submit', '#userCreateAcct', function (event) {
     } else {
         //does user already exist?
 
-        if (getUserByEmail(email) == 0) {
+        if (getUserByEmail(email, 2) == 0) {
             registerNewUser(fname, lname, email, password);
-        } else if (getUserByEmail(email) == 1) {
+        } else if (getUserByEmail(email, 2) == 1) {
             alert("User found but not active. Please contact the Pipeline Foreman.");
             $(".jsHide").hide();
             $("#pageLogin").show();
