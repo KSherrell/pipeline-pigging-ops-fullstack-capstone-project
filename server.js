@@ -161,10 +161,7 @@ app.get('/users/check-email/:email', function (req, res) {
 
 // CHANGE PASSWORD
 app.put('/users/reset-pwd/:id', function (req, res) {
-    User.update({
-        id: req.params._id,
-        password: req.body.newPwd
-    })
+    res.send("what?");
 });
 
 

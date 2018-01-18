@@ -113,12 +113,13 @@ function resetPwdPage(userID, userActive, email) {
         $("#pageResetPwd").show();
         $("#pageResetPwd #userEmail").text(email);
 
-
         //user inputs new password
         $(document).on('submit', '#userPwdReset', function (event) {
             event.preventDefault();
             let newPwd = $("#pageResetPwd #newPwd").val();
             let newPwdReenter = $("#pageResetPwd #newPwdReenter").val();
+            $("#pageResetPwd #userEmailHidden").val(email);
+
             if (!newPwd || !newPwdReenter) {
                 alert("Both fields are required.");
                 if (!newPwd) {
@@ -131,47 +132,41 @@ function resetPwdPage(userID, userActive, email) {
                 alert("Passwords must match exactly.");
                 $('#pageResetPwd #newPwdReenter').focus().val("");
             } else {
-
-                $("#pageResetPwd #userEmailHidden").val(email);
-
                 console.log("newPwd = " + newPwd);
                 console.log("newPwdReenter = " + newPwdReenter);
                 console.log("email = " + email);
                 console.log($("#pageResetPwd #userEmailHidden").val());
 
             }
-            //            $.ajax({
-            //                    type: "PUT",
-            //                    url: "/users/reset-pwd/" + userID,
-            //                    data: {
-            //                        password: newPwd
-            //                    },
-            //                    dataType: 'json',
-            //                    contentType: 'application/json'
-            //                })
-            //                .done(function (result) {
-            //                    console.log(result); //userObject
-            //                    //reset password success scenario
-            //                    $(".jsHide").hide();
-            //                    $("#pageLogin").show();
-            //                    $("#forgotPassword").hide();
-            //                    alert("Your password has been reset. Please use your new password to login.");
-            //
-            //                })
-            //                .fail(function (jqXHR, error, errorThrown) {
-            //                    console.log(jqXHR);
-            //                    console.log(error);
-            //                    console.log(errorThrown);
-            //                    //user not found
-            //                    alert("Error resetting password. Please try again.");
-            //                })
-            //
-            //        };
-            //resetUserPwd(userID, newPwd);
-        });
+            $.ajax({
+                    type: "PUT",
+                    url: "/users/reset-pwd/" + userID,
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result); //userObject
+                    //reset password success scenario
+                    $(".jsHide").hide();
+                    $("#pageLogin").show();
+                    $("#forgotPassword").hide();
+                    alert("Your password has been reset. Please use your new password to login.");
 
-    }
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error resetting password. Please try again.");
+                    $('#pageResetPwd #userPwdReset input').val("");
+                })
+
+        });
+    };
+
 };
+
 
 
 
