@@ -68,40 +68,96 @@ function getUserByEmail(email, origin) {
         .done(function (result) {
             console.log(result); //userObject
             let userID = result._id;
-        let userActive = result.approved;
-
+        
             if (origin == "resetpwd") {
-                resetPwdPage(userID, userActive);
-            }else if (origin == "createacct") {
-                createAcctPage(userActive);
-            }
+                if (result.approved == "0") {
+                    //user found but not active
+                    analyzeGetUserByEmail(email, 1, "resetpwd");
+                } else {
+                    //user found and active
+                    analyzeGetUserByEmail(email, 2, "resetpwd");
+                }
 
+            } else if (origin == "createacct") {
+                analyzeGetUserByEmail(email, 2, "createacct");
+            }
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
             //user not found
-           if (origin == "resetpwd"){
-               resetPwdPage(userID, userActive);
-           } else if (origin = "createacct"){
-               createAcctPage(userActive);
-           }
+            analyzeGetUserByEmail(email, 0, "createacct");
+
 
         })
+
 };
 
-function resetPwdPage(userID, userActive){
-    if (userActive == 0){
-        alert("User account not active. Please contact the Pipeline Foreman.");
-        $(".jsHide").hide();
-        $("#pageLogin").show();
-        $("#forgotPassword").hide();
-    } else if (userActive == 1){
+function analyzeGetUserByEmail(email, userStatus, origin) {
+    console.log(email, userStatus);
 
-    }
+    if (userStatus == 0) {
+
+        //Origin Create Acct, user status 0 (user not found)
+        if (origin == "createacct") {
+            registerNewUser(fname, lname, email, password);
+        }
+        //Origin Reset Pwd, user status 0 (user not found)
+        else {
+            alert('User not found.');
+            //for later in code
+            //        if (currentUserRole == "foreman") {
+            //            //then foreman pages triggered
+            //        } else if (currentUserRole == "operator") {
+            //            // operator pages triggered
+            //        } else {
+            //            //reportViewer is the user role
+            //        }
+
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+        }
+    } else if (userStatus == 1) {
+
+        //Origin Reset Page, user status 1 (found but not active)
+        if (origin == "resetpwd") {
+            alert("User found but not active. Please contact the Pipeline Foreman.");
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        }
+        //Origin Create Acct, user status 1 (found but not active)
+        else if (origin == "createacct") {
+            alert("User found but not active. Please contact the Pipeline Foreman.");
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        }
+
+    } else {
+        //Origin Create Acct, user status 2 (user exists and active)
+        if (origin == "createacct") {
+            alert("User account already exists. Please login normally or reset your password.")
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+            $("#forgotPassword").hide();
+            $("form#forgotPassword + p").hide();
+        }
+        //Origin Reset Pwd, user status 2 (user exists and active)
+        else if (origin == "resetpwd") {
+            //user found and active
+            $("#pageResetPwd #userEmail").text(email);
+            $("#pageResetPwd #userEmailInput").val(email);
+            $(".jsHide").hide();
+            $("#pageResetPwd").show();
+        }
+
+    };
 }
-
 
 function registerNewUser(fname, lname, email, password) {
     let newUserObj = {
@@ -196,7 +252,7 @@ $(document).on('submit', '#forgotPassword', function (event) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
-        getUserByEmail(email, 0);
+        getUserByEmail(email, "resetpwd");
 
     };
 });
@@ -224,7 +280,7 @@ $(document).on('submit', '#userPwdReset', function (event) {
         alert("Passwords must match exactly.");
         $('#pageResetPwd #newPwdReenter').focus().val("");
     } else {
-        getUserByEmail(userEmailInput, "resetpwd");
+        getUserByEmail(userEmailInput, 1);
 
         $(".jsHide").hide();
         $("#pageLogin").show();
