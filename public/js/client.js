@@ -68,11 +68,12 @@ function getUserByEmail(email, origin) {
         .done(function (result) {
             console.log(result); //userObject
             let userID = result._id;
-        let userActive = result.approved;
+            let userActive = result.approved;
 
             if (origin == "resetpwd") {
+                console.log("origin = " + origin);
                 resetPwdPage(userID, userActive);
-            }else if (origin == "createacct") {
+            } else if (origin == "createacct") {
                 createAcctPage(userActive);
             }
 
@@ -82,23 +83,78 @@ function getUserByEmail(email, origin) {
             console.log(error);
             console.log(errorThrown);
             //user not found
-           if (origin == "resetpwd"){
-               resetPwdPage(userID, userActive);
-           } else if (origin = "createacct"){
-               createAcctPage(userActive);
-           }
+            if (origin == "resetpwd") {
+                resetPwdPage(userID, userActive);
+            } else if (origin = "createacct") {
+                createAcctPage(userActive);
+            }
 
         })
 };
 
-function resetPwdPage(userID, userActive){
-    if (userActive == 0){
+function resetPwdPage(userID, userActive) {
+    if (userActive == 0) {
         alert("User account not active. Please contact the Pipeline Foreman.");
         $(".jsHide").hide();
         $("#pageLogin").show();
         $("#forgotPassword").hide();
-    } else if (userActive == 1){
+    } else if (userActive == 1) {
+        //load reset password page
+        console.log("userActive = 1");
+        $(".jsHide").hide();
+        $("#pageResetPwd").show();
 
+        //user inputs new password
+        let newPwd = $("#pageResetPwd #newPwd").val();
+        let newPwdReenter = $("#pageResetPwd #newPwdReenter").val();
+        let userEmailInput = $("#pageResetPwd #userEmailInput").val();
+
+        console.log(newPwd, newPwdReenter, userEmailInput, origin);
+
+        if (!newPwd || !newPwdReenter) {
+            alert("Both fields are required.");
+            if (!newPwd) {
+                $('#pageResetPwd #newPwd').focus();
+            } else
+            if (!newPwdReenter) {
+                $('#pageResetPwd #newPwdReenter').focus();
+            };
+        } else if (newPwd !== newPwdReenter) {
+            alert("Passwords must match exactly.");
+            $('#pageResetPwd #newPwdReenter').focus().val("");
+        } else {
+            // reset password PUT request
+            console.log("resetUserPwd");
+
+            $.ajax({
+                    type: "PUT",
+                    url: "/users/reset-pwd/" + userID,
+                    data: {
+                        password: newPwd
+                    },
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result); //userObject
+                    //reset password success scenario
+                    $(".jsHide").hide();
+                    $("#pageLogin").show();
+                    $("#forgotPassword").hide();
+                    alert("Your password has been reset. Please use your new password to login.");
+
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error resetting password. Please try again.");
+                })
+
+        };
+
+        //resetUserPwd(userID, newPwd);
     }
 }
 
@@ -191,47 +247,28 @@ $(document).on('click', '#forgotPassword .js-cancel', function (event) {
 $(document).on('submit', '#forgotPassword', function (event) {
     event.preventDefault();
     let email = $('#pageLogin #forgotPassword #userEmail').val();
-
     if (!email) {
         alert("Please enter your email address.");
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
-        getUserByEmail(email, 0);
+        getUserByEmail(email, "resetpwd");
 
     };
+
 });
 
 
 
 
 //  Password Reset Page >> Submit
-$(document).on('submit', '#userPwdReset', function (event) {
-    event.preventDefault();
 
-    let newPwd = $("#pageResetPwd #newPwd").val();
-    let newPwdReenter = $("#pageResetPwd #newPwdReenter").val();
-    let userEmailInput = $("#pageResetPwd #userEmailInput").val();
-    console.log(newPwd, newPwdReenter, userEmailInput, origin);
-    if (!newPwd || !newPwdReenter) {
-        alert("Both fields are required.");
-        if (!newPwd) {
-            $('#pageResetPwd #newPwd').focus();
-        } else
-        if (!newPwdReenter) {
-            $('#pageResetPwd #newPwdReenter').focus();
-        };
-    } else if (newPwd !== newPwdReenter) {
-        alert("Passwords must match exactly.");
-        $('#pageResetPwd #newPwdReenter').focus().val("");
-    } else {
-        getUserByEmail(userEmailInput, "resetpwd");
-
-        $(".jsHide").hide();
-        $("#pageLogin").show();
-        $("#forgotPassword").hide();
-        alert("Your password has been reset. Please return to the Login page.");
-    };
-});
+//function resetUserPwd(userID, newPwd);
+//
+//$(document).on('submit', '#userPwdReset', function (event) {
+//    event.preventDefault();
+//
+//
+//});
 
 //  Password Reset Page  >> Cancel
 $(document).on('click', '#userPwdReset .js-cancel', function (event) {

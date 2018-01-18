@@ -137,7 +137,7 @@ app.post('/users/login', function (req, res) {
 });
 
 
-// RESET PASSWORD
+// check if users exist
 app.get('/users/check-email/:email', function (req, res) {
     User
         .findOne({
@@ -158,6 +158,15 @@ app.get('/users/check-email/:email', function (req, res) {
             }
         });
 });
+
+// CHANGE PASSWORD
+app.put('/users/reset-pwd/:id', function (req, res) {
+    User.update({
+        id: req.params._id,
+        password: req.body.newPwd
+    })
+});
+
 
 
 // MISC ------------------------------------------
