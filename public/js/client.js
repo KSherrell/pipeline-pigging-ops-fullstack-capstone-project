@@ -127,45 +127,48 @@ function resetPwdPage(userID, userActive, email) {
                 } else
                 if (!newPwdReenter) {
                     $('#pageResetPwd #newPwdReenter').focus();
-                };
-            } else if (newPwd !== newPwdReenter) {
-                alert("Passwords must match exactly.");
-                $('#pageResetPwd #newPwdReenter').focus().val("");
+                } else if (newPwd !== newPwdReenter) {
+                    alert("Passwords must match exactly.");
+                    $('#pageResetPwd #newPwdReenter').focus().val("");
+                }
             } else {
-                console.log("newPwd = " + newPwd);
-                console.log("newPwdReenter = " + newPwdReenter);
-                console.log("email = " + email);
-                console.log($("#pageResetPwd #userEmailHidden").val());
+                let updateUserPwdObj = {
+                    password: newPwd
+                };
+                console.log(updateUserPwdObj);
+                $.ajax({
+                        type: "PUT",
+                        url: "/users/reset-pwd/" + userID,
+                        data: JSON.stringify(updateUserPwdObj),
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                        //console.log(result);
+                        //reset password success scenario
+                        $(".jsHide").hide();
+                        $("#pageLogin").show();
+                        $("#forgotPassword").hide();
+                        alert("Your password has been reset. Please use your new password to login.");
 
-            }
-            $.ajax({
-                    type: "PUT",
-                    url: "/users/reset-pwd/" + userID,
-                    dataType: 'json',
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    console.log(result); //userObject
-                    //reset password success scenario
-                    $(".jsHide").hide();
-                    $("#pageLogin").show();
-                    $("#forgotPassword").hide();
-                    alert("Your password has been reset. Please use your new password to login.");
+                    })
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                        //user not found
+                        alert("Error resetting password. Please try again.");
+                        $('#pageResetPwd #userPwdReset input').val("");
+                    })
 
-                })
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                    //user not found
-                    alert("Error resetting password. Please try again.");
-                    $('#pageResetPwd #userPwdReset input').val("");
-                })
-
+            };
         });
     };
+}
 
-};
+
+
+
 
 
 

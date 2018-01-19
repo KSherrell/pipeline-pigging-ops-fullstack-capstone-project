@@ -160,9 +160,37 @@ app.get('/users/check-email/:email', function (req, res) {
 });
 
 // CHANGE PASSWORD
-app.put('/users/reset-pwd/:id', function (req, res) {
-    res.send("what?");
-});
+app.put('/users/reset-pwd/:userID', function (req, res) {
+    console.log(req.params.userID, req.body.password);
+
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal server error'
+            });
+        }
+        //apply encryption key to current password
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal server error'
+                });
+            }
+            //using Mongoose schema to create new user based on above variables
+            User.findByIdAndUpdate(req.params.userID, {
+                password: hash
+            }).exec().then(function (achievement) {
+                return res.status(204).end();
+            }).catch(function (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            });
+        });
+    });
+
+
+})
 
 
 
