@@ -67,39 +67,49 @@ function getUserByEmail(email, origin, userObj) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result); //userObject
-            let userID = result._id;
-            let userActive = result.approved;
+                console.log(result); //userObject
+                let userID = result._id;
+                let userActive = result.approved;
 
-            if (origin == "resetpwd") {
-                console.log("origin = " + origin);
-                resetPwdPage(userID, userActive, email);
-            } else if (origin == "createacct") {
-                alert("User already exists. Please login normally.")
-                $(".jsHide").hide();
-                $("#pageLogin").show();
-                $("#forgotPassword").hide();
-            } else if (origin == "login") {
+                if (origin == "resetpwd") {
+                    console.log("origin = " + origin);
+                    resetPwdPage(userID, userActive, email);
+                }
+
+
+        else if (origin == "createacct") {
+                    if (userActive == 0) {
+                        alert("User found but not active. Please contact the Pipeline Foreman.")
+                    } else {
+                        alert("User already exists. Please login normally.")
+                    }
+                    $(".jsHide").hide();
+                    $("#pageLogin").show();
+                    $("#forgotPassword").hide();
+                }
+
+
+             else if (origin == "login") {
                 console.log(email, password);
                 loginUser(email, userObj.password);
             }
 
         })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            //user not found
-            if (origin == "resetpwd") {
-                let userActive = "usernotfound";
-                resetPwdPage(userID, userActive, email);
-            } else if (origin == "createacct") {
-                registerNewUser(userObj);
-            } else if (origin == "login") {
-                alert("User not found.");
-            }
+.fail(function (jqXHR, error, errorThrown) {
+    console.log(jqXHR);
+    console.log(error);
+    console.log(errorThrown);
+    //user not found
+    if (origin == "resetpwd") {
+        let userActive = "usernotfound";
+        resetPwdPage(userID, userActive, email);
+    } else if (origin == "createacct") {
+        registerNewUser(userObj);
+    } else if (origin == "login") {
+        alert("User not found.");
+    }
 
-        })
+})
 };
 
 function resetPwdPage(userID, userActive, email) {
