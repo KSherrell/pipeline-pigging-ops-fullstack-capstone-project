@@ -8,7 +8,7 @@ let currentUserEmail = "";
 let currentUserRole = "";
 
 function loginUser(email, password) {
-    const loginObject = {
+    let loginObject = {
         email: email,
         password: password
     };
@@ -57,8 +57,9 @@ function loginUser(email, password) {
         });
 }
 
-function getUserByEmail(email, origin) {
-    console.log(email, origin);
+function getUserByEmail(email, origin, userObj) {
+    console.log(email, origin, userObj);
+    //console.log(userObj.password);
     $.ajax({
             type: "GET",
             url: "/users/check-email/" + email,
@@ -74,7 +75,13 @@ function getUserByEmail(email, origin) {
                 console.log("origin = " + origin);
                 resetPwdPage(userID, userActive, email);
             } else if (origin == "createacct") {
-                createAcctPage(userActive);
+                alert("User already exists. Please login normally.")
+                $(".jsHide").hide();
+                $("#pageLogin").show();
+                $("#forgotPassword").hide();
+            } else if (origin == "login") {
+                console.log(email, password);
+                loginUser(email, userObj.password);
             }
 
         })
@@ -86,8 +93,10 @@ function getUserByEmail(email, origin) {
             if (origin == "resetpwd") {
                 let userActive = "usernotfound";
                 resetPwdPage(userID, userActive, email);
-            } else if (origin = "createacct") {
-                createAcctPage(userActive);
+            } else if (origin == "createacct") {
+                registerNewUser(userObj);
+            } else if (origin == "login") {
+                alert("User not found.");
             }
 
         })
@@ -166,27 +175,12 @@ function resetPwdPage(userID, userActive, email) {
     };
 }
 
-
-
-
-
-
-
-
-
-function registerNewUser(fname, lname, email, password) {
-    let newUserObj = {
-        fname: fname,
-        lname: lname,
-        email: email,
-        password: password
-    };
-
+function registerNewUser(userObj) {
     $.ajax({
             type: 'POST',
             url: '/users/create',
             dataType: 'json',
-            data: JSON.stringify(newUserObj),
+            data: JSON.stringify(userObj),
             contentType: 'application/json'
         })
         .done(function (result) {
@@ -220,7 +214,7 @@ $(document).ready(function () {
     //  Login Page >> Submit
     $("form#userLogin").submit(function (event) {
         event.preventDefault();
-
+        let origin = "login"
         let email = $('#pageLogin #userLogin #userEmail').val();
         let password = $('#pageLogin #userLogin #userPwd').val();
 
@@ -234,7 +228,14 @@ $(document).ready(function () {
                 $('#pageLogin #userLogin #userPwd').focus();
             };
         } else {
-            loginUser(email, password);
+            let userObj = {
+                email: email,
+                password: password
+            }
+
+            getUserByEmail(email, origin, userObj);
+
+            //loginUser(email, password);
         };
     });
 
@@ -272,18 +273,6 @@ $(document).on('submit', '#forgotPassword', function (event) {
 
 });
 
-
-
-
-//  Password Reset Page >> Submit
-
-//function resetUserPwd(userID, newPwd);
-//
-//$(document).on('submit', '#userPwdReset', function (event) {
-//    event.preventDefault();
-//
-//
-//});
 
 //  Password Reset Page  >> Cancel
 $(document).on('click', '#userPwdReset .js-cancel', function (event) {
@@ -328,9 +317,13 @@ $(document).on('submit', '#userCreateAcct', function (event) {
         $('#pageCreateAcct #pwdConfirm').focus().val("");
     } else {
         //does user already exist?
-        console.log(getUserByEmail(email, 2));
-
-        getUserByEmail(email, "createacct");
+        let newUserObj = {
+            fname: fname,
+            lname: lname,
+            email: email,
+            password: password
+        };
+        getUserByEmail(email, "createacct", newUserObj);
 
 
     };

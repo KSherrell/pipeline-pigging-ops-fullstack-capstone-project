@@ -176,7 +176,6 @@ app.put('/users/reset-pwd/:userID', function (req, res) {
                     message: 'Internal server error'
                 });
             }
-            //using Mongoose schema to create new user based on above variables
             User.findByIdAndUpdate(req.params.userID, {
                 password: hash
             }).exec().then(function (achievement) {
