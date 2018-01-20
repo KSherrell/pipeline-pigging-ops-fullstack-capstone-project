@@ -365,7 +365,7 @@ $(document).on('click', 'header img', function (event) {
 });
 
 //  Update Account Info >> Submit
-//  UPDATE USER NAME, EMAIL
+//  UPDATE USER NAME AND/OR EMAIL
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event) {
     event.preventDefault();
     let fname = $("#pageUpdateAcct #firstName").val();
@@ -376,7 +376,6 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
         lname: lname,
         email: email
     };
-
     $('#pageCreateAcct input').blur();
     if (!fname || !lname || !email) {
         alert("All fields are required.");
@@ -397,8 +396,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
             })
             .done(function (result) {
                 alert("Account updated. Please login using your updated credentials.");
-            $(".jsHide").hide();
-            $("#pageLogin").show();
+                window.location.reload(true);
 
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -407,49 +405,51 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
                 console.log(errorThrown);
                 //user not found
                 alert("Error updating account information. Please try again.");
-
             })
     }
 });
 
-//new trigger for this pwd change PUT request
+//UPDATE USER PASSWORD
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) {
     event.preventDefault();
+    let password = $("#pageUpdateAcct #newPwd").val();
+    let pwdReenter = $("#pageUpdateAcct #newPwdReenter").val()
     let updateUserPwdObj = {
         password: $("#pageUpdateAcct #newPwd").val()
     }
-    $.ajax({
-            type: "PUT",
-            url: "/users/reset-pwd/" + currentUserID,
-            data: JSON.stringify(updateUserPwdObj),
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
+    if (!password || !pwdReenter) {
+        alert("Both fields are required.");
+        if (!password) {
+            $("#pageUpdateAcct #newPwd").focus();
+        } else if (!pwdReenter) {
+            $("#pageUpdateAcct #newPwdReenter").focus();
+        }
+    } else if (password !== pwdReenter) {
+        alert("Passwords must match exactly.");
+        $("#pageUpdateAcct #newPwdReenter").val("").focus();
+    } else {
+        $.ajax({
+                type: "PUT",
+                url: "/users/reset-pwd/" + currentUserID,
+                data: JSON.stringify(updateUserPwdObj),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                alert("Account updated. Please login using your updated password.");
+                //                $(".jsHide").hide();
+                //                $("#pageLogin").show();
+                window.location.reload(true);
 
-            alert("Account updated.");
-            if (currentUserRole == "operator") {
-                //operatorFunction
-                $(".jsHide").hide();
-                $("#pageInputPigging").show();
-                $("#pageInputPigging div.select-receive").hide();
-                $("#pageInputPigging div.select-exception").hide();
-                // selectPipeline();
-            } else if (currentUserRole == "foreman") {
-                alert("foreman updating account");
-            } else {
-                alert("report viewer updating account");
-            }
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            //user not found
-            alert("Error updating account information. Please try again.");
-
-        })
-
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                alert("Error updating password. Please try again.");
+            })
+    }
 
 });
 
