@@ -206,6 +206,27 @@ app.put('/users/reset-name/:userID', function (req, res) {
     });
 })
 
+// Get Pipeline Systems
+app.get('/systems', function (req, res) {
+    System
+        .find({
+            system: req.params.system
+        }, function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                // bad email
+                return res.status(401).json({
+                    message: "User not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
+});
 
 
 

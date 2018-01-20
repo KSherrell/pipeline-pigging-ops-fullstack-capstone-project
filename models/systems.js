@@ -8,4 +8,9 @@ const systemSchema = new mongoose.Schema({
         required: false
     }
 
-})
+});
+
+
+const System = mongoose.model('System', systemSchema);
+
+module.exports = System;

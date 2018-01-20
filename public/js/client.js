@@ -769,8 +769,6 @@ function foremanPages() {
     });
 }
 
-
-
 //Input Pigging System and Pipeline Selection
 //need to target document not the form bc the form is hidden when the page loads
 //$(document).change("#systems", function (event) {
@@ -806,7 +804,25 @@ function foremanPages() {
 //
 //
 //};
+$(document).change("#systems", function (event) {
 
+    $.ajax({
+        type: "GET",
+        url: "/systems",
+        dataType: 'json',
+        contentType: 'application/json'
+    })
+        .done(function (result) {
+    console.log(result);
+
+    })
+        .fail(function (jqXHR, error, errorThrown) {
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+
+    })
+});
 
 
 //  Input Pigging >> Radio Launch
