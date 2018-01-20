@@ -187,9 +187,25 @@ app.put('/users/reset-pwd/:userID', function (req, res) {
             });
         });
     });
-
-
 })
+
+// CHANGE NAME AND EMAIL
+app.put('/users/reset-name/:userID', function (req, res) {
+    console.log(req.params.userID, req.body.email, req.body.fname, req.body.lname);
+
+    User.findByIdAndUpdate(req.params.userID, {
+        email: req.body.email,
+        fname: req.body.fname,
+        lname: req.body.lname
+    }).exec().then(function (achievement) {
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
+})
+
 
 
 

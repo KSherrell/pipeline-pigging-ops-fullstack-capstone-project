@@ -24,7 +24,7 @@
             <form id="userLogin" action="" method="">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="userEmail" name="user-email" value="jim@email.com">
+                    <input type="email" id="userEmail" name="user-email" value="operator@email.com">
                 </div>
                 <div>
                     <label for="password">Password</label>
@@ -121,31 +121,32 @@
         </header>
         <section class="user-update-account-container">
             <div>
-                <p>User ID</p>
-            </div>
-            <hr>
-            <div>
                 <p>Enter updates into fields below.</p>
             </div>
-            <form id="userUpdateAcct" action="" method="">
+            <form id="userUpdateAcctName" action="" method="">
                 <div>
                     <label for="firstName">Name</label>
-                    <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" required>
-                    <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" required>
+                    <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name">
+                    <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name">
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="user-email" placeholder="Current Email" required>
+                    <input type="email" id="email" name="user-email" placeholder="Current Email">
 
                 </div>
+                <div class="buttons">
+                    <button form="userUpdateAcctName" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                </div>
+            </form>
+            <hr>
+            <form id="userUpdateAcctPwd">
                 <div>
-                    <label for="password" Password>Password</label>
-                    <input type="password" id="password" name="user-password" placeholder="Current Password" required>
-                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" required>
-                    <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" required>
+                    <label for="newPwd">Password</label>
+                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password">
+                    <input id="newPwdReenter" name="user-new-pwd-reenter" type="password" placeholder="Re-enter New Password">
                 </div>
                 <div class="buttons">
-                    <button form="userUpdateAcct" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="userUpdateAcctPwd" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
 

@@ -6,6 +6,9 @@ let currentUserFName = "";
 let currentUserLName = "";
 let currentUserEmail = "";
 let currentUserRole = "";
+let currentUserActive = "";
+let currentUserID = "";
+let currentUserPassword = "";
 
 function loginUser(email, password) {
     let loginObject = {
@@ -20,23 +23,36 @@ function loginUser(email, password) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
+
             currentUserFName = result.fname;
             currentUserLName = result.lname;
             currentUserEmail = result.email;
             currentUserRole = result.role;
-            console.log(currentUserFName, currentUserLName, currentUserEmail, currentUserRole);
+            currentUserID = result._id;
+            currentUserActive = result.approved;
+            currentUserPassword = result.password;
+
+            //I'm (maybe) creating this global variable on purpose
+            //            currentUserObj = {
+            //                currentUserFName: result.fname,
+            //                currentUserLName: result.lname,
+            //                currentUserEmail: result.email,
+            //                currentUserRole: result.role,
+            //                currentUserID: result._id,
+            //                currentUserActive: result.approved
+            //            };
 
             if (currentUserRole == "foreman") {
                 $(".jsHide").hide();
                 $("#pageAdminMenu").show();
             } else if (currentUserRole == "operator") {
+
+                //operatorFunction
                 $(".jsHide").hide();
                 $("#pageInputPigging").show();
-                //$("#pageInputPigging #launchTime").prop('required', true);
                 $("#pageInputPigging div.select-receive").hide();
                 $("#pageInputPigging div.select-exception").hide();
-                selectPipeline();
+                // selectPipeline();
 
             } else if (currentUserRole == "reportViewer") {
                 $(".jsHide").hide();
@@ -58,8 +74,7 @@ function loginUser(email, password) {
 }
 
 function getUserByEmail(email, origin, userObj) {
-    console.log(email, origin, userObj);
-    //console.log(userObj.password);
+
     $.ajax({
             type: "GET",
             url: "/users/check-email/" + email,
@@ -67,49 +82,40 @@ function getUserByEmail(email, origin, userObj) {
             contentType: 'application/json'
         })
         .done(function (result) {
-                console.log(result); //userObject
-                let userID = result._id;
-                let userActive = result.approved;
+            let userID = result._id;
+            let userActive = result.approved;
 
-                if (origin == "resetpwd") {
-                    console.log("origin = " + origin);
-                    resetPwdPage(userID, userActive, email);
+            if (origin == "resetpwd") {
+                console.log("origin = " + origin);
+                resetPwdPage(userID, userActive, email);
+            } else if (origin == "createacct") {
+                if (userActive == 0) {
+                    alert("User found but not active. Please contact the Pipeline Foreman.")
+                } else {
+                    alert("User already exists. Please login normally.")
                 }
-
-
-        else if (origin == "createacct") {
-                    if (userActive == 0) {
-                        alert("User found but not active. Please contact the Pipeline Foreman.")
-                    } else {
-                        alert("User already exists. Please login normally.")
-                    }
-                    $(".jsHide").hide();
-                    $("#pageLogin").show();
-                    $("#forgotPassword").hide();
-                }
-
-
-             else if (origin == "login") {
-                console.log(email, password);
+                $(".jsHide").hide();
+                $("#pageLogin").show();
+                $("#forgotPassword").hide();
+            } else if (origin == "login") {
                 loginUser(email, userObj.password);
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            //user not found
+            if (origin == "resetpwd") {
+                let userActive = "usernotfound";
+                resetPwdPage(userID, userActive, email);
+            } else if (origin == "createacct") {
+                registerNewUser(userObj);
+            } else if (origin == "login") {
+                alert("User not found.");
             }
 
         })
-.fail(function (jqXHR, error, errorThrown) {
-    console.log(jqXHR);
-    console.log(error);
-    console.log(errorThrown);
-    //user not found
-    if (origin == "resetpwd") {
-        let userActive = "usernotfound";
-        resetPwdPage(userID, userActive, email);
-    } else if (origin == "createacct") {
-        registerNewUser(userObj);
-    } else if (origin == "login") {
-        alert("User not found.");
-    }
-
-})
 };
 
 function resetPwdPage(userID, userActive, email) {
@@ -217,9 +223,9 @@ $(document).ready(function () {
 
     //  Shows Login Page
     $("#pageLogin").show();
-    //Hides Forgot Password form
-    $("#forgotPassword").hide();
 
+    //  Hides Forgot Password form
+    $("#forgotPassword").hide();
 
     //  Login Page >> Submit
     $("form#userLogin").submit(function (event) {
@@ -242,10 +248,7 @@ $(document).ready(function () {
                 email: email,
                 password: password
             }
-
             getUserByEmail(email, origin, userObj);
-
-            //loginUser(email, password);
         };
     });
 
@@ -278,11 +281,8 @@ $(document).on('submit', '#forgotPassword', function (event) {
         $('#pageLogin #forgotPassword #userEmail').focus();
     } else {
         getUserByEmail(email, "resetpwd");
-
     };
-
 });
-
 
 //  Password Reset Page  >> Cancel
 $(document).on('click', '#userPwdReset .js-cancel', function (event) {
@@ -292,11 +292,9 @@ $(document).on('click', '#userPwdReset .js-cancel', function (event) {
     $("#forgotPassword").hide();
 });
 
-
 //  Create Account Page  >> Submit
 $(document).on('submit', '#userCreateAcct', function (event) {
     event.preventDefault();
-
     let fname = $('#pageCreateAcct #fName').val();
     let lname = $('#pageCreateAcct #lName').val();
     let email = $('#pageCreateAcct #userEmail').val();
@@ -304,7 +302,6 @@ $(document).on('submit', '#userCreateAcct', function (event) {
     let pwdConfirm = $('#pageCreateAcct #pwdConfirm').val();
 
     $('#pageCreateAcct input').blur();
-
     if (!fname || !lname || !email || !password || !pwdConfirm) {
         alert("All fields are required.");
         if (!fname) {
@@ -334,10 +331,7 @@ $(document).on('submit', '#userCreateAcct', function (event) {
             password: password
         };
         getUserByEmail(email, "createacct", newUserObj);
-
-
     };
-
 });
 
 //  Create Account Page >> Cancel
@@ -348,34 +342,128 @@ $(document).on('click', '#userCreateAcct .js-cancel', function (event) {
     $("#forgotPassword").hide();
 });
 
+
+//  Normal Header >> Exit Application
+//page refresh to log out
+$(document).on('click', 'header img + img', function (event) {
+    event.preventDefault();
+    //currentUserObj = {};
+    $(".jsHide").hide();
+    $("#pageLogin").show();
+});
+
+
 //  Normal Header >> Account Info
 $(document).on('click', 'header img', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pageUpdateAcct").show();
-});
-
-//  Normal Header >> Exit Application
-$(document).on('click', 'header img + img', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageLogin").show();
+    $("#pageUpdateAcct #firstName").val(currentUserFName);
+    $("#pageUpdateAcct #lastName").val(currentUserLName);
+    $("#pageUpdateAcct #email").val(currentUserEmail);
+    //    $("#pageUpdateAcct #password").val("currentUserPassword");
 });
 
 //  Update Account Info >> Submit
-$(document).on('submit', '#pageUpdateAcct #userUpdateAcct', function (event) {
+//  UPDATE USER NAME, EMAIL
+$(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event) {
     event.preventDefault();
-    alert("SUBMIT clicked. I will create a BACK function that takes the user back to her previous page after submitting the udated account info");
-    document.getElementById("userUpdateAcct").reset();
-    $(".jsHide").hide();
-    $("#pageLogin").show();
+    let fname = $("#pageUpdateAcct #firstName").val();
+    let lname = $("#pageUpdateAcct #lastName").val();
+    let email = $("#pageUpdateAcct #email").val();
+    let updateUserNameObj = {
+        fname: fname,
+        lname: lname,
+        email: email
+    };
+
+    $('#pageCreateAcct input').blur();
+    if (!fname || !lname || !email) {
+        alert("All fields are required.");
+        if (!fname) {
+            $('#pageUpdateAcct #firstName').focus();
+        } else if (!lname) {
+            $('#pageUpdateAcct #lastName').focus();
+        } else if (!email) {
+            $('#pageUpdateAcct #email').focus();
+        }
+    } else {
+        $.ajax({
+                type: "PUT",
+                url: "/users/reset-name/" + currentUserID,
+                data: JSON.stringify(updateUserNameObj),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                alert("Account updated. Please login using your updated credentials.");
+            $(".jsHide").hide();
+            $("#pageLogin").show();
+
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                alert("Error updating account information. Please try again.");
+
+            })
+    }
 });
+
+//new trigger for this pwd change PUT request
+$(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) {
+    event.preventDefault();
+    let updateUserPwdObj = {
+        password: $("#pageUpdateAcct #newPwd").val()
+    }
+    $.ajax({
+            type: "PUT",
+            url: "/users/reset-pwd/" + currentUserID,
+            data: JSON.stringify(updateUserPwdObj),
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+
+            alert("Account updated.");
+            if (currentUserRole == "operator") {
+                //operatorFunction
+                $(".jsHide").hide();
+                $("#pageInputPigging").show();
+                $("#pageInputPigging div.select-receive").hide();
+                $("#pageInputPigging div.select-exception").hide();
+                // selectPipeline();
+            } else if (currentUserRole == "foreman") {
+                alert("foreman updating account");
+            } else {
+                alert("report viewer updating account");
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            //user not found
+            alert("Error updating account information. Please try again.");
+
+        })
+
+
+});
+
+
+
+//$(document).getElementById("userUpdateAcct").reset();
+//$(".jsHide").hide();
+//$("#pageLogin").show();
 
 //  Update Account Info >> Cancel
 $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
     event.preventDefault();
 
-    alert("CANCEL clicked. I will create a BACK function that takes the user back to her previous page after clicking Cancel on this page");
+    alert("CANCEL clicked.");
     $(".jsHide").hide();
     $("#pageLogin").show();
 });
@@ -696,34 +784,34 @@ $(document).change("#systems", function (event) {
     //get value from system selection input, make api call which will return the list of pipelines
 })
 
-function selectPipeline() {
-
-    let selectOptions = {
-        "System 1": ["Alabama Pipeline",
-                "Alaska Pipeline",
-                "Arizona Pipeline"
-            ],
-
-        "System 2": ["California Pipeline",
-                "Colorado Pipeline",
-                "Connecticut Pipeline"
-            ],
-        "System 3": ["Idaho Pipeline",
-                "Illinois Pipeline",
-                "Indiana Pipeline"
-            ]
-    };
-
-
-    let systemsOptions = Object.keys(selectOptions);
-    console.log(systemsOptions);
-
-
-    let pipelinesOptions = Object.values(selectOptions[0]);
-    console.log(pipelinesOptions);
-
-
-};
+//function selectPipeline() {
+//
+//    let selectOptions = {
+//        "System 1": ["Alabama Pipeline",
+//                "Alaska Pipeline",
+//                "Arizona Pipeline"
+//            ],
+//
+//        "System 2": ["California Pipeline",
+//                "Colorado Pipeline",
+//                "Connecticut Pipeline"
+//            ],
+//        "System 3": ["Idaho Pipeline",
+//                "Illinois Pipeline",
+//                "Indiana Pipeline"
+//            ]
+//    };
+//
+//
+//    let systemsOptions = Object.keys(selectOptions);
+//    console.log(systemsOptions);
+//
+//
+//    let pipelinesOptions = Object.values(selectOptions[0]);
+//    console.log(pipelinesOptions);
+//
+//
+//};
 
 
 
