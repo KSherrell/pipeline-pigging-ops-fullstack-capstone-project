@@ -329,12 +329,6 @@ $(document).on('click', '#userCreateAcct .js-cancel', function (event) {
     $("#forgotPassword").hide();
 });
 
-//  Normal Header >> Exit Application
-$(document).on('click', 'header img + img', function (event) {
-    event.preventDefault();
-    window.location.reload(true);
-});
-
 //  Normal Header >> Account Info
 $(document).on('click', 'header img', function (event) {
     event.preventDefault();
@@ -441,6 +435,8 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
         if (activePage == "inputPigging") {
             $(".jsHide").hide();
             $("#pageInputPigging").show();
+            $("#pagePiggingSchedule .normal-header").show();
+            $("#pagePiggingSchedule .show-to-operator").show();
             $("#pageInputPigging div.select-receive").hide();
             $("#pageInputPigging div.select-exception").hide();
             activePage = "inputPigging";
@@ -449,6 +445,7 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             $(".jsHide").hide();
             $("#pagePiggingSchedule").show();
             $("#pagePiggingSchedule .normal-header").show();
+            $("#pagePiggingSchedule .show-to-operator").show();
             $("#pagePiggingSchedule .foreman-header").hide();
             $("#pagePiggingSchedule .js-viewonly").hide();
             activePage = "piggingSchedule";
@@ -910,7 +907,14 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
     $("#pagePiggingSchedule .show-to-operator").hide();
 });
 
+//  Normal Header >> Exit Application
+$(document).on('click', 'header img + img', function (event) {
+    event.preventDefault();
+    window.location.reload(true);
+    $(".jsHide").hide();
+    $("#pageLogin").show();
 
+});
 // show the signout link in header as soon as user is signed in
 //        $('#js-signout-link').show();
 //        if (newUserToggle === true) {
