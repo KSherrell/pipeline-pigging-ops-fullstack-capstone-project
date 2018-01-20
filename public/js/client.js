@@ -9,6 +9,7 @@ let currentUserRole = "";
 let currentUserActive = "";
 let currentUserID = "";
 let currentUserPassword = "";
+let activePage = "";
 
 function loginUser(email, password) {
     let loginObject = {
@@ -32,38 +33,24 @@ function loginUser(email, password) {
             currentUserActive = result.approved;
             currentUserPassword = result.password;
 
-            //I'm (maybe) creating this global variable on purpose
-            //            currentUserObj = {
-            //                currentUserFName: result.fname,
-            //                currentUserLName: result.lname,
-            //                currentUserEmail: result.email,
-            //                currentUserRole: result.role,
-            //                currentUserID: result._id,
-            //                currentUserActive: result.approved
-            //            };
-
             if (currentUserRole == "foreman") {
                 $(".jsHide").hide();
                 $("#pageAdminMenu").show();
             } else if (currentUserRole == "operator") {
-
-                //operatorFunction
                 $(".jsHide").hide();
                 $("#pageInputPigging").show();
                 $("#pageInputPigging div.select-receive").hide();
                 $("#pageInputPigging div.select-exception").hide();
+                activePage = "inputPigging";
                 // selectPipeline();
-
             } else if (currentUserRole == "reportViewer") {
                 $(".jsHide").hide();
                 $("#pagePiggingSchedule").show();
                 $(".foreman-header").hide();
-                $(".js-operator").hide();
-
+                $(".show-to-operator").hide();
             } else {
                 alert("User found but not active. Please contact the Pipeline Foreman.");
             }
-
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -342,16 +329,11 @@ $(document).on('click', '#userCreateAcct .js-cancel', function (event) {
     $("#forgotPassword").hide();
 });
 
-
 //  Normal Header >> Exit Application
-//page refresh to log out
 $(document).on('click', 'header img + img', function (event) {
     event.preventDefault();
-    //currentUserObj = {};
-    $(".jsHide").hide();
-    $("#pageLogin").show();
+    window.location.reload(true);
 });
-
 
 //  Normal Header >> Account Info
 $(document).on('click', 'header img', function (event) {
@@ -361,11 +343,9 @@ $(document).on('click', 'header img', function (event) {
     $("#pageUpdateAcct #firstName").val(currentUserFName);
     $("#pageUpdateAcct #lastName").val(currentUserLName);
     $("#pageUpdateAcct #email").val(currentUserEmail);
-    //    $("#pageUpdateAcct #password").val("currentUserPassword");
 });
 
-//  Update Account Info >> Submit
-//  UPDATE USER NAME AND/OR EMAIL
+//  Update Account Info (Name, Email) >> Submit
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event) {
     event.preventDefault();
     let fname = $("#pageUpdateAcct #firstName").val();
@@ -409,7 +389,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
     }
 });
 
-//UPDATE USER PASSWORD
+//  Update Account Info (Password) >> Submit
 $(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) {
     event.preventDefault();
     let password = $("#pageUpdateAcct #newPwd").val();
@@ -437,8 +417,6 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) 
             })
             .done(function (result) {
                 alert("Account updated. Please login using your updated password.");
-                //                $(".jsHide").hide();
-                //                $("#pageLogin").show();
                 window.location.reload(true);
 
             })
@@ -450,22 +428,37 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) 
                 alert("Error updating password. Please try again.");
             })
     }
-
 });
-
-
-
-//$(document).getElementById("userUpdateAcct").reset();
-//$(".jsHide").hide();
-//$("#pageLogin").show();
 
 //  Update Account Info >> Cancel
 $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
     event.preventDefault();
-
-    alert("CANCEL clicked.");
-    $(".jsHide").hide();
-    $("#pageLogin").show();
+    alert("Account information unchanged.");
+    if (currentUserRole == "foreman") {
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    } else if (currentUserRole == "operator") {
+        if (activePage == "inputPigging") {
+            $(".jsHide").hide();
+            $("#pageInputPigging").show();
+            $("#pageInputPigging div.select-receive").hide();
+            $("#pageInputPigging div.select-exception").hide();
+            activePage = "inputPigging";
+            // selectPipeline();
+        } else if (activePage == "piggingSchedule") {
+            $(".jsHide").hide();
+            $("#pagePiggingSchedule").show();
+            $("#pagePiggingSchedule .normal-header").show();
+            $("#pagePiggingSchedule .foreman-header").hide();
+            $("#pagePiggingSchedule .js-viewonly").hide();
+            activePage = "piggingSchedule";
+        }
+    } else if (currentUserRole == "reportViewer") {
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").show();
+        $(".foreman-header").hide();
+        $(".show-to-operator").hide();
+    }
 });
 
 // USER = FOREMAN
@@ -779,10 +772,10 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 
 //Input Pigging System and Pipeline Selection
 //need to target document not the form bc the form is hidden when the page loads
-$(document).change("#systems", function (event) {
-
-    //get value from system selection input, make api call which will return the list of pipelines
-})
+//$(document).change("#systems", function (event) {
+//
+//    //get value from system selection input, make api call which will return the list of pipelines
+//})
 
 //function selectPipeline() {
 //
@@ -856,8 +849,12 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .normal-header").show();
+    $("#pagePiggingSchedule .show-to-operator").show();
     $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .js-viewonly").hide();
+    $("#pagePiggingSchedule .show-to-report-viewer").hide();
+    activePage = "piggingSchedule";
+    console.log(activePage);
 });
 
 
@@ -870,13 +867,14 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
 
 
 //  Pigging Schedule (Operator) >> Input Pigging
-$(document).on('click', '#pagePiggingSchedule .js-operator', function (event) {
+$(document).on('click', '#pagePiggingSchedule .show-to-operator', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pageInputPigging").show();
-    $("#pageInputPigging #launchTime").prop('required', true);
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").hide();
+    activePage = "inputPigging";
+    console.log(activePage);
 });
 
 //  Pigging Schedule (Report Viewer) >> Debris Report
@@ -900,7 +898,7 @@ $(document).on('click', '#pagePrevLaunch .show-to-operator', function (event) {
     //    $("#pagePiggingSchedule").show();
     //    $("#pagePiggingSchedule .normal-header").show();
     //    $("#pagePiggingSchedule .foreman-header").hide();
-    //    $("#pagePiggingSchedule .js-operator").show();
+    //    $("#pagePiggingSchedule .show-to-operator").show();
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule
@@ -909,7 +907,7 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .js-operator").hide();
+    $("#pagePiggingSchedule .show-to-operator").hide();
 });
 
 
