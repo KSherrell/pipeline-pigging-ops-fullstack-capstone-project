@@ -2,21 +2,29 @@
 
 const mongoose = require('mongoose');
 
-const pipelineSchema = new mongoose.Schema({
+const activitySchema = new mongoose.Schema({
 
-    RCName: {
-        type: String,
-        required: false
-    },
-    RCNumber: {
-        type: Integer,
-        required: false
-    },
-    systemName: {
-        type: String,
-        required: false
-    },
     pipelineName: {
+        type: String,
+        required: false
+    },
+    exception: {
+        type: String,
+        required: false
+    },
+    operatorEmail: {
+        type: String,
+        required: false
+    },
+    notes: {
+        type: String,
+        required: false
+    },
+    launchTime: {
+        type: Timestamp,
+        required: false
+    },
+    receiveTime: {
         type: String,
         required: false
     },
@@ -28,36 +36,20 @@ const pipelineSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    pipelineSize: {
+    pigType: {
         type: String,
         required: false
     },
-    product: {
+    debrisType: {
         type: String,
         required: false
     },
-    acceptablePigs: {
+    debrisWeight: {
         type: String,
         required: false
     },
-    closure: {
-        type: String,
-        required: false
-    },
-    piggingFrequency: {
-        type: String,
-        required: false
-    },
-    dateAdded: {
-        type: Timestamp,
-        required: false
-    },
-    pipelineActive: {
-        type: Boolean,
-        required: false
-    },
-
 });
 
-const Pipeline = mongoose.model('Pipeline', pipelineSchema);
-module.exports = Pipeline;
+const Activity = mongoose.model('Activity', activitySchema);
+
+module.exports = Activity;

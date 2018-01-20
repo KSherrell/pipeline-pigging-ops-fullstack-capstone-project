@@ -46,5 +46,3 @@ const User = mongoose.model('User', userSchema);
 
 module.exports = User;
 
-// Update Password, Role, Status
-
