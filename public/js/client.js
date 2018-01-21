@@ -667,8 +667,6 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         dateAdded: dateAdded,
         pipelineActive: pipelineActive
     };
-    console.log(newPipelineObj);
-
     $.ajax({
             type: 'POST',
             url: '/pipelines',

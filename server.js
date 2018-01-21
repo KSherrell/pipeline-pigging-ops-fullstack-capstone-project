@@ -2,6 +2,10 @@
 
 const User = require('./models/user');
 const Pipeline = require('./models/pipelines');
+const Activity = require('./models/activities');
+const Pig = require('./models/pigs');
+const System = require('./models/systems');
+const Debris = require('./models/debris');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
