@@ -1,6 +1,7 @@
 "use strict";
 
 const User = require('./models/user');
+const Pipeline = require('./models/pipelines');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');
@@ -205,6 +206,37 @@ app.put('/users/reset-name/:userID', function (req, res) {
         });
     });
 })
+
+app.post('/pipelines', (req, res) => {
+    // the following variables should match the ones in the ajax call
+
+
+    Pipeline.create({
+        RCName: req.body.RCName,
+        systemName: req.body.systemName,
+        pipelineName: req.body.pipelineName,
+        launcherName: req.body.launcherName,
+        receiverName: req.body.receiverName,
+        pipelineSize: req.body.pipelineSize,
+        product: req.body.product,
+        acceptablePigs: req.body.acceptablePigs,
+        closure: req.body.closure,
+        piggingFrequency: req.body.piggingFrequency,
+        dateAdded: req.body.dateAdded,
+        pipelineActive: req.body.pipelineActive
+    }, (err, item) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        if (item) {
+            console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
+            return res.json(item);
+        }
+    });
+});
+
 
 // Get Pipeline Systems
 app.get('/systems', function (req, res) {

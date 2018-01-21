@@ -8,10 +8,6 @@ const pipelineSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    RCNumber: {
-        type: Integer,
-        required: false
-    },
     systemName: {
         type: String,
         required: false
@@ -49,14 +45,13 @@ const pipelineSchema = new mongoose.Schema({
         required: false
     },
     dateAdded: {
-        type: Timestamp,
+        type: String,
         required: false
     },
     pipelineActive: {
-        type: Boolean,
+        type: String,
         required: false
     },
-
 });
 
 const Pipeline = mongoose.model('Pipeline', pipelineSchema);

@@ -460,472 +460,529 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
 });
 
 // USER = FOREMAN
-function foremanPages() {
-    //  Foreman Header >> Admin Menu
-    $(document).on('click', 'header.foreman-header>div>img', function () {
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
 
-    //*** Admin Menu >> View Pigging Schedule
-    $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pagePiggingSchedule").show();
-        $("#pagePiggingSchedule .show-to-foreman").show();
-    });
+//  Foreman Header >> Admin Menu
+$(document).on('click', 'header.foreman-header>div>img', function () {
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
 
-    //  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-    $(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pagePrevLaunch").show();
-        $("#pagePrevLaunch header").show();
-        $("#pagePrevLaunch .show-to-foreman").show();
-    });
+//*** Admin Menu >> View Pigging Schedule
+$(document).on('click', 'p.gotoPiggingSchedule', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .show-to-foreman").show();
+});
 
-    //  Previous Launch  >> Back (to Pigging Schedule (Foreman))
-    $(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
+$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePrevLaunch").show();
+    $("#pagePrevLaunch header").show();
+    $("#pagePrevLaunch .show-to-foreman").show();
+});
 
-    });
+//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
+$(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
 
-    //*** Admin Menu >> View Debris Report
-    $(document).on('click', 'p.gotoDebrisReport', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageDebrisReport").show();
-        $("#pageDebrisReport  #debrisReport").show();
-        $("#pageDebrisReport .show-to-foreman").show();
-    });
+});
 
-    //  Debris Report, Activity Report >> Radio Select by System
-    $(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
-        event.preventDefault();
-        $(".js-system-select").show();
-        $(".js-pipeline-select").hide();
-    });
+//*** Admin Menu >> View Debris Report
+$(document).on('click', 'p.gotoDebrisReport', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport  #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+});
 
-    //  Debris Report, Activity Report >> Radio Select by Pipeline
-    $(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function (event) {
-        event.preventDefault();
-        $(".js-system-select").hide();
-        $(".js-pipeline-select").show();
-    });
+//  Debris Report, Activity Report >> Radio Select by System
+$(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
+    event.preventDefault();
+    $(".js-system-select").show();
+    $(".js-pipeline-select").hide();
+});
 
-    //  Debris Report, Activity Report >> Radio Other Selections
-    $(document).on('click', '.radio-other-selection', function (event) {
-        event.preventDefault();
-        $("form .jsHide").hide();
-    });
+//  Debris Report, Activity Report >> Radio Select by Pipeline
+$(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function (event) {
+    event.preventDefault();
+    $(".js-system-select").hide();
+    $(".js-pipeline-select").show();
+});
 
-    //  Debris Report (Foreman) >> Submit
-    $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageDebrisReport").show();
-        $("#pageDebrisReport .show-to-foreman").show();
-        $(".debris-results").show();
-    });
-    //  Debris Report (Foreman) >> Reset
-    $(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageDebrisReport").show();
-        $("#pageDebrisReport #debrisReport").show();
-        $("#pageDebrisReport .show-to-foreman").show();
-        document.getElementById("debrisReport").reset();
-    });
+//  Debris Report, Activity Report >> Radio Other Selections
+$(document).on('click', '.radio-other-selection', function (event) {
+    event.preventDefault();
+    $("form .jsHide").hide();
+});
 
-    //*** Admin Menu >> Pigging Activity
-    $(document).on('click', 'p.gotoPiggingActivity', function (event) {
+//  Debris Report (Foreman) >> Submit
+$(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    $(".debris-results").show();
+});
+//  Debris Report (Foreman) >> Reset
+$(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport #debrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    document.getElementById("debrisReport").reset();
+});
+
+//*** Admin Menu >> Pigging Activity
+$(document).on('click', 'p.gotoPiggingActivity', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePiggingActivity").show();
+    $("#piggingActivity").show();
+});
+
+//  Pigging Activity >> Submit
+$(document).on('submit', '#piggingActivity', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pagePiggingActivity").show();
+    $(".pigging-activity-results").show();
+    document.getElementById("piggingActivity").reset();
+});
+
+//  Pigging Activity >> Reset
+$(document).on('click', '#pagePiggingActivity button[type="button"]',
+    function (event) {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pagePiggingActivity").show();
         $("#piggingActivity").show();
     });
 
-    //  Pigging Activity >> Submit
-    $(document).on('submit', '#piggingActivity', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pagePiggingActivity").show();
-        $(".pigging-activity-results").show();
-        document.getElementById("piggingActivity").reset();
-    });
+//*** Admin Menu >> View Pigging History
+$(document).on('click', 'p.gotoViewHistory', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
-    //  Pigging Activity >> Reset
-    $(document).on('click', '#pagePiggingActivity button[type="button"]',
-        function (event) {
-            event.preventDefault();
-            $(".jsHide").hide();
-            $("#pagePiggingActivity").show();
-            $("#piggingActivity").show();
-        });
+//  Pigging History >> Submit
+$(document).on('submit', '#piggingHistory', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $(".history-results").show();
+    $("#pageViewHistory .bottom-nav").show();
+    document.getElementById("piggingHistory").reset();
+});
 
-    //*** Admin Menu >> View Pigging History
-    $(document).on('click', 'p.gotoViewHistory', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
-    });
+//  Pigging History >> Reset
+$(document).on('click', '#pageViewHistory .bottom-nav', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
-    //  Pigging History >> Submit
-    $(document).on('submit', '#piggingHistory', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $(".history-results").show();
-        $("#pageViewHistory .bottom-nav").show();
-        document.getElementById("piggingHistory").reset();
-    });
+//  Pigging History >> Update Pigging History (via link from history record)
+$(document).on('click', '#pageViewHistory p.history-record-id', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageUpdateHistory").show();
+});
 
-    //  Pigging History >> Reset
-    $(document).on('click', '#pageViewHistory .bottom-nav', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
-    });
+//  Update History >> Submit
+$(document).on('submit', '#updateHistory', function (event) {
+    event.preventDefault();
+    alert("Updates submitted successfully.");
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
-    //  Pigging History >> Update Pigging History (via link from history record)
-    $(document).on('click', '#pageViewHistory p.history-record-id', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageUpdateHistory").show();
-    });
+//  Update History >> Cancel
+$(document).on('click', '#pageUpdateHistory .button-cancel', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
-    //  Update History >> Submit
-    $(document).on('submit', '#updateHistory', function (event) {
-        event.preventDefault();
-        alert("Updates submitted successfully.");
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
-    });
+//  Update History >> Delete
+$(document).on('click', '#pageUpdateHistory .button-delete', function (event) {
+    event.preventDefault();
+    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
+        alert("Record has be sucessfully deleted.");
+    };
+    $(".jsHide").hide();
+    $("#pageViewHistory").show();
+    $("#piggingHistory").show();
+});
 
-    //  Update History >> Cancel
-    $(document).on('click', '#pageUpdateHistory .button-cancel', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
-    });
+//*** Admin Menu >> Add Pipeline
+$(document).on('click', 'p.gotoAddPipeline', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAddPipeline").show();
+});
 
-    //  Update History >> Delete
-    $(document).on('click', '#pageUpdateHistory .button-delete', function (event) {
-        event.preventDefault();
-        if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
-            alert("Record has be sucessfully deleted.");
-        };
-        $(".jsHide").hide();
-        $("#pageViewHistory").show();
-        $("#piggingHistory").show();
-    });
+//   Add Pipeline >> Submit
+$(document).on('submit', '#pageAddPipeline', function (event) {
+    event.preventDefault();
+    let RCName = $("#pageAddPipeline #rcName").val();
+    let systemName = $("#pageAddPipeline #systemName").val();
+    let pipelineName = $("#pageAddPipeline #newPipeline").val();
+    let launcherName = $("#pageAddPipeline #newLauncher").val();
+    let receiverName = $("#pageAddPipeline #newReceiver").val();
+    let pipelineSize = $("#pageAddPipeline #newPipelineSize").val();
+    let product = $("input[type=checkbox][name=product]:checked").map(function () {
+        return this.value;
+    }).toArray();
+    let acceptablePigs = $("input[type=checkbox][name=acceptable-pigs]:checked").map(function () {
+        return this.value;
+    }).toArray();
+    let closure = $("#pageAddPipeline #pipelineClosures").val();
+    let piggingFrequency = $("#pageAddPipeline #piggingFrequency").val();
+    let dateAdded = $("#pageAddPipeline #addPipelineDate").val();
+    let pipelineActive = 1;
 
-    //*** Admin Menu >> Add Pipeline
-    $(document).on('click', 'p.gotoAddPipeline', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAddPipeline").show();
-
-    });
-
-    //   Add Pipeline >> Submit
-    $(document).on('submit', '#pageAddPipeline', function (event) {
-        event.preventDefault();
-        if (window.confirm("Pipeline added successfully. Would you like to add another pipeline?")) {
-            $(".jsHide").hide();
-            $("#pageAddPipeline").show();
-            document.getElementById("addPipeline").reset();
-        } else {
-            $(".jsHide").hide();
-            $("#pageAdminMenu").show();
-        }
-    });
-
-    //   Add Pipeline >> Cancel
-    $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
-
-    //*** Admin Menu >> Update/Remove Pipeline
-    $(document).on('click', 'p.gotoUdatePipeline', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageUpdatePipeline").show();
-        $("#updateSearch").show();
-    });
-
-    //  Update/Remove Pipeline (Search form) >> Submit
-    $(document).on('submit', '#updateSearch', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageUpdatePipeline").show();
-        $("#updatePipeline").show();
-        $("#pageUpdatePipeline .submit-cancel-delete").show();
-        document.getElementById("updateSearch").reset();
-    });
-
-    //  Update/Remove Pipeline >> Cancel
-    $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
-
-    //  Update/Remove Pipeline (Update form) >> Submit
-    $(document).on('submit', '#updatePipeline', function (event) {
-        event.preventDefault();
-        alert("Pipeline information updated successfully.");
-        document.getElementById("updateSearch").reset();
-        $(".jsHide").hide();
-        $("#pageUpdatePipeline").show();
-        $("#updateSearch").show();
-    });
-
-
-    //  Update/Remove Pipeline (Update form) >> Delete
-    $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
-        event.preventDefault();
-        if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
-            alert("Record has be sucessfully deleted.");
-        }
-        $(".jsHide").hide();
-        $("#pageUpdatePipeline").show();
-        $("#updateSearch").show();
-    });
-
-    //*** Admin Menu >> Add User
-    $(document).on('click', 'p.gotoAddUser', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAddUser").show();
-        $("#findUser").show();
-    });
-
-    //  Add User (Search form) >> Submit
-    $(document).on('submit', '#findUser', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAddUser").show();
-        $("#assignRole").show();
-        document.getElementById("findUser").reset();
-    });
-
-    //  Add User >> Cancel (for both Cancel buttons on page)
-    $(document).on('click', '#pageAddUser .button-cancel', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
-
-    //  Add User (Assign Role form) >> Submit
-    $(document).on('submit', '#assignRole', function (event) {
-        event.preventDefault();
-        alert("User added successfully.")
-        $(".jsHide").hide();
-        $("#pageAddUser").show();
-        $("#findUser").show();
-    });
-
-    //*** Admin Menu >> Update/Remove User
-    $(document).on('click', 'p.gotoUpdateUser', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageUpdateUser").show();
-        $("#findUpdateUser").show();
-    });
-
-    //  Update User (Search form) >> Submit
-    $(document).on('submit', '#findUpdateUser', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageUpdateUser").show();
-        $("#updateRole").show();
-        document.getElementById("findUpdateUser").reset();
-    });
-
-    //  Update User (Update form) >> Submit
-    $(document).on('submit', '#updateRole', function (event) {
-        event.preventDefault();
-        alert("User role and/or status has been updated.");
-        document.getElementById("findUpdateUser").reset();
-        $(".jsHide").hide();
-        $("#pageUpdateUser").show();
-        $("#findUpdateUser").show();
-    });
-
-    //  Update User >> Cancel (for both Cancel buttons on page)
-    $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
-        event.preventDefault();
-        $(".jsHide").hide();
-        $("#pageAdminMenu").show();
-    });
-}
-
-//Input Pigging System and Pipeline Selection
-//need to target document not the form bc the form is hidden when the page loads
-//$(document).change("#systems", function (event) {
-//
-//    //get value from system selection input, make api call which will return the list of pipelines
-//})
-
-//function selectPipeline() {
-//
-//    let selectOptions = {
-//        "System 1": ["Alabama Pipeline",
-//                "Alaska Pipeline",
-//                "Arizona Pipeline"
-//            ],
-//
-//        "System 2": ["California Pipeline",
-//                "Colorado Pipeline",
-//                "Connecticut Pipeline"
-//            ],
-//        "System 3": ["Idaho Pipeline",
-//                "Illinois Pipeline",
-//                "Indiana Pipeline"
-//            ]
-//    };
-//
-//
-//    let systemsOptions = Object.keys(selectOptions);
-//    console.log(systemsOptions);
-//
-//
-//    let pipelinesOptions = Object.values(selectOptions[0]);
-//    console.log(pipelinesOptions);
-//
-//
-//};
-$(document).change("#systems", function (event) {
+    let newPipelineObj = {
+        RCName: RCName,
+        systemName: systemName,
+        pipelineName: pipelineName,
+        launcherName: launcherName,
+        receiverName: receiverName,
+        pipelineSize: pipelineSize,
+        product: JSON.stringify(product),
+        acceptablePigs: JSON.stringify(acceptablePigs),
+        closure: closure,
+        piggingFrequency: piggingFrequency,
+        dateAdded: dateAdded,
+        pipelineActive: pipelineActive
+    };
+    console.log(newPipelineObj);
 
     $.ajax({
-        type: "GET",
-        url: "/systems",
-        dataType: 'json',
-        contentType: 'application/json'
-    })
+            type: 'POST',
+            url: '/pipelines',
+            dataType: 'json',
+            data: JSON.stringify(newPipelineObj),
+            contentType: 'application/json'
+        })
         .done(function (result) {
-    console.log(result);
-
-    })
+            console.log(result);
+        })
         .fail(function (jqXHR, error, errorThrown) {
-        console.log(jqXHR);
-        console.log(error);
-        console.log(errorThrown);
-
-    })
-});
-
-
-//  Input Pigging >> Radio Launch
-$(document).on('click', '#pageInputPigging #radioLaunch', function () {
-
-    $("#pageInputPigging div.select-launch").show();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").hide();
-
-
-});
-
-//  Input Pigging >> Radio Receive
-$(document).on('click', '#pageInputPigging #radioReceive', function () {
-    $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging div.select-receive").show();
-    $("#pageInputPigging div.select-exception").hide();
-
-});
-
-//  Input Pigging >> Radio Exception
-$(document).on('click', '#pageInputPigging #radioException', function () {
-    $("#pageInputPigging div.select-launch").hide();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").show();
-
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
 });
 
 
 
-//  Input Pigging >> Submit
-$(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
-    event.preventDefault();
-    alert("Pigging activity has been submitted.");
-    document.getElementById("inputPigging").reset();
 
-});
 
-//  Input Pigging >> Pigging Schedule (Operator)
-$(document).on('click', '#pageInputPigging .ops-nav', function (event) {
+//
+//if (window.confirm("Pipeline added successfully. Would you like to add another pipeline?")) {
+//    $(".jsHide").hide();
+//    $("#pageAddPipeline").show();
+//    document.getElementById("addPipeline").reset();
+//} else {
+//    $(".jsHide").hide();
+//    $("#pageAdminMenu").show();
+//}
+
+//   Add Pipeline >> Cancel
+$(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .normal-header").show();
-    $("#pagePiggingSchedule .show-to-operator").show();
-    $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .show-to-report-viewer").hide();
-    activePage = "piggingSchedule";
-    console.log(activePage);
+    $("#pageAdminMenu").show();
 });
 
-
-//  Pigging Schedule >> Submit
-$(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
-    event.preventDefault();
-    alert("Pipeline System selection has been submitted. Schedule results will update.");
-});
-
-
-
-//  Pigging Schedule (Operator) >> Input Pigging
-$(document).on('click', '#pagePiggingSchedule .show-to-operator', function (event) {
+//*** Admin Menu >> Update/Remove Pipeline
+$(document).on('click', 'p.gotoUdatePipeline', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    $("#pageInputPigging").show();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").hide();
-    activePage = "inputPigging";
-    console.log(activePage);
+    $("#pageUpdatePipeline").show();
+    $("#updateSearch").show();
 });
 
-
-
-//  Previous Launch >> Back (to Pigging Schedule (Operator))
-$(document).on('click', '#pagePrevLaunch .show-to-operator', function (event) {
+//  Update/Remove Pipeline (Search form) >> Submit
+$(document).on('submit', '#updateSearch', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    //    $("#pagePiggingSchedule").show();
-    //    $("#pagePiggingSchedule .normal-header").show();
-    //    $("#pagePiggingSchedule .foreman-header").hide();
-    //    $("#pagePiggingSchedule .show-to-operator").show();
+    $("#pageUpdatePipeline").show();
+    $("#updatePipeline").show();
+    $("#pageUpdatePipeline .submit-cancel-delete").show();
+    document.getElementById("updateSearch").reset();
 });
 
-//  Pigging Schedule (Report Viewer) >> Debris Report
-$(document).on('click', '#pagePiggingSchedule .js-viewonly', function (event) {
+//  Update/Remove Pipeline >> Cancel
+$(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .foreman-header").hide();
-    $("#pageDebrisReport #debrisReport").show();
-    $(".debris-results").hide();
-    $("#debrisReport .js-system-debris").hide();
-    $("#debrisReport .js-pipeline-debris").hide();
+    $("#pageAdminMenu").show();
 });
 
-//  Debris Report (Report Viewer) >> Pigging Schedule
-$(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
+//  Update/Remove Pipeline (Update form) >> Submit
+$(document).on('submit', '#updatePipeline', function (event) {
+    event.preventDefault();
+    alert("Pipeline information updated successfully.");
+    document.getElementById("updateSearch").reset();
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").show();
+    $("#updateSearch").show();
+});
+
+
+//  Update/Remove Pipeline (Update form) >> Delete
+$(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
+    event.preventDefault();
+    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
+        alert("Record has be sucessfully deleted.");
+    }
+    $(".jsHide").hide();
+    $("#pageUpdatePipeline").show();
+    $("#updateSearch").show();
+});
+
+//*** Admin Menu >> Add User
+$(document).on('click', 'p.gotoAddUser', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .show-to-operator").hide();
+    $("#pageAddUser").show();
+    $("#findUser").show();
 });
+
+//  Add User (Search form) >> Submit
+$(document).on('submit', '#findUser', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#assignRole").show();
+    document.getElementById("findUser").reset();
+});
+
+//  Add User >> Cancel (for both Cancel buttons on page)
+$(document).on('click', '#pageAddUser .button-cancel', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
+
+//  Add User (Assign Role form) >> Submit
+$(document).on('submit', '#assignRole', function (event) {
+    event.preventDefault();
+    alert("User added successfully.")
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#findUser").show();
+});
+
+//*** Admin Menu >> Update/Remove User
+$(document).on('click', 'p.gotoUpdateUser', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageUpdateUser").show();
+    $("#findUpdateUser").show();
+});
+
+//  Update User (Search form) >> Submit
+$(document).on('submit', '#findUpdateUser', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageUpdateUser").show();
+    $("#updateRole").show();
+    document.getElementById("findUpdateUser").reset();
+});
+
+//  Update User (Update form) >> Submit
+$(document).on('submit', '#updateRole', function (event) {
+    event.preventDefault();
+    alert("User role and/or status has been updated.");
+    document.getElementById("findUpdateUser").reset();
+    $(".jsHide").hide();
+    $("#pageUpdateUser").show();
+    $("#findUpdateUser").show();
+});
+
+//  Update User >> Cancel (for both Cancel buttons on page)
+$(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
+
+
+// USER = OPERATOR
+function OperatorPages() {
+    //Input Pigging System and Pipeline Selection
+    //need to target document not the form bc the form is hidden when the page loads
+    //$(document).change("#systems", function (event) {
+    //
+    //    //get value from system selection input, make api call which will return the list of pipelines
+    //})
+
+    //function selectPipeline() {
+    //
+    //    let selectOptions = {
+    //        "System 1": ["Alabama Pipeline",
+    //                "Alaska Pipeline",
+    //                "Arizona Pipeline"
+    //            ],
+    //
+    //        "System 2": ["California Pipeline",
+    //                "Colorado Pipeline",
+    //                "Connecticut Pipeline"
+    //            ],
+    //        "System 3": ["Idaho Pipeline",
+    //                "Illinois Pipeline",
+    //                "Indiana Pipeline"
+    //            ]
+    //    };
+    //
+    //
+    //    let systemsOptions = Object.keys(selectOptions);
+    //    console.log(systemsOptions);
+    //
+    //
+    //    let pipelinesOptions = Object.values(selectOptions[0]);
+    //    console.log(pipelinesOptions);
+    //
+    //
+    //};
+    $(document).change("#systems", function (event) {
+
+        $.ajax({
+                type: "GET",
+                url: "/systems",
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+
+            })
+    });
+
+
+    //  Input Pigging >> Radio Launch
+    $(document).on('click', '#pageInputPigging #radioLaunch', function () {
+
+        $("#pageInputPigging div.select-launch").show();
+        $("#pageInputPigging div.select-receive").hide();
+        $("#pageInputPigging div.select-exception").hide();
+
+
+    });
+
+    //  Input Pigging >> Radio Receive
+    $(document).on('click', '#pageInputPigging #radioReceive', function () {
+        $("#pageInputPigging div.select-launch").hide();
+        $("#pageInputPigging div.select-receive").show();
+        $("#pageInputPigging div.select-exception").hide();
+
+    });
+
+    //  Input Pigging >> Radio Exception
+    $(document).on('click', '#pageInputPigging #radioException', function () {
+        $("#pageInputPigging div.select-launch").hide();
+        $("#pageInputPigging div.select-receive").hide();
+        $("#pageInputPigging div.select-exception").show();
+
+    });
+
+
+
+    //  Input Pigging >> Submit
+    $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
+        event.preventDefault();
+        alert("Pigging activity has been submitted.");
+        document.getElementById("inputPigging").reset();
+
+    });
+
+    //  Input Pigging >> Pigging Schedule (Operator)
+    $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").show();
+        $("#pagePiggingSchedule .normal-header").show();
+        $("#pagePiggingSchedule .show-to-operator").show();
+        $("#pagePiggingSchedule .foreman-header").hide();
+        $("#pagePiggingSchedule .show-to-report-viewer").hide();
+        activePage = "piggingSchedule";
+        console.log(activePage);
+    });
+
+
+    //  Pigging Schedule >> Submit
+    $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
+        event.preventDefault();
+        alert("Pipeline System selection has been submitted. Schedule results will update.");
+    });
+
+
+
+    //  Pigging Schedule (Operator) >> Input Pigging
+    $(document).on('click', '#pagePiggingSchedule .show-to-operator', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageInputPigging").show();
+        $("#pageInputPigging div.select-receive").hide();
+        $("#pageInputPigging div.select-exception").hide();
+        activePage = "inputPigging";
+        console.log(activePage);
+    });
+
+
+
+    //  Previous Launch >> Back (to Pigging Schedule (Operator))
+    $(document).on('click', '#pagePrevLaunch .show-to-operator', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        //    $("#pagePiggingSchedule").show();
+        //    $("#pagePiggingSchedule .normal-header").show();
+        //    $("#pagePiggingSchedule .foreman-header").hide();
+        //    $("#pagePiggingSchedule .show-to-operator").show();
+    });
+
+    //  Pigging Schedule (Report Viewer) >> Debris Report
+    $(document).on('click', '#pagePiggingSchedule .js-viewonly', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageDebrisReport").show();
+        $("#pageDebrisReport .foreman-header").hide();
+        $("#pageDebrisReport #debrisReport").show();
+        $(".debris-results").hide();
+        $("#debrisReport .js-system-debris").hide();
+        $("#debrisReport .js-pipeline-debris").hide();
+    });
+
+    //  Debris Report (Report Viewer) >> Pigging Schedule
+    $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").show();
+        $("#pagePiggingSchedule .foreman-header").hide();
+        $("#pagePiggingSchedule .show-to-operator").hide();
+    });
+
+}
 
 //  Normal Header >> Exit Application
 $(document).on('click', 'header img + img', function (event) {

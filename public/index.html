@@ -1008,33 +1008,33 @@
         <section class="add-pipeline-container">
             <form id="addPipeline" method="">
                 <div>
-                    <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate" required>
+                    <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate">
                 </div>
                 <div>
-                    <select name="rc-names" required>
-                                <option value="select-rc">Select RC Name</option>
-                                <option value="rc-one">RC Name One</option>
-                                <option value="rc-two">RC Name Two</option>
-                                <option value="rc-three">RC Name Three</option>
-                                <option value="rc-four">RC Name Four</option>
-                            </select>
-                    <select name="pipeline-systems" required>
-                                <option value="select-system">Select System</option>
-                                <option value="system-one">System One</option>
-                                <option value="system-two">System Two</option>
-                                <option value="system-three">System Three</option>
-                                <option value="system-four">System Four</option>
-                            </select>
+                    <select id="rcName">
+                        <option>Select RC Name</option>
+                        <option>RC Name One</option>
+                        <option>RC Name Two</option>
+                        <option>RC Name Three</option>
+                        <option>RC Name Four</option>
+                    </select>
+                    <select id="systemName">
+                        <option>Select System</option>
+                        <option>System One</option>
+                        <option>System Two</option>
+                        <option>System Three</option>
+                        <option>System Four</option>
+                    </select>
 
-                    <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name" required>
-                    <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name" required>
+                    <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name">
+                    <input type="text" id="newLauncher" name="new-launcher" placeholder="Enter New Launcher Name">
                     <input type="text" id="newReceiver" name="new-receiver" placeholder="Enter New Receiver name">
                     <div>
-                        <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size" required>
+                        <p>Size of Pipeline (inches): </p><input type="number" id="newPipelineSize" name="new-pipeline-size">
                     </div>
                     <div>
                         <p>Closure:</p>
-                        <select name="pipeline-closures" class="select-closure">
+                        <select id="pipelineClosures" class="select-closure">
                                     <option value="select-closure">Select Closure</option>
                                     <option value="closure-one">Closure One</option>
                                     <option value="closure-two">Closure Two</option>
@@ -1045,23 +1045,23 @@
 
                     <p>Acceptable Pigs:</p>
                     <div class="checkboxes-pigs">
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigCup"><label for="pigCup">cup</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigILI"><label for="pigILI">ILI</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly" value="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper" value="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill" value="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigCup" value="pigCup"><label for="pigCup">cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup" value="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss" value="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi" value="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigILI" value="pigILI"><label for="pigILI">ILI</label></div>
                     </div>
                     <p>Product:</p>
                     <div class="checkboxes-product">
-                        <div><input type="checkbox" name="product" id="productGas"><label for="productGas">Gas</label></div>
-                        <div><input type="checkbox" name="product" id="productOil"><label for="productOil">Oil</label></div>
-                        <div><input type="checkbox" name="product" id="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+                        <div><input type="checkbox" name="product" id="productGas" value="productGas"><label for="productGas">Gas</label></div>
+                        <div><input type="checkbox" name="product" id="productOil" value="productOil"><label for="productOil">Oil</label></div>
+                        <div><input type="checkbox" name="product" id="productProducedWater" value="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
                     </div>
                     <div>
-                        <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency" required>
+                        <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency">
                     </div>
                 </div>
             </form>
