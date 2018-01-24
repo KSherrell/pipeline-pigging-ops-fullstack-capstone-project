@@ -1,5 +1,5 @@
 "use strict";
-
+const mongoose = require('mongoose');
 const debrisSchema = new mongoose.Schema({
 
     pipelineName: {
@@ -16,7 +16,7 @@ const debrisSchema = new mongoose.Schema({
         required: false
     },
     debrisWeight: {
-        type: integer,
+        type: Number,
         required: false
     }
 });

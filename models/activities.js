@@ -21,7 +21,7 @@ const activitySchema = new mongoose.Schema({
         required: false
     },
     launchTime: {
-        type: Timestamp,
+        type: String,
         required: false
     },
     receiveTime: {
@@ -45,7 +45,7 @@ const activitySchema = new mongoose.Schema({
         required: false
     },
     debrisWeight: {
-        type: String,
+        type: Number,
         required: false
     },
 });

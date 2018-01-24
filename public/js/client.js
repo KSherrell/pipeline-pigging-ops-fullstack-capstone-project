@@ -667,21 +667,43 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         dateAdded: dateAdded,
         pipelineActive: pipelineActive
     };
-    $.ajax({
-            type: 'POST',
-            url: '/pipelines',
-            dataType: 'json',
-            data: JSON.stringify(newPipelineObj),
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            console.log(result);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+
+    let objKey = Object.keys(newPipelineObj);
+    console.log(objKey);
+    let objValue = Object.values(newPipelineObj);
+    console.log(objValue);
+    for (let i = 0; i < objValue.length; i++) {
+        //        console.log(i);
+        //        console.log(objKey[i]);
+        //        console.log(objValue[i]);
+
+        if (!objValue[i]) {
+            break;
+        }
+        console.log(i);
+    }
+    alert('All fields are required.')
+
+    // $('#pageAddPipeline #addPipeline #newPipeline').focus();
+
+    //    $.ajax({
+    //            type: 'POST',
+    //            url: '/pipelines',
+    //            dataType: 'json',
+    //            data: JSON.stringify(newPipelineObj),
+    //            contentType: 'application/json'
+    //        })
+    //        .done(function (result) {
+    //            alert('Pipeline added successfully.');
+    //            document.getElementById('addPipeline').reset();
+    //
+    //        })
+    //        .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //            alert('Error adding pipeline. Please try again.');
+    //        });
 });
 
 
