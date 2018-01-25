@@ -26,7 +26,6 @@ function validateEmail(inputEmail) {
     if (inputEmail.match(emailFormat)) {
         return true;
     } else {
-        alert('Invalid email address.');
         return false;
     }
 }
@@ -44,7 +43,6 @@ function loginUser(email, password) {
             contentType: 'application/json'
         })
         .done(function (result) {
-
             currentUserFName = result.fname;
             currentUserLName = result.lname;
             currentUserEmail = result.email;
@@ -126,7 +124,7 @@ function getUserByEmail(email, origin, userObj) {
 
             })
     } else {
-        alert("bad email, try again");
+        alert("Invalid email.");
     }
 };
 
@@ -374,7 +372,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
         lname: lname,
         email: email
     };
-    $('#pageCreateAcct input').blur();
+    $('#pageUpdateAcct input').blur();
     if (!fname || !lname || !email) {
         alert("All fields are required.");
         if (!fname) {
@@ -384,7 +382,7 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
         } else if (!email) {
             $('#pageUpdateAcct #email').focus();
         }
-    } else {
+    } else if (validateEmail(email)) {
         $.ajax({
                 type: "PUT",
                 url: "/users/reset-name/" + currentUserID,
@@ -404,6 +402,9 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctName', function (event)
                 //user not found
                 alert("Error updating account information. Please try again.");
             })
+    } else {
+        alert("Invalid email address.");
+        $('#pageUpdateAcct #email').focus();
     }
 });
 
@@ -697,15 +698,24 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
     //        alert("RC Name must be selected.")
     //    };
     //
-    //    if (newPipelineObj.values[i] == "empty" || "" || {}) {
-    //        //alert(newPipelineObj.values[i] + "must be selected.")
-    //        newPipelineObj.focus();
-    //    };
-    //
-    //    if (shoes == expensive || shoes == not expensive) {
-    //
-    //    }
-    // $('#pageAddPipeline #addPipeline #newPipeline').focus();
+
+    let objValue = Object.values(newPipelineObj);
+    let objKey = Object.keys(newPipelineObj);
+    for (let i = 0; i < objValue.length; i++) {
+        if (newPipelineObj.product.length !== 0) {
+            console.log(newPipelineObj.product);
+            console.log(i + ": " + objKey[i] + " => " + objValue[i]);
+        } else {
+            console.log("argh");
+        }
+    }
+
+    //        if (newPipelineObj.values[i] == "empty" || "" || {}) {
+    //            //alert(newPipelineObj.values[i] + "must be selected.")
+    //            newPipelineObj.focus();
+    //        };
+
+    //$('#pageAddPipeline #addPipeline #newPipeline').focus();
 
     //    $.ajax({
     //            type: 'POST',
@@ -729,17 +739,6 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
 
 
 
-
-
-//
-//if (window.confirm("Pipeline added successfully. Would you like to add another pipeline?")) {
-//    $(".jsHide").hide();
-//    $("#pageAddPipeline").show();
-//    document.getElementById("addPipeline").reset();
-//} else {
-//    $(".jsHide").hide();
-//    $("#pageAdminMenu").show();
-//}
 
 //   Add Pipeline >> Cancel
 $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
