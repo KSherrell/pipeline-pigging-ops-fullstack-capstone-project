@@ -11,6 +11,26 @@ let currentUserID = "";
 let currentUserPassword = "";
 let activePage = "";
 
+//function validateEmail, validateInput, validateTextbox etc -- one function for each type of input validation
+function validateSelect(selectionValue, defaultValue) {
+    let validateOutput = true;
+    if (selectionValue == defaultValue) {
+        validateOutput = false;
+    }
+    return validateOutput;
+}
+
+function validateEmail(inputEmail) {
+    let emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //let emailFormat = /^(\w+[\.]\w+)*@nblenergy.com+$/; //to restrict access to users with nblenergy.com email addresses
+    if (inputEmail.match(emailFormat)) {
+        return true;
+    } else {
+        alert('Invalid email address.');
+        return false;
+    }
+}
+
 function loginUser(email, password) {
     let loginObject = {
         email: email,
@@ -63,48 +83,51 @@ function loginUser(email, password) {
 }
 
 function getUserByEmail(email, origin, userObj) {
+    if (validateEmail(email)) {
+        $.ajax({
+                type: "GET",
+                url: "/users/check-email/" + email,
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                let userID = result._id;
+                let userActive = result.approved;
 
-    $.ajax({
-            type: "GET",
-            url: "/users/check-email/" + email,
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            let userID = result._id;
-            let userActive = result.approved;
-
-            if (origin == "resetpwd") {
-                console.log("origin = " + origin);
-                resetPwdPage(userID, userActive, email);
-            } else if (origin == "createacct") {
-                if (userActive == 0) {
-                    alert("User found but not active. Please contact the Pipeline Foreman.")
-                } else {
-                    alert("User already exists. Please login normally.")
+                if (origin == "resetpwd") {
+                    console.log("origin = " + origin);
+                    resetPwdPage(userID, userActive, email);
+                } else if (origin == "createacct") {
+                    if (userActive == 0) {
+                        alert("User found but not active. Please contact the Pipeline Foreman.")
+                    } else {
+                        alert("User already exists. Please login normally.")
+                    }
+                    $(".jsHide").hide();
+                    $("#pageLogin").show();
+                    $("#forgotPassword").hide();
+                } else if (origin == "login") {
+                    loginUser(email, userObj.password);
                 }
-                $(".jsHide").hide();
-                $("#pageLogin").show();
-                $("#forgotPassword").hide();
-            } else if (origin == "login") {
-                loginUser(email, userObj.password);
-            }
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            //user not found
-            if (origin == "resetpwd") {
-                let userActive = "usernotfound";
-                resetPwdPage(userID, userActive, email);
-            } else if (origin == "createacct") {
-                registerNewUser(userObj);
-            } else if (origin == "login") {
-                alert("User not found.");
-            }
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                if (origin == "resetpwd") {
+                    let userActive = "usernotfound";
+                    resetPwdPage(userID, userActive, email);
+                } else if (origin == "createacct") {
+                    registerNewUser(userObj);
+                } else if (origin == "login") {
+                    alert("User not found.");
+                }
 
-        })
+            })
+    } else {
+        alert("bad email, try again");
+    }
 };
 
 function resetPwdPage(userID, userActive, email) {
@@ -668,22 +691,20 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         pipelineActive: pipelineActive
     };
 
-    let objKey = Object.keys(newPipelineObj);
-    console.log(objKey);
-    let objValue = Object.values(newPipelineObj);
-    console.log(objValue);
-    for (let i = 0; i < objValue.length; i++) {
-        //        console.log(i);
-        //        console.log(objKey[i]);
-        //        console.log(objValue[i]);
 
-        if (!objValue[i]) {
-            break;
-        }
-        console.log(i);
-    }
-    alert('All fields are required.')
-
+    //    console.log
+    //    if (validateSelect(RCName, "empty") == false) {
+    //        alert("RC Name must be selected.")
+    //    };
+    //
+    //    if (newPipelineObj.values[i] == "empty" || "" || {}) {
+    //        //alert(newPipelineObj.values[i] + "must be selected.")
+    //        newPipelineObj.focus();
+    //    };
+    //
+    //    if (shoes == expensive || shoes == not expensive) {
+    //
+    //    }
     // $('#pageAddPipeline #addPipeline #newPipeline').focus();
 
     //    $.ajax({

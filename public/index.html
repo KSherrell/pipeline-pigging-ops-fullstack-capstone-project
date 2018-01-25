@@ -24,7 +24,7 @@
             <form id="userLogin" action="" method="">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="userEmail" name="user-email" value="foreman@email.com">
+                    <input type="text" id="userEmail" name="user-email" value="foreman@email.com">
                 </div>
                 <div>
                     <label for="password">Password</label>
@@ -38,7 +38,7 @@
             <form id="forgotPassword" action="" method="">
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" id="userEmail" name="user-email">
+                    <input type="text" id="userEmail" name="user-email">
                 </div>
                 <div class="buttons">
                     <button form="forgotPassword" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
@@ -1012,14 +1012,14 @@
                 </div>
                 <div>
                     <select id="rcName">
-                        <option>Select RC Name</option>
-                        <option>RC Name One</option>
-                        <option>RC Name Two</option>
-                        <option>RC Name Three</option>
-                        <option>RC Name Four</option>
+                        <option value="empty" selected>Select RC Name</option>
+                        <option value="RC One">RC Name One</option>
+                        <option value="RC Two">RC Name Two</option>
+                        <option value="RC Three">RC Name Three</option>
+                        <option value="RC Four">RC Name Four</option>
                     </select>
                     <select id="systemName">
-                        <option>Select System</option>
+                        <option value="empty" selected>Select System</option>
                         <option>System One</option>
                         <option>System Two</option>
                         <option>System Three</option>
@@ -1035,7 +1035,7 @@
                     <div>
                         <p>Closure:</p>
                         <select id="pipelineClosures" class="select-closure">
-                                    <option value="select-closure">Select Closure</option>
+                                    <option value="empty" selected>Select Closure</option>
                                     <option value="closure-one">Closure One</option>
                                     <option value="closure-two">Closure Two</option>
                                     <option value="closure-three">Closure Three</option>
