@@ -1012,18 +1012,18 @@
                 </div>
                 <div>
                     <select id="rcName">
-                        <option value="" selected>Select RC Name</option>
-                        <option value="RC One">RC Name One</option>
-                        <option value="RC Two">RC Name Two</option>
-                        <option value="RC Three">RC Name Three</option>
-                        <option value="RC Four">RC Name Four</option>
+                        <option value="select-rc" selected>Select RC Name</option>
+                        <option value="rc-one">RC Name One</option>
+                        <option value="rc-two">RC Name Two</option>
+                        <option value="rc-three">RC Name Three</option>
+                        <option value="rc-four">RC Name Four</option>
                     </select>
                     <select id="systemName">
-                        <option value="" selected>Select System</option>
-                        <option>System One</option>
-                        <option>System Two</option>
-                        <option>System Three</option>
-                        <option>System Four</option>
+                        <option value="select-system" selected>Select System</option>
+                        <option value="system-one">System One</option>
+                        <option value="system-two">System Two</option>
+                        <option value="system-three">System Three</option>
+                        <option value="system-four">System Four</option>
                     </select>
 
                     <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name">
@@ -1035,7 +1035,7 @@
                     <div>
                         <p>Closure:</p>
                         <select id="pipelineClosures" class="select-closure">
-                                    <option value="" selected>Select Closure</option>
+                                    <option value="select-closure" selected>Select Closure</option>
                                     <option value="closure-one">Closure One</option>
                                     <option value="closure-two">Closure Two</option>
                                     <option value="closure-three">Closure Three</option>
@@ -1045,20 +1045,24 @@
 
                     <p>Acceptable Pigs:</p>
                     <div class="checkboxes-pigs">
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly" value="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper" value="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill" value="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigCup" value="pigCup"><label for="pigCup">cup</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup" value="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss" value="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi" value="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
-                        <div><input type="checkbox" name="acceptable-pigs" id="pigILI" value="pigILI"><label for="pigILI">ILI</label></div>
+                        <form id="acceptablePigs">
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly" value="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper" value="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill" value="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigCup" value="pigCup"><label for="pigCup">cup</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup" value="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss" value="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi" value="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                            <div><input type="checkbox" name="acceptable-pigs" id="pigILI" value="pigILI"><label for="pigILI">ILI</label></div>
+                        </form>
                     </div>
                     <p>Product:</p>
                     <div class="checkboxes-product">
+                       <form id="product">
                         <div><input type="checkbox" name="product" id="productGas" value="productGas"><label for="productGas">Gas</label></div>
                         <div><input type="checkbox" name="product" id="productOil" value="productOil"><label for="productOil">Oil</label></div>
                         <div><input type="checkbox" name="product" id="productProducedWater" value="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+                        </form>
                     </div>
                     <div>
                         <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency">

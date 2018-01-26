@@ -11,13 +11,21 @@ let currentUserID = "";
 let currentUserPassword = "";
 let activePage = "";
 
-//function validateEmail, validateInput, validateTextbox etc -- one function for each type of input validation
 function validateSelect(selectionValue, defaultValue) {
     let validateOutput = true;
     if (selectionValue == defaultValue) {
         validateOutput = false;
     }
     return validateOutput;
+}
+
+function validateCheckbox(checkboxArray) {
+    let validateValue = true;
+    console.log(checkboxArray);
+    if (checkboxArray == "[]") {
+        validateValue = false;
+    }
+    return validateValue;
 }
 
 function validateEmail(inputEmail) {
@@ -692,49 +700,60 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         pipelineActive: pipelineActive
     };
 
+    console.log(newPipelineObj);
+    console.log(newPipelineObj.product);
+    console.log(newPipelineObj.acceptablePigs);
+    if (!$('#pageAddPipeline #addPipelineDate').val()) {
+        alert("Please enter the date the pipeline started operating.");
+        $('#pageAddPipeline #addPipelineDate').focus();
+    } else if (validateSelect(RCName, "select-rc") == false) {
+        alert("RC Name must be selected.");
+        $('#pageAddPipeline #rcName').focus();
+    } else if (validateSelect(systemName, "select-system") == false) {
+        alert("System name must be selected.");
+        $('#pageAddPipeline #systemName').focus();
+    } else if (!$('#pageAddPipeline #newPipeline').val()) {
+        alert("Please enter new pipeline name.");
+        $('#pageAddPipeline #newPipeline').focus();
+    } else if (!$('#pageAddPipeline #newLauncher').val()) {
+        alert("Please enter new launcher name.");
+        $('#pageAddPipeline #newLauncher').focus();
+    } else if (!$('#pageAddPipeline #newReceiver').val()) {
+        alert("Please enter new receiver name.");
+        $('#pageAddPipeline #newReceiver').focus();
+    } else if (!$('#pageAddPipeline #newPipelineSize').val()) {
+        alert("Please enter the new pipeline size (inches).");
+        $('#pageAddPipeline #newPipelineSize').focus();
+    } else if (validateSelect(closure, "select-closure") == false) {
+        alert("Please select a closure type.");
+        $('#pageAddPipeline #pipelineClosures').focus();
+    } else if (validateCheckbox(newPipelineObj.acceptablePigs) == false) {
+        alert("Please select the acceptable pigs for this pipeline.");
+    } else if (validateCheckbox(newPipelineObj.product) == false) {
+        alert("Please select a pipeline product.");
+    } else if (!$('#pageAddPipeline #piggingFrequency').val()) {
+        alert("Please enter a pigging frequency.");
+        $('#pageAddPipeline #piggingFrequency').focus();
+    } else {
+        $.ajax({
+                type: 'POST',
+                url: '/pipelines',
+                dataType: 'json',
+                data: JSON.stringify(newPipelineObj),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                alert('Pipeline added successfully.');
+                document.getElementById('addPipeline').reset();
 
-    //    console.log
-    //    if (validateSelect(RCName, "empty") == false) {
-    //        alert("RC Name must be selected.")
-    //    };
-    //
-
-    let objValue = Object.values(newPipelineObj);
-    let objKey = Object.keys(newPipelineObj);
-    for (let i = 0; i < objValue.length; i++) {
-        if (newPipelineObj.product.length !== 0) {
-            console.log(newPipelineObj.product);
-            console.log(i + ": " + objKey[i] + " => " + objValue[i]);
-        } else {
-            console.log("argh");
-        }
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert('Error adding pipeline. Please try again.');
+            });
     }
-
-    //        if (newPipelineObj.values[i] == "empty" || "" || {}) {
-    //            //alert(newPipelineObj.values[i] + "must be selected.")
-    //            newPipelineObj.focus();
-    //        };
-
-    //$('#pageAddPipeline #addPipeline #newPipeline').focus();
-
-    //    $.ajax({
-    //            type: 'POST',
-    //            url: '/pipelines',
-    //            dataType: 'json',
-    //            data: JSON.stringify(newPipelineObj),
-    //            contentType: 'application/json'
-    //        })
-    //        .done(function (result) {
-    //            alert('Pipeline added successfully.');
-    //            document.getElementById('addPipeline').reset();
-    //
-    //        })
-    //        .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //            alert('Error adding pipeline. Please try again.');
-    //        });
 });
 
 
