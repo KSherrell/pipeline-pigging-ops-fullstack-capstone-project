@@ -673,14 +673,16 @@ $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
         rcValue = $(this).text();
         if (rcValue == "RC United States") {
             $("#pageAddPipeline #systemName").html(
-                '<option value = "select - system" selected> Select System </option>' + '<option value = "California Pipeline System" > California Pipeline System </option>' + '<option value = "Colorado Pipeline System" > Colorado Pipeline System </option>' + '<option value = "Arizona Pipeline System" > Arizona Pipeline System </option>' + '<option value = "Texas Pipeline System"> Texas Pipeline System </option>'
+                '<option value = "California Pipeline System" > California Pipeline System </option>' + '<option value = "Colorado Pipeline System" > Colorado Pipeline System </option>' + '<option value = "Arizona Pipeline System" > Arizona Pipeline System </option>' + '<option value = "Texas Pipeline System"> Texas Pipeline System </option>'
             );
-        } else {
-            console.log('argh');
+        } else if (rcValue == "RC Germany") {
+            $("#pageAddPipeline #systemName").html('<option value = "Berlin Pipeline System" > Berlin Pipeline System </option>' + '<option value = "Bavaria Pipeline System" > Bavaria Pipeline System </option>' + '<option value = "Hamburg Pipeline System" > Hamburg Pipeline System </option>' + '<option value = "Saxony Pipeline System"> Saxony Pipeline System </option>');
+        } else if (rcValue == "RC Mexico") {
+            $("#pageAddPipeline #systemName").html('<option value = "Sonora Pipeline System" > Sonora Pipeline System </option>' + '<option value = "Chihuahua Pipeline System" > Chihuahua Pipeline System </option>' + '<option value = "Durango Pipeline System" > Durango Pipeline System </option>' + '<option value = "Oaxaca Pipeline System"> Oaxaca Pipeline System </option>');
+        } else if (rcValue == "RC Canada") {
+            $("#pageAddPipeline #systemName").html('<option value = "Ontario Pipeline System" > Ontario Pipeline System </option>' + '<option value = "Manitoba Pipeline System" > Manitoba Pipeline System </option>' + '<option value = "Alberta Pipeline System" > Alberta Pipeline System </option>' + '<option value = "Quebec Pipeline System"> Quebec Pipeline System </option>');
         }
-
-    })
-
+    });
 });
 
 //   Add Pipeline >> Submit
