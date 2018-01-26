@@ -213,8 +213,6 @@ app.put('/users/reset-name/:userID', function (req, res) {
 
 app.post('/pipelines', (req, res) => {
     // the following variables should match the ones in the ajax call
-
-
     Pipeline.create({
         RCName: req.body.RCName,
         systemName: req.body.systemName,
@@ -243,10 +241,10 @@ app.post('/pipelines', (req, res) => {
 
 
 // Get Pipeline Systems
-app.get('/systems', function (req, res) {
+app.get('/systems/:RCName', function (req, res) {
     System
         .find({
-            system: req.params.system
+            RCName: req.params.RCName
         }, function (err, items) {
             if (err) {
                 return res.status(500).json({
@@ -254,15 +252,15 @@ app.get('/systems', function (req, res) {
                 });
             }
             if (!items) {
-                // bad email
                 return res.status(401).json({
-                    message: "User not found"
+                    message: "System not found"
                 });
             } else {
                 return res.json(items);
             }
         });
 });
+
 
 
 
