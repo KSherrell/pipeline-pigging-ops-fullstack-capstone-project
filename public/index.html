@@ -1019,7 +1019,7 @@
                         <option value="RC Canada">RC Canada</option>
                     </select>
                     <select id="systemName">
-                        <option value = "select - system" selected> Select System </option>
+                        <option value = "select-system" selected> Select System </option>
                     </select>
 
                     <input type="text" id="newPipeline" name="new-pipeline" placeholder="Enter New Pipeline Name">
@@ -1078,10 +1078,6 @@
     </main>
 
 
-
-
-
-
     <main id="pageUpdatePipeline" class="jsHide">
         <header class="foreman-header">
             <div>
@@ -1097,27 +1093,21 @@
 
         <section class="update-pipeline-container">
 
-
-
             <form id="updateSearch" class="jsHide" method="">
                 <label for="updateSearch">Search for pipeline to update.</label>
 
                 <div>
-                    <select name="rc-names" required>
-                                <option value="select-rc">Select RC Name</option>
-                                <option value="rc-one">RC Name One</option>
-                                <option value="rc-two">RC Name Two</option>
-                                <option value="rc-three">RC Name Three</option>
-                                <option value="rc-four">RC Name Four</option>
-                            </select>
-                    <select name="pipeline-systems" required>
-                                <option value="select-system">Select System</option>
-                                <option value="system-one">System One</option>
-                                <option value="system-two">System Two</option>
-                                <option value="system-three">System Three</option>
-                                <option value="system-four">System Four</option>
-                            </select>
-                    <select name="pipeline-names" required>
+                    <select id="rcName">
+                        <option value="select-rc" selected>Select RC Name</option>
+                        <option value="RC United States">RC United States</option>
+                        <option value="RC Germany">RC Germany</option>
+                        <option value="RC Mexico">RC Mexico</option>
+                        <option value="RC Canada">RC Canada</option>
+                    </select>
+                    <select id="systemName">
+                        <option value = "select-system" selected> Select System </option>
+                    </select>
+                    <select id="pipelineName" name="pipelineName">
                                 <option value="select-name">Select Pipeline Name</option>
                                 <option value="pipeline-one">Pipeline One</option>
                                 <option value="pipeline-two">Pipeline Two</option>
