@@ -799,15 +799,16 @@ $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
         if (rcValue == "RC United States") {
-            $("#pageUpdatePipeline #systemName").html(
-                '<option value = "California Pipeline System" > California Pipeline System </option>' + '<option value = "Colorado Pipeline System" > Colorado Pipeline System </option>' + '<option value = "Arizona Pipeline System" > Arizona Pipeline System </option>' + '<option value = "Texas Pipeline System"> Texas Pipeline System </option>'
+            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' +
+                '<option value = "California Pipeline System" >California Pipeline System</option>' + '<option value = "Colorado Pipeline System" >Colorado Pipeline System</option>' + '<option value = "Arizona Pipeline System" >Arizona Pipeline System</option>' + '<option value = "Texas Pipeline System">Texas Pipeline System</option>'
             );
+
         } else if (rcValue == "RC Germany") {
-            $("#pageUpdatePipeline #systemName").html('<option value = "Berlin Pipeline System" > Berlin Pipeline System </option>' + '<option value = "Bavaria Pipeline System" > Bavaria Pipeline System </option>' + '<option value = "Hamburg Pipeline System" > Hamburg Pipeline System </option>' + '<option value = "Saxony Pipeline System"> Saxony Pipeline System </option>');
+            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Berlin Pipeline System" >Berlin Pipeline System</option>' + '<option value = "Bavaria Pipeline System" >Bavaria Pipeline System</option>' + '<option value = "Hamburg Pipeline System" >Hamburg Pipeline System</option>' + '<option value = "Saxony Pipeline System">Saxony Pipeline System</option>');
         } else if (rcValue == "RC Mexico") {
-            $("#pageUpdatePipeline #systemName").html('<option value = "Sonora Pipeline System" > Sonora Pipeline System </option>' + '<option value = "Chihuahua Pipeline System" > Chihuahua Pipeline System </option>' + '<option value = "Durango Pipeline System" > Durango Pipeline System </option>' + '<option value = "Oaxaca Pipeline System"> Oaxaca Pipeline System </option>');
+            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Sonora Pipeline System" >Sonora Pipeline System</option>' + '<option value = "Chihuahua Pipeline System" >Chihuahua Pipeline System</option>' + '<option value = "Durango Pipeline System" >Durango Pipeline System</option>' + '<option value = "Oaxaca Pipeline System">Oaxaca Pipeline System</option>');
         } else if (rcValue == "RC Canada") {
-            $("#pageUpdatePipeline #systemName").html('<option value = "Ontario Pipeline System" > Ontario Pipeline System </option>' + '<option value = "Manitoba Pipeline System" > Manitoba Pipeline System </option>' + '<option value = "Alberta Pipeline System" > Alberta Pipeline System </option>' + '<option value = "Quebec Pipeline System"> Quebec Pipeline System </option>');
+            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Ontario Pipeline System" >Ontario Pipeline System</option>' + '<option value = "Manitoba Pipeline System" >Manitoba Pipeline System</option>' + '<option value = "Alberta Pipeline System" >Alberta Pipeline System</option>' + '<option value = "Quebec Pipeline System">Quebec Pipeline System</option>');
         }
     });
 });
@@ -820,14 +821,14 @@ $(document).on('change', '#pageUpdatePipeline select#systemName', function (even
         systemValue = $(this).text();
         if (systemValue == "California Pipeline System") {
             $("#pageUpdatePipeline #pipelineName").html(
-                '<option value = "Los Angeles Pipeline" > Los Angeles Pipeline</option>' + '<option value = "San Diego Pipeline" > San Diego Pipeline</option>' + '<option value = "San Francisco Pipeline" > San Francisco Pipeline</option>' + '<option value = "Bakersfield Pipeline"> Bakersfield Pipeline</option>'
+                '<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Los Angeles Pipeline" > Los Angeles Pipeline</option>' + '<option value = "San Diego Pipeline" > San Diego Pipeline</option>' + '<option value = "San Francisco Pipeline" > San Francisco Pipeline</option>' + '<option value = "Bakersfield Pipeline"> Bakersfield Pipeline</option>'
             );
         } else if (systemValue == "Colorado Pipeline System") {
-            $("#pageUpdatePipeline #pipelineName").html('<option value = "Denver Pipeline" > Denver Pipeline</option>' + '<option value = "Vail Pipeline" > Vail Pipeline</option>' + '<option value = "Fort Collins Pipeline" > Fort Collins Pipeline</option>' + '<option value = "Steamboat Springs Pipeline"> Steamboat Springs Pipeline</option>');
+            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Denver Pipeline" > Denver Pipeline</option>' + '<option value = "Vail Pipeline" > Vail Pipeline</option>' + '<option value = "Fort Collins Pipeline" > Fort Collins Pipeline</option>' + '<option value = "Steamboat Springs Pipeline"> Steamboat Springs Pipeline</option>');
         } else if (systemValue == "Arizona Pipeline System") {
-            $("#pageUpdatePipeline #pipelineName").html('<option value = "Phoenix Pipeline" > Phoenix Pipeline</option>' + '<option value = "Tuscon Pipeline" > Tuscon Pipeline</option>' + '<option value = "Flagstaff Pipeline" > Flagstaff Pipeline</option>' + '<option value = "Scottsdale Pipeline"> Scottsdale Pipeline  </option>');
+            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Phoenix Pipeline" > Phoenix Pipeline</option>' + '<option value = "Tuscon Pipeline" > Tuscon Pipeline</option>' + '<option value = "Flagstaff Pipeline" > Flagstaff Pipeline</option>' + '<option value = "Scottsdale Pipeline"> Scottsdale Pipeline  </option>');
         } else if (systemValue == "Texas Pipeline System") {
-            $("#pageUpdatePipeline #pipelineName").html('<option value = "Dallas Pipeline" >Dallas Pipeline</option>' + '<option value = "Fort Worth Pipeline" > Fort Worth Pipeline</option>' + '<option value = "Houston Pipeline" > Houston Pipeline</option>' + '<option value = "Austin Pipeline"> Austin Pipeline System</option>');
+            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Dallas Pipeline" >Dallas Pipeline</option>' + '<option value = "Fort Worth Pipeline" > Fort Worth Pipeline</option>' + '<option value = "Houston Pipeline" > Houston Pipeline</option>' + '<option value = "Austin Pipeline"> Austin Pipeline System</option>');
         }
     });
 });
