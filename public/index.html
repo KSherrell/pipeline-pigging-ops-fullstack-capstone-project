@@ -1041,24 +1041,24 @@
 
                     <p>Acceptable Pigs:</p>
                     <div class="checkboxes-pigs">
-                        <form id="acceptablePigs">
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly" value="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper" value="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill" value="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigCup" value="pigCup"><label for="pigCup">cup</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup" value="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss" value="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi" value="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
-                            <div><input type="checkbox" name="acceptable-pigs" id="pigILI" value="pigILI"><label for="pigILI">ILI</label></div>
-                        </form>
+
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBulletPoly" value="pigBulletPoly"><label for="pigBulletPoly">bullet poly</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyScraper" value="pigPolyScraper"><label for="pigPolyScraper">poly scraper</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigChemicalPill" value="pigChemicalPill"><label for="pigChemicalPill">chemical pill</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigCup" value="pigCup"><label for="pigCup">cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigBrushCup" value="pigBrushCup"><label for="pigBrushCup">brush cup</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPitBoss" value="pigPitBoss"><label for="pigPitBoss">pit boss</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigPolyBi" value="pigPolyBi"><label for="pigPolyBi">poly bi</label></div>
+                        <div><input type="checkbox" name="acceptable-pigs" id="pigILI" value="pigILI"><label for="pigILI">ILI</label></div>
+
                     </div>
                     <p>Product:</p>
                     <div class="checkboxes-product">
-                        <form id="product">
-                            <div><input type="checkbox" name="product" id="productGas" value="productGas"><label for="productGas">Gas</label></div>
-                            <div><input type="checkbox" name="product" id="productOil" value="productOil"><label for="productOil">Oil</label></div>
-                            <div><input type="checkbox" name="product" id="productProducedWater" value="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
-                        </form>
+
+                        <div><input type="checkbox" name="product" id="productGas" value="productGas"><label for="productGas">Gas</label></div>
+                        <div><input type="checkbox" name="product" id="productOil" value="productOil"><label for="productOil">Oil</label></div>
+                        <div><input type="checkbox" name="product" id="productProducedWater" value="productProducedWater"><label for="productProducedWater">Produced Water</label></div>
+
                     </div>
                     <div>
                         <p>Pigging Frequency (days): </p><input type="number" id="piggingFrequency" name="pigging-frequency">
@@ -1093,21 +1093,13 @@
 
         <section class="update-pipeline-container">
 
-            <form id="updateSearch" class="jsHide" method="">
+            <form id="updateSearch" class="jsHide">
                 <label for="updateSearch">Search for pipeline to update.</label>
 
                 <div>
-                    <select id="rcName">
-<option value="select-option" selected>Select RC Name</option>
-                        <option value="RC United States">RC United States</option>
-                        <option value="RC Germany">RC Germany</option>
-                        <option value="RC Mexico">RC Mexico</option>
-                        <option value="RC Canada">RC Canada</option>
-                    </select>
-                    <select id="systemName">
-                                          </select>
-                    <select id="pipelineName" name="pipelineName">
-                                                   </select>
+                    <select id="rcName"></select>
+                    <select id="systemName"></select>
+                    <select id="pipelineName"></select>
                 </div>
                 <div class="submit-reset">
                     <button form="updateSearch" type="submit">Submit</button><button type="button" class="button-cancel">Cancel</button>
@@ -1115,7 +1107,7 @@
             </form>
 
 
-            <form id="updatePipeline" class="jsHide" method="">
+            <form id="updatePipeline" class="jsHide">
                 <p>To update the pipeline data, modify the information shown below.</p>
                 <div>
                     <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name">

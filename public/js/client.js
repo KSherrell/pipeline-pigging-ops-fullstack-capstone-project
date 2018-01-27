@@ -232,6 +232,23 @@ function registerNewUser(userObj) {
         });
 };
 
+
+function find_duplicate_in_array(arr) {
+    var i,
+        len = arr.length,
+        temp = [],
+        obj = {};
+    for (i = 0; i < len; i++) {
+        obj[arr[i]] = 0;
+        console.log(temp);
+    }
+    for (i in obj) {
+        temp.push(i);
+        console.log(temp);
+    }
+    return temp;
+};
+
 //Step Two: Use functions, object, variables (triggers)
 
 $(document).ready(function () {
@@ -775,9 +792,6 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
     }
 });
 
-
-
-
 //   Add Pipeline >> Cancel
 $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
     event.preventDefault();
@@ -791,6 +805,7 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
     $("#updateSearch").show();
+    getOptionLists("", "pipelines", "pageLoad", "#pageUpdatePipeline #rcName");
 });
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
@@ -804,17 +819,22 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
         .done(function (result) {
             console.log(result);
             let optionValues = [];
-
-            if (identifier == "RCName") {
+            if (identifier == "pageLoad") {
+                for (let options in result) {
+                    optionValues.push(result[options].RCName);
+                }
+                optionValues = find_duplicate_in_array(optionValues);
+            } else if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
                     console.log(optionValues);
                 }
-
+                optionValues = find_duplicate_in_array(optionValues);
             } else if (identifier == "systemName") {
                 for (let options in result) {
                     optionValues.push(result[options].pipelineName);
                     console.log(optionValues);
+                    console.log(container);
                 }
             }
             populateDropDown(optionValues, container);
@@ -824,12 +844,10 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
             console.log(error);
             console.log(errorThrown);
         })
-
-}
-
+};
 
 function populateDropDown(optionValues, container) {
-    console.log(optionValues);
+    console.log(container);
     let buildList = "";
     buildList += '<option value = "select-option" selected>Select Option</option>'
     $(container).html('');
@@ -843,32 +861,43 @@ function populateDropDown(optionValues, container) {
 
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
-    let rcValue = "";
+    let selectValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
-        rcValue = $(this).text();
-        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+        selectValue = $(this).text();
+        getOptionLists(selectValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
     });
-
-
-
-
-
-
-
-    //        if (rcValue == "RC United States") {
-    //            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' +
-    //                '<option value = "California Pipeline System" >California Pipeline System</option>' + '<option value = "Colorado Pipeline System" >Colorado Pipeline System</option>' + '<option value = "Arizona Pipeline System" >Arizona Pipeline System</option>' + '<option value = "Texas Pipeline System">Texas Pipeline System</option>'
-    //            );
-    //
-    //        } else if (rcValue == "RC Germany") {
-    //            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Berlin Pipeline System" >Berlin Pipeline System</option>' + '<option value = "Bavaria Pipeline System" >Bavaria Pipeline System</option>' + '<option value = "Hamburg Pipeline System" >Hamburg Pipeline System</option>' + '<option value = "Saxony Pipeline System">Saxony Pipeline System</option>');
-    //        } else if (rcValue == "RC Mexico") {
-    //            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Sonora Pipeline System" >Sonora Pipeline System</option>' + '<option value = "Chihuahua Pipeline System" >Chihuahua Pipeline System</option>' + '<option value = "Durango Pipeline System" >Durango Pipeline System</option>' + '<option value = "Oaxaca Pipeline System">Oaxaca Pipeline System</option>');
-    //        } else if (rcValue == "RC Canada") {
-    //            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Ontario Pipeline System" >Ontario Pipeline System</option>' + '<option value = "Manitoba Pipeline System" >Manitoba Pipeline System</option>' + '<option value = "Alberta Pipeline System" >Alberta Pipeline System</option>' + '<option value = "Quebec Pipeline System">Quebec Pipeline System</option>');
-    //        }
-    //    });
 });
+
+//  Update Pipeline >> select#systemName.on('change');
+$(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
+    let selectValue = "";
+    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
+        selectValue = $(this).text();
+        console.log(selectValue);
+        getOptionLists(selectValue, "pipelines", "systemName", "#pageUpdatePipeline #updateSearch #pipelineName");
+    });
+});
+
+
+
+
+
+
+
+//        if (rcValue == "RC United States") {
+//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' +
+//                '<option value = "California Pipeline System" >California Pipeline System</option>' + '<option value = "Colorado Pipeline System" >Colorado Pipeline System</option>' + '<option value = "Arizona Pipeline System" >Arizona Pipeline System</option>' + '<option value = "Texas Pipeline System">Texas Pipeline System</option>'
+//            );
+//
+//        } else if (rcValue == "RC Germany") {
+//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Berlin Pipeline System" >Berlin Pipeline System</option>' + '<option value = "Bavaria Pipeline System" >Bavaria Pipeline System</option>' + '<option value = "Hamburg Pipeline System" >Hamburg Pipeline System</option>' + '<option value = "Saxony Pipeline System">Saxony Pipeline System</option>');
+//        } else if (rcValue == "RC Mexico") {
+//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Sonora Pipeline System" >Sonora Pipeline System</option>' + '<option value = "Chihuahua Pipeline System" >Chihuahua Pipeline System</option>' + '<option value = "Durango Pipeline System" >Durango Pipeline System</option>' + '<option value = "Oaxaca Pipeline System">Oaxaca Pipeline System</option>');
+//        } else if (rcValue == "RC Canada") {
+//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Ontario Pipeline System" >Ontario Pipeline System</option>' + '<option value = "Manitoba Pipeline System" >Manitoba Pipeline System</option>' + '<option value = "Alberta Pipeline System" >Alberta Pipeline System</option>' + '<option value = "Quebec Pipeline System">Quebec Pipeline System</option>');
+//        }
+//    });
+
 
 //  Update Pipeline >> select#systemName.on('change');
 //California Pipeline System
