@@ -793,7 +793,7 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $("#updateSearch").show();
 });
 
-function getPipelines(selectionValue, queryURL, identifier, container) {
+function getOptionLists(selectionValue, queryURL, identifier, container) {
     let url = "/" + queryURL + "/" + selectionValue;
     $.ajax({
             type: "GET",
@@ -804,17 +804,20 @@ function getPipelines(selectionValue, queryURL, identifier, container) {
         .done(function (result) {
             console.log(result);
             let optionValues = [];
+
             if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
                     console.log(optionValues);
                 }
 
+            } else if (identifier == "systemName") {
+                for (let options in result) {
+                    optionValues.push(result[options].pipelineName);
+                    console.log(optionValues);
+                }
             }
-
-
             populateDropDown(optionValues, container);
-
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -824,9 +827,14 @@ function getPipelines(selectionValue, queryURL, identifier, container) {
 
 }
 
+
 function populateDropDown(optionValues, container) {
     console.log(optionValues);
+
+    let buildList = "";
+    // container = `${container}`;
     console.log(container);
+    $(container).html('<option>HELLOOOOOOOO!!!</option>');
 };
 
 //  Update Pipeline >> select#rcName.on('change');
@@ -834,10 +842,7 @@ $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
-        console.log(rcValue);
-        getPipelines(rcValue, "pipelines", "RCName", "#systemName");
-
-
+        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
     });
 
 
