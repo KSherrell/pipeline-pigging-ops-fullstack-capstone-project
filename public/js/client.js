@@ -830,11 +830,15 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
 
 function populateDropDown(optionValues, container) {
     console.log(optionValues);
-
     let buildList = "";
-    // container = `${container}`;
-    console.log(container);
-    $(container).html('<option>HELLOOOOOOOO!!!</option>');
+    buildList += '<option value = "select-option" selected>Select Option</option>'
+    $(container).html('');
+    $.each(optionValues,
+        function (key, value) {
+            buildList += '<option value = "' + key + '">' + value + '</option>';
+        })
+    console.log(buildList);
+    $(container).html(buildList);
 };
 
 //  Update Pipeline >> select#rcName.on('change');
