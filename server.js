@@ -240,7 +240,7 @@ app.post('/pipelines', (req, res) => {
 });
 
 
-// Get Pipeline Systems
+// Get Pipelines
 app.get('/pipelines/:RCName', function (req, res) {
     console.log(req.params.RCName);
     Pipeline
@@ -261,7 +261,6 @@ app.get('/pipelines/:RCName', function (req, res) {
                 return res.json(items);
             }
         });
-
 });
 
 

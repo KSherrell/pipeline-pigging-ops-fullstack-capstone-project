@@ -793,7 +793,7 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $("#updateSearch").show();
 });
 
-function populateSelectDropdown(selectionValue, queryURL, outputContainer) {
+function getPipelines(selectionValue, queryURL, identifier, container) {
     let url = "/" + queryURL + "/" + selectionValue;
     $.ajax({
             type: "GET",
@@ -803,19 +803,18 @@ function populateSelectDropdown(selectionValue, queryURL, outputContainer) {
         })
         .done(function (result) {
             console.log(result);
-            $(outputContainer).html('');
-            var buildTheSelectionList = "";
-            buildTheSelectionList += '<option value="0" selected> Select Option</option>';
-            $.each(result, function (resultKey, resultValue) {
-                buildTheSelectionList += '<option value="' + resultKey + '">' + resultValue.systemName + '</option>';
-            });
-            console.log(buildTheSelectionList);
-            $(outputContainer).html(buildTheSelectionList);
-            let systemList = [];
-            for (let systemOptions in result) {
-                systemList.push(result[systemOptions].systemName);
-                console.log(systemList);
+            let optionValues = [];
+            if (identifier == "RCName") {
+                for (let options in result) {
+                    optionValues.push(result[options].systemName);
+                    console.log(optionValues);
+                }
+
             }
+
+
+            populateDropDown(optionValues, container);
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -825,14 +824,26 @@ function populateSelectDropdown(selectionValue, queryURL, outputContainer) {
 
 }
 
+function populateDropDown(optionValues, container) {
+    console.log(optionValues);
+    console.log(container);
+};
+
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
         console.log(rcValue);
-        populateSelectDropdown(rcValue, "pipelines", "#systemName");
+        getPipelines(rcValue, "pipelines", "RCName", "#systemName");
+
+
     });
+
+
+
+
+
 
 
     //        if (rcValue == "RC United States") {
