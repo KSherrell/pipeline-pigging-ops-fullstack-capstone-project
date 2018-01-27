@@ -810,6 +810,7 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
     let url = "/" + queryURL + "/" + selectionValue;
+    alert(selectionValue);
     $.ajax({
             type: "GET",
             url: url,
@@ -824,13 +825,16 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
                     optionValues.push(result[options].RCName);
                 }
                 optionValues = find_duplicate_in_array(optionValues);
+
             } else if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
                     console.log(optionValues);
                 }
                 optionValues = find_duplicate_in_array(optionValues);
+
             } else if (identifier == "systemName") {
+                console.log(result);
                 for (let options in result) {
                     optionValues.push(result[options].pipelineName);
                     console.log(optionValues);
@@ -861,20 +865,20 @@ function populateDropDown(optionValues, container) {
 
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
-    let selectValue = "";
+    let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
-        selectValue = $(this).text();
-        getOptionLists(selectValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+        rcValue = $(this).text();
+        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
     });
 });
 
 //  Update Pipeline >> select#systemName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
-    let selectValue = "";
-    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
-        selectValue = $(this).text();
-        console.log(selectValue);
-        getOptionLists(selectValue, "pipelines", "systemName", "#pageUpdatePipeline #updateSearch #pipelineName");
+    alert("system selected");
+    let systemValue = "";
+    $('#pageUpdatePipeline #updateSearch select#systemName option:selected').each(function () {
+        systemValue = $(this).text();
+        getOptionLists(systemValue, "pipelines", "systemName", "#pageUpdatePipeline #updateSearch #pipelineName");
     });
 });
 

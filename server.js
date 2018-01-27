@@ -239,10 +239,16 @@ app.post('/pipelines', (req, res) => {
     });
 });
 
-// Get Pipelines
-app.get('/pipelines', function (req, res) {
+
+
+// Get Pipelines by System Name
+app.get('/pipelines/:systemName', function (req, res) {
+    console.log(req.params.systemName);
     Pipeline
-        .find(function (err, items) {
+        .find({
+            systemName: req.params.systemName,
+
+        }, function (err, items) {
             if (err) {
                 return res.status(500).json({
                     message: "Internal server error"
@@ -253,11 +259,11 @@ app.get('/pipelines', function (req, res) {
                     message: "System not found"
                 });
             } else {
+                console.log(res.json(items));
                 return res.json(items);
             }
         });
 });
-
 
 // Get Pipelines by RC Name
 app.get('/pipelines/:RCName', function (req, res) {
@@ -282,14 +288,10 @@ app.get('/pipelines/:RCName', function (req, res) {
         });
 });
 
-// Get Pipelines by System Name
-app.get('/pipelines/:systemName', function (req, res) {
-    console.log(req.params.systemName);
+// Get Pipelines
+app.get('/pipelines', function (req, res) {
     Pipeline
-        .find({
-            systemName: req.params.systemName,
-
-        }, function (err, items) {
+        .find(function (err, items) {
             if (err) {
                 return res.status(500).json({
                     message: "Internal server error"
