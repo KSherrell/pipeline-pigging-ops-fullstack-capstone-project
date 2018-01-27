@@ -793,36 +793,45 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $("#updateSearch").show();
 });
 
+function populateSelectDropdown(selectionValue, queryURL, outputContainer) {
+    let url = "/" + queryURL + "/" + selectionValue;
+    $.ajax({
+            type: "GET",
+            url: url,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+            $(outputContainer).html('');
+            var buildTheSelectionList = "";
+            buildTheSelectionList += '<option value="0" selected> Select Option</option>';
+            $.each(result, function (resultKey, resultValue) {
+                buildTheSelectionList += '<option value="' + resultKey + '">' + resultValue.systemName + '</option>';
+            });
+            console.log(buildTheSelectionList);
+            $(outputContainer).html(buildTheSelectionList);
+            let systemList = [];
+            for (let systemOptions in result) {
+                systemList.push(result[systemOptions].systemName);
+                console.log(systemList);
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+
+}
+
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
         console.log(rcValue);
-        $.ajax({
-                type: "GET",
-                url: "/systems/" + rcValue,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                console.log(result);
-
-                let systemList = [];
-                for (let systemOptions in result) {
-                    systemOptions = (result[systemOptions].systemName);
-                    systemList.push(systemOptions);
-                    console.log(systemList);
-                }
-
-
-
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            })
+        populateSelectDropdown(rcValue, "pipelines", "#systemName");
     });
 
 

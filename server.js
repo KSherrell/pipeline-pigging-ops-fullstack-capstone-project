@@ -241,10 +241,12 @@ app.post('/pipelines', (req, res) => {
 
 
 // Get Pipeline Systems
-app.get('/systems/:RCName', function (req, res) {
-    System
+app.get('/pipelines/:RCName', function (req, res) {
+    console.log(req.params.RCName);
+    Pipeline
         .find({
-            RCName: req.params.RCName
+            RCName: req.params.RCName,
+
         }, function (err, items) {
             if (err) {
                 return res.status(500).json({
@@ -259,6 +261,7 @@ app.get('/systems/:RCName', function (req, res) {
                 return res.json(items);
             }
         });
+
 });
 
 
