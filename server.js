@@ -259,34 +259,10 @@ app.get('/pipelines/:systemName', function (req, res) {
                     message: "System not found"
                 });
             } else {
-                console.log(res.json(items));
                 return res.json(items);
             }
         });
 });
-
-// Get Pipelines by RC Name
-//app.get('/pipelines/:RCName', function (req, res) {
-//    console.log(req.params.RCName);
-//    Pipeline
-//        .find({
-//            RCName: req.params.RCName,
-//
-//        }, function (err, items) {
-//            if (err) {
-//                return res.status(500).json({
-//                    message: "Internal server error"
-//                });
-//            }
-//            if (!items) {
-//                return res.status(401).json({
-//                    message: "System not found"
-//                });
-//            } else {
-//                return res.json(items);
-//            }
-//        });
-//});
 
 // Get Pipelines
 app.get('/pipelines', function (req, res) {
@@ -306,8 +282,6 @@ app.get('/pipelines', function (req, res) {
             }
         });
 });
-
-
 
 
 // MISC ------------------------------------------

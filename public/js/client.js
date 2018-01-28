@@ -233,7 +233,7 @@ function registerNewUser(userObj) {
 };
 
 
-function find_duplicate_in_array(arr) {
+function arrayDuplicates(arr) {
     var i,
         len = arr.length,
         temp = [],
@@ -578,6 +578,7 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     $("#pageDebrisReport .show-to-foreman").show();
     $(".debris-results").show();
 });
+
 //  Debris Report (Foreman) >> Reset
 $(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
     event.preventDefault();
@@ -810,7 +811,6 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
     let url = "/" + queryURL + "/" + selectionValue;
-    alert(selectionValue);
     $.ajax({
             type: "GET",
             url: url,
@@ -824,22 +824,19 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
                 for (let options in result) {
                     optionValues.push(result[options].RCName);
                 }
-                optionValues = find_duplicate_in_array(optionValues);
+                optionValues = arrayDuplicates(optionValues);
 
             } else if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
-                    console.log(optionValues);
                 }
-                optionValues = find_duplicate_in_array(optionValues);
+                optionValues = arrayDuplicates(optionValues);
 
             } else if (identifier == "systemName") {
-                console.log(result);
                 for (let options in result) {
                     optionValues.push(result[options].pipelineName);
-                    console.log(optionValues);
-                    console.log(container);
                 }
+                optionValues = arrayDuplicates(optionValues);
             }
             populateDropDown(optionValues, container);
         })
@@ -865,16 +862,11 @@ function populateDropDown(optionValues, container) {
 
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
-    let rcValue = "";
-    $('#pageUpdatePipeline select#rcName option:selected').each(function () {
-        rcValue = $(this).text();
-        getOptionLists("", "pipelines", "RCName", "#pageUpdatePipeline #systemName");
-    });
+    getOptionLists("", "pipelines", "RCName", "#pageUpdatePipeline #systemName");
 });
 
 //  Update Pipeline >> select#systemName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
-    alert("system selected");
     let systemValue = "";
     $('#pageUpdatePipeline #updateSearch select#systemName option:selected').each(function () {
         systemValue = $(this).text();
