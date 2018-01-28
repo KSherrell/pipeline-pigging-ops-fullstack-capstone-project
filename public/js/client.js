@@ -868,7 +868,7 @@ $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
-        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+        getOptionLists("", "pipelines", "RCName", "#pageUpdatePipeline #systemName");
     });
 });
 
