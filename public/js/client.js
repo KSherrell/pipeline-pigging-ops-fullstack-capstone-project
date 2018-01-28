@@ -101,7 +101,6 @@ function getUserByEmail(email, origin, userObj) {
                 let userActive = result.approved;
 
                 if (origin == "resetpwd") {
-                    console.log("origin = " + origin);
                     resetPwdPage(userID, userActive, email);
                 } else if (origin == "createacct") {
                     if (userActive == 0) {
@@ -150,8 +149,6 @@ function resetPwdPage(userID, userActive, email) {
         $("#forgotPassword").hide();
     } else if (userActive == 1) {
         //load reset password page
-        console.log("userActive = 1");
-        console.log(email);
         $(".jsHide").hide();
         $("#pageResetPwd").show();
         $("#pageResetPwd #userEmail").text(email);
@@ -178,7 +175,6 @@ function resetPwdPage(userID, userActive, email) {
                 let updateUserPwdObj = {
                     password: newPwd
                 };
-                console.log(updateUserPwdObj);
                 $.ajax({
                         type: "PUT",
                         url: "/users/reset-pwd/" + userID,
@@ -187,7 +183,6 @@ function resetPwdPage(userID, userActive, email) {
                         contentType: 'application/json'
                     })
                     .done(function (result) {
-                        //console.log(result);
                         //reset password success scenario
                         $(".jsHide").hide();
                         $("#pageLogin").show();
@@ -218,7 +213,6 @@ function registerNewUser(userObj) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
             $(".jsHide").hide();
             $("#pageLogin").show();
             $("#forgotPassword").hide();
@@ -240,11 +234,9 @@ function arrayDuplicates(arr) {
         obj = {};
     for (i = 0; i < len; i++) {
         obj[arr[i]] = 0;
-        console.log(temp);
     }
     for (i in obj) {
         temp.push(i);
-        console.log(temp);
     }
     return temp;
 };
@@ -725,9 +717,6 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         pipelineActive: pipelineActive
     };
 
-    console.log(newPipelineObj);
-    console.log(newPipelineObj.product);
-    console.log(newPipelineObj.acceptablePigs);
     if (!$('#pageAddPipeline #addPipelineDate').val()) {
         alert("Please enter the date the pipeline started operating.");
         $('#pageAddPipeline #addPipelineDate').focus();
@@ -836,7 +825,6 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
 };
 
 function populateDropDown(optionValues, container) {
-    console.log(container);
     let buildList = "";
     buildList += '<option value = "select-option" selected>Select Option</option>'
     $(container).html('');
@@ -844,7 +832,6 @@ function populateDropDown(optionValues, container) {
         function (key, value) {
             buildList += '<option value = "' + key + '">' + value + '</option>';
         })
-    console.log(buildList);
     $(container).html(buildList);
 };
 
@@ -861,47 +848,6 @@ $(document).on('change', '#pageUpdatePipeline select#systemName', function (even
         getOptionLists(systemValue, "pipelines", "systemName", "#pageUpdatePipeline #updateSearch #pipelineName");
     });
 });
-
-
-
-
-
-
-
-//        if (rcValue == "RC United States") {
-//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' +
-//                '<option value = "California Pipeline System" >California Pipeline System</option>' + '<option value = "Colorado Pipeline System" >Colorado Pipeline System</option>' + '<option value = "Arizona Pipeline System" >Arizona Pipeline System</option>' + '<option value = "Texas Pipeline System">Texas Pipeline System</option>'
-//            );
-//
-//        } else if (rcValue == "RC Germany") {
-//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Berlin Pipeline System" >Berlin Pipeline System</option>' + '<option value = "Bavaria Pipeline System" >Bavaria Pipeline System</option>' + '<option value = "Hamburg Pipeline System" >Hamburg Pipeline System</option>' + '<option value = "Saxony Pipeline System">Saxony Pipeline System</option>');
-//        } else if (rcValue == "RC Mexico") {
-//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Sonora Pipeline System" >Sonora Pipeline System</option>' + '<option value = "Chihuahua Pipeline System" >Chihuahua Pipeline System</option>' + '<option value = "Durango Pipeline System" >Durango Pipeline System</option>' + '<option value = "Oaxaca Pipeline System">Oaxaca Pipeline System</option>');
-//        } else if (rcValue == "RC Canada") {
-//            $("#pageUpdatePipeline #systemName").html('<option value = "select-system" selected> Select System </option>' + '<option value = "Ontario Pipeline System" >Ontario Pipeline System</option>' + '<option value = "Manitoba Pipeline System" >Manitoba Pipeline System</option>' + '<option value = "Alberta Pipeline System" >Alberta Pipeline System</option>' + '<option value = "Quebec Pipeline System">Quebec Pipeline System</option>');
-//        }
-//    });
-
-
-//  Update Pipeline >> select#systemName.on('change');
-//California Pipeline System
-//$(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
-//    let systemValue = "";
-//    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
-//        systemValue = $(this).text();
-//        if (systemValue == "California Pipeline System") {
-//            $("#pageUpdatePipeline #pipelineName").html(
-//                '<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Los Angeles Pipeline" > Los Angeles Pipeline</option>' + '<option value = "San Diego Pipeline" > San Diego Pipeline</option>' + '<option value = "San Francisco Pipeline" > San Francisco Pipeline</option>' + '<option value = "Bakersfield Pipeline"> Bakersfield Pipeline</option>'
-//            );
-//        } else if (systemValue == "Colorado Pipeline System") {
-//            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Denver Pipeline" > Denver Pipeline</option>' + '<option value = "Vail Pipeline" > Vail Pipeline</option>' + '<option value = "Fort Collins Pipeline" > Fort Collins Pipeline</option>' + '<option value = "Steamboat Springs Pipeline"> Steamboat Springs Pipeline</option>');
-//        } else if (systemValue == "Arizona Pipeline System") {
-//            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Phoenix Pipeline" > Phoenix Pipeline</option>' + '<option value = "Tuscon Pipeline" > Tuscon Pipeline</option>' + '<option value = "Flagstaff Pipeline" > Flagstaff Pipeline</option>' + '<option value = "Scottsdale Pipeline"> Scottsdale Pipeline  </option>');
-//        } else if (systemValue == "Texas Pipeline System") {
-//            $("#pageUpdatePipeline #pipelineName").html('<option value = "select-pipeline" selected>Select Pipeline</option>' + '<option value = "Dallas Pipeline" >Dallas Pipeline</option>' + '<option value = "Fort Worth Pipeline" > Fort Worth Pipeline</option>' + '<option value = "Houston Pipeline" > Houston Pipeline</option>' + '<option value = "Austin Pipeline"> Austin Pipeline System</option>');
-//        }
-//    });
-//});
 
 //  Update/Remove Pipeline (Search form) >> Submit
 $(document).on('submit', '#updateSearch', function (event) {
@@ -1019,34 +965,7 @@ function OperatorPages() {
     //    //get value from system selection input, make api call which will return the list of pipelines
     //})
 
-    //function selectPipeline() {
-    //
-    //    let selectOptions = {
-    //        "System 1": ["Alabama Pipeline",
-    //                "Alaska Pipeline",
-    //                "Arizona Pipeline"
-    //            ],
-    //
-    //        "System 2": ["California Pipeline",
-    //                "Colorado Pipeline",
-    //                "Connecticut Pipeline"
-    //            ],
-    //        "System 3": ["Idaho Pipeline",
-    //                "Illinois Pipeline",
-    //                "Indiana Pipeline"
-    //            ]
-    //    };
-    //
-    //
-    //    let systemsOptions = Object.keys(selectOptions);
-    //    console.log(systemsOptions);
-    //
-    //
-    //    let pipelinesOptions = Object.values(selectOptions[0]);
-    //    console.log(pipelinesOptions);
-    //
-    //
-    //};
+
     $(document).change("#systems", function (event) {
 
         $.ajax({
