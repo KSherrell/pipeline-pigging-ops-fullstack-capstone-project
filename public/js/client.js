@@ -787,12 +787,19 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
 });
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
-    let url = "/" + queryURL + "/" + selectionValue;
+    console.log(selectionValue, identifier);
+
+    let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
+    if (selectionValue == "") {
+        url = "/" + queryURL + "/" + identifier + "/genericValue";
+    }
+
     $.ajax({
             type: "GET",
             url: url,
             dataType: 'json',
             contentType: 'application/json'
+
         })
         .done(function (result) {
             console.log(result);
@@ -837,7 +844,11 @@ function populateDropDown(optionValues, container) {
 
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
-    getOptionLists("", "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+    let rcValue = "";
+    $('#pageUpdatePipeline select#rcName option:selected').each(function () {
+        rcValue = $(this).text();
+        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+    });
 });
 
 //  Update Pipeline >> select#systemName.on('change');

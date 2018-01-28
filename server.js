@@ -242,47 +242,71 @@ app.post('/pipelines', (req, res) => {
 
 
 // Get Pipelines by System Name
-app.get('/pipelines/:systemName', function (req, res) {
-    console.log(req.params.systemName);
-    Pipeline
-        .find({
-            systemName: req.params.systemName,
+app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
+    console.log(req.params.selectionValue);
+    //If the first drop down has something selected
+    if (req.params.selectionValue != "genericValue") {
+        //display the RC Names related to selection
+        if (req.params.identifier == "RCName") {
+        Pipeline
+            .find({
+            RCName: req.params.selectionValue,
+            }, function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
 
-        }, function (err, items) {
-            if (err) {
-                return res.status(500).json({
-                    message: "Internal server error"
-                });
-            }
-            if (!items) {
-                return res.status(401).json({
-                    message: "System not found"
-                });
-            } else {
-                return res.json(items);
-            }
-        });
+        }
+        //if the second drop down has something selected, display the system names according to the RC selection
+        else {
+            Pipeline
+                .find({
+                systemName: req.params.selectionValue,
+            }, function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
+        }
+    }
+    //if the page is loaded, pre-load the RC selections
+    else {
+        Pipeline
+            .find(function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
+    }
 });
-
-// Get Pipelines
-app.get('/pipelines', function (req, res) {
-    Pipeline
-        .find(function (err, items) {
-            if (err) {
-                return res.status(500).json({
-                    message: "Internal server error"
-                });
-            }
-            if (!items) {
-                return res.status(401).json({
-                    message: "System not found"
-                });
-            } else {
-                return res.json(items);
-            }
-        });
-});
-
 
 // MISC ------------------------------------------
 // catch-all endpoint if client makes request to non-existent endpoint
