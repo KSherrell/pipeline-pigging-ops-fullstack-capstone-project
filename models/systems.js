@@ -3,7 +3,8 @@
 const mongoose = require('mongoose');
 
 const systemSchema = new mongoose.Schema({
-    RCName: {
+
+    rcName: {
         type: String,
         required: false
     },

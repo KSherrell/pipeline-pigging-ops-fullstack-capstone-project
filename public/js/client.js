@@ -239,9 +239,10 @@ function arrayDuplicates(arr) {
     return temp;
 };
 
+
+
 function getOptionLists(selectionValue, queryURL, identifier, container) {
-    console.log(selectionValue, identifier);
-    console.log(container);
+    console.log(selectionValue, identifier, container);
     let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
     if (selectionValue == "") {
         url = "/" + queryURL + "/" + identifier + "/genericValue";
@@ -256,14 +257,7 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
         .done(function (result) {
             console.log(result);
             let optionValues = [];
-            if (identifier == "pageLoad") {
-                for (let options in result) {
-                    optionValues.push(result[options].RCName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-                populateDropDown(optionValues, container);
-
-            } else if (identifier == "RCName") {
+            if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
                 }
@@ -740,20 +734,71 @@ $(document).on('click', '#pageUpdateHistory .button-delete', function (event) {
     $("#piggingHistory").show();
 });
 
+
 //*** Admin Menu >> Add Pipeline
 $(document).on('click', 'p.gotoAddPipeline', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pageAddPipeline").show();
-    getOptionLists("", "pipelines", "pageLoad", "#pageAddPipeline #rcName");
+    getReportCenters("#pageAddPipeline #rcName");
 });
+
+function getReportCenters(container) {
+    $.ajax({
+            type: "GET",
+            url: '/reportcenters',
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].RCName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getSystems(selectionValue, container) {
+    console.log(selectionValue, container);
+    $.ajax({
+            type: "GET",
+            url: '/systems/' + selectionValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].systemName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
 
 //  Add Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
-    let rcValue = "";
+    let selectionValue = "";
     $('#pageAddPipeline select#rcName option:selected').each(function () {
-        rcValue = $(this).text();
-        getOptionLists(rcValue, "pipelines", "RCName", "#pageAddPipeline #systemName");
+        selectionValue = $(this).text();
+        console.log(selectionValue);
+        getSystems(selectionValue, "#pageAddPipeline #systemName");
     });
 });
 
