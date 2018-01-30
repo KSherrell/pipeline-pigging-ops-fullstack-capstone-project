@@ -241,6 +241,7 @@ function arrayDuplicates(arr) {
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
     console.log(selectionValue, identifier);
+    console.log(container);
     let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
     if (selectionValue == "") {
         url = "/" + queryURL + "/" + identifier + "/genericValue";
@@ -260,26 +261,44 @@ function getOptionLists(selectionValue, queryURL, identifier, container) {
                     optionValues.push(result[options].RCName);
                 }
                 optionValues = arrayDuplicates(optionValues);
+                populateDropDown(optionValues, container);
 
             } else if (identifier == "RCName") {
                 for (let options in result) {
                     optionValues.push(result[options].systemName);
                 }
                 optionValues = arrayDuplicates(optionValues);
+                populateDropDown(optionValues, container);
 
             } else if (identifier == "systemName") {
                 for (let options in result) {
                     optionValues.push(result[options].pipelineName);
                 }
                 optionValues = arrayDuplicates(optionValues);
+                populateDropDown(optionValues, container);
+
+            } else if (identifier == "pipelineName") {
+                console.log(result);
+                let pipelineName = selectionValue;
+                let launcherName = result[0].launcherName;
+                let receiverName = result[0].receiverName;
+                let textArr = [pipelineName, launcherName, receiverName];
+                populateTextField(textArr, container);
             }
-            populateDropDown(optionValues, container);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
         })
+};
+
+function populateTextField(textArr, containerArr) {
+    console.log(textArr);
+    console.log(containerArr);
+    $(containerArr[0]).val(textArr[0]);
+    $(containerArr[1]).val(textArr[1]);
+    $(containerArr[2]).val(textArr[2]);
 };
 
 function populateDropDown(optionValues, container) {
@@ -873,6 +892,12 @@ $(document).on('change', '#pageUpdatePipeline select#systemName', function (even
 //  Update/Remove Pipeline (Search form) >> Submit
 $(document).on('submit', '#updateSearch', function (event) {
     event.preventDefault();
+    let pipelineValue = "";
+    $('#pageUpdatePipeline #updateSearch select#pipelineName option:selected').each(function () {
+        pipelineValue = $(this).text();
+        getOptionLists(pipelineValue, "pipelines", "pipelineName", ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #updatePipeline #launcherName", "#pageUpdatePipeline #updatePipeline #receiverName", ]);
+    });
+
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
     $("#updatePipeline").show();

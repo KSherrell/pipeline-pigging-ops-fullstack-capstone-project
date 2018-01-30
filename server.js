@@ -248,43 +248,64 @@ app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
     if (req.params.selectionValue != "genericValue") {
         //display the system names related to RC selection
         if (req.params.identifier == "RCName") {
-        Pipeline
-            .find({
-            RCName: req.params.selectionValue,
-            }, function (err, items) {
-                if (err) {
-                    return res.status(500).json({
-                        message: "Internal server error"
-                    });
-                }
-                if (!items) {
-                    return res.status(401).json({
-                        message: "System not found"
-                    });
-                } else {return res.json(items);
-                }
-            });
+            Pipeline
+                .find({
+                    RCName: req.params.selectionValue,
+                }, function (err, items) {
+                    if (err) {
+                        return res.status(500).json({
+                            message: "Internal server error"
+                        });
+                    }
+                    if (!items) {
+                        return res.status(401).json({
+                            message: "System not found"
+                        });
+                    } else {
+                        return res.json(items);
+                    }
+                });
 
+        }
+        //if the second drop down has something selected, display the pipeline names according to the system selection
+        else if (req.params.identifier == "systemName") {
+            Pipeline
+                .find({
+                    systemName: req.params.selectionValue,
+                }, function (err, items) {
+                    if (err) {
+                        return res.status(500).json({
+                            message: "Internal server error"
+                        });
+                    }
+                    if (!items) {
+                        return res.status(401).json({
+                            message: "System not found"
+                        });
+                    } else {
+                        return res.json(items);
+                    }
+                });
         }
         //if the second drop down has something selected, display the pipeline names according to the system selection
         else {
             Pipeline
                 .find({
-                systemName: req.params.selectionValue,
-            }, function (err, items) {
-                if (err) {
-                    return res.status(500).json({
-                        message: "Internal server error"
-                    });
-                }
-                if (!items) {
-                    return res.status(401).json({
-                        message: "System not found"
-                    });
-                } else {
-                    return res.json(items);
-                }
-            });
+                    pipelineName: req.params.selectionValue,
+                }, function (err, items) {
+                    if (err) {
+                        return res.status(500).json({
+                            message: "Internal server error"
+                        });
+                    }
+                    if (!items) {
+                        return res.status(401).json({
+                            message: "System not found"
+                        });
+                    } else {
+                        return res.json(items);
+                    }
+                });
         }
     }
     //if the page is loaded, pre-load the RC selections
