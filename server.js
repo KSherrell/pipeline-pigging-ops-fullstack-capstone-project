@@ -241,12 +241,12 @@ app.post('/pipelines', (req, res) => {
 
 
 
-// Get Pipelines by System Name
+// Get Pipelines by RC and System Name
 app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
     console.log(req.params.selectionValue);
     //If the first drop down has something selected
     if (req.params.selectionValue != "genericValue") {
-        //display the RC Names related to selection
+        //display the system names related to RC selection
         if (req.params.identifier == "RCName") {
         Pipeline
             .find({
@@ -261,13 +261,12 @@ app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
                     return res.status(401).json({
                         message: "System not found"
                     });
-                } else {
-                    return res.json(items);
+                } else {return res.json(items);
                 }
             });
 
         }
-        //if the second drop down has something selected, display the system names according to the RC selection
+        //if the second drop down has something selected, display the pipeline names according to the system selection
         else {
             Pipeline
                 .find({

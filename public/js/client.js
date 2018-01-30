@@ -678,9 +678,12 @@ $(document).on('click', 'p.gotoAddPipeline', function (event) {
 
 //  Add Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
-    getOptionLists("", "pipelines", "RCName", "#pageAddPipeline #systemName");
+    let rcValue = "";
+    $('#pageAddPipeline select#rcName option:selected').each(function () {
+        rcValue = $(this).text();
+        getOptionLists(rcValue, "pipelines", "RCName", "#pageAddPipeline #systemName");
+    });
 });
-
 
 //   Add Pipeline >> Submit
 $(document).on('submit', '#pageAddPipeline', function (event) {
@@ -788,12 +791,10 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
 
 function getOptionLists(selectionValue, queryURL, identifier, container) {
     console.log(selectionValue, identifier);
-
     let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
     if (selectionValue == "") {
         url = "/" + queryURL + "/" + identifier + "/genericValue";
     }
-
     $.ajax({
             type: "GET",
             url: url,
