@@ -21,7 +21,6 @@ function validateSelect(selectionValue, defaultValue) {
 
 function validateCheckbox(checkboxArray) {
     let validateValue = true;
-    console.log(checkboxArray);
     if (checkboxArray == "[]") {
         validateValue = false;
     }
@@ -226,7 +225,6 @@ function registerNewUser(userObj) {
         });
 };
 
-
 function arrayDuplicates(arr) {
     var i,
         len = arr.length,
@@ -240,6 +238,61 @@ function arrayDuplicates(arr) {
     }
     return temp;
 };
+
+function getOptionLists(selectionValue, queryURL, identifier, container) {
+    console.log(selectionValue, identifier);
+    let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
+    if (selectionValue == "") {
+        url = "/" + queryURL + "/" + identifier + "/genericValue";
+    }
+    $.ajax({
+            type: "GET",
+            url: url,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            if (identifier == "pageLoad") {
+                for (let options in result) {
+                    optionValues.push(result[options].RCName);
+                }
+                optionValues = arrayDuplicates(optionValues);
+
+            } else if (identifier == "RCName") {
+                for (let options in result) {
+                    optionValues.push(result[options].systemName);
+                }
+                optionValues = arrayDuplicates(optionValues);
+
+            } else if (identifier == "systemName") {
+                for (let options in result) {
+                    optionValues.push(result[options].pipelineName);
+                }
+                optionValues = arrayDuplicates(optionValues);
+            }
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function populateDropDown(optionValues, container) {
+    let buildList = "";
+    buildList += '<option value = "select-option" selected>Select Option</option>'
+    $(container).html('');
+    $.each(optionValues,
+        function (key, value) {
+            buildList += '<option value = "' + key + '">' + value + '</option>';
+        })
+    $(container).html(buildList);
+};
+
 
 //Step Two: Use functions, object, variables (triggers)
 
@@ -688,8 +741,15 @@ $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
 //   Add Pipeline >> Submit
 $(document).on('submit', '#pageAddPipeline', function (event) {
     event.preventDefault();
-    let RCName = $("#pageAddPipeline #rcName").val();
-    let systemName = $("#pageAddPipeline #systemName").val();
+    let RCName = "";
+    $('#pageAddPipeline select#rcName option:selected').each(function () {
+        RCName = $(this).text();
+    });
+    let systemName = "";
+    $('#pageAddPipeline select#systemName option:selected').each(function () {
+        systemName = $(this).text();
+    });
+
     let pipelineName = $("#pageAddPipeline #newPipeline").val();
     let launcherName = $("#pageAddPipeline #newLauncher").val();
     let receiverName = $("#pageAddPipeline #newReceiver").val();
@@ -762,6 +822,7 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
             .done(function (result) {
                 alert('Pipeline added successfully.');
                 document.getElementById('addPipeline').reset();
+                $("#addPipeline #systemName").html("");
 
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -776,6 +837,8 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
 //   Add Pipeline >> Cancel
 $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
     event.preventDefault();
+    document.getElementById("addPipeline").reset();
+    $("#addPipeline #systemName").html("");
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
@@ -788,60 +851,6 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $("#updateSearch").show();
     getOptionLists("", "pipelines", "pageLoad", "#pageUpdatePipeline #rcName");
 });
-
-function getOptionLists(selectionValue, queryURL, identifier, container) {
-    console.log(selectionValue, identifier);
-    let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
-    if (selectionValue == "") {
-        url = "/" + queryURL + "/" + identifier + "/genericValue";
-    }
-    $.ajax({
-            type: "GET",
-            url: url,
-            dataType: 'json',
-            contentType: 'application/json'
-
-        })
-        .done(function (result) {
-            console.log(result);
-            let optionValues = [];
-            if (identifier == "pageLoad") {
-                for (let options in result) {
-                    optionValues.push(result[options].RCName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-
-            } else if (identifier == "RCName") {
-                for (let options in result) {
-                    optionValues.push(result[options].systemName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-
-            } else if (identifier == "systemName") {
-                for (let options in result) {
-                    optionValues.push(result[options].pipelineName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-            }
-            populateDropDown(optionValues, container);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-};
-
-function populateDropDown(optionValues, container) {
-    let buildList = "";
-    buildList += '<option value = "select-option" selected>Select Option</option>'
-    $(container).html('');
-    $.each(optionValues,
-        function (key, value) {
-            buildList += '<option value = "' + key + '">' + value + '</option>';
-        })
-    $(container).html(buildList);
-};
 
 //  Update Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
@@ -868,12 +877,14 @@ $(document).on('submit', '#updateSearch', function (event) {
     $("#pageUpdatePipeline").show();
     $("#updatePipeline").show();
     $("#pageUpdatePipeline .submit-cancel-delete").show();
-    document.getElementById("updateSearch").reset();
+
 });
 
 //  Update/Remove Pipeline >> Cancel
 $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     event.preventDefault();
+    $("#updateSearch #systemName").html("");
+    $("#updateSearch #pipelineName").html("");
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
