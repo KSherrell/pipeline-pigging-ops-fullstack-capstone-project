@@ -267,7 +267,7 @@ app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
                 });
 
         }
-        //if the second drop down has something selected, display the pipeline names according to the system selection
+        //get pipeline names according to the system selection
         else if (req.params.identifier == "systemName") {
             Pipeline
                 .find({
@@ -287,7 +287,7 @@ app.get('/pipelines/:identifier/:selectionValue', function (req, res) {
                     }
                 });
         }
-        //if the second drop down has something selected, display the pipeline names according to the system selection
+        // returns a specific pipeline
         else {
             Pipeline
                 .find({
