@@ -336,7 +336,7 @@ function getSystems(selectionValue, container) {
         })
 };
 
-function getPipelineNames(selectionValue, container, origin) {
+function getPipelineNames(selectionValue, container, newPipelineObj) {
     console.log(selectionValue, container, origin);
     $.ajax({
             type: "GET",
@@ -351,15 +351,21 @@ function getPipelineNames(selectionValue, container, origin) {
             for (let options in result) {
                 optionValues.push(result[options].pipelineName);
             }
-            if (origin) {
-                for (let names in optionValues) {
-                    console.log(names);
-//                    if (names == origin.pipelineName) {
-             //                        alert("This pipeline name already exists. Please enter a unique pipeline name.");
-             //                        $("#pageAddPipeline #addPipeline #newPipeline").val("").focus();
-             //                    } else {
-             //                        addNewPipeline(origin);
-             //                    }
+            console.log(optionValues);
+            if (newPipelineObj) {
+                let foundPipeline = false;
+                for (let i = 0; i < result.length; i++) {
+                    console.log(result[i]);
+                    if (result[i].pipelineName == newPipelineObj.pipelineName) {
+                        foundPipeline = true;
+
+                    }
+                }
+                if (foundPipeline) {
+                    alert("This pipeline name already exists. Please enter a unique pipeline name.");
+                    $("#pageAddPipeline #addPipeline #newPipeline").val("").focus();
+                } else {
+                    addNewPipeline(newPipelineObj);
                 }
             } else {
                 optionValues = arrayDuplicates(optionValues);
