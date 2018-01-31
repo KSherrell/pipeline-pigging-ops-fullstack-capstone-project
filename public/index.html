@@ -1102,9 +1102,9 @@
             <form id="updatePipeline" class="jsHide">
                 <p>To update the pipeline data, modify the information shown below.</p>
                 <div>
-                    <input type="text" id="pipelineName" name="pipeline-name" placeholder="Current Pipeline Name">
-                    <input type="text" id="launcherName" name="launcher-name" placeholder="Current Launcher Name">
-                    <input type="text" id="receiverName" name="receiver-name" placeholder="Current Receiver name">
+                    <input type="text" id="pipelineName" name="pipeline-name">
+                    <input type="text" id="launcherName" name="launcher-name">
+                    <input type="text" id="receiverName" name="receiver-name">
                 </div>
 
                 <div>
@@ -1116,13 +1116,7 @@
                 </div>
                 <div>
                     <p>Closure:</p>
-                    <select name="pipeline-closures">
-                                <option value="current-closure">Current Closure</option>
-                                <option value="closure-one">Closure One</option>
-                                <option value="closure-two">Closure Two</option>
-                                <option value="closure-three">Closure Three</option>
-                                <option value="closure-four">Closure Four</option>
-                            </select>
+                    <input type="text" id="closureName" name="closure-name">
                 </div>
 
                 <p>Acceptable Pigs:</p>

@@ -241,45 +241,25 @@ function arrayDuplicates(arr) {
 
 
 
-function getOptionLists(selectionValue, queryURL, identifier, container) {
-    console.log(selectionValue, identifier, container);
-    let url = "/" + queryURL + "/" + identifier + "/" + selectionValue;
-    if (selectionValue == "") {
-        url = "/" + queryURL + "/" + identifier + "/genericValue";
-    }
+function getLauncherReceiverTextValues(selectionValue, container) {
+    console.log(selectionValue, container);
     $.ajax({
             type: "GET",
-            url: url,
+            url: "/pipelines",
             dataType: 'json',
             contentType: 'application/json'
 
         })
         .done(function (result) {
             console.log(result);
-            let optionValues = [];
-            if (identifier == "RCName") {
-                for (let options in result) {
-                    optionValues.push(result[options].systemName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-                populateDropDown(optionValues, container);
-
-            } else if (identifier == "systemName") {
-                for (let options in result) {
-                    optionValues.push(result[options].pipelineName);
-                }
-                optionValues = arrayDuplicates(optionValues);
-                populateDropDown(optionValues, container);
-
-            } else if (identifier == "pipelineName") {
-                console.log(result);
-                let pipelineName = selectionValue;
-                let launcherName = result[0].launcherName;
-                let receiverName = result[0].receiverName;
-                let textArr = [pipelineName, launcherName, receiverName];
-                populateTextField(textArr, container);
-            }
+            let pipelineName = selectionValue;
+            let launcherName = result[0].launcherName;
+            let receiverName = result[0].receiverName;
+            let closureName = result[0].closure;
+            let textArr = [pipelineName, launcherName, receiverName, closureName];
+            populateTextField(textArr, container);
         })
+
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
@@ -293,6 +273,7 @@ function populateTextField(textArr, containerArr) {
     $(containerArr[0]).val(textArr[0]);
     $(containerArr[1]).val(textArr[1]);
     $(containerArr[2]).val(textArr[2]);
+    $(containerArr[3]).val(textArr[3]);
 };
 
 function populateDropDown(optionValues, container) {
@@ -304,6 +285,80 @@ function populateDropDown(optionValues, container) {
             buildList += '<option value = "' + key + '">' + value + '</option>';
         })
     $(container).html(buildList);
+};
+
+function getReportCenters(container) {
+    $.ajax({
+            type: "GET",
+            url: '/reportcenters',
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].RCName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getSystems(selectionValue, container) {
+    console.log(selectionValue, container);
+    $.ajax({
+            type: "GET",
+            url: '/systems/' + selectionValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].systemName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getPipelineNames(selectionValue, container) {
+    console.log(selectionValue, container);
+    $.ajax({
+            type: "GET",
+            url: '/pipelines/' + selectionValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].pipelineName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
 };
 
 
@@ -743,55 +798,6 @@ $(document).on('click', 'p.gotoAddPipeline', function (event) {
     getReportCenters("#pageAddPipeline #rcName");
 });
 
-function getReportCenters(container) {
-    $.ajax({
-            type: "GET",
-            url: '/reportcenters',
-            dataType: 'json',
-            contentType: 'application/json'
-
-        })
-        .done(function (result) {
-            console.log(result);
-            let optionValues = [];
-            for (let options in result) {
-                optionValues.push(result[options].RCName);
-            }
-            optionValues = arrayDuplicates(optionValues);
-            populateDropDown(optionValues, container);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-};
-
-function getSystems(selectionValue, container) {
-    console.log(selectionValue, container);
-    $.ajax({
-            type: "GET",
-            url: '/systems/' + selectionValue,
-            dataType: 'json',
-            contentType: 'application/json'
-
-        })
-        .done(function (result) {
-            console.log(result);
-            let optionValues = [];
-            for (let options in result) {
-                optionValues.push(result[options].systemName);
-            }
-            optionValues = arrayDuplicates(optionValues);
-            populateDropDown(optionValues, container);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-};
-
 //  Add Pipeline >> select#rcName.on('change');
 $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
     let selectionValue = "";
@@ -913,7 +919,7 @@ $(document).on('click', 'p.gotoUdatePipeline', function (event) {
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
     $("#updateSearch").show();
-    getOptionLists("", "pipelines", "pageLoad", "#pageUpdatePipeline #rcName");
+    getReportCenters("#pageUpdatePipeline #rcName");
 });
 
 //  Update Pipeline >> select#rcName.on('change');
@@ -921,32 +927,56 @@ $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
-        getOptionLists(rcValue, "pipelines", "RCName", "#pageUpdatePipeline #systemName");
+        getSystems(rcValue, "#pageUpdatePipeline #systemName");
     });
 });
 
 //  Update Pipeline >> select#systemName.on('change');
 $(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
     let systemValue = "";
-    $('#pageUpdatePipeline #updateSearch select#systemName option:selected').each(function () {
+    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
         systemValue = $(this).text();
-        getOptionLists(systemValue, "pipelines", "systemName", "#pageUpdatePipeline #updateSearch #pipelineName");
+        getPipelineNames(systemValue, "#pageUpdatePipeline #updateSearch #pipelineName");
     });
 });
 
 //  Update/Remove Pipeline (Search form) >> Submit
 $(document).on('submit', '#updateSearch', function (event) {
     event.preventDefault();
+
+    let rcValue = "";
+    let systemValue = "";
     let pipelineValue = "";
-    $('#pageUpdatePipeline #updateSearch select#pipelineName option:selected').each(function () {
-        pipelineValue = $(this).text();
-        getOptionLists(pipelineValue, "pipelines", "pipelineName", ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #updatePipeline #launcherName", "#pageUpdatePipeline #updatePipeline #receiverName", ]);
+
+    $('#pageUpdatePipeline select#rcName option:selected').each(function () {
+        rcValue = $(this).text();
     });
 
-    $(".jsHide").hide();
-    $("#pageUpdatePipeline").show();
-    $("#updatePipeline").show();
-    $("#pageUpdatePipeline .submit-cancel-delete").show();
+    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
+        systemValue = $(this).text();
+    });
+
+    $('#pageUpdatePipeline #updateSearch select#pipelineName option:selected').each(function () {
+        pipelineValue = $(this).text();
+    });
+
+    if (!rcValue || !systemValue || !pipelineValue) {
+        alert("All fields are required.");
+        if (!rcValue) {
+            $("#pageUpdatePipeline select#rcName").focus();
+        } else if (!systemValue) {
+            $("#pageUpdatePipeline select#systemName").focus();
+        } else if (!pipelineValue) {
+            $("#pageUpdatePipeline select#pipelineName").focus();
+        }
+    } else {
+        getLauncherReceiverTextValues(pipelineValue, ["#pageUpdatePipeline select#pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
+
+        $(".jsHide").hide();
+        $("#pageUpdatePipeline").show();
+        $("#updatePipeline").show();
+        $("#pageUpdatePipeline .submit-cancel-delete").show();
+    }
 
 });
 
