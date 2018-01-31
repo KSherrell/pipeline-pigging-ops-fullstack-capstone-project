@@ -239,25 +239,18 @@ function arrayDuplicates(arr) {
     return temp;
 };
 
-
-
-function getLauncherReceiverTextValues(selectionValue, container) {
-    console.log(selectionValue, container);
+function updatePipeline(pipelineValue) {
     $.ajax({
             type: "GET",
-            url: "/pipelines",
+            url: "/pipelines/update/" + pipelineValue,
             dataType: 'json',
             contentType: 'application/json'
 
         })
         .done(function (result) {
             console.log(result);
-            let pipelineName = selectionValue;
-            let launcherName = result[0].launcherName;
-            let receiverName = result[0].receiverName;
-            let closureName = result[0].closure;
-            let textArr = [pipelineName, launcherName, receiverName, closureName];
-            populateTextField(textArr, container);
+
+
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -265,15 +258,6 @@ function getLauncherReceiverTextValues(selectionValue, container) {
             console.log(error);
             console.log(errorThrown);
         })
-};
-
-function populateTextField(textArr, containerArr) {
-    console.log(textArr);
-    console.log(containerArr);
-    $(containerArr[0]).val(textArr[0]);
-    $(containerArr[1]).val(textArr[1]);
-    $(containerArr[2]).val(textArr[2]);
-    $(containerArr[3]).val(textArr[3]);
 };
 
 function populateDropDown(optionValues, container) {
@@ -342,7 +326,6 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
             url: '/pipelines/' + selectionValue,
             dataType: 'json',
             contentType: 'application/json'
-
         })
         .done(function (result) {
             console.log(result);
@@ -411,8 +394,6 @@ function addNewPipeline(newPipelineObj) {
             alert('Error adding pipeline. Please try again.');
         });
 }
-
-
 
 
 //Step Two: Use functions, object, variables (triggers)
@@ -1009,7 +990,7 @@ $(document).on('submit', '#updateSearch', function (event) {
             $("#pageUpdatePipeline select#pipelineName").focus();
         }
     } else {
-        getLauncherReceiverTextValues(pipelineValue, ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
+        updatePipeline(pipelineValue, ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
 
         $(".jsHide").hide();
         $("#pageUpdatePipeline").show();

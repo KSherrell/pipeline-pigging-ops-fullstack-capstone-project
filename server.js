@@ -308,6 +308,30 @@ app.get("/pipelines/:systemValue", function (req, res) {
 });
 
 // Get list of pipelines
+app.get("/pipelines/update/:pipelineValue", function (req, res) {
+    console.log(req.params);
+    Pipeline
+        .findOne({
+                pipelineName: req.params.pipelineValue,
+            },
+            function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
+
+});
+
+// Get list of pipelines
 app.get("/pipelines", function (req, res) {
     console.log(req.params);
     Pipeline
