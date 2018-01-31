@@ -337,7 +337,6 @@ function getSystems(selectionValue, container) {
 };
 
 function getPipelineNames(selectionValue, container, newPipelineObj) {
-    console.log(selectionValue, container, origin);
     $.ajax({
             type: "GET",
             url: '/pipelines/' + selectionValue,
@@ -351,19 +350,31 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
             for (let options in result) {
                 optionValues.push(result[options].pipelineName);
             }
-            console.log(optionValues);
+            // console.log(optionValues);
             if (newPipelineObj) {
                 let foundPipeline = false;
+                let foundLauncher = false;
+                let foundReceiver = false;
                 for (let i = 0; i < result.length; i++) {
                     console.log(result[i]);
                     if (result[i].pipelineName == newPipelineObj.pipelineName) {
                         foundPipeline = true;
-
+                    } else if (result[i].launcherName == newPipelineObj.launcherName) {
+                        foundLauncher = true;
+                    } else if (result[i].receiverName == newPipelineObj.receiverName) {
+                        foundReceiver = true;
                     }
                 }
-                if (foundPipeline) {
-                    alert("This pipeline name already exists. Please enter a unique pipeline name.");
-                    $("#pageAddPipeline #addPipeline #newPipeline").val("").focus();
+                if (foundPipeline || foundLauncher || foundReceiver) {
+                    alert("This name already exists. Please enter a unique name.");
+                    if (foundPipeline) {
+                        $("#pageAddPipeline #addPipeline #newPipeline").val("").focus();
+                    } else if (foundLauncher) {
+                        $("#pageAddPipeline #addPipeline #newLauncher").val("").focus();
+                    } else if (foundReceiver) {
+                        $("#pageAddPipeline #addPipeline #newReceiver").val("").focus();
+                    }
+
                 } else {
                     addNewPipeline(newPipelineObj);
                 }
@@ -371,7 +382,6 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
                 optionValues = arrayDuplicates(optionValues);
                 populateDropDown(optionValues, container);
             }
-
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
