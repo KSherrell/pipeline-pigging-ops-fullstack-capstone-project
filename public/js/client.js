@@ -336,8 +336,8 @@ function getSystems(selectionValue, container) {
         })
 };
 
-function getPipelineNames(selectionValue, container) {
-    console.log(selectionValue, container);
+function getPipelineNames(selectionValue, container, origin) {
+    console.log(selectionValue, container, origin);
     $.ajax({
             type: "GET",
             url: '/pipelines/' + selectionValue,
@@ -351,8 +351,21 @@ function getPipelineNames(selectionValue, container) {
             for (let options in result) {
                 optionValues.push(result[options].pipelineName);
             }
-            optionValues = arrayDuplicates(optionValues);
-            populateDropDown(optionValues, container);
+            if (origin) {
+                for (let names in optionValues) {
+                    console.log(names);
+//                    if (names == origin.pipelineName) {
+             //                        alert("This pipeline name already exists. Please enter a unique pipeline name.");
+             //                        $("#pageAddPipeline #addPipeline #newPipeline").val("").focus();
+             //                    } else {
+             //                        addNewPipeline(origin);
+             //                    }
+                }
+            } else {
+                optionValues = arrayDuplicates(optionValues);
+                populateDropDown(optionValues, container);
+            }
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -360,6 +373,30 @@ function getPipelineNames(selectionValue, container) {
             console.log(errorThrown);
         })
 };
+
+function addNewPipeline(newPipelineObj) {
+    $.ajax({
+            type: 'POST',
+            url: '/pipelines',
+            dataType: 'json',
+            data: JSON.stringify(newPipelineObj),
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            alert('Pipeline added successfully.');
+            document.getElementById('addPipeline').reset();
+            $("#addPipeline #systemName").html("");
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert('Error adding pipeline. Please try again.');
+        });
+}
+
+
 
 
 //Step Two: Use functions, object, variables (triggers)
@@ -882,27 +919,11 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
         alert("Please enter a pigging frequency.");
         $('#pageAddPipeline #piggingFrequency').focus();
     } else {
-        $.ajax({
-                type: 'POST',
-                url: '/pipelines',
-                dataType: 'json',
-                data: JSON.stringify(newPipelineObj),
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                alert('Pipeline added successfully.');
-                document.getElementById('addPipeline').reset();
-                $("#addPipeline #systemName").html("");
-
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                alert('Error adding pipeline. Please try again.');
-            });
+        //check if chosen pipeline name is already in use
+        getPipelineNames(systemName, "#genericContainer", newPipelineObj);
     }
 });
+
 
 //   Add Pipeline >> Cancel
 $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
@@ -936,7 +957,7 @@ $(document).on('change', '#pageUpdatePipeline select#systemName', function (even
     let systemValue = "";
     $('#pageUpdatePipeline select#systemName option:selected').each(function () {
         systemValue = $(this).text();
-        getPipelineNames(systemValue, "#pageUpdatePipeline #updateSearch #pipelineName");
+        getPipelineNames(systemValue, "#pageUpdatePipeline #updateSearch #pipelineName", "");
     });
 });
 
