@@ -947,6 +947,7 @@ $(document).on('submit', '#updateSearch', function (event) {
     let rcValue = "";
     let systemValue = "";
     let pipelineValue = "";
+    let Opt = "Select Option";
 
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
@@ -956,28 +957,28 @@ $(document).on('submit', '#updateSearch', function (event) {
         systemValue = $(this).text();
     });
 
-    $('#pageUpdatePipeline #updateSearch select#pipelineName option:selected').each(function () {
+    $('#pageUpdatePipeline select#pipelineName option:selected').each(function () {
         pipelineValue = $(this).text();
     });
 
-    if (!rcValue || !systemValue || !pipelineValue) {
+    if (rcValue == Opt || (!systemValue || systemValue == Opt) || (!pipelineValue || pipelineValue == Opt)) {
         alert("All fields are required.");
-        if (!rcValue) {
+        console.log(rcValue, systemValue, pipelineValue);
+        if (rcValue == "Select Option") {
             $("#pageUpdatePipeline select#rcName").focus();
-        } else if (!systemValue) {
+        } else if (!systemValue || systemValue == "Select Option") {
             $("#pageUpdatePipeline select#systemName").focus();
-        } else if (!pipelineValue) {
+        } else if (!pipelineValue || pipelineValue == "Select Option") {
             $("#pageUpdatePipeline select#pipelineName").focus();
         }
     } else {
-        getLauncherReceiverTextValues(pipelineValue, ["#pageUpdatePipeline select#pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
+        getLauncherReceiverTextValues(pipelineValue, ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
 
         $(".jsHide").hide();
         $("#pageUpdatePipeline").show();
         $("#updatePipeline").show();
         $("#pageUpdatePipeline .submit-cancel-delete").show();
     }
-
 });
 
 //  Update/Remove Pipeline >> Cancel
