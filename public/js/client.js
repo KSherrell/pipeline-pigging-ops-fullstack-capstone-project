@@ -88,6 +88,7 @@ function loginUser(email, password) {
 }
 
 function getUserByEmail(email, origin, userObj) {
+    //this function checks if the email is a valid format; if yes, it checks to see if users already exist. If user does not exist, new users are created; if user exists, then login continues or passwords are reset (or user is directed to contact the Pipeline Foreman.)
     if (validateEmail(email)) {
         $.ajax({
                 type: "GET",
@@ -260,7 +261,7 @@ function updatePipeline(pipelineValue) {
             $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
             $("form#updatePipeline #closureName").val(result.closure);
 
-            //creating an array from the stringified result (array was stringified before being submitted)
+            //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
             let acceptablePigs = result.acceptablePigs;
             acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
             acceptablePigs = acceptablePigs.split(",");
@@ -303,6 +304,8 @@ function populateDropDown(optionValues, container) {
 };
 
 function getReportCenters(container) {
+    //this function will get a list of RC names, and populate a drop down selection list with those RC names
+    //console.log(selectionValue, container);
     $.ajax({
             type: "GET",
             url: '/reportcenters',
@@ -312,11 +315,16 @@ function getReportCenters(container) {
         })
         .done(function (result) {
             console.log(result);
+
+            //pulling the RC Names from result and putting them into an array
             let optionValues = [];
             for (let options in result) {
                 optionValues.push(result[options].RCName);
             }
+            //removing duplicates from optionValues
             optionValues = arrayDuplicates(optionValues);
+
+            //sending the optimized optionValues to be used in the appropriate drop down menu (container)
             populateDropDown(optionValues, container);
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -327,7 +335,7 @@ function getReportCenters(container) {
 };
 
 function getSystems(selectionValue, container) {
-    console.log(selectionValue, container);
+    //this function will get a list of System names based on the RC Name selection
     $.ajax({
             type: "GET",
             url: '/systems/' + selectionValue,
@@ -352,6 +360,7 @@ function getSystems(selectionValue, container) {
 };
 
 function getPipelineNames(selectionValue, container, newPipelineObj) {
+    //this function will return a list of Pipeline names based on the System name selection; the returned pipeline names will be used to create a drop down selection list or to compare against values in a newPipelineObj
     $.ajax({
             type: "GET",
             url: '/pipelines/' + selectionValue,
@@ -364,13 +373,13 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
             for (let options in result) {
                 optionValues.push(result[options].pipelineName);
             }
-            // console.log(optionValues);
+            // if newPipelineObj has a value, then a new pipeline will be added to the database.
             if (newPipelineObj) {
                 let foundPipeline = false;
                 let foundLauncher = false;
                 let foundReceiver = false;
+                //checking to make sure that the pipeline, launcher, and receiver names are all unique
                 for (let i = 0; i < result.length; i++) {
-                    console.log(result[i]);
                     if (result[i].pipelineName == newPipelineObj.pipelineName) {
                         foundPipeline = true;
                     } else if (result[i].launcherName == newPipelineObj.launcherName) {
@@ -379,6 +388,7 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
                         foundReceiver = true;
                     }
                 }
+                //alerting user to enter a unique name, focusing on the field that needs attention, and clearing its previously-entered, non-unique name
                 if (foundPipeline || foundLauncher || foundReceiver) {
                     alert("This name already exists. Please enter a unique name.");
                     if (foundPipeline) {
@@ -392,8 +402,9 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
                 } else {
                     addNewPipeline(newPipelineObj);
                 }
+                //if no newPipelineObj, then the GET result is being used to create a drop down list
             } else {
-                console.log(optionValues);
+                //console.log(optionValues);
                 optionValues = arrayDuplicates(optionValues);
                 populateDropDown(optionValues, container);
             }
@@ -514,7 +525,10 @@ $(document).on('submit', '#userCreateAcct', function (event) {
     let password = $('#pageCreateAcct #userPwd').val();
     let pwdConfirm = $('#pageCreateAcct #pwdConfirm').val();
 
+    //removing focus from any specific field
     $('#pageCreateAcct input').blur();
+
+    //checking that all fields are complete
     if (!fname || !lname || !email || !password || !pwdConfirm) {
         alert("All fields are required.");
         if (!fname) {
@@ -532,11 +546,15 @@ $(document).on('submit', '#userCreateAcct', function (event) {
         if (!pwdConfirm) {
             $('#pageCreateAcct #pwdConfirm').focus();
         };
-    } else if (password !== pwdConfirm) {
+
+    }
+    //checking that the passwords match
+    else if (password !== pwdConfirm) {
         alert("The passwords must match exactly.");
         $('#pageCreateAcct #pwdConfirm').focus().val("");
-    } else {
-        //does user already exist?
+    }
+    //the fields are completed, the passwords match, but does this user already exist? if not, a new account will be created
+    else {
         let newUserObj = {
             fname: fname,
             lname: lname,
