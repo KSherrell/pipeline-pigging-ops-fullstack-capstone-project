@@ -167,7 +167,7 @@ app.get('/users/check-email/:email', function (req, res) {
 
 // CHANGE PASSWORD
 app.put('/users/reset-pwd/:userID', function (req, res) {
-    console.log(req.params.userID, req.body.password);
+    //console.log(req.params.userID, req.body.password);
 
     bcrypt.genSalt(10, (err, salt) => {
         if (err) {
@@ -197,7 +197,7 @@ app.put('/users/reset-pwd/:userID', function (req, res) {
 
 // CHANGE NAME AND EMAIL
 app.put('/users/reset-name/:userID', function (req, res) {
-    console.log(req.params.userID, req.body.email, req.body.fname, req.body.lname);
+    //console.log(req.params.userID, req.body.email, req.body.fname, req.body.lname);
 
     User.findByIdAndUpdate(req.params.userID, {
         email: req.body.email,
@@ -260,7 +260,7 @@ app.get('/reportcenters', function (req, res) {
         });
 });
 
-// Get list of Systems based on RC selection
+// Return a list of Systems based on RC selection
 app.get("/systems/:rcValue", function (req, res) {
     console.log(req.params);
 
@@ -284,7 +284,7 @@ app.get("/systems/:rcValue", function (req, res) {
 });
 
 
-// Get list of pipelines based on System selection
+// Greturn a list of pipelines based on System selection
 app.get("/pipelines/:systemValue", function (req, res) {
     console.log(req.params);
     Pipeline
@@ -307,7 +307,7 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 });
 
-// Get pipeline to update
+// Get a pipeline to update
 app.get('/pipelines/update/:pipelineValue', function (req, res) {
     console.log(req.params);
     Pipeline
@@ -332,14 +332,12 @@ app.get('/pipelines/update/:pipelineValue', function (req, res) {
 });
 
 // Update pipeline
-app.put('/pipelines/update/:pipelineValue', function (req, res) {
+app.put('/pipelines/update/:pipelineID', function (req, res) {
 
-    console.log(req.params, req.body);
+    console.log("req.params.pipelineID = " + req.params.pipelineID);
 
     Pipeline
         .findByIdAndUpdate(req.params.pipelineID, {
-            RCName: req.body.RCName,
-            systemName: req.body.systemName,
             pipelineName: req.body.pipelineName,
             launcherName: req.body.launcherName,
             receiverName: req.body.receiverName,
@@ -348,7 +346,6 @@ app.put('/pipelines/update/:pipelineValue', function (req, res) {
             acceptablePigs: req.body.acceptablePigs,
             closure: req.body.closure,
             piggingFrequency: req.body.piggingFrequency,
-            dateAdded: req.body.dateAdded,
         }).exec().then(function (achievement) {
             return res.status(204).end();
         }).catch(function (err) {

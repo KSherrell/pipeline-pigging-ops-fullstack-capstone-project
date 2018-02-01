@@ -10,6 +10,7 @@ let currentUserActive = "";
 let currentUserID = "";
 let currentUserPassword = "";
 let activePage = "";
+let pipelineID = "";
 
 function validateSelect(selectionValue, defaultValue) {
     let validateOutput = true;
@@ -238,58 +239,6 @@ function arrayDuplicates(arr) {
         temp.push(i);
     }
     return temp;
-};
-
-function updatePipeline(pipelineValue) {
-    //this function populates the updatePipeline form with the current values called from the database; in essence, recreating the completed "Add Pipeline" form minus the Date, RC, and System fields
-    $.ajax({
-            type: "GET",
-            url: "/pipelines/update/" + pipelineValue,
-            dataType: 'json',
-            contentType: 'application/json'
-
-        })
-        .done(function (result) {
-            console.log(result);
-            //clearing all the fields of any 'leftover' values
-            $("form#updatePipeline input").val('');
-            //populating the form fields with the result.values
-            $("form#updatePipeline #pipelineName").val(result.pipelineName);
-            $("form#updatePipeline #launcherName").val(result.launcherName);
-            $("form#updatePipeline #receiverName").val(result.receiverName);
-            $("form#updatePipeline #piggingFrequency").val(result.piggingFrequency);
-            $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
-            $("form#updatePipeline #closureName").val(result.closure);
-
-            //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
-            let acceptablePigs = result.acceptablePigs;
-            acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
-            acceptablePigs = acceptablePigs.split(",");
-
-            //creating 'pre-checked' checkboxes based on values called from the database
-            let pigsChecked = "";
-            for (let i = 0; i < acceptablePigs.length; i++) {
-                pigsChecked = acceptablePigs[i];
-                //console.log(pigsChecked);
-                $('input[id=' + pigsChecked + ']').prop("checked", true);
-            }
-
-            let product = result.product;
-            product = product.replace(/[\[\]]/g, "");
-            product = product.split(",");
-            let productChecked = "";
-            for (let i = 0; i < product.length; i++) {
-                productChecked = product[i];
-                //console.log(productChecked);
-                $('input[id=' + productChecked + ']').prop("checked", true);
-            }
-        })
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
 };
 
 function populateDropDown(optionValues, container) {
@@ -949,9 +898,11 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
     } else if (!$('#pageAddPipeline #newLauncher').val()) {
         alert("Please enter new launcher name.");
         $('#pageAddPipeline #newLauncher').focus();
-    } else if (!$('#pageAddPipeline #newReceiver').val()) {
+
+    } else if (!$("#pageAddPipeline #newReceiver").val()) {
         alert("Please enter new receiver name.");
-        $('#pageAddPipeline #newReceiver').focus();
+        $("#pageAddPipeline #newReceiver").focus();
+
     } else if (!$('#pageAddPipeline #newPipelineSize').val()) {
         alert("Please enter the new pipeline size (inches).");
         $('#pageAddPipeline #newPipelineSize').focus();
@@ -1039,13 +990,88 @@ $(document).on('submit', '#updateSearch', function (event) {
             $("#pageUpdatePipeline select#pipelineName").focus();
         }
     } else {
-        updatePipeline(pipelineValue);
+        $.ajax({
+                type: "GET",
+                url: "/pipelines/update/" + pipelineValue,
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                populateUpdatePipelineForm(result);
+            })
+
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            })
+
         $(".jsHide").hide();
         $("#pageUpdatePipeline").show();
         $("#updatePipeline").show();
         $("#pageUpdatePipeline .submit-cancel-delete").show();
     }
 });
+//
+//
+//function updatePipeline(pipelineValue) {
+//    $.ajax({
+//        type: "GET",
+//        url: "/pipelines/update/" + pipelineValue,
+//        dataType: 'json',
+//        contentType: 'application/json'
+//    })
+//        .done(function (result) {
+//        console.log(result);
+//        populateUpdatePipelineForm(result);
+//    })
+//
+//        .fail(function (jqXHR, error, errorThrown) {
+//        console.log(jqXHR);
+//        console.log(error);
+//        console.log(errorThrown);
+//    })
+//};
+
+function populateUpdatePipelineForm(result) {
+    //yes, I know: this is a global variable.
+    pipelineID = result._id;
+
+    //clearing all the fields of any 'leftover' values
+    $("form#updatePipeline input").val('');
+
+    //populating the form fields with the result.values
+    $("form#updatePipeline #pipelineName").val(result.pipelineName);
+    $("form#updatePipeline #launcherName").val(result.launcherName);
+    $("form#updatePipeline #receiverName").val(result.receiverName);
+    $("form#updatePipeline #piggingFrequency").val(result.piggingFrequency);
+    $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
+    $("form#updatePipeline #closureName").val(result.closure);
+
+    //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
+    let acceptablePigs = result.acceptablePigs;
+    acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
+    acceptablePigs = acceptablePigs.split(",");
+
+    //creating 'pre-checked' checkboxes based on values called from the database
+    let pigsChecked = "";
+    for (let i = 0; i < acceptablePigs.length; i++) {
+        pigsChecked = acceptablePigs[i];
+        //console.log(pigsChecked);
+        $('input[id=' + pigsChecked + ']').prop("checked", true);
+    }
+
+    let product = result.product;
+    product = product.replace(/[\[\]]/g, "");
+    product = product.split(",");
+    let productChecked = "";
+    for (let i = 0; i < product.length; i++) {
+        productChecked = product[i];
+        //console.log(productChecked);
+        $('input[id=' + productChecked + ']').prop("checked", true);
+    }
+};
 
 //  Update/Remove Pipeline >> Cancel
 $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
@@ -1088,13 +1114,13 @@ $(document).on('submit', '#updatePipeline', function (event) {
 
     $.ajax({
             type: "PUT",
-            url: "/pipelines/update/" + pipelineName,
+            url: "/pipelines/update/" + pipelineID,
             data: JSON.stringify(updatePipelineObj),
             dataType: 'json',
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
+            // console.log(result);
             alert("Pipeline updated.");
 
         })
