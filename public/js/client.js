@@ -250,35 +250,33 @@ function updatePipeline(pipelineValue) {
         .done(function (result) {
             console.log(result);
 
+            $("form#updatePipeline input").val('');
+            $("form#updatePipeline #pipelineName").val(result.pipelineName);
+            $("form#updatePipeline #launcherName").val(result.launcherName);
+            $("form#updatePipeline #receiverName").val(result.receiverName);
+            $("form#updatePipeline #piggingFrequency").val(result.piggingFrequency);
+            $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
+            $("form#updatePipeline #closureName").val(result.closure);
 
-            // $("form#updatePipeline input").val('');
-
-            //                $("form#updatePipeline #pipelineName").val('');
-            //                $("form#updatePipeline #launcherName").val('');
-            //                $("form#updatePipeline #receiverName").val('');
-            //                $("form#updatePipeline #piggingFrequency").val('');
-            //                $("form#updatePipeline #pipelineSize").val('');
-            //                $("form#updatePipeline #closureName").val('');
-            console.log(result.acceptablePigs);
             let acceptablePigs = result.acceptablePigs;
-            console.log(acceptablePigs);
-            acceptablePigs = acceptablePigs.replace("[", "").replace("]", "").replace(/"/g, "");
-            console.log(acceptablePigs);
+            acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
             acceptablePigs = acceptablePigs.split(",");
-            console.log(acceptablePigs);
-            console.log(typeof (acceptablePigs));
-            console.log(acceptablePigs.length);
-
-            // $(document).ready(function () {
             let pigsChecked = "";
             for (let i = 0; i < acceptablePigs.length; i++) {
                 pigsChecked = acceptablePigs[i];
                 console.log(pigsChecked);
                 $('input[id=' + pigsChecked + ']').prop("checked", true);
             }
-            // })
 
-
+            let product = result.product;
+            product = product.replace(/[\[\]]/g, "");
+            product = product.split(",");
+            let productChecked = "";
+            for (let i = 0; i < product.length; i++) {
+                productChecked = product[i];
+                console.log(productChecked);
+                $('input[id=' + productChecked + ']').prop("checked", true);
+            }
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -994,7 +992,6 @@ $(document).on('submit', '#updateSearch', function (event) {
     let rcValue = "";
     let systemValue = "";
     let pipelineValue = "";
-    let Opt = "Select Option";
 
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
@@ -1008,7 +1005,7 @@ $(document).on('submit', '#updateSearch', function (event) {
         pipelineValue = $(this).text();
     });
 
-    if (rcValue == Opt || (!systemValue || systemValue == Opt) || (!pipelineValue || pipelineValue == Opt)) {
+    if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
         alert("All fields are required.");
         console.log(rcValue, systemValue, pipelineValue);
         if (rcValue == "Select Option") {
@@ -1030,8 +1027,10 @@ $(document).on('submit', '#updateSearch', function (event) {
 //  Update/Remove Pipeline >> Cancel
 $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     event.preventDefault();
+
     $("#updateSearch #systemName").html("");
     $("#updateSearch #pipelineName").html("");
+    document.getElementById("updatePipeline").reset();
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
