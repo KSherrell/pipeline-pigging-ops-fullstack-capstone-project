@@ -1073,17 +1073,6 @@ function populateUpdatePipelineForm(result) {
     }
 };
 
-//  Update/Remove Pipeline >> Cancel
-$(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
-    event.preventDefault();
-
-    $("#updateSearch #systemName").html("");
-    $("#updateSearch #pipelineName").html("");
-    document.getElementById("updatePipeline").reset();
-    document.getElementById('addPipeline').reset();
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
 
 //  Update Pipeline (Update form) >> Submit
 $(document).on('submit', '#updatePipeline', function (event) {
@@ -1096,10 +1085,12 @@ $(document).on('submit', '#updatePipeline', function (event) {
     let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
         return this.value;
     }).toArray();
+    console.log("product = " + product);
     let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
         return this.value;
     }).toArray();
     let closure = $("#updatePipeline #closureName").val();
+    console.log("closure = " + closure);
     let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
 
     let updatePipelineObj = {
@@ -1142,6 +1133,18 @@ $(document).on('submit', '#updatePipeline', function (event) {
     $("#pageAdminMenu").show();
 });
 
+
+//  Update/Remove Pipeline >> Cancel
+$(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
+    event.preventDefault();
+
+    $("#updateSearch #systemName").html("");
+    $("#updateSearch #pipelineName").html("");
+    document.getElementById("updatePipeline").reset();
+    document.getElementById('addPipeline').reset();
+    $(".jsHide").hide();
+    $("#pageAdminMenu").show();
+});
 
 //  Update/Remove Pipeline (Update form) >> Delete
 $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
