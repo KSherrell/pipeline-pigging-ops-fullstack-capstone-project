@@ -1063,18 +1063,15 @@ $(document).on('submit', '#updatePipeline', function (event) {
         piggingFrequency: piggingFrequency,
     };
 
-
-
-
-
     $.ajax({
             type: "PUT",
-            url: "/pipelines/update/" + pipelineValue,
+            url: "/pipelines/update/" + pipelineName,
             data: JSON.stringify(updatePipelineObj),
             dataType: 'json',
             contentType: 'application/json'
         })
         .done(function (result) {
+            console.log(result);
             alert("Pipeline updated.");
 
         })
@@ -1091,8 +1088,7 @@ $(document).on('submit', '#updatePipeline', function (event) {
     document.getElementById("updatePipeline").reset();
 
     $(".jsHide").hide();
-    $("#pageUpdatePipeline").show();
-    $("#updateSearch").show();
+    $("#pageAdminMenu").show();
 });
 
 
