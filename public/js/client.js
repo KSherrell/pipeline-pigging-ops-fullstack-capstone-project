@@ -240,6 +240,7 @@ function arrayDuplicates(arr) {
 };
 
 function updatePipeline(pipelineValue) {
+    //this function populates the updatePipeline form with the current values called from the database; in essence, recreating the completed "Add Pipeline" form minus the Date, RC, and System fields
     $.ajax({
             type: "GET",
             url: "/pipelines/update/" + pipelineValue,
@@ -249,8 +250,9 @@ function updatePipeline(pipelineValue) {
         })
         .done(function (result) {
             console.log(result);
-
+            //clearing all the fields of any 'leftover' values
             $("form#updatePipeline input").val('');
+            //populating the form fields with the result.values
             $("form#updatePipeline #pipelineName").val(result.pipelineName);
             $("form#updatePipeline #launcherName").val(result.launcherName);
             $("form#updatePipeline #receiverName").val(result.receiverName);
@@ -258,13 +260,16 @@ function updatePipeline(pipelineValue) {
             $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
             $("form#updatePipeline #closureName").val(result.closure);
 
+            //creating an array from the stringified result (array was stringified before being submitted)
             let acceptablePigs = result.acceptablePigs;
             acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
             acceptablePigs = acceptablePigs.split(",");
+
+            //creating 'pre-checked' checkboxes based on values called from the database
             let pigsChecked = "";
             for (let i = 0; i < acceptablePigs.length; i++) {
                 pigsChecked = acceptablePigs[i];
-                console.log(pigsChecked);
+                //console.log(pigsChecked);
                 $('input[id=' + pigsChecked + ']').prop("checked", true);
             }
 
@@ -274,7 +279,7 @@ function updatePipeline(pipelineValue) {
             let productChecked = "";
             for (let i = 0; i < product.length; i++) {
                 productChecked = product[i];
-                console.log(productChecked);
+                //console.log(productChecked);
                 $('input[id=' + productChecked + ']').prop("checked", true);
             }
         })
