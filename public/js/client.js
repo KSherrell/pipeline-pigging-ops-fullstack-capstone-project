@@ -1080,6 +1080,7 @@ $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     $("#updateSearch #systemName").html("");
     $("#updateSearch #pipelineName").html("");
     document.getElementById("updatePipeline").reset();
+    document.getElementById('addPipeline').reset();
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
@@ -1135,6 +1136,7 @@ $(document).on('submit', '#updatePipeline', function (event) {
     $("#updateSearch #systemName").html("");
     $("#updateSearch #pipelineName").html("");
     document.getElementById("updatePipeline").reset();
+    document.getElementById('addPipeline').reset();
 
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
