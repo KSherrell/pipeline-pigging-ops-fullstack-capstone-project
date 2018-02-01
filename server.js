@@ -307,8 +307,8 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 });
 
-// Get list of pipelines
-app.get("/pipelines/update/:pipelineValue", function (req, res) {
+// Get pipeline to update
+app.get('/pipelines/update/:pipelineValue', function (req, res) {
     console.log(req.params);
     Pipeline
         .findOne({
@@ -330,6 +330,33 @@ app.get("/pipelines/update/:pipelineValue", function (req, res) {
             });
 
 });
+
+// Update pipeline
+app.put('/pipelines/update/:pipelineValue', function (req, res) {
+
+    console.log(req.params, req.body);
+
+    Pipeline
+        .findByIdAndUpdate(req.params.pipelineID, {
+            RCName: req.body.RCName,
+            systemName: req.body.systemName,
+            pipelineName: req.body.pipelineName,
+            launcherName: req.body.launcherName,
+            receiverName: req.body.receiverName,
+            pipelineSize: req.body.pipelineSize,
+            product: req.body.product,
+            acceptablePigs: req.body.acceptablePigs,
+            closure: req.body.closure,
+            piggingFrequency: req.body.piggingFrequency,
+            dateAdded: req.body.dateAdded,
+        }).exec().then(function (achievement) {
+            return res.status(204).end();
+        }).catch(function (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        });
+})
 
 // Get list of pipelines
 app.get("/pipelines", function (req, res) {

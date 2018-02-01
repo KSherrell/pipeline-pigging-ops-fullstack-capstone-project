@@ -1035,11 +1035,61 @@ $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     $("#pageAdminMenu").show();
 });
 
-//  Update/Remove Pipeline (Update form) >> Submit
+//  Update Pipeline (Update form) >> Submit
 $(document).on('submit', '#updatePipeline', function (event) {
     event.preventDefault();
-    alert("Pipeline information updated successfully.");
-    document.getElementById("updateSearch").reset();
+
+    let pipelineName = $("#updatePipeline #pipelineName").val();
+    let launcherName = $("#updatePipeline #launcherName").val();
+    let receiverName = $("#updatePipeline #newReceiver").val();
+    let pipelineSize = $("#updatePipeline #pipelineSize").val();
+    let product = $("input[type=checkbox][name=product]:checked").map(function () {
+        return this.value;
+    }).toArray();
+    let acceptablePigs = $("input[type=checkbox][name=acceptable-pigs]:checked").map(function () {
+        return this.value;
+    }).toArray();
+    let closure = $("#updatePipeline #closureName").val();
+    let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
+
+    let updatePipelineObj = {
+        pipelineName: pipelineName,
+        launcherName: launcherName,
+        receiverName: receiverName,
+        pipelineSize: pipelineSize,
+        product: JSON.stringify(product),
+        acceptablePigs: JSON.stringify(acceptablePigs),
+        closure: closure,
+        piggingFrequency: piggingFrequency,
+    };
+
+
+
+
+
+    $.ajax({
+            type: "PUT",
+            url: "/pipelines/update/" + pipelineValue,
+            data: JSON.stringify(updatePipelineObj),
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            alert("Pipeline updated.");
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            //user not found
+            alert("Error updating pipeline information. Please try again.");
+        })
+
+    $("#updateSearch #systemName").html("");
+    $("#updateSearch #pipelineName").html("");
+    document.getElementById("updatePipeline").reset();
+
     $(".jsHide").hide();
     $("#pageUpdatePipeline").show();
     $("#updateSearch").show();
