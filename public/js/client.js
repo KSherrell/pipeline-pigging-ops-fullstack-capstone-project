@@ -857,10 +857,10 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
     let launcherName = $("#pageAddPipeline #newLauncher").val();
     let receiverName = $("#pageAddPipeline #newReceiver").val();
     let pipelineSize = $("#pageAddPipeline #newPipelineSize").val();
-    let product = $("input[type=checkbox][name=product]:checked").map(function () {
+    let product = $("input[type=checkbox][name=add-product]:checked").map(function () {
         return this.value;
     }).toArray();
-    let acceptablePigs = $("input[type=checkbox][name=acceptable-pigs]:checked").map(function () {
+    let acceptablePigs = $("input[type=checkbox][name=add-pigs]:checked").map(function () {
         return this.value;
     }).toArray();
     let closure = $("#pageAddPipeline #pipelineClosures").val();
@@ -1091,12 +1091,12 @@ $(document).on('submit', '#updatePipeline', function (event) {
 
     let pipelineName = $("#updatePipeline #pipelineName").val();
     let launcherName = $("#updatePipeline #launcherName").val();
-    let receiverName = $("#updatePipeline #newReceiver").val();
+    let receiverName = $("#updatePipeline #receiverName").val();
     let pipelineSize = $("#updatePipeline #pipelineSize").val();
-    let product = $("input[type=checkbox][name=product]:checked").map(function () {
+    let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
         return this.value;
     }).toArray();
-    let acceptablePigs = $("input[type=checkbox][name=acceptable-pigs]:checked").map(function () {
+    let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
         return this.value;
     }).toArray();
     let closure = $("#updatePipeline #closureName").val();
