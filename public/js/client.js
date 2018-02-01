@@ -251,6 +251,34 @@ function updatePipeline(pipelineValue) {
             console.log(result);
 
 
+            // $("form#updatePipeline input").val('');
+
+            //                $("form#updatePipeline #pipelineName").val('');
+            //                $("form#updatePipeline #launcherName").val('');
+            //                $("form#updatePipeline #receiverName").val('');
+            //                $("form#updatePipeline #piggingFrequency").val('');
+            //                $("form#updatePipeline #pipelineSize").val('');
+            //                $("form#updatePipeline #closureName").val('');
+            console.log(result.acceptablePigs);
+            let acceptablePigs = result.acceptablePigs;
+            console.log(acceptablePigs);
+            acceptablePigs = acceptablePigs.replace("[", "").replace("]", "").replace(/"/g, "");
+            console.log(acceptablePigs);
+            acceptablePigs = acceptablePigs.split(",");
+            console.log(acceptablePigs);
+            console.log(typeof (acceptablePigs));
+            console.log(acceptablePigs.length);
+
+            // $(document).ready(function () {
+            let pigsChecked = "";
+            for (let i = 0; i < acceptablePigs.length; i++) {
+                pigsChecked = acceptablePigs[i];
+                console.log(pigsChecked);
+                $('input[id=' + pigsChecked + ']').prop("checked", true);
+            }
+            // })
+
+
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -362,6 +390,7 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
                     addNewPipeline(newPipelineObj);
                 }
             } else {
+                console.log(optionValues);
                 optionValues = arrayDuplicates(optionValues);
                 populateDropDown(optionValues, container);
             }
@@ -990,8 +1019,7 @@ $(document).on('submit', '#updateSearch', function (event) {
             $("#pageUpdatePipeline select#pipelineName").focus();
         }
     } else {
-        updatePipeline(pipelineValue, ["#pageUpdatePipeline #updatePipeline #pipelineName", "#pageUpdatePipeline #launcherName", "#pageUpdatePipeline #receiverName", "#pageUpdatePipeline #closureName"]);
-
+        updatePipeline(pipelineValue);
         $(".jsHide").hide();
         $("#pageUpdatePipeline").show();
         $("#updatePipeline").show();
