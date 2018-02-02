@@ -211,7 +211,7 @@ app.put('/users/reset-pwd/:userID', function (req, res) {
             });
         });
     });
-})
+});
 
 // CHANGE NAME AND EMAIL
 app.put('/users/reset-name/:userID', function (req, res) {
@@ -226,34 +226,54 @@ app.put('/users/reset-name/:userID', function (req, res) {
             message: 'Internal Server Error'
         });
     });
+});
+
+// APPROVE/UPDATE USER
+app.put('/users/update/:email', function (req, res) {
+    console.log(req.params.email);
+    console.log(req.body.role);
+    User.findOneAndUpdate({
+        email: req.params.email
+    }, {
+        role: req.body.role,
+        approved: req.body.approved
+    }).exec().then(function (achievement) {
+        console.log(req.params.email)
+        return res.status(204).end();
+    }).catch(function (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+    });
 })
 
 app.post('/pipelines/create', (req, res) => {
     // the following variables should match the ones in the ajax call
-    Pipeline.create({
-        RCName: req.body.RCName,
-        systemName: req.body.systemName,
-        pipelineName: req.body.pipelineName,
-        launcherName: req.body.launcherName,
-        receiverName: req.body.receiverName,
-        pipelineSize: req.body.pipelineSize,
-        product: req.body.product,
-        acceptablePigs: req.body.acceptablePigs,
-        closure: req.body.closure,
-        piggingFrequency: req.body.piggingFrequency,
-        dateAdded: req.body.dateAdded,
-        pipelineActive: req.body.pipelineActive
-    }, (err, item) => {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        if (item) {
-            console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
-            return res.json(item);
-        }
-    });
+    Pipeline
+        .create({
+            RCName: req.body.RCName,
+            systemName: req.body.systemName,
+            pipelineName: req.body.pipelineName,
+            launcherName: req.body.launcherName,
+            receiverName: req.body.receiverName,
+            pipelineSize: req.body.pipelineSize,
+            product: req.body.product,
+            acceptablePigs: req.body.acceptablePigs,
+            closure: req.body.closure,
+            piggingFrequency: req.body.piggingFrequency,
+            dateAdded: req.body.dateAdded,
+            pipelineActive: req.body.pipelineActive
+        }, (err, item) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            }
+            if (item) {
+                console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
+                return res.json(item);
+            }
+        });
 });
 
 

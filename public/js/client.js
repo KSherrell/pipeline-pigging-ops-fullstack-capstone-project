@@ -1204,29 +1204,80 @@ $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
 //*** Admin Menu >> Add User
 $(document).on('click', 'p.gotoAddUser', function (event) {
     event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageAddUser").show();
-    $("#findUser").show();
-    console.log(userValuesArr);
     if (userValuesArr.length > 0) {
         let newUserNames = [];
         for (name in userValuesArr) {
             console.log(userValuesArr[name].name);
             newUserNames.push(userValuesArr[name].name)
         }
-        console.log(newUserNames);
         populateDropDown(newUserNames, "#newUserRequest");
     }
-
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#findUser").show();
 });
 
 //  Add User (Search form) >> Submit
 $(document).on('submit', '#findUser', function (event) {
     event.preventDefault();
+
+    let newUserNameSelection = "";
+    $('#pageAddUser select#newUserRequest option:selected').each(function () {
+        newUserNameSelection = $(this).text();
+    })
+
     $(".jsHide").hide();
     $("#pageAddUser").show();
     $("#assignRole").show();
-    document.getElementById("findUser").reset();
+    $("#pageAddUser #assignRole #newUserName").text(newUserNameSelection);
+    console.log(userValuesArr);
+});
+
+//  Add User (Assign Role form) >> Submit
+$(document).on('submit', '#assignRole', function (event) {
+    event.preventDefault();
+
+    let role = $("input[type=radio][name=radio-assign-user-role]:checked").val();
+    console.log(role);
+    let newUserName = $("#pageAddUser #assignRole #newUserName").text();
+    console.log(newUserName);
+
+    let newUserObj = {};
+    for (let i = 0; i < userValuesArr.length; i++) {
+        if (userValuesArr[i].name == newUserName) {
+            let email = userValuesArr[i].email;
+            newUserObj = {
+                role: role,
+                approved: 1
+            };
+            console.log(email, newUserObj);
+            $.ajax({
+                    type: "PUT",
+                url: "/users/update/" + email,
+                    data: JSON.stringify(newUserObj),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result);
+                    alert("User added/updated successfully.");
+
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error adding/updating user. Please try again.");
+                })
+
+        }
+    }
+
+
+    $(".jsHide").hide();
+    $("#pageAddUser").show();
+    $("#findUser").show();
 });
 
 //  Add User >> Cancel (for both Cancel buttons on page)
@@ -1234,15 +1285,6 @@ $(document).on('click', '#pageAddUser .button-cancel', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
-});
-
-//  Add User (Assign Role form) >> Submit
-$(document).on('submit', '#assignRole', function (event) {
-    event.preventDefault();
-    alert("User added successfully.")
-    $(".jsHide").hide();
-    $("#pageAddUser").show();
-    $("#findUser").show();
 });
 
 //*** Admin Menu >> Update/Remove User
