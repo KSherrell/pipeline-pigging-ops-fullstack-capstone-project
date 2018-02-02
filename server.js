@@ -107,6 +107,25 @@ app.post('/users/create', (req, res) => {
     });
 });
 
+// GET USERs TO CHECK FOR ACCOUNT REQUESTS
+app.get("/users/requests", function (req, res) {
+    User
+        .find(function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                return res.status(401).json({
+                    message: "System not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
+});
+
 // LOGIN
 app.post('/users/login', function (req, res) {
     let email = req.body.email;

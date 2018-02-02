@@ -11,6 +11,7 @@ let currentUserID = "";
 let currentUserPassword = "";
 let activePage = "";
 let pipelineID = "";
+let userValuesArr = [];
 
 function validateSelect(selectionValue, defaultValue) {
     let validateOutput = true;
@@ -38,6 +39,36 @@ function validateEmail(inputEmail) {
     }
 }
 
+function checkForAccountRequests() {
+    $.ajax({
+            type: 'GET',
+            url: '/users/requests',
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result, result.length);
+            let userRequestObj = {};
+            for (let i = 0; i < result.length; i++) {
+                if (result[i].approved == 0) {
+                    userRequestObj = {
+                        name: result[i].fname + " " + result[i].lname,
+                        email: result[i].email
+                    };
+                    userValuesArr.push(userRequestObj);
+                }
+            }
+            if (userValuesArr.length > 0) {
+                alert("You have " + userValuesArr.length + " new account requests awaiting approval.");
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+}
+
 function loginUser(email, password) {
     let loginObject = {
         email: email,
@@ -63,6 +94,8 @@ function loginUser(email, password) {
                 $(".jsHide").hide();
                 $("#pageAdminMenu").show();
                 activePage = "adminMenu";
+                checkForAccountRequests();
+
             } else if (currentUserRole == "operator") {
                 $(".jsHide").hide();
                 $("#pageInputPigging").show();
@@ -1174,6 +1207,7 @@ $(document).on('click', 'p.gotoAddUser', function (event) {
     $(".jsHide").hide();
     $("#pageAddUser").show();
     $("#findUser").show();
+    populateDropDown(userValuesArr, "#newUserRequest");
 });
 
 //  Add User (Search form) >> Submit
