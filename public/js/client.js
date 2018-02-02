@@ -254,7 +254,6 @@ function populateDropDown(optionValues, container) {
 
 function getReportCenters(container) {
     //this function will get a list of RC names, and populate a drop down selection list with those RC names
-    //console.log(selectionValue, container);
     $.ajax({
             type: "GET",
             url: '/reportcenters',
@@ -263,8 +262,6 @@ function getReportCenters(container) {
 
         })
         .done(function (result) {
-            console.log(result);
-
             //pulling the RC Names from result and putting them into an array
             let optionValues = [];
             for (let options in result) {
@@ -293,7 +290,6 @@ function getSystems(selectionValue, container) {
 
         })
         .done(function (result) {
-            console.log(result);
             let optionValues = [];
             for (let options in result) {
                 optionValues.push(result[options].systemName);
@@ -317,7 +313,6 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            console.log(result);
             let optionValues = [];
             for (let options in result) {
                 optionValues.push(result[options].pipelineName);
@@ -353,7 +348,6 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
                 }
                 //if no newPipelineObj, then the GET result is being used to create a drop down list
             } else {
-                //console.log(optionValues);
                 optionValues = arrayDuplicates(optionValues);
                 populateDropDown(optionValues, container);
             }
@@ -386,13 +380,8 @@ function populateUpdatePipelineForm(result) {
     let pigsChecked = "";
     for (let i = 0; i < updatePigs.length; i++) {
         pigsChecked = updatePigs[i];
-        console.log(pigsChecked);
         $('input[id="' + pigsChecked + '"]').prop("checked", true);
     }
-
-    console.log(updatePigs);
-    console.log(typeof (updatePigs));
-
 
     let updateProduct = result.product;
     updateProduct = updateProduct.replace(/["\[\]]/g, "");
@@ -400,13 +389,8 @@ function populateUpdatePipelineForm(result) {
     let productChecked = "";
     for (let i = 0; i < updateProduct.length; i++) {
         productChecked = updateProduct[i];
-        console.log(productChecked);
         $('input[id="' + productChecked + '"]').prop("checked", true);
     }
-
-    console.log(updateProduct);
-    console.log(typeof (updateProduct));
-
 };
 
 function addNewPipeline(newPipelineObj) {
@@ -880,7 +864,6 @@ $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
     let selectionValue = "";
     $('#pageAddPipeline select#rcName option:selected').each(function () {
         selectionValue = $(this).text();
-        console.log(selectionValue);
         getSystems(selectionValue, "#pageAddPipeline #systemName");
     });
 });
@@ -1029,7 +1012,6 @@ $(document).on('submit', '#updateSearch', function (event) {
 
     if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
         alert("All fields are required.");
-        console.log(rcValue, systemValue, pipelineValue);
         if (rcValue == "Select Option") {
             $("#pageUpdatePipeline select#rcName").focus();
         } else if (!systemValue || systemValue == "Select Option") {
@@ -1045,7 +1027,6 @@ $(document).on('submit', '#updateSearch', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result);
                 populateUpdatePipelineForm(result);
             })
 
@@ -1074,8 +1055,6 @@ $(document).on('submit', '#updatePipeline', function (event) {
     let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
         return this.value;
     }).toArray();
-    // console.log(product, typeof (product), product.length);
-
     let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
         return this.value;
     }).toArray();
@@ -1121,7 +1100,6 @@ $(document).on('submit', '#updatePipeline', function (event) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                // console.log(result);
                 alert("Pipeline updated.");
 
             })
@@ -1146,7 +1124,7 @@ $(document).on('submit', '#updatePipeline', function (event) {
 //  Update/Remove Pipeline (Update form) >> Delete
 $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
     event.preventDefault();
-    console.log(pipelineID);
+    //console.log(pipelineID);
     if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
         $.ajax({
                 type: 'DELETE',
@@ -1157,12 +1135,12 @@ $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
             })
             .done(function (result) {
                 alert("Record has been sucessfully deleted.");
-            $("#updateSearch #systemName").html("");
-            $("#updateSearch #pipelineName").html("");
-            document.getElementById("updatePipeline").reset();
-            document.getElementById("addPipeline").reset();
-            $(".jsHide").hide();
-            $("#pageAdminMenu").show();
+                $("#updateSearch #systemName").html("");
+                $("#updateSearch #pipelineName").html("");
+                document.getElementById("updatePipeline").reset();
+                document.getElementById("addPipeline").reset();
+                $(".jsHide").hide();
+                $("#pageAdminMenu").show();
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
@@ -1174,8 +1152,6 @@ $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
     } else {
         alert("Pipeline deletion cancelled.");
     }
-
-
 });
 
 //  Update/Remove Pipeline >> Cancel
@@ -1337,7 +1313,7 @@ function OperatorPages() {
         $("#pagePiggingSchedule .foreman-header").hide();
         $("#pagePiggingSchedule .show-to-report-viewer").hide();
         activePage = "piggingSchedule";
-        console.log(activePage);
+        //console.log(activePage);
     });
 
 
@@ -1357,7 +1333,7 @@ function OperatorPages() {
         $("#pageInputPigging div.select-receive").hide();
         $("#pageInputPigging div.select-exception").hide();
         activePage = "inputPigging";
-        console.log(activePage);
+        //console.log(activePage);
     });
 
 

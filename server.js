@@ -22,7 +22,8 @@ app.use(cors());
 app.use(express.static('public'));
 mongoose.Promise = global.Promise;
 
-// ---------------- RUN/CLOSE SERVER -----------------------------------------------------
+//  ********** RUN/CLOSE SERVER **********
+
 let server = undefined;
 
 function runServer(urlToUse) {
@@ -58,8 +59,8 @@ function closeServer() {
     }));
 }
 
-// ---------------USER ENDPOINTS-------------------------------------
-// POST -----------------------------------
+// **********  USER ENDPOINTS  **********
+
 // CREATE ACCOUNT (USER)
 app.post('/users/create', (req, res) => {
     // the following variables should match the ones in the ajax call
@@ -127,7 +128,7 @@ app.post('/users/login', function (req, res) {
             } else {
                 items.validatePassword(req.body.password, function (err, isValid) {
                     if (err) {
-                        console.log('There was an error validating the password.');
+                        message: "There was an error validating the password."
                     }
                     if (!isValid) {
                         return res.status(401).json({
@@ -167,8 +168,6 @@ app.get('/users/check-email/:email', function (req, res) {
 
 // CHANGE PASSWORD
 app.put('/users/reset-pwd/:userID', function (req, res) {
-    //console.log(req.params.userID, req.body.password);
-
     bcrypt.genSalt(10, (err, salt) => {
         if (err) {
             return res.status(500).json({
@@ -197,8 +196,6 @@ app.put('/users/reset-pwd/:userID', function (req, res) {
 
 // CHANGE NAME AND EMAIL
 app.put('/users/reset-name/:userID', function (req, res) {
-    //console.log(req.params.userID, req.body.email, req.body.fname, req.body.lname);
-
     User.findByIdAndUpdate(req.params.userID, {
         email: req.body.email,
         fname: req.body.fname,
@@ -242,7 +239,7 @@ app.post('/pipelines/create', (req, res) => {
 
 
 // Get list of RCs
-app.get('/reportcenters', function (req, res) {
+app.get("/reportcenters", function (req, res) {
     ReportCenter
         .find(function (err, items) {
             if (err) {
@@ -262,8 +259,6 @@ app.get('/reportcenters', function (req, res) {
 
 // Return a list of Systems based on RC selection
 app.get("/systems/:rcValue", function (req, res) {
-    console.log(req.params);
-
     System
         .find({
             RCName: req.params.rcValue,
@@ -284,9 +279,8 @@ app.get("/systems/:rcValue", function (req, res) {
 });
 
 
-// Greturn a list of pipelines based on System selection
+// Return a list of pipelines based on System selection
 app.get("/pipelines/:systemValue", function (req, res) {
-    console.log(req.params);
     Pipeline
         .find({
             systemName: req.params.systemValue,
@@ -309,7 +303,6 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 // Get a pipeline to update
 app.get('/pipelines/update/:pipelineValue', function (req, res) {
-    console.log(req.params);
     Pipeline
         .findOne({
                 pipelineName: req.params.pipelineValue,
@@ -333,9 +326,6 @@ app.get('/pipelines/update/:pipelineValue', function (req, res) {
 
 // Update pipeline
 app.put('/pipelines/update/:pipelineID', function (req, res) {
-
-    console.log("req.params.pipelineID = " + req.params.pipelineID);
-
     Pipeline
         .findByIdAndUpdate(req.params.pipelineID, {
             pipelineName: req.body.pipelineName,
@@ -357,7 +347,6 @@ app.put('/pipelines/update/:pipelineID', function (req, res) {
 
 // Delete a pipeline
 app.delete("/pipelines/delete/:pipelineID", function (req, res) {
-    console.log(req.params.pipelineID);
     Pipeline
         .findByIdAndRemove(req.params.pipelineID,
             function (err, items) {
@@ -374,12 +363,10 @@ app.delete("/pipelines/delete/:pipelineID", function (req, res) {
                     return res.json(items);
                 }
             });
-
 });
 
 // Get list of pipelines
 app.get("/pipelines", function (req, res) {
-    console.log(req.params);
     Pipeline
         .find(function (err, items) {
             if (err) {
