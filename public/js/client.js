@@ -1253,15 +1253,31 @@ $(document).on('submit', '#assignRole', function (event) {
             console.log(email, newUserObj);
             $.ajax({
                     type: "PUT",
-                url: "/users/update/" + email,
+                    url: "/users/update/" + email,
                     data: JSON.stringify(newUserObj),
                     dataType: 'json',
                     contentType: 'application/json'
                 })
                 .done(function (result) {
-                    console.log(result);
+                    // console.log(result);
                     alert("User added/updated successfully.");
+                    userValuesArr.splice(i, 1);
+                    if (userValuesArr.length > 0) {
+                        let newUserNames = [];
+                        for (name in userValuesArr) {
+                            console.log(userValuesArr[name].name);
+                            newUserNames.push(userValuesArr[name].name)
+                        }
+                        $(".jsHide").hide();
+                        $("#pageAddUser").show();
+                        $("#findUser").show();
+                        populateDropDown(newUserNames, "#newUserRequest");
+                        document.getElementById("assignRole").reset();
 
+                    } else {
+                        $(".jsHide").hide();
+                        $("#pageAdminMenu").show();
+                    }
                 })
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
@@ -1274,10 +1290,6 @@ $(document).on('submit', '#assignRole', function (event) {
         }
     }
 
-
-    $(".jsHide").hide();
-    $("#pageAddUser").show();
-    $("#findUser").show();
 });
 
 //  Add User >> Cancel (for both Cancel buttons on page)
