@@ -368,7 +368,7 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
 function addNewPipeline(newPipelineObj) {
     $.ajax({
             type: 'POST',
-            url: '/pipelines',
+            url: '/pipelines/create',
             dataType: 'json',
             data: JSON.stringify(newPipelineObj),
             contentType: 'application/json'
@@ -844,6 +844,7 @@ $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
 //   Add Pipeline >> Submit
 $(document).on('submit', '#pageAddPipeline', function (event) {
     event.preventDefault();
+
     let RCName = "";
     $('#pageAddPipeline select#rcName option:selected').each(function () {
         RCName = $(this).text();
@@ -857,12 +858,15 @@ $(document).on('submit', '#pageAddPipeline', function (event) {
     let launcherName = $("#pageAddPipeline #newLauncher").val();
     let receiverName = $("#pageAddPipeline #newReceiver").val();
     let pipelineSize = $("#pageAddPipeline #newPipelineSize").val();
+
     let product = $("input[type=checkbox][name=add-product]:checked").map(function () {
         return this.value;
     }).toArray();
+
     let acceptablePigs = $("input[type=checkbox][name=add-pigs]:checked").map(function () {
         return this.value;
     }).toArray();
+
     let closure = $("#pageAddPipeline #pipelineClosures").val();
     let piggingFrequency = $("#pageAddPipeline #piggingFrequency").val();
     let dateAdded = $("#pageAddPipeline #addPipelineDate").val();
@@ -1038,9 +1042,6 @@ function populateUpdatePipelineForm(result) {
     //yes, I know: this is a global variable.
     pipelineID = result._id;
 
-    //clearing all the fields of any 'leftover' values
-    $("form#updatePipeline input").val('');
-
     //populating the form fields with the result.values
     $("form#updatePipeline #pipelineName").val(result.pipelineName);
     $("form#updatePipeline #launcherName").val(result.launcherName);
@@ -1050,27 +1051,35 @@ function populateUpdatePipelineForm(result) {
     $("form#updatePipeline #closureName").val(result.closure);
 
     //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
-    let acceptablePigs = result.acceptablePigs;
-    acceptablePigs = acceptablePigs.replace(/[\[\]]/g, "");
-    acceptablePigs = acceptablePigs.split(",");
+    let updatePigs = result.acceptablePigs;
+    updatePigs = updatePigs.replace(/["\[\]]/g, "");
+    updatePigs = updatePigs.split(",");
 
     //creating 'pre-checked' checkboxes based on values called from the database
     let pigsChecked = "";
-    for (let i = 0; i < acceptablePigs.length; i++) {
-        pigsChecked = acceptablePigs[i];
-        //console.log(pigsChecked);
-        $('input[id=' + pigsChecked + ']').prop("checked", true);
+    for (let i = 0; i < updatePigs.length; i++) {
+        pigsChecked = updatePigs[i];
+        console.log(pigsChecked);
+        $('input[id="' + pigsChecked + '"]').prop("checked", true);
     }
 
-    let product = result.product;
-    product = product.replace(/[\[\]]/g, "");
-    product = product.split(",");
+    console.log(updatePigs);
+    console.log(typeof (updatePigs));
+
+
+    let updateProduct = result.product;
+    updateProduct = updateProduct.replace(/["\[\]]/g, "");
+    updateProduct = updateProduct.split(",");
     let productChecked = "";
-    for (let i = 0; i < product.length; i++) {
-        productChecked = product[i];
-        //console.log(productChecked);
+    for (let i = 0; i < updateProduct.length; i++) {
+        productChecked = updateProduct[i];
+        console.log(productChecked);
         $('input[id=' + productChecked + ']').prop("checked", true);
     }
+
+    console.log(updateProduct);
+    console.log(typeof (updateProduct));
+
 };
 
 
@@ -1082,16 +1091,24 @@ $(document).on('submit', '#updatePipeline', function (event) {
     let launcherName = $("#updatePipeline #launcherName").val();
     let receiverName = $("#updatePipeline #receiverName").val();
     let pipelineSize = $("#updatePipeline #pipelineSize").val();
+
     let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
         return this.value;
     }).toArray();
-    console.log("product = " + product);
+
+    console.log("product = ", product, typeof (product));
+    console.log($(this).find("input[name='update-pigs']"));
+
     let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
+        console.log(this.value);
         return this.value;
     }).toArray();
+
+    console.log("acceptablePigs = ", acceptablePigs, typeof (acceptablePigs));
+
     let closure = $("#updatePipeline #closureName").val();
-    console.log("closure = " + closure);
-    let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
+    console.log("closure = ", closure);
+    let piggingFrequency = $("#updatePipeline#piggingFrequency").val();
 
     let updatePipelineObj = {
         pipelineName: pipelineName,

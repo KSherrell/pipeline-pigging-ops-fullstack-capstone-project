@@ -212,7 +212,7 @@ app.put('/users/reset-name/:userID', function (req, res) {
     });
 })
 
-app.post('/pipelines', (req, res) => {
+app.post('/pipelines/create', (req, res) => {
     // the following variables should match the ones in the ajax call
     Pipeline.create({
         RCName: req.body.RCName,
