@@ -365,6 +365,50 @@ function getPipelineNames(selectionValue, container, newPipelineObj) {
         })
 };
 
+function populateUpdatePipelineForm(result) {
+    //yes, I know: this is a global variable.
+    pipelineID = result._id;
+
+    //populating the form fields with the result.values
+    $("form#updatePipeline #pipelineName").val(result.pipelineName);
+    $("form#updatePipeline #launcherName").val(result.launcherName);
+    $("form#updatePipeline #receiverName").val(result.receiverName);
+    $("form#updatePipeline #piggingFrequency").val(result.piggingFrequency);
+    $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
+    $("form#updatePipeline #closureName").val(result.closure);
+
+    //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
+    let updatePigs = result.acceptablePigs;
+    updatePigs = updatePigs.replace(/["\[\]]/g, "");
+    updatePigs = updatePigs.split(",");
+
+    //creating 'pre-checked' checkboxes based on values called from the database
+    let pigsChecked = "";
+    for (let i = 0; i < updatePigs.length; i++) {
+        pigsChecked = updatePigs[i];
+        console.log(pigsChecked);
+        $('input[id="' + pigsChecked + '"]').prop("checked", true);
+    }
+
+    console.log(updatePigs);
+    console.log(typeof (updatePigs));
+
+
+    let updateProduct = result.product;
+    updateProduct = updateProduct.replace(/["\[\]]/g, "");
+    updateProduct = updateProduct.split(",");
+    let productChecked = "";
+    for (let i = 0; i < updateProduct.length; i++) {
+        productChecked = updateProduct[i];
+        console.log(productChecked);
+        $('input[id="' + productChecked + '"]').prop("checked", true);
+    }
+
+    console.log(updateProduct);
+    console.log(typeof (updateProduct));
+
+};
+
 function addNewPipeline(newPipelineObj) {
     $.ajax({
             type: 'POST',
@@ -1017,70 +1061,6 @@ $(document).on('submit', '#updateSearch', function (event) {
         $("#pageUpdatePipeline .submit-cancel-delete").show();
     }
 });
-//
-//
-//function updatePipeline(pipelineValue) {
-//    $.ajax({
-//        type: "GET",
-//        url: "/pipelines/update/" + pipelineValue,
-//        dataType: 'json',
-//        contentType: 'application/json'
-//    })
-//        .done(function (result) {
-//        console.log(result);
-//        populateUpdatePipelineForm(result);
-//    })
-//
-//        .fail(function (jqXHR, error, errorThrown) {
-//        console.log(jqXHR);
-//        console.log(error);
-//        console.log(errorThrown);
-//    })
-//};
-
-function populateUpdatePipelineForm(result) {
-    //yes, I know: this is a global variable.
-    pipelineID = result._id;
-
-    //populating the form fields with the result.values
-    $("form#updatePipeline #pipelineName").val(result.pipelineName);
-    $("form#updatePipeline #launcherName").val(result.launcherName);
-    $("form#updatePipeline #receiverName").val(result.receiverName);
-    $("form#updatePipeline #piggingFrequency").val(result.piggingFrequency);
-    $("form#updatePipeline #pipelineSize").val(result.pipelineSize);
-    $("form#updatePipeline #closureName").val(result.closure);
-
-    //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
-    let updatePigs = result.acceptablePigs;
-    updatePigs = updatePigs.replace(/["\[\]]/g, "");
-    updatePigs = updatePigs.split(",");
-
-    //creating 'pre-checked' checkboxes based on values called from the database
-    let pigsChecked = "";
-    for (let i = 0; i < updatePigs.length; i++) {
-        pigsChecked = updatePigs[i];
-        console.log(pigsChecked);
-        $('input[id="' + pigsChecked + '"]').prop("checked", true);
-    }
-
-    console.log(updatePigs);
-    console.log(typeof (updatePigs));
-
-
-    let updateProduct = result.product;
-    updateProduct = updateProduct.replace(/["\[\]]/g, "");
-    updateProduct = updateProduct.split(",");
-    let productChecked = "";
-    for (let i = 0; i < updateProduct.length; i++) {
-        productChecked = updateProduct[i];
-        console.log(productChecked);
-        $('input[id="' + productChecked + '"]').prop("checked", true);
-    }
-
-    console.log(updateProduct);
-    console.log(typeof (updateProduct));
-
-};
 
 
 //  Update Pipeline (Update form) >> Submit
@@ -1163,6 +1143,40 @@ $(document).on('submit', '#updatePipeline', function (event) {
     }
 });
 
+//  Update/Remove Pipeline (Update form) >> Delete
+$(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
+    event.preventDefault();
+    console.log(pipelineID);
+    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
+        $.ajax({
+                type: 'DELETE',
+                url: '/pipelines/delete/' + pipelineID,
+                dataType: 'json',
+                // data: JSON.stringify(newPipelineObj),
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                alert("Record has been sucessfully deleted.");
+            $("#updateSearch #systemName").html("");
+            $("#updateSearch #pipelineName").html("");
+            document.getElementById("updatePipeline").reset();
+            document.getElementById("addPipeline").reset();
+            $(".jsHide").hide();
+            $("#pageAdminMenu").show();
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert('Error deleting pipeline. Please try again.');
+            });
+
+    } else {
+        alert("Pipeline deletion cancelled.");
+    }
+
+
+});
 
 //  Update/Remove Pipeline >> Cancel
 $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
@@ -1171,21 +1185,12 @@ $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
     $("#updateSearch #systemName").html("");
     $("#updateSearch #pipelineName").html("");
     document.getElementById("updatePipeline").reset();
-    document.getElementById('addPipeline').reset();
+    document.getElementById("addPipeline").reset();
     $(".jsHide").hide();
     $("#pageAdminMenu").show();
 });
 
-//  Update/Remove Pipeline (Update form) >> Delete
-$(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
-    event.preventDefault();
-    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
-        alert("Record has be sucessfully deleted.");
-    }
-    $(".jsHide").hide();
-    $("#pageUpdatePipeline").show();
-    $("#updateSearch").show();
-});
+
 
 //*** Admin Menu >> Add User
 $(document).on('click', 'p.gotoAddUser', function (event) {

@@ -353,7 +353,29 @@ app.put('/pipelines/update/:pipelineID', function (req, res) {
                 message: 'Internal Server Error'
             });
         });
-})
+});
+
+// Delete a pipeline
+app.delete("/pipelines/delete/:pipelineID", function (req, res) {
+    console.log(req.params.pipelineID);
+    Pipeline
+        .findByIdAndRemove(req.params.pipelineID,
+            function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
+
+});
 
 // Get list of pipelines
 app.get("/pipelines", function (req, res) {
