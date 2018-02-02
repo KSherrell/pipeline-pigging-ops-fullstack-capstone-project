@@ -1207,7 +1207,17 @@ $(document).on('click', 'p.gotoAddUser', function (event) {
     $(".jsHide").hide();
     $("#pageAddUser").show();
     $("#findUser").show();
-    populateDropDown(userValuesArr, "#newUserRequest");
+    console.log(userValuesArr);
+    if (userValuesArr.length > 0) {
+        let newUserNames = [];
+        for (name in userValuesArr) {
+            console.log(userValuesArr[name].name);
+            newUserNames.push(userValuesArr[name].name)
+        }
+        console.log(newUserNames);
+        populateDropDown(newUserNames, "#newUserRequest");
+    }
+
 });
 
 //  Add User (Search form) >> Submit
