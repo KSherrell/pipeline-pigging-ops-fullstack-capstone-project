@@ -1074,7 +1074,7 @@ function populateUpdatePipelineForm(result) {
     for (let i = 0; i < updateProduct.length; i++) {
         productChecked = updateProduct[i];
         console.log(productChecked);
-        $('input[id=' + productChecked + ']').prop("checked", true);
+        $('input[id="' + productChecked + '"]').prop("checked", true);
     }
 
     console.log(updateProduct);
@@ -1091,24 +1091,16 @@ $(document).on('submit', '#updatePipeline', function (event) {
     let launcherName = $("#updatePipeline #launcherName").val();
     let receiverName = $("#updatePipeline #receiverName").val();
     let pipelineSize = $("#updatePipeline #pipelineSize").val();
-
     let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
         return this.value;
     }).toArray();
-
-    console.log("product = ", product, typeof (product));
-    console.log($(this).find("input[name='update-pigs']"));
+    // console.log(product, typeof (product), product.length);
 
     let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
-        console.log(this.value);
         return this.value;
     }).toArray();
-
-    console.log("acceptablePigs = ", acceptablePigs, typeof (acceptablePigs));
-
     let closure = $("#updatePipeline #closureName").val();
-    console.log("closure = ", closure);
-    let piggingFrequency = $("#updatePipeline#piggingFrequency").val();
+    let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
 
     let updatePipelineObj = {
         pipelineName: pipelineName,
@@ -1121,33 +1113,54 @@ $(document).on('submit', '#updatePipeline', function (event) {
         piggingFrequency: piggingFrequency,
     };
 
-    $.ajax({
-            type: "PUT",
-            url: "/pipelines/update/" + pipelineID,
-            data: JSON.stringify(updatePipelineObj),
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            // console.log(result);
-            alert("Pipeline updated.");
+    if (!pipelineName || !launcherName || !receiverName || !pipelineSize || product.length == 0 || acceptablePigs.length == 0 || !closure || !piggingFrequency) {
+        alert("All fields are required.");
+        if (!pipelineName) {
+            $("#updatePipeline #pipelineName").focus();
+        } else if (!launcherName) {
+            $("#updatePipeline #launcherName").focus();
+        } else if (!receiverName) {
+            $("#updatePipeline #receiverName").focus();
+        } else if (!piggingFrequency) {
+            $("#updatePipeline #piggingFrequency").focus();
+        } else if (!pipelineSize) {
+            $("#updatePipeline #pipelineSize").focus();
+        } else if (!closure) {
+            $("#updatePipeline #closureName").focus();
+        } else if (acceptablePigs.length == 0) {
+            alert("Please select types of pigs.");
+        } else if (product.length == 0) {
+            alert("Please select pipeline product.");
+        }
+    } else {
+        $.ajax({
+                type: "PUT",
+                url: "/pipelines/update/" + pipelineID,
+                data: JSON.stringify(updatePipelineObj),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                // console.log(result);
+                alert("Pipeline updated.");
 
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            //user not found
-            alert("Error updating pipeline information. Please try again.");
-        })
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                alert("Error updating pipeline information. Please try again.");
+            })
 
-    $("#updateSearch #systemName").html("");
-    $("#updateSearch #pipelineName").html("");
-    document.getElementById("updatePipeline").reset();
-    document.getElementById('addPipeline').reset();
+        $("#updateSearch #systemName").html("");
+        $("#updateSearch #pipelineName").html("");
+        document.getElementById("updatePipeline").reset();
+        document.getElementById("addPipeline").reset();
 
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    }
 });
 
 
