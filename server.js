@@ -230,8 +230,8 @@ app.put('/users/reset-name/:userID', function (req, res) {
 
 // ASSIGN USER ROLE
 app.put('/users/update/:email', function (req, res) {
-    console.log(req.params.email);
-    console.log(req.body.approved);
+//    console.log(req.params.email);
+//    console.log(req.body.approved);
     User.findOneAndUpdate({
         email: req.params.email
     }, {

@@ -96,7 +96,7 @@ function loginUser(email, password) {
                 $(".jsHide").hide();
                 $("#pageLogin").show();
                 $("#forgotPassword").hide();
-                $("form#forgotPassword + p").hide();
+                $("#pageLogin p").html("");
 
             } else {
                 if (currentUserRole == "Foreman") {
@@ -1306,7 +1306,7 @@ $(document).on('submit', '#assignRole', function (event) {
                     console.log(error);
                     console.log(errorThrown);
                     //user not found
-                    alert("Error assigning user. Please try again.");
+                    alert("Error assigning user role. Please try again.");
                 })
 
         }
@@ -1318,8 +1318,6 @@ $(document).on('submit', '#assignRole', function (event) {
 $(document).on('click', '#denyRequest', function (event) {
     event.preventDefault();
 
-    let role = $("input[type=radio][name=radio-assign-user-role]:checked").val();
-    console.log(role);
     let newUserName = $("#pageAddUser #assignRole #newUserName").text();
     console.log(newUserName);
 
@@ -1341,7 +1339,7 @@ $(document).on('click', '#denyRequest', function (event) {
                 })
                 .done(function (result) {
                     // console.log(result);
-                    alert("User account request denied.");
+                    alert("User account request has been denied.");
                     userValuesArr.splice(i, 1);
                     console.log(userValuesArr);
                     if (userValuesArr.length > 0) {
@@ -1396,10 +1394,9 @@ $(document).on('submit', '#findUpdateUser', function (event) {
     let email = $("#pageUpdateUser #findUpdateUser #userEmail").val();
     getUserByEmail(email, "updateuser");
 
-
 });
 
-function updateUserRoleAndStatus(userObj) {
+function updateUserRoleFormFill(userObj) {
     console.log(userObj);
 
     let userUpdateStatus = "";
@@ -1412,55 +1409,58 @@ function updateUserRoleAndStatus(userObj) {
     $("#updateRole #userUpdateName").text(userObj.fname + " " + userObj.lname);
     $("#updateRole #userUpdateRole").text(userObj.role);
     $("#updateRole #userUpdateStatus").text(userUpdateStatus);
-
-    $(document).on('submit', '#updateRole', function (event) {
-        event.preventDefault();
-
-        let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
-        console.log(role);
-
-        let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
-        console.log(approved);
-
-        if (!role) {
-            alert("Please select a role.");
-        } else if (!approved) {
-            alert("Please select a status.");
-        } else {
-            let email = userObj.email;
-            let updateUserObj = {
-                role: role,
-                approved: approved
-            };
-            console.log(updateUserObj, typeof (updateUserObj));
-            $.ajax({
-                    type: "PUT",
-                    url: "/users/update/" + email,
-                    data: JSON.stringify(updateUserObj),
-                    dataType: 'json',
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    alert("User has been updated line 1444.");
-
-                    $(".jsHide").hide();
-                    $("#pageUpdateUser").show();
-                    $("#findUpdateUser").show();
-                    document.getElementById("findUpdateUser").reset();
-                    document.getElementById("updateRole").reset();
-
-                })
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                    //user not found
-                    alert("Error updating user. Please try again.");
-                })
-        }
-
-    });
+    $("#updateRole #userEmailHidden").val(userObj.email);
 }
+
+$(document).on('submit', '#updateRole', function (event) {
+    event.preventDefault();
+
+    let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
+    console.log(role);
+
+    let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
+    console.log(approved);
+
+    if (!role) {
+        alert("Please select a role.");
+    } else if (!approved) {
+        alert("Please select a status.");
+    } else {
+
+        let email = $("#updateRole #userEmailHidden").val();
+        let updateUserObj = {
+            role: role,
+            approved: approved
+        };
+        console.log(email);
+
+        $.ajax({
+                type: "PUT",
+                url: "/users/update/" + email,
+                data: JSON.stringify(updateUserObj),
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                alert("User has been updated line 1444.");
+
+                $(".jsHide").hide();
+                $("#pageUpdateUser").show();
+                $("#findUpdateUser").show();
+                document.getElementById("findUpdateUser").reset();
+                document.getElementById("updateRole").reset();
+
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                //user not found
+                alert("Error updating user. Please try again.");
+            })
+    }
+
+});
 
 //  Update User (Update form) >> Submit
 //$(document).on('submit', '#updateRole', function (event) {
