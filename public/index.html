@@ -21,27 +21,28 @@
             </div>
         </header>
         <section class="user-login-container">
-            <form id="userLogin" action="" method="">
+            <form id="userLogin">
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="userEmail" name="user-email" value="foreman@email.com">
+                    <input type="text" id="userEmail" name="user-email" value="foreman@email.com" />
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="userPwd" name="user-password" value="1234">
+                    <input type="password" id="userPwd" name="user-password" value="1234" />
                 </div>
                 <div class="buttons">
                     <button form="userLogin" type="submit">Submit</button>
                 </div>
             </form>
             <p><a href="#">Forgot your password?</a></p>
-            <form id="forgotPassword" action="" method="">
+            <form id="forgotPassword">
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="userEmail" name="user-email">
+                    <input type="text" id="userEmail" name="user-email" />
                 </div>
                 <div class="buttons">
-                    <button form="forgotPassword" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="forgotPassword" type="submit">Submit</button>
+                    <button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
             <p><a href="#">Create an account</a></p>
@@ -61,22 +62,21 @@
                 <p id="userEmail"> </p>
             </div>
             <hr>
-            <form id="userPwdReset" action="" method="">
+            <form id="userPwdReset">
                 <div>
                     <label for="newPwd">Reset Password</label>
-                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password">
-                    <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password">
-                    <input type="hidden" id="userEmailHidden" value="">
+                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="Enter New Password" />
+                    <input type="password" id="newPwdReenter" name="user-new-pwd-reenter" placeholder="Re-enter New Password" />
+                    <input type="hidden" id="userEmailHidden" value="" />
                 </div>
                 <div class="buttons">
-                    <button form="userPwdReset" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="userPwdReset" type="submit">Submit</button>
+                    <button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
 
         </section>
     </main>
-
-
 
 
 
@@ -92,20 +92,21 @@
             <form id="userCreateAcct">
                 <div>
                     <label for="fName">Name</label>
-                    <input type="text" id="fName" name="user-first-name" placeholder="First Name" value="Jim">
-                    <input type="text" id="lName" name="user-last-name" placeholder="Last Name" value="Evans">
+                    <input type="text" id="fName" name="user-first-name" placeholder="First Name" value="Jim" />
+                    <input type="text" id="lName" name="user-last-name" placeholder="Last Name" value="Evans" />
                 </div>
                 <div>
                     <label for="userEmail">Email</label>
-                    <input type="text" id="userEmail" name="user-email" placeholder="Email" value="jim@email.com">
+                    <input type="text" id="userEmail" name="user-email" placeholder="Email" value="jim@email.com" />
                 </div>
                 <div>
                     <label for="password" Password>Password</label>
-                    <input type="password" id="userPwd" name="user-password" placeholder="Password" value="1234">
-                    <input type="password" id="pwdConfirm" name="user-password-confrim" placeholder="Re-enter Password" value="1234">
+                    <input type="password" id="userPwd" name="user-password" placeholder="Password" value="1234" />
+                    <input type="password" id="pwdConfirm" name="user-password-confrim" placeholder="Re-enter Password" value="1234" />
                 </div>
                 <div class="buttons">
-                    <button form="userCreateAcct" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="userCreateAcct" type="submit">Submit</button>
+                    <button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
         </section>
@@ -123,30 +124,32 @@
             <div>
                 <p>Enter updates into fields below.</p>
             </div>
-            <form id="userUpdateAcctName" action="" method="">
+            <form id="userUpdateAcctName">
                 <div>
                     <label for="firstName">Name</label>
-                    <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name">
-                    <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name">
+                    <input type="text" id="firstName" name="user-first-name" placeholder="Current First Name" />
+                    <input type="text" id="lastName" name="user-last-name" placeholder="Current Last Name" />
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="user-email" placeholder="Current Email">
+                    <input type="text" id="email" name="user-email" placeholder="Current Email" />
 
                 </div>
                 <div class="buttons">
-                    <button form="userUpdateAcctName" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="userUpdateAcctName" type="submit">Submit</button>
+                    <button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
             <hr>
             <form id="userUpdateAcctPwd">
                 <div>
                     <label for="newPwd">Password</label>
-                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password">
-                    <input id="newPwdReenter" name="user-new-pwd-reenter" type="password" placeholder="Re-enter New Password">
+                    <input type="password" id="newPwd" name="user-new-pwd" placeholder="New Password" />
+                    <input id="newPwdReenter" name="user-new-pwd-reenter" type="password" placeholder="Re-enter New Password" />
                 </div>
                 <div class="buttons">
-                    <button form="userUpdateAcctPwd" type="submit">Submit</button><button type="button" class="js-cancel">Cancel</button>
+                    <button form="userUpdateAcctPwd" type="submit">Submit</button>
+                    <button type="button" class="js-cancel">Cancel</button>
                 </div>
             </form>
 
@@ -164,86 +167,100 @@
             </div>
         </header>
 
-
-
         <section class="input-pigging-container">
-            <form id="inputPigging" action="" method="">
+            <form id="inputPigging">
                 <div>
-                    <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
+                    <p>Date:
+                        <span>
+                                <input type="date" name="pigging-date" id="piggingDate" />
+                            </span>
+                    </p>
                 </div>
                 <div>
                     <select id="systems" name="systems">
-                                <option value="select-system">Select Pipeline Systems</option>
-                                <option value="system-one">System One</option>
-                                <option value="system-two">System Two</option>
-                                <option value="system-three">System Three</option>
-                                <option value="system-four">System Four</option>
-                            </select>
+                            <option value="select-system">Select Pipeline Systems</option>
+                            <option value="system-one">System One</option>
+                            <option value="system-two">System Two</option>
+                            <option value="system-three">System Three</option>
+                            <option value="system-four">System Four</option>
+                        </select>
                 </div>
                 <div>
                     <select id="pipelines" name="pipelines">
-                                <option value="select-name">Select Pipeline Name</option>
-                                <option value="0">Pipeline Object 1</option>
-                                <option value="1">Pipeline Object 2</option>
-                                <option value="2">Name Three</option>
-                                <option value="3">Name Four</option>
-                            </select>
+                            <option value="select-name">Select Pipeline Name</option>
+                            <option value="0">Pipeline Object 1</option>
+                            <option value="1">Pipeline Object 2</option>
+                            <option value="2">Name Three</option>
+                            <option value="3">Name Four</option>
+                        </select>
                 </div>
                 <div>
                     <p class="auto-pop-site-name"></p>
                 </div>
                 <div>
 
-                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch" checked="checked"><label for="radioLaunch">Launch</label>
+                    <input type="radio" name="radio-pig-activity" id="radioLaunch" value="launch" checked="checked" />
+                    <label for="radioLaunch">Launch</label>
 
                     <div class="select-launch">
                         <div>
-                            <p>Time: <span><input type="time" name="launch-time" id="launchTime"></span></p>
+                            <p>Time:
+                                <span>
+                                        <input type="time" name="launch-time" id="launchTime" />
+                                    </span>
+                            </p>
                         </div>
                         <div>
                             <select name="pig-types">
-                                        <option value="select-pig">Select Pig Type</option>
-                                        <option value="pig-one">Pig Type One</option>
-                                        <option value="pig-two">Pig Type Two</option>
-                                        <option value="pig-three">Pig Type Three</option>
-                                        <option value="pig-four">Pig Type Four</option>
-                                    </select>
+                                    <option value="select-pig">Select Pig Type</option>
+                                    <option value="pig-one">Pig Type One</option>
+                                    <option value="pig-two">Pig Type Two</option>
+                                    <option value="pig-three">Pig Type Three</option>
+                                    <option value="pig-four">Pig Type Four</option>
+                                </select>
                         </div>
                     </div>
 
-
-                    <br/>
-                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive"><label for="radioReceive">Receive</label>
-
+                    <br />
+                    <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive" />
+                    <label for="radioReceive">Receive</label>
 
                     <div class="select-receive">
                         <div>
-                            <p>Time: <span><input type="time" name="receive-time" id="receiveTime"></span></p>
+                            <p>Time:
+                                <span>
+                                        <input type="time" name="receive-time" id="receiveTime" />
+                                    </span> /p>
                         </div>
 
                         <div class="input-debris">
                             <p>Debris:</p>
-                            <span><label for="paraffinWeight">Paraffin</label></span><span><input type="number" name="paraffin-weight" id="paraffinWeight"> lbs</span>
-                            <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
+                            <span><label for="paraffinWeight">Paraffin</label></span>
+                            <span><input type="number" name="paraffin-weight" id="paraffinWeight" /> lbs</span>
+                            <span><label for="sandWeight">Sand</label></span>
+                            <span><input type="number" name="sand-weight" id="sandWeight" /> lbs</span>
                         </div>
                     </div>
 
 
-                    <br/>
-                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception"><label for="radioException">Exception</label>
+                    <br />
+                    <input type="radio" name="radio-pig-activity" id="radioException" value="exception" />
+                    <label for="radioException">Exception</label>
 
                     <div class="select-exception">
                         <div>
-                            <p>Time: <span><input type="time" name="exception-time" id="exceptionTime"></span></p>
+                            <p>Time:
+                                <span><input type="time" name="exception-time" id="exceptionTime" /></span>
+                            </p>
                         </div>
                         <div>
                             <select name="exceptions">
-                                        <option value="select-exception">Select Exception</option>
-                                        <option value="exception-one">Exception One</option>
-                                        <option value="exception-two">Exception Two</option>
-                                        <option value="exception-three">Exception Three</option>
-                                        <option value="exception-four">Exception Four</option>
-                                    </select>
+                                    <option value="select-exception">Select Exception</option>
+                                    <option value="exception-one">Exception One</option>
+                                    <option value="exception-two">Exception Two</option>
+                                    <option value="exception-three">Exception Three</option>
+                                    <option value="exception-four">Exception Four</option>
+                                </select>
                         </div>
                     </div>
 
@@ -257,8 +274,6 @@
                 </div>
 
             </form>
-
-
 
         </section>
         <div class="ops-nav">
@@ -315,7 +330,6 @@
     </main>
 
 
-
     <main id="pageAdminMenu" class="jsHide">
         <header class="normal-header">
             <div>
@@ -367,15 +381,15 @@
         </header>
 
         <section class="pigging-schedule-container">
-            <form id="piggingSchedule" action=" " method="">
+            <form id="piggingSchedule">
                 <div>
-                    <select name="pipeline-systems" required>
-                                <option value="select-system">Select Pipeline System</option>
-                                <option value="system-one">System One</option>
-                                <option value="system-two">System Two</option>
-                                <option value="system-three">System Three</option>
-                                <option value="system-four">System Four</option>
-                            </select>
+                    <select name="pipeline-systems">
+                            <option value="select-system">Select Pipeline System</option>
+                            <option value="system-one">System One</option>
+                            <option value="system-two">System Two</option>
+                            <option value="system-three">System Three</option>
+                            <option value="system-four">System Four</option>
+                        </select>
                 </div>
                 <div>
                     <button form="piggingSchedule" type="submit">Submit</button>
@@ -425,9 +439,6 @@
     </main>
 
 
-
-
-
     <main id="pageDebrisReport" class="jsHide">
 
         <header class="normal-header jsHide">
@@ -439,7 +450,6 @@
                 </div>
             </div>
         </header>
-
 
         <header class="foreman-header jsHide show-to-foreman">
             <div>
@@ -455,31 +465,35 @@
 
         <section class="debris-report-container">
 
-
-            <form id="debrisReport" class="jsHide" action="" method="">
+            <form id="debrisReport" class="jsHide">
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioTotalDebris" class="radio-other-selection" value="total-debris" checked="checked"><label for="radioTotalDebris">Total Debris</label>
+                    <input type="radio" name="radio-debris-report" id="radioTotalDebris" class="radio-other-selection" value="total-debris" checked="checked" />
+                    <label for="radioTotalDebris">Total Debris</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioDebrisNorth" class="radio-other-selection" value="debris-north"><label for="radioDebrisNorth">Total Debris North</label>
+                    <input type="radio" name="radio-debris-report" id="radioDebrisNorth" class="radio-other-selection" value="debris-north" />
+                    <label for="radioDebrisNorth">Total Debris North</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioDebrisSouth" class="radio-other-selection" value="debris-south"><label for="radioDebrisSouth">Total Debris South</label>
+                    <input type="radio" name="radio-debris-report" id="radioDebrisSouth" class="radio-other-selection" value="debris-south" />
+                    <label for="radioDebrisSouth">Total Debris South</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system"><label for="radioSystemDebris">Total Debris by System</label>
+                    <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system" />
+                    <label for="radioSystemDebris">Total Debris by System</label>
                     <div class="js-system-select jsHide">
                         <select name="select-debris-system">
-                                    <option value="select-debris-system">Select System</option>
-                                    <option value="debris-system-one">System One</option>
-                                    <option value="debris-system-two">System Two</option>
-                                    <option value="debris-system-three">System Three</option>
-                                    <option value="debris-system-four">System Four</option>
-                                </select>
+                                <option value="select-debris-system">Select System</option>
+                                <option value="debris-system-one">System One</option>
+                                <option value="debris-system-two">System Two</option>
+                                <option value="debris-system-three">System Three</option>
+                                <option value="debris-system-four">System Four</option>
+                            </select>
                     </div>
                 </div>
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioPipelineDebris" value="debris-by-pipeline"><label for="radioPipelineDebris">Total Debris by Pipeline</label>
+                    <input type="radio" name="radio-debris-report" id="radioPipelineDebris" value="debris-by-pipeline" />
+                    <label for="radioPipelineDebris">Total Debris by Pipeline</label>
                     <div class="js-pipeline-select jsHide">
                         <div>
                             <select name="select-debris-system">
@@ -507,8 +521,6 @@
                 </div>
 
             </form>
-
-
 
             <div class="debris-results jsHide">
                 <div class="debris-results-header">
@@ -666,19 +678,12 @@
                 <div class="submit-reset">
                     <button form="debrisReport" type="button">Reset</button>
                 </div>
-
             </div>
-
         </section>
         <div class="ops-nav jsHide">
             <div><a href="#">Pigging Schedule</a></div>
         </div>
-
-
     </main>
-
-
-
 
     <main id="pagePiggingActivity" class="jsHide">
         <header class="foreman-header">
@@ -694,28 +699,30 @@
         </header>
         <section class="pigging-activity-container">
 
-
-            <form id="piggingActivity" class="jsHide" action="" method="">
+            <form id="piggingActivity" class="jsHide">
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radioTotalPigs" class="radio-other-selection" value="total-pigs" checked="checked" required><label for="radioTotalPigs">Total Pigs</label>
+                    <input type="radio" name="radio-pigging-activity" id="radioTotalPigs" class="radio-other-selection" value="total-pigs" checked="checked" />
+                    <label for="radioTotalPigs">Total Pigs</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radioSystemPigs" value="pigs-by-system" required><label for="radioSystemPigs">Total Pigs by System</label>
+                    <input type="radio" name="radio-pigging-activity" id="radioSystemPigs" value="pigs-by-system" />
+                    <label for="radioSystemPigs">Total Pigs by System</label>
                     <div class="js-system-select jsHide">
-                        <select name="select-system" required>
-                                    <option value="select-system">Select System</option>
-                                    <option value="system-one">System One</option>
-                                    <option value="system-two">System Two</option>
-                                    <option value="system-three">System Three</option>
-                                    <option value="system-four">System Four</option>
-                                </select>
+                        <select name="select-system">
+                                <option value="select-system">Select System</option>
+                                <option value="system-one">System One</option>
+                                <option value="system-two">System Two</option>
+                                <option value="system-three">System Three</option>
+                                <option value="system-four">System Four</option>
+                            </select>
                     </div>
                 </div>
                 <div>
-                    <input type="radio" name="radio-pigging-activity" id="radioPipelinePigs" value="pigs-by-pipeline" required><label for="radioPipelinePigs">Total Pigs by Pipeline</label>
+                    <input type="radio" name="radio-pigging-activity" id="radioPipelinePigs" value="pigs-by-pipeline" />
+                    <label for="radioPipelinePigs">Total Pigs by Pipeline</label>
                     <div class="js-pipeline-select jsHide">
                         <div>
-                            <select name="select-system" required>
+                            <select name="select-system">
                                     <option value="debris-system">Select System</option>
                                     <option value="system-one">System One</option>
                                     <option value="system-two">System Two</option>
@@ -724,7 +731,7 @@
                                 </select>
                         </div>
                         <div>
-                            <select name="select-pipeline" required>
+                            <select name="select-pipeline">
                                     <option value="select-pipeline">Select Pipeline</option>
                                     <option value="pipeline-one">Pipeline One</option>
                                     <option value="pipeline-two">Pipeline Two</option>
@@ -738,8 +745,6 @@
                     <button form="piggingActivity" type="submit">Submit</button>
                 </div>
             </form>
-
-
 
             <div class="pigging-activity-results jsHide">
                 <div>
@@ -770,9 +775,6 @@
     </main>
 
 
-
-
-
     <main id="pageViewHistory" class="jsHide">
         <header class="foreman-header">
             <div>
@@ -787,37 +789,33 @@
         </header>
         <section class="view-history-container jsForemanPage">
 
-
-            <form id="piggingHistory" class="jsHide" method="">
+            <form id="piggingHistory" class="jsHide">
                 <div>
-                    <select name="pipeline-systems" required>
-                                <option value="select-system">Select Pipeline System</option>
-                                <option value="system-one">System One</option>
-                                <option value="system-two">System Two</option>
-                                <option value="system-three">System Three</option>
-                                <option value="system-four">System Four</option>
-                            </select>
+                    <select name="pipeline-systems">
+                            <option value="select-system">Select Pipeline System</option>
+                            <option value="system-one">System One</option>
+                            <option value="system-two">System Two</option>
+                            <option value="system-three">System Three</option>
+                            <option value="system-four">System Four</option>
+                        </select>
                 </div>
                 <div>
-                    <select name="pipeline-names" required>
-                                <option value="select-name">Select Pipeline Name</option>
-                                <option value="system-one">Name One</option>
-                                <option value="system-two">Name Two</option>
-                                <option value="system-three">Name Three</option>
-                                <option value="system-four">Name Four</option>
-                            </select>
+                    <select name="pipeline-names">
+                            <option value="select-name">Select Pipeline Name</option>
+                            <option value="system-one">Name One</option>
+                            <option value="system-two">Name Two</option>
+                            <option value="system-three">Name Three</option>
+                            <option value="system-four">Name Four</option>
+                        </select>
                 </div>
                 <div>
-                    <label for="recordsNumber">Number of records<br/>(leave blank for "All"): </label><input type="number" id="recordsNumber" name="recordsNumber">
+                    <label for="recordsNumber">Number of records<br />(leave blank for "All"): </label><input type="number" id="recordsNumber" name="recordsNumber">
                 </div>
 
                 <div class="submit-reset">
                     <button form="piggingHistory" type="submit">Submit</button>
                 </div>
             </form>
-
-
-
 
             <div class="history-results jsHide">
                 <div>
@@ -835,14 +833,9 @@
                     <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
                     <p>Sand lbs: <span>(# of lbs or '--')</span></p>
                     <p>Exception: <span>(exception type or '--')</span></p>
-                    <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
-                                .foreman-add-pipeline-container {}
-                                .foreman-update-pipeline-container {}
-                                .foreman-assign-user-role-container {}
-                                .foreman-update-user-container {}
-                                .viewonly-schedule-container {}
-                                .viewonly-debris-container {}
-                                footer {}</span></p>
+                    <p>Notes:
+                        <span>(notes or '--')</span>
+                    </p>
                 </div>
                 <div class="activity-records">
                     <p>Date of Record: <span>(date of record)</span></p>
@@ -855,14 +848,9 @@
                     <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
                     <p>Sand lbs: <span>(# of lbs or '--')</span></p>
                     <p>Exception: <span>(exception type or '--')</span></p>
-                    <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
-                                .foreman-add-pipeline-container {}
-                                .foreman-update-pipeline-container {}
-                                .foreman-assign-user-role-container {}
-                                .foreman-update-user-container {}
-                                .viewonly-schedule-container {}
-                                .viewonly-debris-container {}
-                                footer {}</span></p>
+                    <p>Notes:
+                        <span>(notes or '--')</span>
+                    </p>
                 </div>
                 <div class="activity-records">
                     <p>Date of Record: <span>(date of record)</span></p>
@@ -875,29 +863,19 @@
                     <p>Paraffin lbs: <span>(# of lbs or '--')</span></p>
                     <p>Sand lbs: <span>(# of lbs or '--')</span></p>
                     <p>Exception: <span>(exception type or '--')</span></p>
-                    <p>Notes: <span>(notes or '--')    .foreman-update-history-container {}
-                                .foreman-add-pipeline-container {}
-                                .foreman-update-pipeline-container {}
-                                .foreman-assign-user-role-container {}
-                                .foreman-update-user-container {}
-                                .viewonly-schedule-container {}
-                                .viewonly-debris-container {}
-                                footer {}</span></p>
+                    <p>Notes:
+                        <span>(notes or '--')</span>
+                    </p>
                 </div>
             </div>
-
 
             <div class="submit-reset jsHide bottom-nav">
                 <div>
                     <button type="button">Reset</button>
                 </div>
             </div>
-
         </section>
     </main>
-
-
-
 
 
 
@@ -921,7 +899,7 @@
                 <p>PERMANENTLY REPLACE</p>
                 <p>the current information.</p>
             </div>
-            <form id="updateHistory" method="">
+            <form id="updateHistory">
                 <div>
                     <p>Date: <span><input type="date" name="pigging-date" id="piggingDate"></span></p>
                 </div>
@@ -933,15 +911,15 @@
                         </div>
                         <div>
                             <select name="pig-types">
-                                        <option value="select-pig">Select Pig Type</option>
-                                        <option value="pig-one">Pig Type One</option>
-                                        <option value="pig-two">Pig Type Two</option>
-                                        <option value="pig-three">Pig Type Three</option>
-                                        <option value="pig-four">Pig Type Four</option>
-                                    </select>
+                                    <option value="select-pig">Select Pig Type</option>
+                                    <option value="pig-one">Pig Type One</option>
+                                    <option value="pig-two">Pig Type Two</option>
+                                    <option value="pig-three">Pig Type Three</option>
+                                    <option value="pig-four">Pig Type Four</option>
+                                </select>
                         </div>
                     </div>
-                    <br/>
+                    <br />
 
                     <input type="radio" name="radio-pig-activity" id="radioReceive" value="receive"><label for="radio-receive">Receive</label>
                     <div class="select-receive">
@@ -955,7 +933,7 @@
                             <span><label for="sandWeight">Sand</label></span><span><input type="number" name="sand-weight" id="sandWeight"> lbs</span>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <input type="radio" name="radio-pig-activity" id="radioException" value="exception"><label for="radio-exception">Exception</label>
                     <div class="select-exception">
                         <div>
@@ -963,12 +941,12 @@
                         </div>
                         <div>
                             <select name="exceptions">
-                                        <option value="select-exception">Select Exception</option>
-                                        <option value="exception-one">Exception One</option>
-                                        <option value="exception-two">Exception Two</option>
-                                        <option value="exception-three">Exception Three</option>
-                                        <option value="exception-four">Exception Four</option>
-                                    </select>
+                                    <option value="select-exception">Select Exception</option>
+                                    <option value="exception-one">Exception One</option>
+                                    <option value="exception-two">Exception Two</option>
+                                    <option value="exception-three">Exception Three</option>
+                                    <option value="exception-four">Exception Four</option>
+                                </select>
                         </div>
                     </div>
                 </div>
@@ -989,9 +967,6 @@
     </main>
 
 
-
-
-
     <main id="pageAddPipeline" class="jsHide">
         <header class="foreman-header">
             <div>
@@ -1006,7 +981,7 @@
         </header>
 
         <section class="add-pipeline-container">
-            <form id="addPipeline" method="">
+            <form id="addPipeline">
                 <div>
                     <p>Date: </p><input type="date" name="add-pipeline-date" id="addPipelineDate">
                 </div>
@@ -1023,12 +998,12 @@
                     <div>
                         <p>Closure:</p>
                         <select id="pipelineClosures" class="select-closure">
-                                    <option value="select-closure" selected>Select Closure</option>
-                                    <option value="closure-one">Closure One</option>
-                                    <option value="closure-two">Closure Two</option>
-                                    <option value="closure-three">Closure Three</option>
-                                    <option value="closure-four">Closure Four</option>
-                                </select>
+                                <option value="select-closure" selected>Select Closure</option>
+                                <option value="closure-one">Closure One</option>
+                                <option value="closure-two">Closure Two</option>
+                                <option value="closure-three">Closure Three</option>
+                                <option value="closure-four">Closure Four</option>
+                            </select>
                     </div>
 
                     <p>Acceptable Pigs:</p>
@@ -1220,15 +1195,11 @@
     </main>
 
 
-
-
-
-
     <main id="pageAddUser" class="jsHide">
         <header class="foreman-header">
             <div>
                 <img src="imgs/admin-menu-wht.png">
-                <h1>Add User</h1>
+                <h1>Assign User Role</h1>
                 <div>
                     <img src="imgs/acct-info-wht.png">
                     <img src="imgs/exit.png">
@@ -1246,29 +1217,32 @@
 
                 </div>
                 <div class="submit-reset">
-                    <button form="findUser" type="submit">Submit</button>
+                    <button form="findUser" type="submit">Select</button>
                     <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
 
-            <form id="assignRole" class="assignRole jsHide" action="" method="">
+            <form id="assignRole" class="assignRole jsHide">
                 <div>
                     <p id="newUserName"></p>
                 </div>
 
                 <p>Assign User Role:</p>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="reportViewer" checked><label for="radioViewOnlyRole">Report Viewer</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="reportViewer" checked />
+                    <label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator"><label for="radioOperatorRole">Operator</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator" />
+                    <label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman"><label for="radioForemanRole">Foreman</label>
+                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman" />
+                    <label for="radioForemanRole">Foreman</label>
                 </div>
 
                 <div class="submit-reset">
-                    <button form="assignRole" type="submit">Submit</button>
+                    <button form="assignRole" type="submit">Assign</button>
                     <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
@@ -1292,10 +1266,10 @@
         </header>
         <section class="update-user-container">
 
-            <form id="findUpdateUser" class="findUser jsHide" action="" method="">
+            <form id="findUpdateUser" class="findUser jsHide">
                 <label for="findUpdateUser">Find User</label>
                 <div>
-                    <input type="text" id="userEmail" name="user-email" placeholder="Enter User Email" required>
+                    <input type="text" id="userEmail" name="user-email" placeholder="Enter User Email" />
                 </div>
                 <div class="submit-reset">
                     <button form="findUpdateUser" type="submit">Submit</button>
@@ -1304,33 +1278,35 @@
             </form>
 
 
-            <form id="updateRole" class="assignRole jsHide" action="" method="">
+            <form id="updateRole" class="assignRole jsHide">
                 <div>
-                    <p id="userID">User Database ID</p>
-                    <p id="userFirstName">User First Name</p>
-                    <p id="userLastName">User Last Name</p>
+                    <p id="userUpdateName">User First Name</p>
                 </div>
                 <p>Update User Role:</p>
                 <div>
-                    <input type="radio" name="radio-update-user-role" id="radioOperatorRole" value="operator-role"><label for="radioOperatorRole">Operator</label>
+                    <input type="radio" name="radio-update-user-role" id="radioOperatorRole" value="operator-role" />
+                    <label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-update-user-role" id="radioForemanRole" value="foreman-role"><label for="radioForemanRole">Foreman</label>
+                    <input type="radio" name="radio-update-user-role" id="radioForemanRole" value="foreman-role" />
+                    <label for="radioForemanRole">Foreman</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-update-user-role" id="radioViewOnlyRole" value="view-only-role"><label for="radioViewOnlyRole">Report Viewer</label>
+                    <input type="radio" name="radio-update-user-role" id="radioViewOnlyRole" value="view-only-role" />
+                    <label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <p>Change User Status:</p>
                 <div>
-                    <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active"><label for="radioUserActive">Active</label>
-                    <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive"><label for="radioUserInactive">Inactive</label>
+                    <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" />
+                    <label for="radioUserActive">Active</label>
+                    <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" />
+                    <label for="radioUserInactive">Inactive</label>
                 </div>
                 <div class="submit-reset">
                     <button form="updateRole" type="submit">Submit</button>
                     <button type="button" class="button-cancel">Cancel</button>
                 </div>
             </form>
-
 
         </section>
     </main>
