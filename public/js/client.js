@@ -90,20 +90,20 @@ function loginUser(email, password) {
             currentUserActive = result.approved;
             currentUserPassword = result.password;
 
-            if (currentUserRole == "foreman") {
+            if (currentUserRole == "Foreman") {
                 $(".jsHide").hide();
                 $("#pageAdminMenu").show();
                 activePage = "adminMenu";
                 checkForAccountRequests();
 
-            } else if (currentUserRole == "operator") {
+            } else if (currentUserRole == "Operator") {
                 $(".jsHide").hide();
                 $("#pageInputPigging").show();
                 $("#pageInputPigging div.select-receive").hide();
                 $("#pageInputPigging div.select-exception").hide();
                 activePage = "inputPigging";
                 // selectPipeline();
-            } else if (currentUserRole == "reportViewer") {
+            } else if (currentUserRole == "Report_Viewer") {
                 $(".jsHide").hide();
                 $("#pagePiggingSchedule").show();
                 $(".foreman-header").hide();
@@ -147,6 +147,12 @@ function getUserByEmail(email, origin, userObj) {
                     $("#forgotPassword").hide();
                 } else if (origin == "login") {
                     loginUser(email, userObj.password);
+                } else if (origin == "updateuser") {
+                    $(".jsHide").hide();
+                    $("#pageUpdateUser").show();
+                    $("#updateRole").show();
+                    document.getElementById("findUpdateUser").reset();
+                    updateUserRoleAndStatus(result);
                 }
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -159,13 +165,16 @@ function getUserByEmail(email, origin, userObj) {
                     resetPwdPage(userID, userActive, email);
                 } else if (origin == "createacct") {
                     registerNewUser(userObj);
-                } else if (origin == "login") {
+                } else if (origin == "login" || origin == "updateuser") {
                     alert("User not found.");
+                    if (origin == "updateuser") {
+                        $("#findUpdateUser #userEmail").val("").focus();
+                    }
                 }
 
             })
     } else {
-        alert("Invalid email.");
+        alert("Invalid email format.");
     }
 };
 
@@ -1312,21 +1321,81 @@ $(document).on('click', 'p.gotoUpdateUser', function (event) {
 //  Update User (Search form) >> Submit
 $(document).on('submit', '#findUpdateUser', function (event) {
     event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageUpdateUser").show();
-    $("#updateRole").show();
-    document.getElementById("findUpdateUser").reset();
+    let email = $("#pageUpdateUser #findUpdateUser #userEmail").val();
+    getUserByEmail(email, "updateuser");
+
+
 });
 
+function updateUserRoleAndStatus(userObj) {
+    console.log(userObj);
+
+    let userUpdateStatus = "";
+    if (userObj.approved == 1) {
+        userUpdateStatus = "Active";
+    } else {
+        userUpdateStatus = "Inactive";
+    };
+
+    $("#updateRole #userUpdateName").text(userObj.fname + " " + userObj.lname);
+    $("#updateRole #userUpdateRole").text(userObj.role);
+    $("#updateRole #userUpdateStatus").text(userUpdateStatus);
+
+    $(document).on('submit', '#updateRole', function (event) {
+        event.preventDefault();
+
+        let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
+
+        let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
+
+        let updateUserObj = {
+            role: role,
+            approved: approved
+        };
+
+        if (!role) {
+            alert("Please select a role.");
+        } else if (!approved) {
+            alert("Please select a status.");
+        } else {
+            $.ajax({
+                    type: "PUT",
+                    url: "/users/update/" + email,
+                    data: JSON.stringify(updateUserObj),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    alert("User has been updated.");
+                    document.getElementById("findUpdateUser").reset();
+                    $(".jsHide").hide();
+                    $("#pageUpdateUser").show();
+                    $("#findUpdateUser").show();
+
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error updating user. Please try again.");
+                })
+        }
+
+    });
+}
+
 //  Update User (Update form) >> Submit
-$(document).on('submit', '#updateRole', function (event) {
-    event.preventDefault();
-    alert("User role and/or status has been updated.");
-    document.getElementById("findUpdateUser").reset();
-    $(".jsHide").hide();
-    $("#pageUpdateUser").show();
-    $("#findUpdateUser").show();
-});
+//$(document).on('submit', '#updateRole', function (event) {
+//    event.preventDefault();
+//
+//
+//    alert("User role and/or status has been updated.");
+//    document.getElementById("findUpdateUser").reset();
+//    $(".jsHide").hide();
+//    $("#pageUpdateUser").show();
+//    $("#findUpdateUser").show();
+//});
 
 //  Update User >> Cancel (for both Cancel buttons on page)
 $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {

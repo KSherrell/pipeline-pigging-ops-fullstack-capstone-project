@@ -228,10 +228,9 @@ app.put('/users/reset-name/:userID', function (req, res) {
     });
 });
 
-// APPROVE/UPDATE USER
+// ASSIGN USER ROLE
 app.put('/users/update/:email', function (req, res) {
-//    console.log(req.params.email);
-//    console.log(req.body.role);
+
     User.findOneAndUpdate({
         email: req.params.email
     }, {
@@ -246,6 +245,8 @@ app.put('/users/update/:email', function (req, res) {
         });
     });
 })
+
+
 
 app.post('/pipelines/create', (req, res) => {
     // the following variables should match the ones in the ajax call

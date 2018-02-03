@@ -1229,15 +1229,15 @@
 
                 <p>Assign User Role:</p>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="reportViewer" checked />
+                    <input type="radio" name="radio-assign-user-role" id="radioViewOnlyRole" value="Report_Viewer" checked />
                     <label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="operator" />
+                    <input type="radio" name="radio-assign-user-role" id="radioOperatorRole" value="Operator" />
                     <label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="foreman" />
+                    <input type="radio" name="radio-assign-user-role" id="radioForemanRole" value="Foreman" />
                     <label for="radioForemanRole">Foreman</label>
                 </div>
 
@@ -1280,26 +1280,33 @@
 
             <form id="updateRole" class="assignRole jsHide">
                 <div>
-                    <p id="userUpdateName">User First Name</p>
+                    <p id="userUpdateName"></p>
+                    <p>Current Role:
+                        <span id="userUpdateRole"></span>
+                    </p>
+                    <p>Current Status:
+                        <span id="userUpdateStatus"></span>
+                    </p>
                 </div>
                 <p>Update User Role:</p>
                 <div>
-                    <input type="radio" name="radio-update-user-role" id="radioOperatorRole" value="operator-role" />
+                    <input type="radio" name="radioUpdateUserRole" id="radioViewOnlyRole" value="Report_Viewer" />
+                    <label for="radioViewOnlyRole">Report Viewer</label>
+                </div>
+                <div>
+                    <input type="radio" name="radioUpdateUserRole" id="radioOperatorRole" value="Operator" />
                     <label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-update-user-role" id="radioForemanRole" value="foreman-role" />
+                    <input type="radio" name="radioUpdateUserRole" id="radioForemanRole" value="Foreman" />
                     <label for="radioForemanRole">Foreman</label>
                 </div>
-                <div>
-                    <input type="radio" name="radio-update-user-role" id="radioViewOnlyRole" value="view-only-role" />
-                    <label for="radioViewOnlyRole">Report Viewer</label>
-                </div>
+
                 <p>Change User Status:</p>
                 <div>
-                    <input type="radio" name="radio-change-user-status" id="radioUserActive" value="user-active" />
+                    <input type="radio" name="radioUpdateUserStatus" id="radioUserActive" value="user-active" />
                     <label for="radioUserActive">Active</label>
-                    <input type="radio" name="radio-change-user-status" id="radioUserInactive" value="user-inactive" />
+                    <input type="radio" name="radioUpdateUserStatus" id="radioUserInactive" value="user-inactive" />
                     <label for="radioUserInactive">Inactive</label>
                 </div>
                 <div class="submit-reset">
