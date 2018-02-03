@@ -90,28 +90,39 @@ function loginUser(email, password) {
             currentUserActive = result.approved;
             currentUserPassword = result.password;
 
-            if (currentUserRole == "Foreman") {
-                $(".jsHide").hide();
-                $("#pageAdminMenu").show();
-                activePage = "adminMenu";
-                checkForAccountRequests();
 
-            } else if (currentUserRole == "Operator") {
+            if (currentUserActive == 4) {
+                alert("Your account request has been denied. Please contact the Pipeline Foreman for more information.");
                 $(".jsHide").hide();
-                $("#pageInputPigging").show();
-                $("#pageInputPigging div.select-receive").hide();
-                $("#pageInputPigging div.select-exception").hide();
-                activePage = "inputPigging";
-                // selectPipeline();
-            } else if (currentUserRole == "Report_Viewer") {
-                $(".jsHide").hide();
-                $("#pagePiggingSchedule").show();
-                $(".foreman-header").hide();
-                $(".show-to-operator").hide();
-                activePage = "piggingScheduleRV";
+                $("#pageLogin").show();
+                $("#forgotPassword").hide();
+                $("form#forgotPassword + p").hide();
+
             } else {
-                alert("User found but not active. Please contact the Pipeline Foreman.");
+                if (currentUserRole == "Foreman") {
+                    $(".jsHide").hide();
+                    $("#pageAdminMenu").show();
+                    activePage = "adminMenu";
+                    checkForAccountRequests();
+
+                } else if (currentUserRole == "Operator") {
+                    $(".jsHide").hide();
+                    $("#pageInputPigging").show();
+                    $("#pageInputPigging div.select-receive").hide();
+                    $("#pageInputPigging div.select-exception").hide();
+                    activePage = "inputPigging";
+                    // selectPipeline();
+                } else if (currentUserRole == "Report_Viewer") {
+                    $(".jsHide").hide();
+                    $("#pagePiggingSchedule").show();
+                    $(".foreman-header").hide();
+                    $(".show-to-operator").hide();
+                    activePage = "piggingScheduleRV";
+                } else {
+                    alert("User found but not active. Please contact the Pipeline Foreman.");
+                }
             }
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -1303,6 +1314,67 @@ $(document).on('submit', '#assignRole', function (event) {
 
 });
 
+//  Add User (Assign Role form) >> Deny
+$(document).on('click', '#denyRequest', function (event) {
+    event.preventDefault();
+
+    let role = $("input[type=radio][name=radio-assign-user-role]:checked").val();
+    console.log(role);
+    let newUserName = $("#pageAddUser #assignRole #newUserName").text();
+    console.log(newUserName);
+
+    let newUserObj = {};
+    for (let i = 0; i < userValuesArr.length; i++) {
+        if (userValuesArr[i].name == newUserName) {
+            let email = userValuesArr[i].email;
+            newUserObj = {
+                role: "",
+                approved: 4
+            };
+            console.log(email, newUserObj);
+            $.ajax({
+                    type: "PUT",
+                    url: "/users/update/" + email,
+                    data: JSON.stringify(newUserObj),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    // console.log(result);
+                    alert("User account request denied.");
+                    userValuesArr.splice(i, 1);
+                    console.log(userValuesArr);
+                    if (userValuesArr.length > 0) {
+                        let newUserNames = [];
+                        for (name in userValuesArr) {
+                            console.log(userValuesArr[name].name);
+                            newUserNames.push(userValuesArr[name].name)
+                        }
+                        $(".jsHide").hide();
+                        $("#pageAddUser").show();
+                        $("#findUser").show();
+                        populateDropDown(newUserNames, "#newUserRequest");
+                        document.getElementById("assignRole").reset();
+
+                    } else {
+                        populateDropDown([], "#newUserRequest");
+                        $(".jsHide").hide();
+                        $("#pageAdminMenu").show();
+                    }
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error denying request. Please try again.");
+                })
+
+        }
+    }
+
+});
+
 //  Add User >> Cancel (for both Cancel buttons on page)
 $(document).on('click', '#pageAddUser .button-cancel', function (event) {
     event.preventDefault();
@@ -1369,11 +1441,13 @@ function updateUserRoleAndStatus(userObj) {
                     contentType: 'application/json'
                 })
                 .done(function (result) {
-                    alert("User has been updated.");
-                    document.getElementById("findUpdateUser").reset();
+                    alert("User has been updated line 1444.");
+
                     $(".jsHide").hide();
                     $("#pageUpdateUser").show();
                     $("#findUpdateUser").show();
+                    document.getElementById("findUpdateUser").reset();
+                    document.getElementById("updateRole").reset();
 
                 })
                 .fail(function (jqXHR, error, errorThrown) {
