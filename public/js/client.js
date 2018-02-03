@@ -1345,19 +1345,22 @@ function updateUserRoleAndStatus(userObj) {
         event.preventDefault();
 
         let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
+        console.log(role);
 
         let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
-
-        let updateUserObj = {
-            role: role,
-            approved: approved
-        };
+        console.log(approved);
 
         if (!role) {
             alert("Please select a role.");
         } else if (!approved) {
             alert("Please select a status.");
         } else {
+            let email = userObj.email;
+            let updateUserObj = {
+                role: role,
+                approved: approved
+            };
+            console.log(updateUserObj, typeof (updateUserObj));
             $.ajax({
                     type: "PUT",
                     url: "/users/update/" + email,
