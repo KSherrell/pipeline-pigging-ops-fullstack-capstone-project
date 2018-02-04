@@ -163,7 +163,7 @@ function getUserByEmail(email, origin, userObj) {
                     $("#pageUpdateUser").show();
                     $("#updateRole").show();
                     document.getElementById("findUpdateUser").reset();
-                    updateUserRoleAndStatus(result);
+                    updateUserRoleFormFill(result);
                 }
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -182,7 +182,6 @@ function getUserByEmail(email, origin, userObj) {
                         $("#findUpdateUser #userEmail").val("").focus();
                     }
                 }
-
             })
     } else {
         alert("Invalid email format.");
