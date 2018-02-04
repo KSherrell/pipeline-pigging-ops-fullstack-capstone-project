@@ -1428,77 +1428,60 @@ function updateUserRoleFormFill(userObj) {
     let userUpdateStatus = "";
     if (userObj.approved == 1) {
         userUpdateStatus = "Active";
+        $("input[id=radioUserActive]").prop("checked", true);
     } else {
         userUpdateStatus = "Inactive";
+        $("input[id=radioUserInactive]").prop("checked", true);
     };
 
     $("#updateRole #userUpdateName").text(userObj.fname + " " + userObj.lname);
     $("#updateRole #userUpdateRole").text(userObj.role);
     $("#updateRole #userUpdateStatus").text(userUpdateStatus);
+    $('input[id="' + userObj.role + '"]').prop("checked", true);
     $("#updateRole #userEmailHidden").val(userObj.email);
+
 }
 
 $(document).on('submit', '#updateRole', function (event) {
     event.preventDefault();
 
     let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
-    console.log(role);
 
     let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
-    console.log(approved);
 
-    if (!role) {
-        alert("Please select a role.");
-    } else if (!approved) {
-        alert("Please select a status.");
-    } else {
+    let email = $("#updateRole #userEmailHidden").val();
+    let updateUserObj = {
+        role: role,
+        approved: approved
+    };
 
-        let email = $("#updateRole #userEmailHidden").val();
-        let updateUserObj = {
-            role: role,
-            approved: approved
-        };
-        console.log(email);
+    $.ajax({
+            type: "PUT",
+            url: "/users/update/" + email,
+            data: JSON.stringify(updateUserObj),
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            alert("User has been updated.");
 
-        $.ajax({
-                type: "PUT",
-                url: "/users/update/" + email,
-                data: JSON.stringify(updateUserObj),
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                alert("User has been updated line 1444.");
+            $(".jsHide").hide();
+            $("#pageUpdateUser").show();
+            $("#findUpdateUser").show();
+            document.getElementById("findUpdateUser").reset();
+            document.getElementById("updateRole").reset();
 
-                $(".jsHide").hide();
-                $("#pageUpdateUser").show();
-                $("#findUpdateUser").show();
-                document.getElementById("findUpdateUser").reset();
-                document.getElementById("updateRole").reset();
-
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                //user not found
-                alert("Error updating user. Please try again.");
-            })
-    }
-
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            //user not found
+            alert("Error updating user. Please try again.");
+        })
 });
 
-//  Update User (Update form) >> Submit
-//$(document).on('submit', '#updateRole', function (event) {
-//    event.preventDefault();
-//
-//
-//    alert("User role and/or status has been updated.");
-//    document.getElementById("findUpdateUser").reset();
-//    $(".jsHide").hide();
-//    $("#pageUpdateUser").show();
-//    $("#findUpdateUser").show();
-//});
+
 
 //  Update User >> Cancel (for both Cancel buttons on page)
 $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
@@ -1509,6 +1492,15 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 
 
 // USER = OPERATOR
+
+// Input Pigging >> Get pipelines dropdown list from System Selection
+$(document).on('change', '#pageInputPigging #inputPigging #systems', function () {
+    event.preventDefault();
+    getPipelineNames(selectionValue, "#pageInputPigging #inputPigging #systems");
+
+});
+
+
 
 //  Input Pigging >> Radio Launch
 $(document).on('click', '#pageInputPigging #radioLaunch', function () {

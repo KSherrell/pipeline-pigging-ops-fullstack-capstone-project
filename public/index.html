@@ -183,7 +183,7 @@
                     <select id="pipelines" name="pipelines"></select>
                 </div>
                 <div>
-                    <p class="auto-pop-site-name"></p>
+                    <p id="launcherName" class="auto-pop-site-name"></p>
                 </div>
                 <div>
 
@@ -199,7 +199,7 @@
                             </p>
                         </div>
                         <div>
-                            <select name="pig-types"></select>
+                            <select id="pigTypes" name="pig-types"></select>
                         </div>
                     </div>
 
@@ -241,7 +241,7 @@
 
                 </div>
                 <div class="textarea">
-                    <textarea name="pigging-notes" maxlength="250" rows="5" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
+                    <textarea id="piggingNotes" name="pigging-notes" maxlength="250" rows="5" cols="23" placeholder="Notes (up to 250 characters)"></textarea>
                 </div>
 
                 <div class="buttons">
@@ -1267,15 +1267,15 @@
                 <p>Update User Role:</p>
                 <input type="hidden" id="userEmailHidden" value="" />
                 <div>
-                    <input type="radio" name="radioUpdateUserRole" id="radioViewOnlyRole" value="Report_Viewer" />
+                    <input type="radio" name="radioUpdateUserRole" id="Report_Viewer" value="Report_Viewer" />
                     <label for="radioViewOnlyRole">Report Viewer</label>
                 </div>
                 <div>
-                    <input type="radio" name="radioUpdateUserRole" id="radioOperatorRole" value="Operator" />
+                    <input type="radio" name="radioUpdateUserRole" id="Operator" value="Operator" />
                     <label for="radioOperatorRole">Operator</label>
                 </div>
                 <div>
-                    <input type="radio" name="radioUpdateUserRole" id="radioForemanRole" value="Foreman" />
+                    <input type="radio" name="radioUpdateUserRole" id="Foreman" value="Foreman" />
                     <label for="radioForemanRole">Foreman</label>
                 </div>
 
