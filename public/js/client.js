@@ -111,7 +111,7 @@ function loginUser(email, password) {
                     $("#pageInputPigging div.select-receive").hide();
                     $("#pageInputPigging div.select-exception").hide();
                     activePage = "inputPigging";
-                    // selectPipeline();
+                    getSystems("#inputPigging #systems");
                 } else if (currentUserRole == "Report_Viewer") {
                     $(".jsHide").hide();
                     $("#pagePiggingSchedule").show();
@@ -332,11 +332,37 @@ function getReportCenters(container) {
         })
 };
 
-function getSystems(selectionValue, container) {
+function getSystemsByRC(selectionValue, container) {
     //this function will get a list of System names based on the RC Name selection
+    console.log(selectionValue, container);
     $.ajax({
             type: "GET",
             url: '/systems/' + selectionValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].systemName);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getSystems(container) {
+    //this function will get a list of System names based on the RC Name selection
+    console.log(container);
+    $.ajax({
+            type: 'GET',
+            url: '/systems',
             dataType: 'json',
             contentType: 'application/json'
 
@@ -605,6 +631,7 @@ $(document).on('click', '#userCreateAcct .js-cancel', function (event) {
 //  Normal Header >> Account Info
 $(document).on('click', 'header img', function (event) {
     event.preventDefault();
+    console.log(activePage);
     $(".jsHide").hide();
     $("#pageUpdateAcct").show();
     $("#pageUpdateAcct #firstName").val(currentUserFName);
@@ -704,10 +731,10 @@ $(document).on('submit', '#pageUpdateAcct #userUpdateAcctPwd', function (event) 
 $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
     event.preventDefault();
     alert("Account information unchanged.");
-    if (currentUserRole == "foreman") {
+    if (currentUserRole == "Foreman") {
         $(".jsHide").hide();
         $("#pageAdminMenu").show();
-    } else if (currentUserRole == "operator") {
+    } else if (currentUserRole == "Operator") {
         if (activePage == "inputPigging") {
             $(".jsHide").hide();
             $("#pageInputPigging").show();
@@ -726,7 +753,7 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             $("#pagePiggingSchedule .js-viewonly").hide();
             activePage = "piggingSchedule";
         }
-    } else if (currentUserRole == "reportViewer") {
+    } else if (currentUserRole == "Report_Viewer") {
         $(".jsHide").hide();
         $("#pagePiggingSchedule").show();
         $(".foreman-header").hide();
@@ -916,7 +943,7 @@ $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
     let selectionValue = "";
     $('#pageAddPipeline select#rcName option:selected').each(function () {
         selectionValue = $(this).text();
-        getSystems(selectionValue, "#pageAddPipeline #systemName");
+        getSystemsByRC(selectionValue, "#pageAddPipeline #systemName");
     });
 });
 
@@ -1029,7 +1056,7 @@ $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
     let rcValue = "";
     $('#pageUpdatePipeline select#rcName option:selected').each(function () {
         rcValue = $(this).text();
-        getSystems(rcValue, "#pageUpdatePipeline #systemName");
+        getSystemsByRC(rcValue, "#pageUpdatePipeline #systemName");
     });
 });
 
