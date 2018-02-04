@@ -230,8 +230,8 @@ app.put('/users/reset-name/:userID', function (req, res) {
 
 // ASSIGN USER ROLE
 app.put('/users/update/:email', function (req, res) {
-//    console.log(req.params.email);
-//    console.log(req.body.approved);
+    //    console.log(req.params.email);
+    //    console.log(req.body.approved);
     User.findOneAndUpdate({
         email: req.params.email
     }, {
@@ -342,6 +342,29 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 });
 
+// Return a list of pipelines based on System selection
+app.get("/launchers/:pipelineValue", function (req, res) {
+    console.log(req.params.pipelineValue);
+    Pipeline
+        .find({
+            pipelineName: req.params.pipelineValue,
+        }, function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                return res.status(401).json({
+                    message: "System not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
+
+});
+
 // Get a pipeline to update
 app.get('/pipelines/update/:pipelineValue', function (req, res) {
     Pipeline
@@ -430,19 +453,19 @@ app.get("/pipelines", function (req, res) {
 app.get("/systems", function (req, res) {
     System
         .find(function (err, items) {
-        if (err) {
-            return res.status(500).json({
-                message: "Internal server error"
-            });
-        }
-        if (!items) {
-            return res.status(401).json({
-                message: "System not found"
-            });
-        } else {
-            return res.json(items);
-        }
-    });
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                return res.status(401).json({
+                    message: "System not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
 
 });
 

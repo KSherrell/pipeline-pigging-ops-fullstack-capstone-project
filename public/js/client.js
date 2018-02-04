@@ -358,7 +358,6 @@ function getSystemsByRC(selectionValue, container) {
 };
 
 function getSystems(container) {
-    //this function will get a list of System names based on the RC Name selection
     console.log(container);
     $.ajax({
             type: 'GET',
@@ -375,6 +374,27 @@ function getSystems(container) {
             optionValues = arrayDuplicates(optionValues);
             populateDropDown(optionValues, container);
         })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getLauncher(pipelineValue, container) {
+    console.log(pipelineValue, container);
+    $.ajax({
+            type: 'GET',
+            url: '/launchers/' + pipelineValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            $(container).text(result[0].launcherName);
+        })
+
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
@@ -1496,10 +1516,21 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 // Input Pigging >> Get pipelines dropdown list from System Selection
 $(document).on('change', '#pageInputPigging #inputPigging #systems', function () {
     event.preventDefault();
-    getPipelineNames(selectionValue, "#pageInputPigging #inputPigging #systems");
-
+    let systemValue = "";
+    $('#pageInputPigging select#systems option:selected').each(function () {
+        systemValue = $(this).text();
+        getPipelineNames(systemValue, "#pageInputPigging #inputPigging #pipelines", "");
+    });
 });
-
+// Input Pigging >> Get pipelines dropdown list from System Selection
+$(document).on('change', '#pageInputPigging #inputPigging #pipelines', function () {
+    event.preventDefault();
+    let pipelineValue = "";
+    $('#pageInputPigging select#pipelines option:selected').each(function () {
+        pipelineValue = $(this).text();
+        getLauncher(pipelineValue, "#pageInputPigging #inputPigging #launcherName");
+    });
+});
 
 
 //  Input Pigging >> Radio Launch
