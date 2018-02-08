@@ -7,6 +7,7 @@ const Pig = require('./models/pigs');
 const System = require('./models/systems');
 const Debris = require('./models/debris');
 const ReportCenter = require('./models/reportcenters');
+const Exception = require('./models/exceptions');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const mongoose = require('mongoose');

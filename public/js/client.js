@@ -440,12 +440,12 @@ function getExceptions(container) {
         })
         .done(function (result) {
             console.log(result);
-            //        let optionValues = [];
-            //        for (let options in result) {
-            //            optionValues.push(result[options].exception);
-            //        }
-            //        optionValues = arrayDuplicates(optionValues);
-            //        populateDropDown(optionValues, container);
+                    let optionValues = [];
+                    for (let options in result) {
+                        optionValues.push(result[options].exception);
+                    }
+                    optionValues = arrayDuplicates(optionValues);
+                    populateDropDown(optionValues, container);
 
         })
 
