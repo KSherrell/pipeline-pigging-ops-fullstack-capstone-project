@@ -402,6 +402,40 @@ function getLauncher(pipelineValue, container) {
         })
 };
 
+function getPigs(pipelineValue, container) {
+    console.log(pipelineValue, container);
+    $.ajax({
+            type: 'GET',
+            url: '/launchers/' + pipelineValue,
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+
+            //creating an array from the stringified result (array was stringified before being submitted and is coming back as a string)
+            let inputPigs = result[0].acceptablePigs;
+            inputPigs = inputPigs.replace(/["\[\]]/g, "");
+            inputPigs = inputPigs.split(",");
+            console.log(inputPigs);
+
+
+            //                    let optionValues = [];
+            //                    for (let options in inputPigs) {
+            //                        optionValues.push(inputPigs[options]);
+            //                    }
+            //                    optionValues = arrayDuplicates(optionValues);
+            populateDropDown(inputPigs, container);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
 function getPipelineNames(selectionValue, container, newPipelineObj) {
     //this function will return a list of Pipeline names based on the System name selection; the returned pipeline names will be used to create a drop down selection list or to compare against values in a newPipelineObj
     $.ajax({
@@ -1513,7 +1547,7 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 
 // USER = OPERATOR
 
-// Input Pigging >> Get pipelines dropdown list from System Selection
+// Input Pigging >> Get pipelines dropdown list from system selection
 $(document).on('change', '#pageInputPigging #inputPigging #systems', function () {
     event.preventDefault();
     let systemValue = "";
@@ -1522,13 +1556,14 @@ $(document).on('change', '#pageInputPigging #inputPigging #systems', function ()
         getPipelineNames(systemValue, "#pageInputPigging #inputPigging #pipelines", "");
     });
 });
-// Input Pigging >> Get pipelines dropdown list from System Selection
+// Input Pigging >> Get launcher name and pig types from pipeline selection
 $(document).on('change', '#pageInputPigging #inputPigging #pipelines', function () {
     event.preventDefault();
     let pipelineValue = "";
     $('#pageInputPigging select#pipelines option:selected').each(function () {
         pipelineValue = $(this).text();
         getLauncher(pipelineValue, "#pageInputPigging #inputPigging #launcherName");
+        getPigs(pipelineValue, "#pageInputPigging #inputPigging #pigTypes");
     });
 });
 

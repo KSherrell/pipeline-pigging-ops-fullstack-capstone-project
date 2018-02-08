@@ -342,7 +342,7 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 });
 
-// Return a list of pipelines based on System selection
+// Return a launcher name based on pipeline selection
 app.get("/launchers/:pipelineValue", function (req, res) {
     console.log(req.params.pipelineValue);
     Pipeline
@@ -364,6 +364,7 @@ app.get("/launchers/:pipelineValue", function (req, res) {
         });
 
 });
+
 
 // Get a pipeline to update
 app.get('/pipelines/update/:pipelineValue', function (req, res) {

@@ -88,6 +88,9 @@
         margin-top: .7rem;
         font-size: .9rem;
     }
+    p.auto-pop-site-name {
+        padding-top: .6rem;
+    }
     form div input:first-of-type {
         margin-top: .3rem;
     }
@@ -250,6 +253,10 @@
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
+    }
+
+    .input-pigging-container form input[type='time'] {
+        padding-right: 0;
     }
     .input-pigging-container form div.input-debris input[type='number'] {
         width: 70px;
@@ -585,6 +592,9 @@
         vertical-align: baseline;
         text-align: right;
         padding-right: 20px;
+    }
+    .update-history-container form input[type='time'] {
+        padding-right: 0;
     }
     .update-history-container form div.input-debris input[type='number'] {
         width: 70px;
