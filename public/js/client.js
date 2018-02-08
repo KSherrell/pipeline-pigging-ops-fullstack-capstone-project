@@ -358,7 +358,7 @@ function getSystemsByRC(selectionValue, container) {
 };
 
 function getSystems(container) {
-    console.log(container);
+    //console.log(container);
     $.ajax({
             type: 'GET',
             url: '/systems',
@@ -419,14 +419,34 @@ function getPigs(pipelineValue, container) {
             inputPigs = inputPigs.replace(/["\[\]]/g, "");
             inputPigs = inputPigs.split(",");
             console.log(inputPigs);
-
-
-            //                    let optionValues = [];
-            //                    for (let options in inputPigs) {
-            //                        optionValues.push(inputPigs[options]);
-            //                    }
-            //                    optionValues = arrayDuplicates(optionValues);
             populateDropDown(inputPigs, container);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getExceptions(container) {
+    console.log(container);
+    $.ajax({
+            type: 'GET',
+            url: '/exceptions',
+            dataType: 'json',
+            contentType: 'application/json'
+
+        })
+        .done(function (result) {
+            console.log(result);
+            //        let optionValues = [];
+            //        for (let options in result) {
+            //            optionValues.push(result[options].exception);
+            //        }
+            //        optionValues = arrayDuplicates(optionValues);
+            //        populateDropDown(optionValues, container);
+
         })
 
         .fail(function (jqXHR, error, errorThrown) {
@@ -1565,6 +1585,7 @@ $(document).on('change', '#pageInputPigging #inputPigging #pipelines', function 
         getLauncher(pipelineValue, "#pageInputPigging #inputPigging #launcherName");
         getPigs(pipelineValue, "#pageInputPigging #inputPigging #pigTypes");
     });
+
 });
 
 
@@ -1591,6 +1612,9 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").show();
+
+    // get list of exceptions
+    getExceptions("#pageInputPigging #inputPigging #exceptions");
 
 });
 

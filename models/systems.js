@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const systemSchema = new mongoose.Schema({
 
-    rcName: {
+    RCName: {
         type: String,
         required: false
     },

@@ -469,6 +469,25 @@ app.get("/systems", function (req, res) {
         });
 
 });
+// GET LIST OF EXCEPTIONS
+app.get("/exceptions", function (req, res) {
+    Exception
+        .find(function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                return res.status(401).json({
+                    message: "System not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
+
+});
 
 // MISC ------------------------------------------
 // catch-all endpoint if client makes request to non-existent endpoint
