@@ -1656,28 +1656,37 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
 
     let notesValue = $("#piggingNotes").val();
 
-    console.log(pigValue, paraffinValue, sandValue, exceptionValue);
-
-    console.log(notesValue);
-
     //validate field values
 
     // which radio button is selected?
-    let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
-    console.log(inputActivity);
 
-    let inputActivityObj = {
+    let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
+
+
+
+    let inputActivityString = inputActivity[0].id;
+    console.log(inputActivityString, typeof (inputActivityString));
+
+    // an object holding the common elements of every PUT request
+    let activityObj = {
         operatorEmail: currentUserEmail,
-        activityDate: piggingDate,
-        activityTime: piggingTime,
+        activityDate: activityDate,
+        activityTime: activityTime,
         systemName: systemValue,
         pipelineName: pipelineValue,
         launcherName: launcherValue,
         notes: notesValue
     }
+    console.log(activityObj);
+    //add key:value pairs to activityObj per inputActivity
 
-    //PUT values per inputActivity -- create a inputActivityObj for each radio selection
-    // if inputActivity == launch, then inputActivityObj = {date, time, system, pipeline, launcherName, pigType, notes}
+
+    console.log(inputActivityString, typeof (inputActivityString));
+
+    if (inputActivityString == "radioLaunch") {
+        alert("it's a launch");
+
+    }
 
 
     //clear the form
