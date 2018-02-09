@@ -1584,7 +1584,7 @@ $(document).on('change', '#pageInputPigging #inputPigging #pipelineName', functi
     $('#pageInputPigging select#pipelineName option:selected').each(function () {
         pipelineValue = $(this).text();
         getLauncher(pipelineValue, "#pageInputPigging #inputPigging #launcherName");
-        getPigs(pipelineValue, "#pageInputPigging #inputPigging #pigTypes");
+        getPigs(pipelineValue, "#pageInputPigging #inputPigging #pigType");
     });
 
 });
@@ -1642,7 +1642,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     let launcherValue = $("#launcherName").text();
 
     let pigValue = "";
-    $('#pageInputPigging select#pigTypes option:selected').each(function () {
+    $('#pageInputPigging select#pigType option:selected').each(function () {
         pigValue = $(this).text();
     });
 
@@ -1665,7 +1665,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         launcherName: launcherValue,
         notes: notesValue,
         operatorEmail: currentUserEmail
-    }
+    };
 
 
     //validate field values
@@ -1673,27 +1673,38 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         let fieldFocus = "";
         for (let values in activityObj) {
             if (activityObj[values] == "" || activityObj[values] == "Select Option") {
-                //console.log(values, activityObj[values]);
                 fieldFocus = values;
                 alert("All fields are required.");
                 $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
                 break;
-            } else {
-                if (activityObj[values] == lastItem) {
-                    done();
-                } else {
-
-                }
+            } else if (activityObj[values] == lastItem) {
+                postPiggingActivity(activityObj);
             }
         }
-
-
-        console.log("break");
-
     };
 
-    function done() {
-        console.log("done");
+    function postPiggingActivity(activityObj) {
+        console.log(activityObj);
+
+        $.ajax({
+                type: "POST",
+                url: "/pigging-activity/add",
+                data: JSON.stringify(activityObj),
+                dataType: "json",
+                contentType: "application/json"
+            })
+            .done(function (result) {
+
+                alert("Pigging activity added successfully.");
+
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+                alert("Error adding pigging activity. Please try again.");
+            })
+
     };
 
 
@@ -1710,7 +1721,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
 
     if (inputActivityString == "radioLaunch") {
         alert("it's a launch");
-        activityObj.pigTypes = pigValue;
+        activityObj.pigType = pigValue;
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.values(activityObj);
         lastItem = lastItem[objLength];
@@ -1720,12 +1731,18 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         alert("it's a receive");
         activityObj.paraffinWeight = paraffinValue;
         activityObj.sandWeight = sandValue;
-        console.log(activityObj);
+        let objLength = Object.keys(activityObj).length - 1;
+        let lastItem = Object.values(activityObj);
+        lastItem = lastItem[objLength];
+        validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioException") {
         alert("it's an exception");
         activityObj.exception = exceptionValue;
-        console.log(activityObj);
+        let objLength = Object.keys(activityObj).length - 1;
+        let lastItem = Object.values(activityObj);
+        lastItem = lastItem[objLength];
+        validateFields(activityObj, lastItem);
     }
 
 
@@ -1746,7 +1763,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     //
     //    $("#pageInputPigging #inputPigging #pipelineName").html("");
     //    $("#pageInputPigging #inputPigging #launcherName").text("");
-    //    $("#pageInputPigging #inputPigging #pigTypes").html("");
+    //    $("#pageInputPigging #inputPigging #pigType").html("");
     //    $("#pageInputPigging #inputPigging #exceptions").html("");
 });
 

@@ -108,7 +108,7 @@ app.post('/users/create', (req, res) => {
     });
 });
 
-// GET USERs TO CHECK FOR ACCOUNT REQUESTS
+// GET USERS TO CHECK FOR ACCOUNT REQUESTS
 app.get("/users/requests", function (req, res) {
     User
         .find(function (err, items) {
@@ -164,7 +164,7 @@ app.post('/users/login', function (req, res) {
 });
 
 
-// check if users exist
+// CHECK IF USERS EXIST
 app.get('/users/check-email/:email', function (req, res) {
     User
         .findOne({
@@ -249,7 +249,7 @@ app.put('/users/update/:email', function (req, res) {
 })
 
 
-
+// ADD NEW PIPELINE
 app.post('/pipelines/create', (req, res) => {
     // the following variables should match the ones in the ajax call
     Pipeline
@@ -280,7 +280,7 @@ app.post('/pipelines/create', (req, res) => {
 });
 
 
-// Get list of RCs
+// GET LIST OF RCs
 app.get("/reportcenters", function (req, res) {
     ReportCenter
         .find(function (err, items) {
@@ -299,7 +299,7 @@ app.get("/reportcenters", function (req, res) {
         });
 });
 
-// Return a list of Systems based on RC selection
+// RETURN LIST OF SYSTEMS BASED ON RC SELECTION
 app.get("/systems/:rcValue", function (req, res) {
     System
         .find({
@@ -321,7 +321,7 @@ app.get("/systems/:rcValue", function (req, res) {
 });
 
 
-// Return a list of pipelines based on System selection
+// RETURN LIST OF PIPELINES BASED ON SYSTEM SELECTION
 app.get("/pipelines/:systemValue", function (req, res) {
     Pipeline
         .find({
@@ -343,7 +343,7 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 });
 
-// Return a launcher name based on pipeline selection
+// RETURN A LAUNCHER NAME BASED ON PIPELINE SELECTION
 app.get("/launchers/:pipelineValue", function (req, res) {
     console.log(req.params.pipelineValue);
     Pipeline
@@ -367,7 +367,7 @@ app.get("/launchers/:pipelineValue", function (req, res) {
 });
 
 
-// Get a pipeline to update
+// GET A PIPELINE TO UPDATE
 app.get('/pipelines/update/:pipelineValue', function (req, res) {
     Pipeline
         .findOne({
@@ -390,7 +390,7 @@ app.get('/pipelines/update/:pipelineValue', function (req, res) {
 
 });
 
-// Update pipeline
+// UPDATE PIPELINE
 app.put('/pipelines/update/:pipelineID', function (req, res) {
     Pipeline
         .findByIdAndUpdate(req.params.pipelineID, {
@@ -411,7 +411,7 @@ app.put('/pipelines/update/:pipelineID', function (req, res) {
         });
 });
 
-// Delete a pipeline
+// DELETE A PIPELINE
 app.delete("/pipelines/delete/:pipelineID", function (req, res) {
     Pipeline
         .findByIdAndRemove(req.params.pipelineID,
@@ -431,7 +431,7 @@ app.delete("/pipelines/delete/:pipelineID", function (req, res) {
             });
 });
 
-// Get list of pipelines
+// GET THE LIST OF PIPELINES
 app.get("/pipelines", function (req, res) {
     Pipeline
         .find(function (err, items) {
@@ -451,7 +451,7 @@ app.get("/pipelines", function (req, res) {
 
 });
 
-// GET LIST OF SYSTEMS
+// GET THE LIST OF SYSTEMS
 app.get("/systems", function (req, res) {
     System
         .find(function (err, items) {
@@ -470,7 +470,8 @@ app.get("/systems", function (req, res) {
         });
 
 });
-// GET LIST OF EXCEPTIONS
+
+// GET THE LIST OF EXCEPTIONS
 app.get("/exceptions", function (req, res) {
     Exception
         .find(function (err, items) {
@@ -489,6 +490,39 @@ app.get("/exceptions", function (req, res) {
         });
 
 });
+
+// ADD NEW PIPELINE
+app.post('/pigging-activity/add', (req, res) => {
+    // the following variables should match the ones in the ajax call
+    Activity
+        .create({
+            activityDate: req.body.activityDate,
+            activityTime: req.body.activityTime,
+            systemName: req.body.systemValue,
+            pipelineName: req.body.pipelineValue,
+            launcherName: req.body.launcherValue,
+            notes: req.body.notesValue,
+            operatorEmail: req.body.currentUserEmail,
+            pigType: req.body.pigValue,
+            paraffinWeight: req.body.paraffinValue,
+            sandWeight: req.body.sandValue,
+            exception: req.body.exceptionValue
+        }, (err, item) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            }
+            if (item) {
+                console.log(`Pigging activity added.`);
+                return res.json(item);
+            }
+        });
+});
+
+
+
+
 
 // MISC ------------------------------------------
 // catch-all endpoint if client makes request to non-existent endpoint
