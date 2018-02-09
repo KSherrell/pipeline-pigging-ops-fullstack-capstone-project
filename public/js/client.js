@@ -1666,32 +1666,35 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         notes: notesValue,
         operatorEmail: currentUserEmail
     }
-    console.log(Object.keys(activityObj).length);
-
 
 
     //validate field values
-    function validateFields(activityObj, objLength) {
+    function validateFields(activityObj, lastItem) {
         let fieldFocus = "";
         for (let values in activityObj) {
             if (activityObj[values] == "" || activityObj[values] == "Select Option") {
-                console.log(values, activityObj[values]);
+                //console.log(values, activityObj[values]);
                 fieldFocus = values;
+                alert("All fields are required.");
+                $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
                 break;
             } else {
-                console.log("next");
-                if (i == objLength - 1) {
-                    console.log(i, objLength, "Quit here");
+                if (activityObj[values] == lastItem) {
+                    done();
+                } else {
+
                 }
             }
-
         }
+
+
         console.log("break");
-        //    alert("All fields are required.");
-        //    $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
+
     };
 
-
+    function done() {
+        console.log("done");
+    };
 
 
     // which radio button is selected?
@@ -1707,10 +1710,11 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
 
     if (inputActivityString == "radioLaunch") {
         alert("it's a launch");
-        activityObj.pigType = pigValue;
-        console.log(activityObj);
-        let objLength = Object.keys(activityObj).length
-        validateFields(activityObj, objLength);
+        activityObj.pigTypes = pigValue;
+        let objLength = Object.keys(activityObj).length - 1;
+        let lastItem = Object.values(activityObj);
+        lastItem = lastItem[objLength];
+        validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioReceive") {
         alert("it's a receive");
