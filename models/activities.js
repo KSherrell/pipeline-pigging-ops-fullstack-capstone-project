@@ -32,11 +32,11 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    debrisType: {
-        type: String,
+    sandWeight: {
+        type: Number,
         required: false
     },
-    debrisWeight: {
+    paraffinWeight: {
         type: Number,
         required: false
     },

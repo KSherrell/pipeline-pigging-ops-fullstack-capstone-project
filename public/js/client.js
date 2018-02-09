@@ -111,7 +111,7 @@ function loginUser(email, password) {
                     $("#pageInputPigging div.select-receive").hide();
                     $("#pageInputPigging div.select-exception").hide();
                     activePage = "inputPigging";
-                    getSystems("#inputPigging #systems");
+                    getSystems("#inputPigging #systemName");
                 } else if (currentUserRole == "Report_Viewer") {
                     $(".jsHide").hide();
                     $("#pagePiggingSchedule").show();
@@ -1568,20 +1568,20 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 // USER = OPERATOR
 
 // Input Pigging >> Get pipelines dropdown list from system selection
-$(document).on('change', '#pageInputPigging #inputPigging #systems', function () {
+$(document).on('change', '#pageInputPigging #inputPigging #systemName', function () {
     event.preventDefault();
     let systemValue = "";
-    $('#pageInputPigging select#systems option:selected').each(function () {
+    $('#pageInputPigging select#systemName option:selected').each(function () {
         systemValue = $(this).text();
-        getPipelineNames(systemValue, "#pageInputPigging #inputPigging #pipelines", "");
+        getPipelineNames(systemValue, "#pageInputPigging #inputPigging #pipelineName", "");
     });
     $("#pageInputPigging #inputPigging #launcherName").text("");
 });
 // Input Pigging >> Get launcher name and pig types from pipeline selection
-$(document).on('change', '#pageInputPigging #inputPigging #pipelines', function () {
+$(document).on('change', '#pageInputPigging #inputPigging #pipelineName', function () {
     event.preventDefault();
     let pipelineValue = "";
-    $('#pageInputPigging select#pipelines option:selected').each(function () {
+    $('#pageInputPigging select#pipelineName option:selected').each(function () {
         pipelineValue = $(this).text();
         getLauncher(pipelineValue, "#pageInputPigging #inputPigging #launcherName");
         getPigs(pipelineValue, "#pageInputPigging #inputPigging #pigTypes");
@@ -1630,12 +1630,12 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     let activityTime = $("#activityTime").val();
 
     let systemValue = "";
-    $('#pageInputPigging select#systems option:selected').each(function () {
+    $('#pageInputPigging select#systemName option:selected').each(function () {
         systemValue = $(this).text();
     });
 
     let pipelineValue = "";
-    $('#pageInputPigging select#pipelines option:selected').each(function () {
+    $('#pageInputPigging select#pipelineName option:selected').each(function () {
         pipelineValue = $(this).text();
     });
 
@@ -1654,59 +1654,96 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         exceptionValue = $(this).text();
     });
 
-    let notesValue = $("#piggingNotes").val();
-
-    //validate field values
-
-    // which radio button is selected?
-
-    let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
-
-
-
-    let inputActivityString = inputActivity[0].id;
-    console.log(inputActivityString, typeof (inputActivityString));
+    let notesValue = $("#notes").val();
 
     // an object holding the common elements of every PUT request
     let activityObj = {
-        operatorEmail: currentUserEmail,
         activityDate: activityDate,
         activityTime: activityTime,
         systemName: systemValue,
         pipelineName: pipelineValue,
         launcherName: launcherValue,
-        notes: notesValue
+        notes: notesValue,
+        operatorEmail: currentUserEmail
     }
-    console.log(activityObj);
+    console.log(Object.keys(activityObj).length);
+
+
+
+    //validate field values
+    function validateFields(activityObj, objLength) {
+        let fieldFocus = "";
+        for (let values in activityObj) {
+            if (activityObj[values] == "" || activityObj[values] == "Select Option") {
+                console.log(values, activityObj[values]);
+                fieldFocus = values;
+                break;
+            } else {
+                console.log("next");
+                if (i == objLength - 1) {
+                    console.log(i, objLength, "Quit here");
+                }
+            }
+
+        }
+        console.log("break");
+        //    alert("All fields are required.");
+        //    $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
+    };
+
+
+
+
+    // which radio button is selected?
+
+    let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
+    let inputActivityString = inputActivity[0].id;
+
+
+
+
+
     //add key:value pairs to activityObj per inputActivity
-
-
-    console.log(inputActivityString, typeof (inputActivityString));
 
     if (inputActivityString == "radioLaunch") {
         alert("it's a launch");
+        activityObj.pigType = pigValue;
+        console.log(activityObj);
+        let objLength = Object.keys(activityObj).length
+        validateFields(activityObj, objLength);
 
+    } else if (inputActivityString == "radioReceive") {
+        alert("it's a receive");
+        activityObj.paraffinWeight = paraffinValue;
+        activityObj.sandWeight = sandValue;
+        console.log(activityObj);
+
+    } else if (inputActivityString == "radioException") {
+        alert("it's an exception");
+        activityObj.exception = exceptionValue;
+        console.log(activityObj);
     }
 
 
+
+
     //clear the form
-    alert("Pigging activity has been submitted.");
-    document.getElementById("inputPigging").reset();
-
-    $(".jsHide").hide();
-    $("#pageInputPigging").show();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").hide();
-
-    $("#pageInputPigging div.select-launch").show();
-    $("#pageInputPigging div.select-receive").hide();
-    $("#pageInputPigging div.select-exception").hide();
-
-    $("#pageInputPigging #inputPigging #pipelines").html("");
-    $("#pageInputPigging #inputPigging #launcherName").text("");
-    $("#pageInputPigging #inputPigging #pigTypes").html("");
-    $("#pageInputPigging #inputPigging #exceptions").html("");
-
+    //   alert("Pigging activity has been submitted.");
+    //    document.getElementById("inputPigging").reset();
+    //
+    //    $(".jsHide").hide();
+    //    $("#pageInputPigging").show();
+    //    $("#pageInputPigging div.select-receive").hide();
+    //    $("#pageInputPigging div.select-exception").hide();
+    //
+    //    $("#pageInputPigging div.select-launch").show();
+    //    $("#pageInputPigging div.select-receive").hide();
+    //    $("#pageInputPigging div.select-exception").hide();
+    //
+    //    $("#pageInputPigging #inputPigging #pipelineName").html("");
+    //    $("#pageInputPigging #inputPigging #launcherName").text("");
+    //    $("#pageInputPigging #inputPigging #pigTypes").html("");
+    //    $("#pageInputPigging #inputPigging #exceptions").html("");
 });
 
 //  Input Pigging >> Pigging Schedule (Operator)
