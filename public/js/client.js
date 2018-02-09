@@ -440,12 +440,12 @@ function getExceptions(container) {
         })
         .done(function (result) {
             console.log(result);
-                    let optionValues = [];
-                    for (let options in result) {
-                        optionValues.push(result[options].exception);
-                    }
-                    optionValues = arrayDuplicates(optionValues);
-                    populateDropDown(optionValues, container);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].exception);
+            }
+            optionValues = arrayDuplicates(optionValues);
+            populateDropDown(optionValues, container);
 
         })
 
@@ -1575,6 +1575,7 @@ $(document).on('change', '#pageInputPigging #inputPigging #systems', function ()
         systemValue = $(this).text();
         getPipelineNames(systemValue, "#pageInputPigging #inputPigging #pipelines", "");
     });
+    $("#pageInputPigging #inputPigging #launcherName").text("");
 });
 // Input Pigging >> Get launcher name and pig types from pipeline selection
 $(document).on('change', '#pageInputPigging #inputPigging #pipelines', function () {
@@ -1623,8 +1624,79 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     event.preventDefault();
+
+    //what are my fields values?
+    let activityDate = $("#activityDate").val();
+    let activityTime = $("#activityTime").val();
+
+    let systemValue = "";
+    $('#pageInputPigging select#systems option:selected').each(function () {
+        systemValue = $(this).text();
+    });
+
+    let pipelineValue = "";
+    $('#pageInputPigging select#pipelines option:selected').each(function () {
+        pipelineValue = $(this).text();
+    });
+
+    let launcherValue = $("#launcherName").text();
+
+    let pigValue = "";
+    $('#pageInputPigging select#pigTypes option:selected').each(function () {
+        pigValue = $(this).text();
+    });
+
+    let paraffinValue = $("#paraffinWeight").val();
+    let sandValue = $("#sandWeight").val();
+
+    let exceptionValue = "";
+    $('#pageInputPigging select#exceptions option:selected').each(function () {
+        exceptionValue = $(this).text();
+    });
+
+    let notesValue = $("#piggingNotes").val();
+
+    console.log(pigValue, paraffinValue, sandValue, exceptionValue);
+
+    console.log(notesValue);
+
+    //validate field values
+
+    // which radio button is selected?
+    let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
+    console.log(inputActivity);
+
+    let inputActivityObj = {
+        operatorEmail: currentUserEmail,
+        activityDate: piggingDate,
+        activityTime: piggingTime,
+        systemName: systemValue,
+        pipelineName: pipelineValue,
+        launcherName: launcherValue,
+        notes: notesValue
+    }
+
+    //PUT values per inputActivity -- create a inputActivityObj for each radio selection
+    // if inputActivity == launch, then inputActivityObj = {date, time, system, pipeline, launcherName, pigType, notes}
+
+
+    //clear the form
     alert("Pigging activity has been submitted.");
     document.getElementById("inputPigging").reset();
+
+    $(".jsHide").hide();
+    $("#pageInputPigging").show();
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging div.select-exception").hide();
+
+    $("#pageInputPigging div.select-launch").show();
+    $("#pageInputPigging div.select-receive").hide();
+    $("#pageInputPigging div.select-exception").hide();
+
+    $("#pageInputPigging #inputPigging #pipelines").html("");
+    $("#pageInputPigging #inputPigging #launcherName").text("");
+    $("#pageInputPigging #inputPigging #pigTypes").html("");
+    $("#pageInputPigging #inputPigging #exceptions").html("");
 
 });
 

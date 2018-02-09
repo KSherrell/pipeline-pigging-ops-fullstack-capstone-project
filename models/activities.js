@@ -4,35 +4,27 @@ const mongoose = require('mongoose');
 
 const activitySchema = new mongoose.Schema({
 
-    pipelineName: {
-        type: String,
-        required: false
-    },
-    exception: {
-        type: String,
-        required: false
-    },
     operatorEmail: {
         type: String,
         required: false
     },
-    notes: {
+    activityDate: {
         type: String,
         required: false
     },
-    launchTime: {
+    activityTime: {
         type: String,
         required: false
     },
-    receiveTime: {
+    systemName: {
+        type: String,
+        required: false
+    },
+    pipelineName: {
         type: String,
         required: false
     },
     launcherName: {
-        type: String,
-        required: false
-    },
-    receiverName: {
         type: String,
         required: false
     },
@@ -46,6 +38,15 @@ const activitySchema = new mongoose.Schema({
     },
     debrisWeight: {
         type: Number,
+        required: false
+    },
+    exception: {
+        type: String,
+        required: false
+    },
+
+    notes: {
+        type: String,
         required: false
     },
 });
