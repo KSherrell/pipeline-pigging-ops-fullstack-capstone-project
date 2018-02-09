@@ -1695,7 +1695,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
             })
             .done(function (result) {
 
-                alert("Pigging activity added successfully.");
+                alert("Pigging activity added successfully line 1698.");
 
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -1731,6 +1731,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         alert("it's a receive");
         activityObj.paraffinWeight = paraffinValue;
         activityObj.sandWeight = sandValue;
+        console.log(activityObj);
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.values(activityObj);
         lastItem = lastItem[objLength];

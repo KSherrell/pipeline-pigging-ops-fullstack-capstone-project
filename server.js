@@ -345,7 +345,7 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 // RETURN A LAUNCHER NAME BASED ON PIPELINE SELECTION
 app.get("/launchers/:pipelineValue", function (req, res) {
-    console.log(req.params.pipelineValue);
+    console.log(req.params.pipelineValue, "line 348");
     Pipeline
         .find({
             pipelineName: req.params.pipelineValue,
@@ -494,19 +494,33 @@ app.get("/exceptions", function (req, res) {
 // ADD NEW PIPELINE
 app.post('/pigging-activity/add', (req, res) => {
     // the following variables should match the ones in the ajax call
+    console.log(req.body.sandWeight, req.body.paraffinWeight);
+    let activityDate = req.body.activityDate;
+    let activityTime = req.body.activityTime;
+    let systemName = req.body.systemName;
+    let pipelineName = req.body.pipelineName;
+    let launcherName = req.body.launcherName;
+    let notes = req.body.notes;
+    let operatorEmail = req.body.operatorEmail;
+    let pigType = req.body.pigType;
+    let paraffinWeight = req.body.paraffinWeight;
+    let sandWeight = req.body.sandWeight;
+    let exception = req.body.exception;
+
+
     Activity
         .create({
-            activityDate: req.body.activityDate,
-            activityTime: req.body.activityTime,
-            systemName: req.body.systemValue,
-            pipelineName: req.body.pipelineValue,
-            launcherName: req.body.launcherValue,
-            notes: req.body.notesValue,
-            operatorEmail: req.body.currentUserEmail,
-            pigType: req.body.pigValue,
-            paraffinWeight: req.body.paraffinValue,
-            sandWeight: req.body.sandValue,
-            exception: req.body.exceptionValue
+            activityDate,
+            activityTime,
+            systemName,
+            pipelineName,
+            launcherName,
+            notes,
+            operatorEmail,
+            pigType,
+            paraffinWeight,
+            sandWeight,
+            exception
         }, (err, item) => {
             if (err) {
                 return res.status(500).json({

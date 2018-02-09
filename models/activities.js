@@ -33,18 +33,17 @@ const activitySchema = new mongoose.Schema({
         required: false
     },
     sandWeight: {
-        type: Number,
+        type: String,
         required: false
     },
     paraffinWeight: {
-        type: Number,
+        type: String,
         required: false
     },
     exception: {
         type: String,
         required: false
     },
-
     notes: {
         type: String,
         required: false
