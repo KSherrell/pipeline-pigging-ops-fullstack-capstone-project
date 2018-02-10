@@ -346,22 +346,17 @@
         <section class="pigging-schedule-container">
             <form id="piggingSchedule">
                 <div>
-                    <select name="pipeline-systems">
-                            <option value="select-system">Select Pipeline System</option>
-                            <option value="system-one">System One</option>
-                            <option value="system-two">System Two</option>
-                            <option value="system-three">System Three</option>
-                            <option value="system-four">System Four</option>
-                        </select>
+                    <select id="systemName" name="pipeline-systems"></select>
                 </div>
                 <div>
                     <button form="piggingSchedule" type="submit">Submit</button>
                 </div>
-            </form>
-            <hr>
 
-            <div class="schedule-results">
+                <hr>
 
+                <div id="scheduleResults" class="schedule-results">
+
+                    <!--
                 <p class="due-today">Pipeline Name One</p>
                 <p class="due-today">Pipeline Name Two</p>
                 <p class="due-today">Pipeline Name Three</p>
@@ -382,8 +377,10 @@
                 <p class="overdue-plus-thirty">Pipeline Name Eighteen</p>
                 <p class="overdue-plus-thirty">Pipeline Name Nineteen</p>
                 <p class="overdue-plus-thirty">Pipeline Name Twenty</p>
+-->
 
-            </div>
+                </div>
+            </form>
         </section>
 
         <div class="ops-nav jsHide show-to-operator">

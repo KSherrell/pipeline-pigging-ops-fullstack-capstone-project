@@ -279,6 +279,26 @@ function registerNewUser(userObj) {
         });
 };
 
+function updateUserRoleFormFill(userObj) {
+    console.log(userObj);
+
+    let userUpdateStatus = "";
+    if (userObj.approved == 1) {
+        userUpdateStatus = "Active";
+        $("input[id=radioUserActive]").prop("checked", true);
+    } else {
+        userUpdateStatus = "Inactive";
+        $("input[id=radioUserInactive]").prop("checked", true);
+    };
+
+    $("#updateRole #userUpdateName").text(userObj.fname + " " + userObj.lname);
+    $("#updateRole #userUpdateRole").text(userObj.role);
+    $("#updateRole #userUpdateStatus").text(userUpdateStatus);
+    $('input[id="' + userObj.role + '"]').prop("checked", true);
+    $("#updateRole #userEmailHidden").val(userObj.email);
+
+};
+
 function arrayDuplicates(arr) {
     var i,
         len = arr.length,
@@ -567,8 +587,8 @@ function addNewPipeline(newPipelineObj) {
         });
 }
 
-//check for empty Input Pigging fields
 function validateFields(activityObj, lastItem) {
+    //check for empty Input Pigging fields
     let fieldFocus = "";
     for (let values in activityObj) {
         if (activityObj[values] == "" || activityObj[values] == "Select Option") {
@@ -887,424 +907,692 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
 });
 
 // USER = FOREMAN
+function foremanStuff() {
+    //  Foreman Header >> Admin Menu
+    $(document).on('click', 'header.foreman-header>div>img', function () {
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    });
 
-//  Foreman Header >> Admin Menu
-$(document).on('click', 'header.foreman-header>div>img', function () {
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
+    //*** Admin Menu >> View Pigging Schedule
+    $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule").show();
+        $("#pagePiggingSchedule .show-to-foreman").show();
+    });
 
-//*** Admin Menu >> View Pigging Schedule
-$(document).on('click', 'p.gotoPiggingSchedule', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .show-to-foreman").show();
-});
+    //  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
+    $(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePrevLaunch").show();
+        $("#pagePrevLaunch header").show();
+        $("#pagePrevLaunch .show-to-foreman").show();
+    });
 
-//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePrevLaunch").show();
-    $("#pagePrevLaunch header").show();
-    $("#pagePrevLaunch .show-to-foreman").show();
-});
+    //  Previous Launch  >> Back (to Pigging Schedule (Foreman))
+    $(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
 
-//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
-$(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+    });
 
-});
+    //*** Admin Menu >> View Debris Report
+    $(document).on('click', 'p.gotoDebrisReport', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageDebrisReport").show();
+        $("#pageDebrisReport  #debrisReport").show();
+        $("#pageDebrisReport .show-to-foreman").show();
+    });
 
-//*** Admin Menu >> View Debris Report
-$(document).on('click', 'p.gotoDebrisReport', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport  #debrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-});
+    //  Debris Report, Activity Report >> Radio Select by System
+    $(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
+        event.preventDefault();
+        $(".js-system-select").show();
+        $(".js-pipeline-select").hide();
+    });
 
-//  Debris Report, Activity Report >> Radio Select by System
-$(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
-    event.preventDefault();
-    $(".js-system-select").show();
-    $(".js-pipeline-select").hide();
-});
+    //  Debris Report, Activity Report >> Radio Select by Pipeline
+    $(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function (event) {
+        event.preventDefault();
+        $(".js-system-select").hide();
+        $(".js-pipeline-select").show();
+    });
 
-//  Debris Report, Activity Report >> Radio Select by Pipeline
-$(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function (event) {
-    event.preventDefault();
-    $(".js-system-select").hide();
-    $(".js-pipeline-select").show();
-});
+    //  Debris Report, Activity Report >> Radio Other Selections
+    $(document).on('click', '.radio-other-selection', function (event) {
+        event.preventDefault();
+        $("form .jsHide").hide();
+    });
 
-//  Debris Report, Activity Report >> Radio Other Selections
-$(document).on('click', '.radio-other-selection', function (event) {
-    event.preventDefault();
-    $("form .jsHide").hide();
-});
+    //  Debris Report (Foreman) >> Submit
+    $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageDebrisReport").show();
+        $("#pageDebrisReport .show-to-foreman").show();
+        $(".debris-results").show();
+    });
 
-//  Debris Report (Foreman) >> Submit
-$(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    $(".debris-results").show();
-});
+    //  Debris Report (Foreman) >> Reset
+    $(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageDebrisReport").show();
+        $("#pageDebrisReport #debrisReport").show();
+        $("#pageDebrisReport .show-to-foreman").show();
+        document.getElementById("debrisReport").reset();
+    });
 
-//  Debris Report (Foreman) >> Reset
-$(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport #debrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    document.getElementById("debrisReport").reset();
-});
-
-//*** Admin Menu >> Pigging Activity
-$(document).on('click', 'p.gotoPiggingActivity', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePiggingActivity").show();
-    $("#piggingActivity").show();
-});
-
-//  Pigging Activity >> Submit
-$(document).on('submit', '#piggingActivity', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePiggingActivity").show();
-    $(".pigging-activity-results").show();
-    document.getElementById("piggingActivity").reset();
-});
-
-//  Pigging Activity >> Reset
-$(document).on('click', '#pagePiggingActivity button[type="button"]',
-    function (event) {
+    //*** Admin Menu >> Pigging Activity
+    $(document).on('click', 'p.gotoPiggingActivity', function (event) {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pagePiggingActivity").show();
         $("#piggingActivity").show();
     });
 
-//*** Admin Menu >> View Pigging History
-$(document).on('click', 'p.gotoViewHistory', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $("#piggingHistory").show();
-});
-
-//  Pigging History >> Submit
-$(document).on('submit', '#piggingHistory', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $(".history-results").show();
-    $("#pageViewHistory .bottom-nav").show();
-    document.getElementById("piggingHistory").reset();
-});
-
-//  Pigging History >> Reset
-$(document).on('click', '#pageViewHistory .bottom-nav', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $("#piggingHistory").show();
-});
-
-//  Pigging History >> Update Pigging History (via link from history record)
-$(document).on('click', '#pageViewHistory p.history-record-id', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageUpdateHistory").show();
-});
-
-//  Update History >> Submit
-$(document).on('submit', '#updateHistory', function (event) {
-    event.preventDefault();
-    alert("Updates submitted successfully.");
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $("#piggingHistory").show();
-});
-
-//  Update History >> Cancel
-$(document).on('click', '#pageUpdateHistory .button-cancel', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $("#piggingHistory").show();
-});
-
-//  Update History >> Delete
-$(document).on('click', '#pageUpdateHistory .button-delete', function (event) {
-    event.preventDefault();
-    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
-        alert("Record has be sucessfully deleted.");
-    };
-    $(".jsHide").hide();
-    $("#pageViewHistory").show();
-    $("#piggingHistory").show();
-});
-
-
-//*** Admin Menu >> Add Pipeline
-$(document).on('click', 'p.gotoAddPipeline', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageAddPipeline").show();
-    getReportCenters("#pageAddPipeline #rcName");
-});
-
-//  Add Pipeline >> select#rcName.on('change');
-$(document).on('change', '#pageAddPipeline select#rcName', function (event) {
-    let selectionValue = "";
-    $('#pageAddPipeline select#rcName option:selected').each(function () {
-        selectionValue = $(this).text();
-        getSystemsByRC(selectionValue, "#pageAddPipeline #systemName");
-    });
-});
-
-//   Add Pipeline >> Submit
-$(document).on('submit', '#pageAddPipeline', function (event) {
-    event.preventDefault();
-
-    let RCName = "";
-    $('#pageAddPipeline select#rcName option:selected').each(function () {
-        RCName = $(this).text();
-    });
-    let systemName = "";
-    $('#pageAddPipeline select#systemName option:selected').each(function () {
-        systemName = $(this).text();
+    //  Pigging Activity >> Submit
+    $(document).on('submit', '#piggingActivity', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pagePiggingActivity").show();
+        $(".pigging-activity-results").show();
+        document.getElementById("piggingActivity").reset();
     });
 
-    let pipelineName = $("#pageAddPipeline #newPipeline").val();
-    let launcherName = $("#pageAddPipeline #newLauncher").val();
-    let receiverName = $("#pageAddPipeline #newReceiver").val();
-    let pipelineSize = $("#pageAddPipeline #newPipelineSize").val();
+    //  Pigging Activity >> Reset
+    $(document).on('click', '#pagePiggingActivity button[type="button"]',
+        function (event) {
+            event.preventDefault();
+            $(".jsHide").hide();
+            $("#pagePiggingActivity").show();
+            $("#piggingActivity").show();
+        });
 
-    let product = $("input[type=checkbox][name=add-product]:checked").map(function () {
-        return this.value;
-    }).toArray();
-
-    let acceptablePigs = $("input[type=checkbox][name=add-pigs]:checked").map(function () {
-        return this.value;
-    }).toArray();
-
-    let closure = $("#pageAddPipeline #pipelineClosures").val();
-    let piggingFrequency = $("#pageAddPipeline #piggingFrequency").val();
-    let dateAdded = $("#pageAddPipeline #addPipelineDate").val();
-    let pipelineActive = 1;
-
-    let newPipelineObj = {
-        RCName: RCName,
-        systemName: systemName,
-        pipelineName: pipelineName,
-        launcherName: launcherName,
-        receiverName: receiverName,
-        pipelineSize: pipelineSize,
-        product: JSON.stringify(product),
-        acceptablePigs: JSON.stringify(acceptablePigs),
-        closure: closure,
-        piggingFrequency: piggingFrequency,
-        dateAdded: dateAdded,
-        pipelineActive: pipelineActive
-    };
-
-    if (!$('#pageAddPipeline #addPipelineDate').val()) {
-        alert("Please enter the date the pipeline started operating.");
-        $('#pageAddPipeline #addPipelineDate').focus();
-    } else if (validateSelect(RCName, "select-rc") == false) {
-        alert("RC Name must be selected.");
-        $('#pageAddPipeline #rcName').focus();
-    } else if (validateSelect(systemName, "select-system") == false) {
-        alert("System name must be selected.");
-        $('#pageAddPipeline #systemName').focus();
-    } else if (!$('#pageAddPipeline #newPipeline').val()) {
-        alert("Please enter new pipeline name.");
-        $('#pageAddPipeline #newPipeline').focus();
-    } else if (!$('#pageAddPipeline #newLauncher').val()) {
-        alert("Please enter new launcher name.");
-        $('#pageAddPipeline #newLauncher').focus();
-
-    } else if (!$("#pageAddPipeline #newReceiver").val()) {
-        alert("Please enter new receiver name.");
-        $("#pageAddPipeline #newReceiver").focus();
-
-    } else if (!$('#pageAddPipeline #newPipelineSize').val()) {
-        alert("Please enter the new pipeline size (inches).");
-        $('#pageAddPipeline #newPipelineSize').focus();
-    } else if (validateSelect(closure, "select-closure") == false) {
-        alert("Please select a closure type.");
-        $('#pageAddPipeline #pipelineClosures').focus();
-    } else if (validateCheckbox(newPipelineObj.acceptablePigs) == false) {
-        alert("Please select the acceptable pigs for this pipeline.");
-    } else if (validateCheckbox(newPipelineObj.product) == false) {
-        alert("Please select a pipeline product.");
-    } else if (!$('#pageAddPipeline #piggingFrequency').val()) {
-        alert("Please enter a pigging frequency.");
-        $('#pageAddPipeline #piggingFrequency').focus();
-    } else {
-        //check if chosen pipeline name is already in use
-        getPipelineNames(systemName, "#genericContainer", newPipelineObj);
-    }
-});
-
-
-//   Add Pipeline >> Cancel
-$(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
-    event.preventDefault();
-    document.getElementById("addPipeline").reset();
-    $("#addPipeline #systemName").html("");
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
-
-//*** Admin Menu >> Update/Remove Pipeline
-$(document).on('click', 'p.gotoUdatePipeline', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageUpdatePipeline").show();
-    $("#updateSearch").show();
-    getReportCenters("#pageUpdatePipeline #rcName");
-});
-
-//  Update Pipeline >> select#rcName.on('change');
-$(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
-    let rcValue = "";
-    $('#pageUpdatePipeline select#rcName option:selected').each(function () {
-        rcValue = $(this).text();
-        getSystemsByRC(rcValue, "#pageUpdatePipeline #systemName");
-    });
-});
-
-//  Update Pipeline >> select#systemName.on('change');
-$(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
-    let systemValue = "";
-    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
-        systemValue = $(this).text();
-        getPipelineNames(systemValue, "#pageUpdatePipeline #updateSearch #pipelineName", "");
-    });
-});
-
-//  Update/Remove Pipeline (Search form) >> Submit
-$(document).on('submit', '#updateSearch', function (event) {
-    event.preventDefault();
-
-    let rcValue = "";
-    let systemValue = "";
-    let pipelineValue = "";
-
-    $('#pageUpdatePipeline select#rcName option:selected').each(function () {
-        rcValue = $(this).text();
+    //*** Admin Menu >> View Pigging History
+    $(document).on('click', 'p.gotoViewHistory', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
     });
 
-    $('#pageUpdatePipeline select#systemName option:selected').each(function () {
-        systemValue = $(this).text();
+    //  Pigging History >> Submit
+    $(document).on('submit', '#piggingHistory', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $(".history-results").show();
+        $("#pageViewHistory .bottom-nav").show();
+        document.getElementById("piggingHistory").reset();
     });
 
-    $('#pageUpdatePipeline select#pipelineName option:selected').each(function () {
-        pipelineValue = $(this).text();
+    //  Pigging History >> Reset
+    $(document).on('click', '#pageViewHistory .bottom-nav', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
     });
 
-    if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
-        alert("All fields are required.");
-        if (rcValue == "Select Option") {
-            $("#pageUpdatePipeline select#rcName").focus();
-        } else if (!systemValue || systemValue == "Select Option") {
-            $("#pageUpdatePipeline select#systemName").focus();
-        } else if (!pipelineValue || pipelineValue == "Select Option") {
-            $("#pageUpdatePipeline select#pipelineName").focus();
+    //  Pigging History >> Update Pigging History (via link from history record)
+    $(document).on('click', '#pageViewHistory p.history-record-id', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageUpdateHistory").show();
+    });
+
+    //  Update History >> Submit
+    $(document).on('submit', '#updateHistory', function (event) {
+        event.preventDefault();
+        alert("Updates submitted successfully.");
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
+    });
+
+    //  Update History >> Cancel
+    $(document).on('click', '#pageUpdateHistory .button-cancel', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
+    });
+
+    //  Update History >> Delete
+    $(document).on('click', '#pageUpdateHistory .button-delete', function (event) {
+        event.preventDefault();
+        if (window.confirm("Are you sure you want to PERMANENTLY DELETE this record?")) {
+            alert("Record has be sucessfully deleted.");
+        };
+        $(".jsHide").hide();
+        $("#pageViewHistory").show();
+        $("#piggingHistory").show();
+    });
+
+
+    //*** Admin Menu >> Add Pipeline
+    $(document).on('click', 'p.gotoAddPipeline', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageAddPipeline").show();
+        getReportCenters("#pageAddPipeline #rcName");
+    });
+
+    //  Add Pipeline >> select#rcName.on('change');
+    $(document).on('change', '#pageAddPipeline select#rcName', function (event) {
+        let selectionValue = "";
+        $('#pageAddPipeline select#rcName option:selected').each(function () {
+            selectionValue = $(this).text();
+            getSystemsByRC(selectionValue, "#pageAddPipeline #systemName");
+        });
+    });
+
+    //   Add Pipeline >> Submit
+    $(document).on('submit', '#pageAddPipeline', function (event) {
+        event.preventDefault();
+
+        let RCName = "";
+        $('#pageAddPipeline select#rcName option:selected').each(function () {
+            RCName = $(this).text();
+        });
+        let systemName = "";
+        $('#pageAddPipeline select#systemName option:selected').each(function () {
+            systemName = $(this).text();
+        });
+
+        let pipelineName = $("#pageAddPipeline #newPipeline").val();
+        let launcherName = $("#pageAddPipeline #newLauncher").val();
+        let receiverName = $("#pageAddPipeline #newReceiver").val();
+        let pipelineSize = $("#pageAddPipeline #newPipelineSize").val();
+
+        let product = $("input[type=checkbox][name=add-product]:checked").map(function () {
+            return this.value;
+        }).toArray();
+
+        let acceptablePigs = $("input[type=checkbox][name=add-pigs]:checked").map(function () {
+            return this.value;
+        }).toArray();
+
+        let closure = $("#pageAddPipeline #pipelineClosures").val();
+        let piggingFrequency = $("#pageAddPipeline #piggingFrequency").val();
+        let dateAdded = $("#pageAddPipeline #addPipelineDate").val();
+        let pipelineActive = 1;
+
+        let newPipelineObj = {
+            RCName: RCName,
+            systemName: systemName,
+            pipelineName: pipelineName,
+            launcherName: launcherName,
+            receiverName: receiverName,
+            pipelineSize: pipelineSize,
+            product: JSON.stringify(product),
+            acceptablePigs: JSON.stringify(acceptablePigs),
+            closure: closure,
+            piggingFrequency: piggingFrequency,
+            dateAdded: dateAdded,
+            pipelineActive: pipelineActive
+        };
+
+        if (!$('#pageAddPipeline #addPipelineDate').val()) {
+            alert("Please enter the date the pipeline started operating.");
+            $('#pageAddPipeline #addPipelineDate').focus();
+        } else if (validateSelect(RCName, "select-rc") == false) {
+            alert("RC Name must be selected.");
+            $('#pageAddPipeline #rcName').focus();
+        } else if (validateSelect(systemName, "select-system") == false) {
+            alert("System name must be selected.");
+            $('#pageAddPipeline #systemName').focus();
+        } else if (!$('#pageAddPipeline #newPipeline').val()) {
+            alert("Please enter new pipeline name.");
+            $('#pageAddPipeline #newPipeline').focus();
+        } else if (!$('#pageAddPipeline #newLauncher').val()) {
+            alert("Please enter new launcher name.");
+            $('#pageAddPipeline #newLauncher').focus();
+
+        } else if (!$("#pageAddPipeline #newReceiver").val()) {
+            alert("Please enter new receiver name.");
+            $("#pageAddPipeline #newReceiver").focus();
+
+        } else if (!$('#pageAddPipeline #newPipelineSize').val()) {
+            alert("Please enter the new pipeline size (inches).");
+            $('#pageAddPipeline #newPipelineSize').focus();
+        } else if (validateSelect(closure, "select-closure") == false) {
+            alert("Please select a closure type.");
+            $('#pageAddPipeline #pipelineClosures').focus();
+        } else if (validateCheckbox(newPipelineObj.acceptablePigs) == false) {
+            alert("Please select the acceptable pigs for this pipeline.");
+        } else if (validateCheckbox(newPipelineObj.product) == false) {
+            alert("Please select a pipeline product.");
+        } else if (!$('#pageAddPipeline #piggingFrequency').val()) {
+            alert("Please enter a pigging frequency.");
+            $('#pageAddPipeline #piggingFrequency').focus();
+        } else {
+            //check if chosen pipeline name is already in use
+            getPipelineNames(systemName, "#genericContainer", newPipelineObj);
         }
-    } else {
-        $.ajax({
-                type: "GET",
-                url: "/pipelines/update/" + pipelineValue,
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                populateUpdatePipelineForm(result);
-            })
+    });
 
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            })
+    //   Add Pipeline >> Cancel
+    $(document).on('click', '#pageAddPipeline .button-cancel', function (event) {
+        event.preventDefault();
+        document.getElementById("addPipeline").reset();
+        $("#addPipeline #systemName").html("");
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    });
 
+    //*** Admin Menu >> Update/Remove Pipeline
+    $(document).on('click', 'p.gotoUdatePipeline', function (event) {
+        event.preventDefault();
         $(".jsHide").hide();
         $("#pageUpdatePipeline").show();
-        $("#updatePipeline").show();
-        $("#pageUpdatePipeline .submit-cancel-delete").show();
-    }
-});
+        $("#updateSearch").show();
+        getReportCenters("#pageUpdatePipeline #rcName");
+    });
 
+    //  Update Pipeline >> select#rcName.on('change');
+    $(document).on('change', '#pageUpdatePipeline select#rcName', function (event) {
+        let rcValue = "";
+        $('#pageUpdatePipeline select#rcName option:selected').each(function () {
+            rcValue = $(this).text();
+            getSystemsByRC(rcValue, "#pageUpdatePipeline #systemName");
+        });
+    });
 
-//  Update Pipeline (Update form) >> Submit
-$(document).on('submit', '#updatePipeline', function (event) {
-    event.preventDefault();
+    //  Update Pipeline >> select#systemName.on('change');
+    $(document).on('change', '#pageUpdatePipeline select#systemName', function (event) {
+        let systemValue = "";
+        $('#pageUpdatePipeline select#systemName option:selected').each(function () {
+            systemValue = $(this).text();
+            getPipelineNames(systemValue, "#pageUpdatePipeline #updateSearch #pipelineName", "");
+        });
+    });
 
-    let pipelineName = $("#updatePipeline #pipelineName").val();
-    let launcherName = $("#updatePipeline #launcherName").val();
-    let receiverName = $("#updatePipeline #receiverName").val();
-    let pipelineSize = $("#updatePipeline #pipelineSize").val();
-    let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
-        return this.value;
-    }).toArray();
-    let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
-        return this.value;
-    }).toArray();
-    let closure = $("#updatePipeline #closureName").val();
-    let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
+    //  Update/Remove Pipeline (Search form) >> Submit
+    $(document).on('submit', '#updateSearch', function (event) {
+        event.preventDefault();
 
-    let updatePipelineObj = {
-        pipelineName: pipelineName,
-        launcherName: launcherName,
-        receiverName: receiverName,
-        pipelineSize: pipelineSize,
-        product: JSON.stringify(product),
-        acceptablePigs: JSON.stringify(acceptablePigs),
-        closure: closure,
-        piggingFrequency: piggingFrequency,
-    };
+        let rcValue = "";
+        let systemValue = "";
+        let pipelineValue = "";
 
-    if (!pipelineName || !launcherName || !receiverName || !pipelineSize || product.length == 0 || acceptablePigs.length == 0 || !closure || !piggingFrequency) {
-        alert("All fields are required.");
-        if (!pipelineName) {
-            $("#updatePipeline #pipelineName").focus();
-        } else if (!launcherName) {
-            $("#updatePipeline #launcherName").focus();
-        } else if (!receiverName) {
-            $("#updatePipeline #receiverName").focus();
-        } else if (!piggingFrequency) {
-            $("#updatePipeline #piggingFrequency").focus();
-        } else if (!pipelineSize) {
-            $("#updatePipeline #pipelineSize").focus();
-        } else if (!closure) {
-            $("#updatePipeline #closureName").focus();
-        } else if (acceptablePigs.length == 0) {
-            alert("Please select types of pigs.");
-        } else if (product.length == 0) {
-            alert("Please select pipeline product.");
+        $('#pageUpdatePipeline select#rcName option:selected').each(function () {
+            rcValue = $(this).text();
+        });
+
+        $('#pageUpdatePipeline select#systemName option:selected').each(function () {
+            systemValue = $(this).text();
+        });
+
+        $('#pageUpdatePipeline select#pipelineName option:selected').each(function () {
+            pipelineValue = $(this).text();
+        });
+
+        if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
+            alert("All fields are required.");
+            if (rcValue == "Select Option") {
+                $("#pageUpdatePipeline select#rcName").focus();
+            } else if (!systemValue || systemValue == "Select Option") {
+                $("#pageUpdatePipeline select#systemName").focus();
+            } else if (!pipelineValue || pipelineValue == "Select Option") {
+                $("#pageUpdatePipeline select#pipelineName").focus();
+            }
+        } else {
+            $.ajax({
+                    type: "GET",
+                    url: "/pipelines/update/" + pipelineValue,
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    populateUpdatePipelineForm(result);
+                })
+
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                })
+
+            $(".jsHide").hide();
+            $("#pageUpdatePipeline").show();
+            $("#updatePipeline").show();
+            $("#pageUpdatePipeline .submit-cancel-delete").show();
         }
-    } else {
+    });
+
+
+    //  Update Pipeline (Update form) >> Submit
+    $(document).on('submit', '#updatePipeline', function (event) {
+        event.preventDefault();
+
+        let pipelineName = $("#updatePipeline #pipelineName").val();
+        let launcherName = $("#updatePipeline #launcherName").val();
+        let receiverName = $("#updatePipeline #receiverName").val();
+        let pipelineSize = $("#updatePipeline #pipelineSize").val();
+        let product = $("input[type=checkbox][name=update-product]:checked").map(function () {
+            return this.value;
+        }).toArray();
+        let acceptablePigs = $("input[type=checkbox][name=update-pigs]:checked").map(function () {
+            return this.value;
+        }).toArray();
+        let closure = $("#updatePipeline #closureName").val();
+        let piggingFrequency = $("#updatePipeline #piggingFrequency").val();
+
+        let updatePipelineObj = {
+            pipelineName: pipelineName,
+            launcherName: launcherName,
+            receiverName: receiverName,
+            pipelineSize: pipelineSize,
+            product: JSON.stringify(product),
+            acceptablePigs: JSON.stringify(acceptablePigs),
+            closure: closure,
+            piggingFrequency: piggingFrequency,
+        };
+
+        if (!pipelineName || !launcherName || !receiverName || !pipelineSize || product.length == 0 || acceptablePigs.length == 0 || !closure || !piggingFrequency) {
+            alert("All fields are required.");
+            if (!pipelineName) {
+                $("#updatePipeline #pipelineName").focus();
+            } else if (!launcherName) {
+                $("#updatePipeline #launcherName").focus();
+            } else if (!receiverName) {
+                $("#updatePipeline #receiverName").focus();
+            } else if (!piggingFrequency) {
+                $("#updatePipeline #piggingFrequency").focus();
+            } else if (!pipelineSize) {
+                $("#updatePipeline #pipelineSize").focus();
+            } else if (!closure) {
+                $("#updatePipeline #closureName").focus();
+            } else if (acceptablePigs.length == 0) {
+                alert("Please select types of pigs.");
+            } else if (product.length == 0) {
+                alert("Please select pipeline product.");
+            }
+        } else {
+            $.ajax({
+                    type: "PUT",
+                    url: "/pipelines/update/" + pipelineID,
+                    data: JSON.stringify(updatePipelineObj),
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    alert("Pipeline updated.");
+
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    //user not found
+                    alert("Error updating pipeline information. Please try again.");
+                })
+
+            $("#updateSearch #systemName").html("");
+            $("#updateSearch #pipelineName").html("");
+            document.getElementById("updatePipeline").reset();
+            document.getElementById("addPipeline").reset();
+
+            $(".jsHide").hide();
+            $("#pageAdminMenu").show();
+        }
+    });
+
+    //  Update/Remove Pipeline (Update form) >> Delete
+    $(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
+        event.preventDefault();
+        //console.log(pipelineID);
+        if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
+            $.ajax({
+                    type: 'DELETE',
+                    url: '/pipelines/delete/' + pipelineID,
+                    dataType: 'json',
+                    // data: JSON.stringify(newPipelineObj),
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    alert("Record has been sucessfully deleted.");
+                    $("#updateSearch #systemName").html("");
+                    $("#updateSearch #pipelineName").html("");
+                    document.getElementById("updatePipeline").reset();
+                    document.getElementById("addPipeline").reset();
+                    $(".jsHide").hide();
+                    $("#pageAdminMenu").show();
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                    alert('Error deleting pipeline. Please try again.');
+                });
+
+        } else {
+            alert("Pipeline deletion cancelled.");
+        }
+    });
+
+    //  Update/Remove Pipeline >> Cancel
+    $(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
+        event.preventDefault();
+
+        $("#updateSearch #systemName").html("");
+        $("#updateSearch #pipelineName").html("");
+        document.getElementById("updatePipeline").reset();
+        document.getElementById("addPipeline").reset();
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    });
+
+
+    //*** Admin Menu >> Add User
+    $(document).on('click', 'p.gotoAddUser', function (event) {
+        event.preventDefault();
+        if (userValuesArr.length > 0) {
+            let newUserNames = [];
+            for (name in userValuesArr) {
+                console.log(userValuesArr[name].name);
+                newUserNames.push(userValuesArr[name].name)
+            }
+            populateDropDown(newUserNames, "#newUserRequest");
+        }
+        $(".jsHide").hide();
+        $("#pageAddUser").show();
+        $("#findUser").show();
+    });
+
+    //  Add User (Search form) >> Submit
+    $(document).on('submit', '#findUser', function (event) {
+        event.preventDefault();
+
+        let newUserNameSelection = "";
+        $('#pageAddUser select#newUserRequest option:selected').each(function () {
+            newUserNameSelection = $(this).text();
+        })
+
+        $(".jsHide").hide();
+        $("#pageAddUser").show();
+        $("#assignRole").show();
+        $("#pageAddUser #assignRole #newUserName").text(newUserNameSelection);
+        console.log(userValuesArr);
+    });
+
+    //  Add User (Assign Role form) >> Submit
+    $(document).on('submit', '#assignRole', function (event) {
+        event.preventDefault();
+
+        let role = $("input[type=radio][name=radio-assign-user-role]:checked").val();
+        console.log(role);
+        let newUserName = $("#pageAddUser #assignRole #newUserName").text();
+        console.log(newUserName);
+
+        let newUserObj = {};
+        for (let i = 0; i < userValuesArr.length; i++) {
+            if (userValuesArr[i].name == newUserName) {
+                let email = userValuesArr[i].email;
+                newUserObj = {
+                    role: role,
+                    approved: 1
+                };
+                console.log(email, newUserObj);
+                $.ajax({
+                        type: "PUT",
+                        url: "/users/update/" + email,
+                        data: JSON.stringify(newUserObj),
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                        // console.log(result);
+                        alert("User role assigned successfully.");
+                        userValuesArr.splice(i, 1);
+                        console.log(userValuesArr);
+                        if (userValuesArr.length > 0) {
+                            let newUserNames = [];
+                            for (name in userValuesArr) {
+                                console.log(userValuesArr[name].name);
+                                newUserNames.push(userValuesArr[name].name)
+                            }
+                            $(".jsHide").hide();
+                            $("#pageAddUser").show();
+                            $("#findUser").show();
+                            populateDropDown(newUserNames, "#newUserRequest");
+                            document.getElementById("assignRole").reset();
+
+                        } else {
+                            populateDropDown([], "#newUserRequest");
+                            $(".jsHide").hide();
+                            $("#pageAdminMenu").show();
+                        }
+                    })
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                        //user not found
+                        alert("Error assigning user role. Please try again.");
+                    })
+
+            }
+        }
+
+    });
+
+    //  Add User (Assign Role form) >> Deny
+    $(document).on('click', '#denyRequest', function (event) {
+        event.preventDefault();
+
+        let newUserName = $("#pageAddUser #assignRole #newUserName").text();
+        console.log(newUserName);
+
+        let newUserObj = {};
+        for (let i = 0; i < userValuesArr.length; i++) {
+            if (userValuesArr[i].name == newUserName) {
+                let email = userValuesArr[i].email;
+                newUserObj = {
+                    role: "",
+                    approved: 4
+                };
+                console.log(email, newUserObj);
+                $.ajax({
+                        type: "PUT",
+                        url: "/users/update/" + email,
+                        data: JSON.stringify(newUserObj),
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                        // console.log(result);
+                        alert("User account request has been denied.");
+                        userValuesArr.splice(i, 1);
+                        console.log(userValuesArr);
+                        if (userValuesArr.length > 0) {
+                            let newUserNames = [];
+                            for (name in userValuesArr) {
+                                console.log(userValuesArr[name].name);
+                                newUserNames.push(userValuesArr[name].name)
+                            }
+                            $(".jsHide").hide();
+                            $("#pageAddUser").show();
+                            $("#findUser").show();
+                            populateDropDown(newUserNames, "#newUserRequest");
+                            document.getElementById("assignRole").reset();
+
+                        } else {
+                            populateDropDown([], "#newUserRequest");
+                            $(".jsHide").hide();
+                            $("#pageAdminMenu").show();
+                        }
+                    })
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                        //user not found
+                        alert("Error denying request. Please try again.");
+                    })
+
+            }
+        }
+
+    });
+
+    //  Add User >> Cancel (for both Cancel buttons on page)
+    $(document).on('click', '#pageAddUser .button-cancel', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageAdminMenu").show();
+    });
+
+    //*** Admin Menu >> Update/Remove User
+    $(document).on('click', 'p.gotoUpdateUser', function (event) {
+        event.preventDefault();
+        $(".jsHide").hide();
+        $("#pageUpdateUser").show();
+        $("#findUpdateUser").show();
+    });
+
+    //  Update User (Search form) >> Submit
+    $(document).on('submit', '#findUpdateUser', function (event) {
+        event.preventDefault();
+        let email = $("#pageUpdateUser #findUpdateUser #userEmail").val();
+        getUserByEmail(email, "updateuser");
+
+    });
+
+    $(document).on('submit', '#updateRole', function (event) {
+        event.preventDefault();
+
+        let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
+
+        let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
+
+        let email = $("#updateRole #userEmailHidden").val();
+        let updateUserObj = {
+            role: role,
+            approved: approved
+        };
+
         $.ajax({
                 type: "PUT",
-                url: "/pipelines/update/" + pipelineID,
-                data: JSON.stringify(updatePipelineObj),
+                url: "/users/update/" + email,
+                data: JSON.stringify(updateUserObj),
                 dataType: 'json',
                 contentType: 'application/json'
             })
             .done(function (result) {
-                alert("Pipeline updated.");
+                alert("User has been updated.");
+
+                $(".jsHide").hide();
+                $("#pageUpdateUser").show();
+                $("#findUpdateUser").show();
+                document.getElementById("findUpdateUser").reset();
+                document.getElementById("updateRole").reset();
 
             })
             .fail(function (jqXHR, error, errorThrown) {
@@ -1312,309 +1600,17 @@ $(document).on('submit', '#updatePipeline', function (event) {
                 console.log(error);
                 console.log(errorThrown);
                 //user not found
-                alert("Error updating pipeline information. Please try again.");
+                alert("Error updating user. Please try again.");
             })
+    });
 
-        $("#updateSearch #systemName").html("");
-        $("#updateSearch #pipelineName").html("");
-        document.getElementById("updatePipeline").reset();
-        document.getElementById("addPipeline").reset();
-
+    //  Update User >> Cancel (for both Cancel buttons on page)
+    $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
+        event.preventDefault();
         $(".jsHide").hide();
         $("#pageAdminMenu").show();
-    }
-});
-
-//  Update/Remove Pipeline (Update form) >> Delete
-$(document).on('click', '#pageUpdatePipeline .button-delete', function (event) {
-    event.preventDefault();
-    //console.log(pipelineID);
-    if (window.confirm("Are you sure you want to PERMANENTLY DELETE this pipeline record?")) {
-        $.ajax({
-                type: 'DELETE',
-                url: '/pipelines/delete/' + pipelineID,
-                dataType: 'json',
-                // data: JSON.stringify(newPipelineObj),
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                alert("Record has been sucessfully deleted.");
-                $("#updateSearch #systemName").html("");
-                $("#updateSearch #pipelineName").html("");
-                document.getElementById("updatePipeline").reset();
-                document.getElementById("addPipeline").reset();
-                $(".jsHide").hide();
-                $("#pageAdminMenu").show();
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                alert('Error deleting pipeline. Please try again.');
-            });
-
-    } else {
-        alert("Pipeline deletion cancelled.");
-    }
-});
-
-//  Update/Remove Pipeline >> Cancel
-$(document).on('click', '#pageUpdatePipeline .button-cancel', function (event) {
-    event.preventDefault();
-
-    $("#updateSearch #systemName").html("");
-    $("#updateSearch #pipelineName").html("");
-    document.getElementById("updatePipeline").reset();
-    document.getElementById("addPipeline").reset();
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
-
-
-
-//*** Admin Menu >> Add User
-$(document).on('click', 'p.gotoAddUser', function (event) {
-    event.preventDefault();
-    if (userValuesArr.length > 0) {
-        let newUserNames = [];
-        for (name in userValuesArr) {
-            console.log(userValuesArr[name].name);
-            newUserNames.push(userValuesArr[name].name)
-        }
-        populateDropDown(newUserNames, "#newUserRequest");
-    }
-    $(".jsHide").hide();
-    $("#pageAddUser").show();
-    $("#findUser").show();
-});
-
-//  Add User (Search form) >> Submit
-$(document).on('submit', '#findUser', function (event) {
-    event.preventDefault();
-
-    let newUserNameSelection = "";
-    $('#pageAddUser select#newUserRequest option:selected').each(function () {
-        newUserNameSelection = $(this).text();
-    })
-
-    $(".jsHide").hide();
-    $("#pageAddUser").show();
-    $("#assignRole").show();
-    $("#pageAddUser #assignRole #newUserName").text(newUserNameSelection);
-    console.log(userValuesArr);
-});
-
-//  Add User (Assign Role form) >> Submit
-$(document).on('submit', '#assignRole', function (event) {
-    event.preventDefault();
-
-    let role = $("input[type=radio][name=radio-assign-user-role]:checked").val();
-    console.log(role);
-    let newUserName = $("#pageAddUser #assignRole #newUserName").text();
-    console.log(newUserName);
-
-    let newUserObj = {};
-    for (let i = 0; i < userValuesArr.length; i++) {
-        if (userValuesArr[i].name == newUserName) {
-            let email = userValuesArr[i].email;
-            newUserObj = {
-                role: role,
-                approved: 1
-            };
-            console.log(email, newUserObj);
-            $.ajax({
-                    type: "PUT",
-                    url: "/users/update/" + email,
-                    data: JSON.stringify(newUserObj),
-                    dataType: 'json',
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    // console.log(result);
-                    alert("User role assigned successfully.");
-                    userValuesArr.splice(i, 1);
-                    console.log(userValuesArr);
-                    if (userValuesArr.length > 0) {
-                        let newUserNames = [];
-                        for (name in userValuesArr) {
-                            console.log(userValuesArr[name].name);
-                            newUserNames.push(userValuesArr[name].name)
-                        }
-                        $(".jsHide").hide();
-                        $("#pageAddUser").show();
-                        $("#findUser").show();
-                        populateDropDown(newUserNames, "#newUserRequest");
-                        document.getElementById("assignRole").reset();
-
-                    } else {
-                        populateDropDown([], "#newUserRequest");
-                        $(".jsHide").hide();
-                        $("#pageAdminMenu").show();
-                    }
-                })
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                    //user not found
-                    alert("Error assigning user role. Please try again.");
-                })
-
-        }
-    }
-
-});
-
-//  Add User (Assign Role form) >> Deny
-$(document).on('click', '#denyRequest', function (event) {
-    event.preventDefault();
-
-    let newUserName = $("#pageAddUser #assignRole #newUserName").text();
-    console.log(newUserName);
-
-    let newUserObj = {};
-    for (let i = 0; i < userValuesArr.length; i++) {
-        if (userValuesArr[i].name == newUserName) {
-            let email = userValuesArr[i].email;
-            newUserObj = {
-                role: "",
-                approved: 4
-            };
-            console.log(email, newUserObj);
-            $.ajax({
-                    type: "PUT",
-                    url: "/users/update/" + email,
-                    data: JSON.stringify(newUserObj),
-                    dataType: 'json',
-                    contentType: 'application/json'
-                })
-                .done(function (result) {
-                    // console.log(result);
-                    alert("User account request has been denied.");
-                    userValuesArr.splice(i, 1);
-                    console.log(userValuesArr);
-                    if (userValuesArr.length > 0) {
-                        let newUserNames = [];
-                        for (name in userValuesArr) {
-                            console.log(userValuesArr[name].name);
-                            newUserNames.push(userValuesArr[name].name)
-                        }
-                        $(".jsHide").hide();
-                        $("#pageAddUser").show();
-                        $("#findUser").show();
-                        populateDropDown(newUserNames, "#newUserRequest");
-                        document.getElementById("assignRole").reset();
-
-                    } else {
-                        populateDropDown([], "#newUserRequest");
-                        $(".jsHide").hide();
-                        $("#pageAdminMenu").show();
-                    }
-                })
-                .fail(function (jqXHR, error, errorThrown) {
-                    console.log(jqXHR);
-                    console.log(error);
-                    console.log(errorThrown);
-                    //user not found
-                    alert("Error denying request. Please try again.");
-                })
-
-        }
-    }
-
-});
-
-//  Add User >> Cancel (for both Cancel buttons on page)
-$(document).on('click', '#pageAddUser .button-cancel', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
-
-//*** Admin Menu >> Update/Remove User
-$(document).on('click', 'p.gotoUpdateUser', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageUpdateUser").show();
-    $("#findUpdateUser").show();
-});
-
-//  Update User (Search form) >> Submit
-$(document).on('submit', '#findUpdateUser', function (event) {
-    event.preventDefault();
-    let email = $("#pageUpdateUser #findUpdateUser #userEmail").val();
-    getUserByEmail(email, "updateuser");
-
-});
-
-function updateUserRoleFormFill(userObj) {
-    console.log(userObj);
-
-    let userUpdateStatus = "";
-    if (userObj.approved == 1) {
-        userUpdateStatus = "Active";
-        $("input[id=radioUserActive]").prop("checked", true);
-    } else {
-        userUpdateStatus = "Inactive";
-        $("input[id=radioUserInactive]").prop("checked", true);
-    };
-
-    $("#updateRole #userUpdateName").text(userObj.fname + " " + userObj.lname);
-    $("#updateRole #userUpdateRole").text(userObj.role);
-    $("#updateRole #userUpdateStatus").text(userUpdateStatus);
-    $('input[id="' + userObj.role + '"]').prop("checked", true);
-    $("#updateRole #userEmailHidden").val(userObj.email);
-
-}
-
-$(document).on('submit', '#updateRole', function (event) {
-    event.preventDefault();
-
-    let role = $("#updateRole input[type=radio][name=radioUpdateUserRole]:checked").val();
-
-    let approved = $("#updateRole input[type=radio][name=radioUpdateUserStatus]:checked").val();
-
-    let email = $("#updateRole #userEmailHidden").val();
-    let updateUserObj = {
-        role: role,
-        approved: approved
-    };
-
-    $.ajax({
-            type: "PUT",
-            url: "/users/update/" + email,
-            data: JSON.stringify(updateUserObj),
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            alert("User has been updated.");
-
-            $(".jsHide").hide();
-            $("#pageUpdateUser").show();
-            $("#findUpdateUser").show();
-            document.getElementById("findUpdateUser").reset();
-            document.getElementById("updateRole").reset();
-
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-            //user not found
-            alert("Error updating user. Please try again.");
-        })
-});
-
-
-
-//  Update User >> Cancel (for both Cancel buttons on page)
-$(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageAdminMenu").show();
-});
-
+    });
+};
 
 // USER = OPERATOR
 //  INPUT PIGGING
@@ -1705,7 +1701,6 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         operatorEmail: currentUserEmail
     };
 
-
     // which radio button is selected?
     let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
     let inputActivityString = inputActivity[0].id;
@@ -1738,7 +1733,6 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
 //  Input Pigging >> Pigging Schedule (Operator)
 $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
 
-    alert("here");
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .normal-header").show();
@@ -1746,15 +1740,88 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .show-to-report-viewer").hide();
     activePage = "piggingSchedule";
-    console.log(activePage);
+    getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
 });
 
 
 //  Pigging Schedule >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
     event.preventDefault();
+
+    let systemValue = "";
+    $('#pagePiggingSchedule select#systemName option:selected').each(function () {
+        systemValue = $(this).text();
+    });
+    getPipelinesForSchedule(systemValue, "#scheduleResults");
+    getPiggingFrequencyByPipeline(pipelineValue);
+    console.log(systemValue);
+
     alert("Pipeline System selection has been submitted. Schedule results will update.");
 });
+
+
+function getPipelinesForSchedule(systemValue, container) {
+    $.ajax({
+            type: "GET",
+            url: '/pipelines/' + systemValue,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            //console.log(result);
+            let optionValues = [];
+            for (let options in result) {
+                optionValues.push(result[options].pipelineName);
+            }
+            let buildList = "";
+            $(container).html('');
+            $.each(optionValues,
+                function (key, value) {
+                    buildList += '<p>' + value + '</p>';
+                })
+            $(container).html(buildList);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function getPiggingFrequencyByPipeline(pipelines) {
+    $.ajax({
+            type: "GET",
+            url: '/frequency',
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+
+            //        let optionValues1 = [];
+            //        for (let options in result) {
+            //            optionValues1.push(result[options].pipelineName);
+            //            optionValues1 = arrayDuplicates(optionValues1);
+            //        }
+            //        console.log(optionValues1);
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+
+};
+
+function getLastLaunch(pipelineValue) {
+
+};
+
+
+
+
+
+
 
 
 

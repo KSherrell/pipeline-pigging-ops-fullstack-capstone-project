@@ -534,7 +534,26 @@ app.post('/pigging-activity/add', (req, res) => {
         });
 });
 
+// GET THE LIST OF ACTIVITIES PER PIPELINE
+app.get("/activities/:pipelineName", function (req, res) {
+    Activity
+        .find(req.params.pipelineName,
+            function (err, items) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Internal server error"
+                    });
+                }
+                if (!items) {
+                    return res.status(401).json({
+                        message: "System not found"
+                    });
+                } else {
+                    return res.json(items);
+                }
+            });
 
+});
 
 
 
