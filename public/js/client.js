@@ -567,6 +567,57 @@ function addNewPipeline(newPipelineObj) {
         });
 }
 
+//check for empty Input Pigging fields
+function validateFields(activityObj, lastItem) {
+    let fieldFocus = "";
+    for (let values in activityObj) {
+        if (activityObj[values] == "" || activityObj[values] == "Select Option") {
+            fieldFocus = values;
+            alert("All fields are required.");
+            $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
+            break;
+        } else if (values == lastItem) {
+            postPiggingActivity(activityObj);
+        }
+    }
+};
+
+function postPiggingActivity(activityObj) {
+    $.ajax({
+            type: "POST",
+            url: "/pigging-activity/add",
+            data: JSON.stringify(activityObj),
+            dataType: "json",
+            contentType: "application/json"
+        })
+        .done(function (result) {
+            alert("Pigging activity added successfully.");
+
+            //  clear the form, reset the page
+            document.getElementById("inputPigging").reset();
+            $(".jsHide").hide();
+            $("#pageInputPigging").show();
+            $("#pageInputPigging div.select-receive").hide();
+            $("#pageInputPigging div.select-exception").hide();
+
+            $("#pageInputPigging div.select-launch").show();
+            $("#pageInputPigging div.select-receive").hide();
+            $("#pageInputPigging div.select-exception").hide();
+
+            $("#pageInputPigging #inputPigging #pipelineName").html("");
+            $("#pageInputPigging #inputPigging #launcherName").text("");
+            $("#pageInputPigging #inputPigging #pigType").html("");
+            $("#pageInputPigging #inputPigging #exceptions").html("");
+
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+            alert("Error adding pigging activity. Please try again.");
+        })
+};
+
 
 //Step Two: Use functions, object, variables (triggers)
 
@@ -1566,6 +1617,7 @@ $(document).on('click', '#pageUpdateUser .button-cancel', function (event) {
 
 
 // USER = OPERATOR
+//  INPUT PIGGING
 
 // Input Pigging >> Get pipelines dropdown list from system selection
 $(document).on('change', '#pageInputPigging #inputPigging #systemName', function () {
@@ -1577,6 +1629,7 @@ $(document).on('change', '#pageInputPigging #inputPigging #systemName', function
     });
     $("#pageInputPigging #inputPigging #launcherName").text("");
 });
+
 // Input Pigging >> Get launcher name and pig types from pipeline selection
 $(document).on('change', '#pageInputPigging #inputPigging #pipelineName', function () {
     event.preventDefault();
@@ -1589,15 +1642,12 @@ $(document).on('change', '#pageInputPigging #inputPigging #pipelineName', functi
 
 });
 
-
 //  Input Pigging >> Radio Launch
 $(document).on('click', '#pageInputPigging #radioLaunch', function () {
 
     $("#pageInputPigging div.select-launch").show();
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").hide();
-
-
 });
 
 //  Input Pigging >> Radio Receive
@@ -1605,7 +1655,6 @@ $(document).on('click', '#pageInputPigging #radioReceive', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging div.select-receive").show();
     $("#pageInputPigging div.select-exception").hide();
-
 });
 
 //  Input Pigging >> Radio Exception
@@ -1613,13 +1662,9 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-launch").hide();
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").show();
-
     // get list of exceptions
-    getExceptions("#pageInputPigging #inputPigging #exceptions");
-
+    getExceptions("#pageInputPigging #inputPigging #exception");
 });
-
-
 
 //  Input Pigging >> Submit
 $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
@@ -1628,32 +1673,25 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     //what are my fields values?
     let activityDate = $("#activityDate").val();
     let activityTime = $("#activityTime").val();
-
     let systemValue = "";
     $('#pageInputPigging select#systemName option:selected').each(function () {
         systemValue = $(this).text();
     });
-
     let pipelineValue = "";
     $('#pageInputPigging select#pipelineName option:selected').each(function () {
         pipelineValue = $(this).text();
     });
-
     let launcherValue = $("#launcherName").text();
-
     let pigValue = "";
     $('#pageInputPigging select#pigType option:selected').each(function () {
         pigValue = $(this).text();
     });
-
     let paraffinValue = $("#paraffinWeight").val();
     let sandValue = $("#sandWeight").val();
-
     let exceptionValue = "";
-    $('#pageInputPigging select#exceptions option:selected').each(function () {
+    $('#pageInputPigging select#exception option:selected').each(function () {
         exceptionValue = $(this).text();
     });
-
     let notesValue = $("#notes").val();
 
     // an object holding the common elements of every PUT request
@@ -1668,59 +1706,12 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     };
 
 
-    //validate field values
-    function validateFields(activityObj, lastItem) {
-        let fieldFocus = "";
-        for (let values in activityObj) {
-            if (activityObj[values] == "" || activityObj[values] == "Select Option") {
-                fieldFocus = values;
-                alert("All fields are required.");
-                $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
-                break;
-            } else if (values == lastItem) {
-                postPiggingActivity(activityObj);
-            }
-        }
-    };
-
-    function postPiggingActivity(activityObj) {
-        console.log(activityObj);
-
-        $.ajax({
-                type: "POST",
-                url: "/pigging-activity/add",
-                data: JSON.stringify(activityObj),
-                dataType: "json",
-                contentType: "application/json"
-            })
-            .done(function (result) {
-
-                alert("Pigging activity added successfully line 1698.");
-
-            })
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-                alert("Error adding pigging activity. Please try again.");
-            })
-
-    };
-
-
     // which radio button is selected?
-
     let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
     let inputActivityString = inputActivity[0].id;
 
-
-
-
-
     //add key:value pairs to activityObj per inputActivity
-
     if (inputActivityString == "radioLaunch") {
-        alert("it's a launch");
         activityObj.pigType = pigValue;
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.keys(activityObj);
@@ -1728,44 +1719,20 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioReceive") {
-        alert("it's a receive");
         activityObj.paraffinWeight = paraffinValue;
         activityObj.sandWeight = sandValue;
-        console.log(activityObj);
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
         validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioException") {
-        alert("it's an exception");
         activityObj.exception = exceptionValue;
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
         validateFields(activityObj, lastItem);
     }
-
-
-
-
-    //clear the form
-    //   alert("Pigging activity has been submitted.");
-    //    document.getElementById("inputPigging").reset();
-    //
-    //    $(".jsHide").hide();
-    //    $("#pageInputPigging").show();
-    //    $("#pageInputPigging div.select-receive").hide();
-    //    $("#pageInputPigging div.select-exception").hide();
-    //
-    //    $("#pageInputPigging div.select-launch").show();
-    //    $("#pageInputPigging div.select-receive").hide();
-    //    $("#pageInputPigging div.select-exception").hide();
-    //
-    //    $("#pageInputPigging #inputPigging #pipelineName").html("");
-    //    $("#pageInputPigging #inputPigging #launcherName").text("");
-    //    $("#pageInputPigging #inputPigging #pigType").html("");
-    //    $("#pageInputPigging #inputPigging #exceptions").html("");
 });
 
 //  Input Pigging >> Pigging Schedule (Operator)
