@@ -1677,7 +1677,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
                 alert("All fields are required.");
                 $("#pageInputPigging #inputPigging #" + fieldFocus).focus();
                 break;
-            } else if (activityObj[values] == lastItem) {
+            } else if (values == lastItem) {
                 postPiggingActivity(activityObj);
             }
         }
@@ -1723,7 +1723,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         alert("it's a launch");
         activityObj.pigType = pigValue;
         let objLength = Object.keys(activityObj).length - 1;
-        let lastItem = Object.values(activityObj);
+        let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
         validateFields(activityObj, lastItem);
 
@@ -1733,7 +1733,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         activityObj.sandWeight = sandValue;
         console.log(activityObj);
         let objLength = Object.keys(activityObj).length - 1;
-        let lastItem = Object.values(activityObj);
+        let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
         validateFields(activityObj, lastItem);
 
@@ -1741,7 +1741,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         alert("it's an exception");
         activityObj.exception = exceptionValue;
         let objLength = Object.keys(activityObj).length - 1;
-        let lastItem = Object.values(activityObj);
+        let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
         validateFields(activityObj, lastItem);
     }
