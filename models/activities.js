@@ -16,6 +16,10 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    activityName: {
+        type: String,
+        required: false
+    },
     systemName: {
         type: String,
         required: false
@@ -40,7 +44,7 @@ const activitySchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    exception: {
+    exceptionDesc: {
         type: String,
         required: false
     },

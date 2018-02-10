@@ -497,6 +497,7 @@ app.post('/pigging-activity/add', (req, res) => {
     console.log(req.body.sandWeight, req.body.paraffinWeight);
     let activityDate = req.body.activityDate;
     let activityTime = req.body.activityTime;
+    let activityName = req.body.activityName;
     let systemName = req.body.systemName;
     let pipelineName = req.body.pipelineName;
     let launcherName = req.body.launcherName;
@@ -505,13 +506,14 @@ app.post('/pigging-activity/add', (req, res) => {
     let pigType = req.body.pigType;
     let paraffinWeight = req.body.paraffinWeight;
     let sandWeight = req.body.sandWeight;
-    let exception = req.body.exception;
+    let exceptionDesc = req.body.exceptionDesc;
 
 
     Activity
         .create({
             activityDate,
             activityTime,
+            activityName,
             systemName,
             pipelineName,
             launcherName,
@@ -520,7 +522,7 @@ app.post('/pigging-activity/add', (req, res) => {
             pigType,
             paraffinWeight,
             sandWeight,
-            exception
+            exceptionDesc
         }, (err, item) => {
             if (err) {
                 return res.status(500).json({
@@ -535,23 +537,22 @@ app.post('/pigging-activity/add', (req, res) => {
 });
 
 // GET THE LIST OF ACTIVITIES PER PIPELINE
-app.get("/activities/:pipelineName", function (req, res) {
+app.get("/activities", function (req, res) {
     Activity
-        .find(req.params.pipelineName,
-            function (err, items) {
-                if (err) {
-                    return res.status(500).json({
-                        message: "Internal server error"
-                    });
-                }
-                if (!items) {
-                    return res.status(401).json({
-                        message: "System not found"
-                    });
-                } else {
-                    return res.json(items);
-                }
-            });
+        .find(function (err, items) {
+            if (err) {
+                return res.status(500).json({
+                    message: "Internal server error"
+                });
+            }
+            if (!items) {
+                return res.status(401).json({
+                    message: "System not found"
+                });
+            } else {
+                return res.json(items);
+            }
+        });
 
 });
 

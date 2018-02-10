@@ -1659,7 +1659,7 @@ $(document).on('click', '#pageInputPigging #radioException', function () {
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").show();
     // get list of exceptions
-    getExceptions("#pageInputPigging #inputPigging #exception");
+    getExceptions("#pageInputPigging #inputPigging #exceptionDesc");
 });
 
 //  Input Pigging >> Submit
@@ -1667,6 +1667,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     event.preventDefault();
 
     //what are my fields values?
+    let activityName = "";
     let activityDate = $("#activityDate").val();
     let activityTime = $("#activityTime").val();
     let systemValue = "";
@@ -1685,7 +1686,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     let paraffinValue = $("#paraffinWeight").val();
     let sandValue = $("#sandWeight").val();
     let exceptionValue = "";
-    $('#pageInputPigging select#exception option:selected').each(function () {
+    $('#pageInputPigging select#exceptionDesc option:selected').each(function () {
         exceptionValue = $(this).text();
     });
     let notesValue = $("#notes").val();
@@ -1707,6 +1708,8 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
 
     //add key:value pairs to activityObj per inputActivity
     if (inputActivityString == "radioLaunch") {
+        activityName = "launch";
+        activityObj.activityName = activityName;
         activityObj.pigType = pigValue;
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.keys(activityObj);
@@ -1714,6 +1717,8 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioReceive") {
+        activityName = "receive";
+        activityObj.activityName = activityName;
         activityObj.paraffinWeight = paraffinValue;
         activityObj.sandWeight = sandValue;
         let objLength = Object.keys(activityObj).length - 1;
@@ -1722,7 +1727,9 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
         validateFields(activityObj, lastItem);
 
     } else if (inputActivityString == "radioException") {
-        activityObj.exception = exceptionValue;
+        activityName = "exception";
+        activityObj.activityName = activityName;
+        activityObj.exceptionDesc = exceptionValue;
         let objLength = Object.keys(activityObj).length - 1;
         let lastItem = Object.keys(activityObj);
         lastItem = lastItem[objLength];
@@ -1753,7 +1760,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
         systemValue = $(this).text();
     });
     getPipelinesForSchedule(systemValue, "#scheduleResults");
-    getPiggingFrequencyByPipeline(pipelineValue);
+    getActivities();
     console.log(systemValue);
 
     alert("Pipeline System selection has been submitted. Schedule results will update.");
@@ -1788,10 +1795,10 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-function getPiggingFrequencyByPipeline(pipelines) {
+function getActivities() {
     $.ajax({
             type: "GET",
-            url: '/frequency',
+            url: '/activities',
             dataType: 'json',
             contentType: 'application/json'
         })
