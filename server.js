@@ -491,7 +491,7 @@ app.get("/exceptions", function (req, res) {
 
 });
 
-// ADD NEW PIPELINE
+//ADD NEW ACTIVITY
 app.post('/pigging-activity/add', (req, res) => {
     // the following variables should match the ones in the ajax call
     console.log(req.body.sandWeight, req.body.paraffinWeight);

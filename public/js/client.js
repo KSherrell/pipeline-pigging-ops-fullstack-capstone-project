@@ -1693,7 +1693,7 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     });
     let notesValue = $("#notes").val();
 
-    // an object holding the common elements of every PUT request
+    // an object holding the common elements of every POST request
     let activityObj = {
         activityDate: activityDate,
         activityTime: activityTime,
@@ -1762,7 +1762,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
         systemValue = $(this).text();
     });
     getPipelinesForSchedule(systemValue, "#scheduleResults");
-    getActivities();
+    getActivities(systemValue, "launch");
     console.log(systemValue);
 
     alert("Pipeline System selection has been submitted. Schedule results will update.");
@@ -1797,7 +1797,7 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-function getActivities(pipelineName, activityName) {
+function getActivities(systemName, activityName) {
     $.ajax({
             type: "GET",
             url: '/activities',
