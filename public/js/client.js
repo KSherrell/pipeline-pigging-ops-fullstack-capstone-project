@@ -1762,7 +1762,6 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
         systemValue = $(this).text();
     });
     getPipelinesForSchedule(systemValue, "#scheduleResults");
-    //getActivities(systemValue, "launch");
     console.log(systemValue);
 
     alert("Pipeline System selection has been submitted. Schedule results will update.");
@@ -1771,6 +1770,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
 
 function getPipelinesForSchedule(systemValue, container) {
     $.ajax({
+            //getting the pipelines in the selected system
             type: "GET",
             url: '/pipelines/' + systemValue,
             dataType: 'json',
@@ -1778,6 +1778,7 @@ function getPipelinesForSchedule(systemValue, container) {
         })
         .done(function (result) {
             console.log(result);
+            //creating a subset of the results-- pulling out the pipeline name and its pigging frequency
             let optionValues = [];
             for (let options in result) {
                 optionValues.push({
@@ -1785,6 +1786,7 @@ function getPipelinesForSchedule(systemValue, container) {
                     piggingFrequency: result[options].piggingFrequency
                 });
             }
+            //ajax call for each pipeline name, to get the latest launch (code filters on server side)
             for (let options in optionValues) {
                 $.ajax({
                         type: "GET",
@@ -1794,20 +1796,53 @@ function getPipelinesForSchedule(systemValue, container) {
                     })
                     .done(function (result) {
                         console.log(result);
-                        let date = new Date(result.activityDate);
+
+                        //setting up the due / overdue formulas
+                        let today = new Date();
+                        let prevLaunch = new Date(result.activityDate);
                         let days = Number(optionValues[options].piggingFrequency) + 1;
-                        console.log(date, days);
-                        let nextLaunch = new Date(date);
-                        nextLaunch.setDate(date.getDate() + days);
+
+                        //nextLaunch = date of previous launch + piggingFrequency
+                        let nextLaunch = new Date(prevLaunch);
+                        nextLaunch.setDate(prevLaunch.getDate() + days);
                         console.log(nextLaunch);
+                        //I need a formula for nextLaunch - 7
+                        console.log(nextLaunch.getDate() - 7);
+                        let sevenDays = nextLaunch.setDate(nextLaunch.getDate() - 7)
+                        console.log(sevenDays);
+
+                        sevenDays = new Date(sevenDays);
+                        console.log(sevenDays);
+
+
+                        //building the html output
                         let buildList = "";
                         $(container).html('');
+                        let className = "";
                         console.log(optionValues);
+
+                        switch (nextLaunch) {
+                            case (today):
+                                className = "due-today";
+                                break;
+                            case (nextLaunch - 7 > today):
+
+                                className = "due-in-seven";
+                                break;
+                            case (nextLaunch < today):
+                                className = "overdue-within-thirty";
+                                break;
+                            case (nextLaunch + 30 < today):
+                                className = "overdue-plus-thirty";
+                                break;
+                            default:
+                                className = "upcoming";
+
+                        }
+
                         $.each(optionValues,
                             function (key, value) {
-                                console.log(key);
-                                console.log(value.piggingFrequency);
-                                buildList += '<p>' + value.pipelineName + '</p>';
+                                buildList += '<p class ="' + className + '">' + value.pipelineName + '</p>';
                             })
                         $(container).html(buildList);
 

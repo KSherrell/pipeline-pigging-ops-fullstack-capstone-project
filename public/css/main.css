@@ -320,11 +320,14 @@
         margin-bottom: 1.2rem;
         cursor: pointer;
     }
-    .pigging-schedule-container p.due today {
+    .pigging-schedule-container p.due-today {
         background-color: #ffffff;
     }
     .pigging-schedule-container p.due-in-seven {
         background-color: #ffe552;
+    }
+    .pigging-schedule-container p.upcoming {
+        background-color: #a7dbd8;
     }
     .pigging-schedule-container p.overdue-within-thirty {
         background-color: #ee7777;
