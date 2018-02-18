@@ -1805,36 +1805,39 @@ function getPipelinesForSchedule(systemValue, container) {
                         //nextLaunch = date of previous launch + piggingFrequency
                         let nextLaunch = new Date(prevLaunch);
                         nextLaunch.setDate(prevLaunch.getDate() + days);
-                        console.log(nextLaunch);
-                        //I need a formula for nextLaunch - 7
-                        console.log(nextLaunch.getDate() - 7);
-                        let sevenDays = nextLaunch.setDate(nextLaunch.getDate() - 7)
-                        console.log(sevenDays);
 
-                        sevenDays = new Date(sevenDays);
-                        console.log(sevenDays);
+                        //I need a formula for nextLaunch - 7
+                        //                        console.log(nextLaunch.setDate(nextLaunch.getDate() - 7));
+                        //                        let sevenDays = new Date(nextLaunch.getDate() - 7);
+                        console.log(today.getTime());
+                        //                        console.log(prevLaunch);
+                        console.log(nextLaunch.getTime());
+                        //                        console.log(sevenDays);
+
+                        //
+                        //                        sevenDays = new Date(sevenDays);
+                        //                        console.log(sevenDays);
 
 
                         //building the html output
                         let buildList = "";
                         $(container).html('');
                         let className = "";
-                        console.log(optionValues);
+                        //console.log(optionValues);
 
-                        switch (nextLaunch) {
-                            case (today):
+                        switch (nextLaunch.getTime()) {
+                            case (today.getTime()):
                                 className = "due-today";
                                 break;
-                            case (nextLaunch - 7 > today):
-
-                                className = "due-in-seven";
-                                break;
-                            case (nextLaunch < today):
+                            case (nextLaunch.getTime() < today.getTime()):
                                 className = "overdue-within-thirty";
                                 break;
-                            case (nextLaunch + 30 < today):
-                                className = "overdue-plus-thirty";
+                            case (nextLaunch.getTime() > today.getTime()):
+                                className = "due-in-seven";
                                 break;
+                                //                            case (nextLaunch + 30 < today):
+                                //                                className = "overdue-plus-thirty";
+                                //                                break;
                             default:
                                 className = "upcoming";
 
@@ -1843,7 +1846,7 @@ function getPipelinesForSchedule(systemValue, container) {
                         $.each(optionValues,
                             function (key, value) {
                                 buildList += '<p class ="' + className + '">' + value.pipelineName + '</p>';
-                            })
+                            });
                         $(container).html(buildList);
 
                     })
