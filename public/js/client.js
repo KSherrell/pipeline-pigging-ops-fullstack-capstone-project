@@ -1777,16 +1777,24 @@ function getPipelinesForSchedule(systemValue, container) {
             contentType: 'application/json'
         })
         .done(function (result) {
-            //console.log(result);
+            console.log(result);
             let optionValues = [];
+            let piggingFrequencies = [];
             for (let options in result) {
-                optionValues.push(result[options].pipelineName);
+                optionValues.push({
+                    pipelineName: result[options].pipelineName,
+                    piggingFrequency: result[options].piggingFrequency
+                });
+                piggingFrequencies.push(result[options].piggingFrequency)
             }
+            console.log(optionValues, piggingFrequencies);
             let buildList = "";
             $(container).html('');
             $.each(optionValues,
                 function (key, value) {
-                    buildList += '<p>' + value + '</p>';
+                    console.log(key);
+                    console.log(value.piggingFrequency);
+                    buildList += '<p>' + value.pipelineName + '</p>';
                 })
             $(container).html(buildList);
         })
@@ -1807,44 +1815,43 @@ function getActivities(systemName, activityValue) {
         .done(function (result) {
             console.log(result);
             console.log(activityValue);
-            let optionValues = [];
-            for (let options in result) {
-                if (result[options].activityName == activityValue) {
-                    optionValues.push({
-                        "pipelineName": result[options].pipelineName,
-                        "activityDate": result[options].activityDate
-                    });
-                }
+            //            let optionValues = [];
+            //            for (let options in result) {
+            //
+            //                $.ajax({
+            //                        type: "GET",
+            //                        url: '/pigging-activity/' + result[options].pipelineName,
+            //                        dataType: 'json',
+            //                        contentType: 'application/json'
+            //                    })
+            //                    .done(function (result) {
+            //                        console.log(result);
+            //                        console.log(activityValue);
+            //                    let optionValues = [];
+            //                    for (let options in result) {
+            //
+            //buildList += '<p>' + value + '</p>';
 
-            }
-            let pipelineNameMatch = optionValues[0].pipelineName;
-            let activityDateMatch = optionValues[0].activityDate;
+            // get all pipelines in the system as the result
+            // loop through result and send api request for findOne on server.js to get the latest activity for each pipeline -- build the container if activityName == "launch"
 
-            console.log(optionValues);
-                     for (let i = 0; i < optionValues.length; i++) {
+            //           $(container).html(buildList);
 
-                         if(optionValues[i].pipelineName == pipelineNameMatch){
-                             if (optionValues[i].activityDate > activityDateMatch){
-                                 activityDateMatch = optionValues[i].activityDate;
-                             }
-                         }
-                     }
-
-            //            $.each(optionValues,
-            //                function (key, value) {
-            //                    //if
-            //                    //buildList += '<p>' + value + '</p>';
-            //                })
-            //            $(container).html(buildList);
+            // compare dates, set CSS styles on <p>'s
 
         })
+
+        //console.log(optionValues);
+
+
+
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
             console.log(error);
             console.log(errorThrown);
         })
+}
 
-};
 
 function getLastLaunch(pipelineValue) {
 

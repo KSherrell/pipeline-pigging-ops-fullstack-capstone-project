@@ -540,18 +540,22 @@ app.post('/pigging-activity/add', (req, res) => {
 
 app.get("/pigging-activity/:systemName", function (req, res) {
     console.log(req.params.systemName);
-    Activity.findOne({
-        systemName: req.params.systemName
-    }).sort({
-        activityDate: -1
-    }).exec(function (err, item) {
-        if (err) {
-            return res.status(500).json({
-                message: 'Internal Server Error'
-            });
-        }
-        res.status(200).json(item);
-    })
+    Activity
+        .find({
+            systemName: req.params.systemName
+        })
+        .where('activityName').equals('launch')
+        .sort({
+            activityDate: -1
+        })
+        .exec(function (err, item) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Internal Server Error'
+                });
+            }
+            res.status(200).json(item);
+        })
 })
 
 
