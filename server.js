@@ -536,25 +536,49 @@ app.post('/pigging-activity/add', (req, res) => {
         });
 });
 
-// GET THE LIST OF ACTIVITIES PER PIPELINE
-app.get("/activities", function (req, res) {
-    Activity
-        .find(function (err, items) {
-            if (err) {
-                return res.status(500).json({
-                    message: "Internal server error"
-                });
-            }
-            if (!items) {
-                return res.status(401).json({
-                    message: "System not found"
-                });
-            } else {
-                return res.json(items);
-            }
-        });
+// GET ACTIVITES BY SYSTEM
 
-});
+app.get("/pigging-activity/:systemName", function (req, res) {
+    console.log(req.params.systemName);
+    Activity.findOne({
+        systemName: req.params.systemName
+    }).sort({
+        activityDate: -1
+    }).exec(function (err, item) {
+        if (err) {
+            return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+        res.status(200).json(item);
+    })
+})
+
+
+
+//app.get("/pigging-activity/:systemName", function (req, res) {
+//    console.log(req.params.systemName);
+//    Activity
+//        .find({
+//                systemName: req.params.systemName,
+//
+//            })       .sort("activityDate"),
+//            function (err, items) {
+//                if (err) {
+//                    return res.status(500).json({
+//                        message: "Internal server error"
+//                    });
+//                }
+//                if (!items) {
+//                    return res.status(401).json({
+//                        message: "System not found"
+//                    });
+//                } else {
+//                    return res.json(items);
+//                }
+//            });
+//
+//});
 
 
 

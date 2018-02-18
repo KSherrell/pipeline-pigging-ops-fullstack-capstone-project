@@ -1797,22 +1797,46 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-function getActivities(systemName, activityName) {
+function getActivities(systemName, activityValue) {
     $.ajax({
             type: "GET",
-            url: '/activities',
+            url: '/pigging-activity/' + systemName,
             dataType: 'json',
             contentType: 'application/json'
         })
         .done(function (result) {
             console.log(result);
-
+            console.log(activityValue);
             let optionValues = [];
             for (let options in result) {
-                optionValues.push(result[options].pipelineName);
-                optionValues = arrayDuplicates(optionValues1);
+                if (result[options].activityName == activityValue) {
+                    optionValues.push({
+                        "pipelineName": result[options].pipelineName,
+                        "activityDate": result[options].activityDate
+                    });
+                }
+
             }
+            let pipelineNameMatch = optionValues[0].pipelineName;
+            let activityDateMatch = optionValues[0].activityDate;
+
             console.log(optionValues);
+                     for (let i = 0; i < optionValues.length; i++) {
+
+                         if(optionValues[i].pipelineName == pipelineNameMatch){
+                             if (optionValues[i].activityDate > activityDateMatch){
+                                 activityDateMatch = optionValues[i].activityDate;
+                             }
+                         }
+                     }
+
+            //            $.each(optionValues,
+            //                function (key, value) {
+            //                    //if
+            //                    //buildList += '<p>' + value + '</p>';
+            //                })
+            //            $(container).html(buildList);
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
