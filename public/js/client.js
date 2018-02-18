@@ -1798,18 +1798,11 @@ function getPipelinesForSchedule(systemValue, container) {
                         let days = Number(optionValues[options].piggingFrequency) + 1;
                         console.log(date, days);
                         let nextLaunch = new Date(date);
-
                         nextLaunch.setDate(date.getDate() + days);
                         console.log(nextLaunch);
-                        //                        function addDays(date, days) {
-                        //                            console.log(date, days);
-                        //                            var nextLaunch = new Date(date);
-                        //                            nextLaunch.setDate(date.getDate() + days);
-                        //                            console.log(nextLaunch);
-                        //                        }
-
                         let buildList = "";
                         $(container).html('');
+                        console.log(optionValues);
                         $.each(optionValues,
                             function (key, value) {
                                 console.log(key);
