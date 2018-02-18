@@ -1779,24 +1779,62 @@ function getPipelinesForSchedule(systemValue, container) {
         .done(function (result) {
             console.log(result);
             let optionValues = [];
-            let piggingFrequencies = [];
             for (let options in result) {
                 optionValues.push({
                     pipelineName: result[options].pipelineName,
                     piggingFrequency: result[options].piggingFrequency
                 });
-                piggingFrequencies.push(result[options].piggingFrequency)
             }
+            for (let options in optionValues) {
+                $.ajax({
+                        type: "GET",
+                        url: '/pigging-activity/' + optionValues[options].pipelineName,
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result) {
+                        console.log(result);
+                        let prevLaunch = new Date(result.activityDate);
+
+                        let nextLaunch = prevLaunch + Number(optionValues[options].piggingFrequency);
+
+                        console.log(prevLaunch);
+
+                        console.log(optionValues[options].piggingFrequency);
+
+                        console.log(nextLaunch);
+                        let buildList = "";
+                        $(container).html('');
+                        $.each(optionValues,
+                            function (key, value) {
+                                console.log(key);
+                                console.log(value.piggingFrequency);
+                                buildList += '<p>' + value.pipelineName + '</p>';
+                            })
+                        $(container).html(buildList);
+
+                    })
+
+
+
+
+
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                    })
+            }
+
+
             console.log(optionValues, piggingFrequencies);
-            let buildList = "";
-            $(container).html('');
-            $.each(optionValues,
-                function (key, value) {
-                    console.log(key);
-                    console.log(value.piggingFrequency);
-                    buildList += '<p>' + value.pipelineName + '</p>';
-                })
-            $(container).html(buildList);
+
+
+
+
+
+
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -1805,52 +1843,52 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-function getActivities(systemName, activityValue) {
-    $.ajax({
-            type: "GET",
-            url: '/pigging-activity/' + systemName,
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            console.log(result);
-            console.log(activityValue);
-            //            let optionValues = [];
-            //            for (let options in result) {
-            //
-            //                $.ajax({
-            //                        type: "GET",
-            //                        url: '/pigging-activity/' + result[options].pipelineName,
-            //                        dataType: 'json',
-            //                        contentType: 'application/json'
-            //                    })
-            //                    .done(function (result) {
-            //                        console.log(result);
-            //                        console.log(activityValue);
-            //                    let optionValues = [];
-            //                    for (let options in result) {
-            //
-            //buildList += '<p>' + value + '</p>';
-
-            // get all pipelines in the system as the result
-            // loop through result and send api request for findOne on server.js to get the latest activity for each pipeline -- build the container if activityName == "launch"
-
-            //           $(container).html(buildList);
-
-            // compare dates, set CSS styles on <p>'s
-
-        })
-
-        //console.log(optionValues);
-
-
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-}
+//function getActivities(systemName, activityValue) {
+//    $.ajax({
+//            type: "GET",
+//            url: '/pigging-activity/' + systemName,
+//            dataType: 'json',
+//            contentType: 'application/json'
+//        })
+//        .done(function (result) {
+//            console.log(result);
+//            console.log(activityValue);
+//            //            let optionValues = [];
+//            //            for (let options in result) {
+//            //
+//            //                $.ajax({
+//            //                        type: "GET",
+//            //                        url: '/pigging-activity/' + result[options].pipelineName,
+//            //                        dataType: 'json',
+//            //                        contentType: 'application/json'
+//            //                    })
+//            //                    .done(function (result) {
+//            //                        console.log(result);
+//            //                        console.log(activityValue);
+//            //                    let optionValues = [];
+//            //                    for (let options in result) {
+//            //
+//            //buildList += '<p>' + value + '</p>';
+//
+//            // get all pipelines in the system as the result
+//            // loop through result and send api request for findOne on server.js to get the latest activity for each pipeline -- build the container if activityName == "launch"
+//
+//            //           $(container).html(buildList);
+//
+//            // compare dates, set CSS styles on <p>'s
+//
+//        })
+//
+//        //console.log(optionValues);
+//
+//
+//
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        })
+//}
 
 
 function getLastLaunch(pipelineValue) {

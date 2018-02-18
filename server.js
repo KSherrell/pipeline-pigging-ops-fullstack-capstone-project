@@ -538,16 +538,16 @@ app.post('/pigging-activity/add', (req, res) => {
 
 // GET ACTIVITES BY SYSTEM
 
-app.get("/pigging-activity/:systemName", function (req, res) {
-    console.log(req.params.systemName);
+app.get("/pigging-activity/:pipelineName", function (req, res) {
+    console.log(req.params.pipelineName);
     Activity
-        .find({
-            systemName: req.params.systemName
+        .findOne({
+        pipelineName: req.params.pipelineName
         })
         .where('activityName').equals('launch')
-        .sort({
-            activityDate: -1
-        })
+//        .sort({
+//            activityDate: -1
+//        })
         .exec(function (err, item) {
             if (err) {
                 return res.status(500).json({
