@@ -1762,7 +1762,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
         systemValue = $(this).text();
     });
     getPipelinesForSchedule(systemValue, "#scheduleResults");
-    getActivities(systemValue, "launch");
+    //getActivities(systemValue, "launch");
     console.log(systemValue);
 
     alert("Pipeline System selection has been submitted. Schedule results will update.");
@@ -1794,15 +1794,20 @@ function getPipelinesForSchedule(systemValue, container) {
                     })
                     .done(function (result) {
                         console.log(result);
-                        let prevLaunch = new Date(result.activityDate);
+                        let date = new Date(result.activityDate);
+                        let days = Number(optionValues[options].piggingFrequency) + 1;
+                        console.log(date, days);
+                        let nextLaunch = new Date(date);
 
-                        let nextLaunch = prevLaunch + Number(optionValues[options].piggingFrequency);
-
-                        console.log(prevLaunch);
-
-                        console.log(optionValues[options].piggingFrequency);
-
+                        nextLaunch.setDate(date.getDate() + days);
                         console.log(nextLaunch);
+                        //                        function addDays(date, days) {
+                        //                            console.log(date, days);
+                        //                            var nextLaunch = new Date(date);
+                        //                            nextLaunch.setDate(date.getDate() + days);
+                        //                            console.log(nextLaunch);
+                        //                        }
+
                         let buildList = "";
                         $(container).html('');
                         $.each(optionValues,
@@ -1827,7 +1832,7 @@ function getPipelinesForSchedule(systemValue, container) {
             }
 
 
-            console.log(optionValues, piggingFrequencies);
+            // console.log(optionValues, piggingFrequencies);
 
 
 
