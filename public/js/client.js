@@ -13,6 +13,7 @@ let activePage = "";
 let pipelineID = "";
 let userValuesArr = [];
 
+
 function validateSelect(selectionValue, defaultValue) {
     let validateOutput = true;
     if (selectionValue == defaultValue) {
@@ -1752,115 +1753,89 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
     getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
 });
 
-
-//  Pigging Schedule >> Submit
-$(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
-    event.preventDefault();
-
-    let systemValue = "";
-    $('#pagePiggingSchedule select#systemName option:selected').each(function () {
-        systemValue = $(this).text();
-    });
-    getPipelinesForSchedule(systemValue, "#scheduleResults");
-    console.log(systemValue);
-
-    alert("Pipeline System selection has been submitted. Schedule results will update.");
-});
-
-
 function getPipelinesForSchedule(systemValue, container) {
+    $(container).html("");
+    let buildList = "";
+    let className = "";
+    let sortedBynextLaunch = [];
     $.ajax({
-            //getting the pipelines in the selected system
+            // getting the list of pipelines in the selected system
             type: "GET",
             url: '/pipelines/' + systemValue,
             dataType: 'json',
             contentType: 'application/json'
         })
-        .done(function (result) {
-            console.log(result);
-            //creating a subset of the results-- pulling out the pipeline name and its pigging frequency
-            let optionValues = [];
-            for (let options in result) {
-                optionValues.push({
-                    pipelineName: result[options].pipelineName,
-                    piggingFrequency: result[options].piggingFrequency
-                });
-            }
-            //ajax call for each pipeline name, to get the latest launch (code filters on server side)
-            for (let options in optionValues) {
+        .done(function (result1) {
+            console.log(result1);
+
+            for (let options1 in result1) {
+                //getting the most recent launch for each pipeline
                 $.ajax({
                         type: "GET",
-                        url: '/pigging-activity/' + optionValues[options].pipelineName,
+                        url: '/pigging-activity/' + result1[options1].pipelineName,
                         dataType: 'json',
                         contentType: 'application/json'
                     })
-                    .done(function (result) {
-                        console.log(result);
+                    .done(function (result2) {
+                        console.log(result2);
 
                         //setting up the due / overdue formulas
                         let today = new Date();
-                        let prevLaunch = new Date(result.activityDate);
-                        let piggingDays = Number(optionValues[options].piggingFrequency) + 1;
-
-
-                        //nextLaunch = date of previous launch + piggingFrequency
+                        let prevLaunch = new Date(result2.activityDate);
+                        let piggingDays = Number(result1[options1].piggingFrequency) + 1;
                         let nextLaunch = new Date(prevLaunch);
                         nextLaunch.setDate(prevLaunch.getDate() + piggingDays);
-                        console.log(nextLaunch);
-
                         let sevenDays = new Date(nextLaunch);
                         sevenDays.setDate(nextLaunch.getDate() - Number(7));
-                        //console.log(sevenDays);
 
-                        //building the html output
-                        let buildList = "";
-                        $(container).html('');
-                        let className = "";
-                        //console.log(optionValues);
 
-                        switch (true) {
-                            case (nextLaunch == today):
-                                className = "due-today";
-                                break;
-                            case (nextLaunch < today):
-                                className = "overdue-within-thirty";
-                                break;
-                            case (nextLaunch > today):
-                                className = "due-in-seven";
-                                break;
 
-                            default:
-                                className = "upcoming";
+                        // sort according to nextLaunch
 
+                        console.log(result1[options1].pipelineName);
+                        console.log(result1[options1].piggingFrequency);
+                        console.log(prevLaunch);
+                        console.log(nextLaunch);
+
+                        sortedBynextLaunch.push({
+                            pipelineName: result1[options1].pipelineName,
+                            nextLaunch: nextLaunch
+                        })
+
+
+                        function compare(a, b) {
+                            let dateA = a.nextLaunch;
+                            let dateB = b.nextLaunch;
+                            let comparison = 0;
+                            if (dateA > dateB) {
+                                comparison = -1;
+                            } else if (dateA < dateB) {
+                                comparison = 1
+                            }
+                            return comparison;
                         }
 
-                        $.each(optionValues,
-                            function (key, value) {
-                                buildList += '<p class ="' + className + '">' + value.pipelineName + '</p>';
-                            });
-                        $(container).html(buildList);
+                        console.log(sortedBynextLaunch.sort(compare));
+
+                        //building the html output
+                        $.each(sortedBynextLaunch, function (key, value) {
+                            console.log(key);
+                            console.log(value);
+                        });
+                        //
+                        //                        buildList += '<p class ="' + className + '">' + result2.pipelineName + '</p>';
+                        //                        console.log(buildList);
+                        //                        $(container).html(buildList);
 
                     })
-
-
-
-
 
                     .fail(function (jqXHR, error, errorThrown) {
                         console.log(jqXHR);
                         console.log(error);
                         console.log(errorThrown);
                     })
+
             }
-
-
-            // console.log(optionValues, piggingFrequencies);
-
-
-
-
-
-
 
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -1870,61 +1845,21 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-//function getActivities(systemName, activityValue) {
-//    $.ajax({
-//            type: "GET",
-//            url: '/pigging-activity/' + systemName,
-//            dataType: 'json',
-//            contentType: 'application/json'
-//        })
-//        .done(function (result) {
-//            console.log(result);
-//            console.log(activityValue);
-//            //            let optionValues = [];
-//            //            for (let options in result) {
-//            //
-//            //                $.ajax({
-//            //                        type: "GET",
-//            //                        url: '/pigging-activity/' + result[options].pipelineName,
-//            //                        dataType: 'json',
-//            //                        contentType: 'application/json'
-//            //                    })
-//            //                    .done(function (result) {
-//            //                        console.log(result);
-//            //                        console.log(activityValue);
-//            //                    let optionValues = [];
-//            //                    for (let options in result) {
-//            //
-//            //buildList += '<p>' + value + '</p>';
-//
-//            // get all pipelines in the system as the result
-//            // loop through result and send api request for findOne on server.js to get the latest activity for each pipeline -- build the container if activityName == "launch"
-//
-//            //           $(container).html(buildList);
-//
-//            // compare dates, set CSS styles on <p>'s
-//
-//        })
-//
-//        //console.log(optionValues);
-//
-//
-//
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        })
-//}
+
+//  Pigging Schedule >> Submit
+$(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
+    event.preventDefault();
+
+    let systemValue = "";
+    $('#pagePiggingSchedule select#systemName option:selected').each(function () {
+        systemValue = $(this).text();
+    });
+    console.log(systemValue);
+    getPipelinesForSchedule(systemValue, "#scheduleResults");
 
 
-function getLastLaunch(pipelineValue) {
-
-};
-
-
-
-
+    //alert("Pipeline System selection has been submitted. Schedule results will update.");
+});
 
 
 
