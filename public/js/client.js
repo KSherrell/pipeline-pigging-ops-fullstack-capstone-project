@@ -1800,24 +1800,17 @@ function getPipelinesForSchedule(systemValue, container) {
                         //setting up the due / overdue formulas
                         let today = new Date();
                         let prevLaunch = new Date(result.activityDate);
-                        let days = Number(optionValues[options].piggingFrequency) + 1;
+                        let piggingDays = Number(optionValues[options].piggingFrequency) + 1;
+
 
                         //nextLaunch = date of previous launch + piggingFrequency
                         let nextLaunch = new Date(prevLaunch);
-                        nextLaunch.setDate(prevLaunch.getDate() + days);
+                        nextLaunch.setDate(prevLaunch.getDate() + piggingDays);
+                        console.log(nextLaunch);
 
-                        //I need a formula for nextLaunch - 7
-                        //                        console.log(nextLaunch.setDate(nextLaunch.getDate() - 7));
-                        //                        let sevenDays = new Date(nextLaunch.getDate() - 7);
-                        console.log(today.getTime());
-                        //                        console.log(prevLaunch);
-                        console.log(nextLaunch.getTime());
-                        //                        console.log(sevenDays);
-
-                        //
-                        //                        sevenDays = new Date(sevenDays);
-                        //                        console.log(sevenDays);
-
+                        let sevenDays = new Date(nextLaunch);
+                        sevenDays.setDate(nextLaunch.getDate() - Number(7));
+                        //console.log(sevenDays);
 
                         //building the html output
                         let buildList = "";
@@ -1825,19 +1818,17 @@ function getPipelinesForSchedule(systemValue, container) {
                         let className = "";
                         //console.log(optionValues);
 
-                        switch (nextLaunch.getTime()) {
-                            case (today.getTime()):
+                        switch (true) {
+                            case (nextLaunch == today):
                                 className = "due-today";
                                 break;
-                            case (nextLaunch.getTime() < today.getTime()):
+                            case (nextLaunch < today):
                                 className = "overdue-within-thirty";
                                 break;
-                            case (nextLaunch.getTime() > today.getTime()):
+                            case (nextLaunch > today):
                                 className = "due-in-seven";
                                 break;
-                                //                            case (nextLaunch + 30 < today):
-                                //                                className = "overdue-plus-thirty";
-                                //                                break;
+
                             default:
                                 className = "upcoming";
 
