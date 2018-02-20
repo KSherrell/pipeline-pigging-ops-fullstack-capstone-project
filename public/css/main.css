@@ -292,7 +292,6 @@
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
-        width: 73%;
     }
     .pigging-schedule-container form div select {
         font-size: .9rem;
@@ -314,11 +313,17 @@
         margin: 10px 0 0;
     }
     .pigging-schedule-container div.schedule-results {
-        margin: 120px 0 75px;
+        margin: 20px 0 75px;
     }
     .pigging-schedule-container div.schedule-results p {
         margin-bottom: 1.2rem;
         cursor: pointer;
+        border: 1px solid red;
+    }
+    .pigging-schedule-container div.schedule-results p span {
+        margin-left: 10px;
+        width: 25%;
+        border: 1px solid red;
     }
     .pigging-schedule-container p.due-today {
         background-color: #ffffff;

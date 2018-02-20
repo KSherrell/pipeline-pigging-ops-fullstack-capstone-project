@@ -1765,7 +1765,6 @@ function getPipelinesForSchedule(systemValue, container) {
         })
         .done(function (result1) {
             console.log(result1);
-
             for (let options in result1) {
                 //getting the most recent launch for each pipeline
                 $.ajax({
@@ -1775,6 +1774,10 @@ function getPipelinesForSchedule(systemValue, container) {
                         contentType: 'application/json'
                     })
                     .done(function (result2) {
+                        if (result2 === null) {
+                            alert("No launch activity found for " + result1[options].pipelineName + ".");
+                        }
+
                         console.log(result2);
 
                         //creating a new object from results of two api calls
@@ -1785,14 +1788,17 @@ function getPipelinesForSchedule(systemValue, container) {
                         });
                         console.log(launchObj);
                         applyStyles(launchObj, container);
+
                     })
+
                     .fail(function (jqXHR, error, errorThrown) {
                         console.log(jqXHR);
                         console.log(error);
                         console.log(errorThrown);
-                    })
-            }
 
+                    })
+
+            }
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -1800,7 +1806,6 @@ function getPipelinesForSchedule(systemValue, container) {
             console.log(errorThrown);
         })
 };
-
 
 // sorting the array
 function compare(a, b) {
@@ -1825,7 +1830,6 @@ function applyStyles(launchObj, container) {
     console.log(launchObj);
     console.log(typeof (launchObj));
 
-    let sevenDays = "";
     let sortedLaunchObj = [];
     let today = new Date();
 
@@ -1834,36 +1838,45 @@ function applyStyles(launchObj, container) {
 
         //setting up the due / overdue formulas
         let prevLaunch = new Date(launchObj[options].prevLaunch);
-        console.log(prevLaunch);
         let piggingDays = Number(launchObj[options].piggingDays) + 1;
 
         let nextLaunchDate = new Date(prevLaunch);
         nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
+        let strLaunchDate = nextLaunchDate.toDateString();
 
-        sevenDays = new Date(nextLaunchDate);
+        let sevenDays = new Date(nextLaunchDate);
         sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
+
+        let daysPastDue = (today - nextLaunchDate);
+        daysPastDue = Math.floor(daysPastDue / 86400000);
 
         sortedLaunchObj.push({
             pipelineName: launchObj[options].pipelineName,
-            nextLaunch: nextLaunchDate,
+            nextLaunch: strLaunchDate,
+            daysPastDue: daysPastDue,
             sevenDays: sevenDays
         });
 
-    };
+    }
     console.log(sortedLaunchObj.sort(compare));
 
 
     //apply styles, build the html output
     for (let options in sortedLaunchObj) {
         //use due/overdue formulas here
-        if (sortedLaunchObj[options].sevenDays > today) {
-            className = "due-in-seven";
-        } else if (sortedLaunchObj[options].nextLaunch == today) {
+        if (sortedLaunchObj[options].daysPastDue < -7) {
             className = "due-today";
-        } else if (sortedLaunchObj[options].nextLaunch < today) {
+        } else if (sortedLaunchObj[options].daysPastDue < 1 && sortedLaunchObj[options].daysPastDue > -7) {
+            className = "due-in-seven";
+        } else if (sortedLaunchObj[options].daysPastDue < 30 && sortedLaunchObj[options].daysPastDue >= 1) {
             className = "overdue-within-thirty";
+        } else if (sortedLaunchObj[options].daysPastDue >= 31) {
+            className = "overdue-plus-thirty";
         }
-        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + ' ' + sortedLaunchObj[options].nextLaunch + '</p>';
+
+
+
+        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + '<br />Date of Next Launch: ' + sortedLaunchObj[options].nextLaunch + '</p>';
         console.log(buildList);
 
     }
@@ -1875,16 +1888,12 @@ function applyStyles(launchObj, container) {
 //  Pigging Schedule >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
     event.preventDefault();
-
     let systemValue = "";
     $('#pagePiggingSchedule select#systemName option:selected').each(function () {
         systemValue = $(this).text();
     });
-    //console.log(systemValue);
+    $("#pagePiggingSchedule #scheduleResults").html("");
     getPipelinesForSchedule(systemValue, "#scheduleResults");
-
-
-    //alert("Pipeline System selection has been submitted. Schedule results will update.");
 });
 
 
