@@ -542,12 +542,9 @@ app.get("/pigging-activity/:pipelineName", function (req, res) {
     console.log(req.params.pipelineName);
     Activity
         .findOne({
-        pipelineName: req.params.pipelineName
+            pipelineName: req.params.pipelineName
         })
         .where('activityName').equals('launch')
-//        .sort({
-//            activityDate: -1
-//        })
         .exec(function (err, item) {
             if (err) {
                 return res.status(500).json({
@@ -557,33 +554,6 @@ app.get("/pigging-activity/:pipelineName", function (req, res) {
             res.status(200).json(item);
         })
 })
-
-
-
-//app.get("/pigging-activity/:systemName", function (req, res) {
-//    console.log(req.params.systemName);
-//    Activity
-//        .find({
-//                systemName: req.params.systemName,
-//
-//            })       .sort("activityDate"),
-//            function (err, items) {
-//                if (err) {
-//                    return res.status(500).json({
-//                        message: "Internal server error"
-//                    });
-//                }
-//                if (!items) {
-//                    return res.status(401).json({
-//                        message: "System not found"
-//                    });
-//                } else {
-//                    return res.json(items);
-//                }
-//            });
-//
-//});
-
 
 
 // MISC ------------------------------------------

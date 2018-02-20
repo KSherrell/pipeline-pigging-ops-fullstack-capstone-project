@@ -1754,10 +1754,8 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
 });
 
 function getPipelinesForSchedule(systemValue, container) {
-    $(container).html("");
-    let buildList = "";
-    let className = "";
-    let sortedBynextLaunch = [];
+    let launchObj = [];
+
     $.ajax({
             // getting the list of pipelines in the selected system
             type: "GET",
@@ -1768,75 +1766,33 @@ function getPipelinesForSchedule(systemValue, container) {
         .done(function (result1) {
             console.log(result1);
 
-            for (let options1 in result1) {
+            for (let options in result1) {
                 //getting the most recent launch for each pipeline
                 $.ajax({
                         type: "GET",
-                        url: '/pigging-activity/' + result1[options1].pipelineName,
+                        url: '/pigging-activity/' + result1[options].pipelineName,
                         dataType: 'json',
                         contentType: 'application/json'
                     })
                     .done(function (result2) {
                         console.log(result2);
 
-                        //setting up the due / overdue formulas
-                        let today = new Date();
-                        let prevLaunch = new Date(result2.activityDate);
-                        let piggingDays = Number(result1[options1].piggingFrequency) + 1;
-                        let nextLaunch = new Date(prevLaunch);
-                        nextLaunch.setDate(prevLaunch.getDate() + piggingDays);
-                        let sevenDays = new Date(nextLaunch);
-                        sevenDays.setDate(nextLaunch.getDate() - Number(7));
-
-
-
-                        // sort according to nextLaunch
-
-                        console.log(result1[options1].pipelineName);
-                        console.log(result1[options1].piggingFrequency);
-                        console.log(prevLaunch);
-                        console.log(nextLaunch);
-
-                        sortedBynextLaunch.push({
-                            pipelineName: result1[options1].pipelineName,
-                            nextLaunch: nextLaunch
-                        })
-
-
-                        function compare(a, b) {
-                            let dateA = a.nextLaunch;
-                            let dateB = b.nextLaunch;
-                            let comparison = 0;
-                            if (dateA > dateB) {
-                                comparison = -1;
-                            } else if (dateA < dateB) {
-                                comparison = 1
-                            }
-                            return comparison;
-                        }
-
-                        console.log(sortedBynextLaunch.sort(compare));
-
-                        //building the html output
-                        $.each(sortedBynextLaunch, function (key, value) {
-                            console.log(key);
-                            console.log(value);
+                        //creating a new object from results of two api calls
+                        launchObj.push({
+                            pipelineName: result1[options].pipelineName,
+                            piggingDays: result1[options].piggingFrequency,
+                            prevLaunch: result2.activityDate
                         });
-                        //
-                        //                        buildList += '<p class ="' + className + '">' + result2.pipelineName + '</p>';
-                        //                        console.log(buildList);
-                        //                        $(container).html(buildList);
-
                     })
-
                     .fail(function (jqXHR, error, errorThrown) {
                         console.log(jqXHR);
                         console.log(error);
                         console.log(errorThrown);
                     })
-
             }
-
+            console.log(launchObj);
+            console.log(typeof (launchObj));
+            applyStyles(launchObj, container);
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -1844,6 +1800,76 @@ function getPipelinesForSchedule(systemValue, container) {
             console.log(errorThrown);
         })
 };
+
+
+// sorting the array
+function compare(a, b) {
+    let dateA = a.nextLaunch;
+    let dateB = b.nextLaunch;
+    let comparison = 0;
+    if (dateA > dateB) {
+        comparison = -1;
+    } else if (dateA < dateB) {
+        comparison = 1
+    }
+    return comparison;
+}
+
+
+function applyStyles(launchObj, container) {
+
+    $(container).html("");
+    let buildList = "";
+    let className = "";
+
+    console.log(launchObj);
+    console.log(typeof (launchObj));
+
+
+    let sortedLaunchObj = [];
+    let today = new Date();
+
+    // sort according to nextLaunch
+    for (let i = 0; i < 4; i++) {
+        alert("yay");
+        //
+        //        //setting up the due / overdue formulas
+        //        let prevLaunch = new Date(launchObj[items].prevLaunch);
+        //        console.log(prevLaunch);
+        //        let piggingDays = Number(launchObj[items].piggingDays) + 1;
+        //
+        //        let nextLaunchDate = new Date(prevLaunch);
+        //        nextLaunchDate.setDate(launchObj[items].prevLaunch.getDate() + piggingDays);
+        //
+        //        let sevenDays = new Date(nextLaunchDate);
+        //        sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
+        //
+        //        sortedLaunchObj.push({
+        //            pipelineName: launchObj[items].pipelineName,
+        //            nextLaunch: nextLaunchDate,
+        //            sevenDays: sevenDays
+        //        });
+
+    };
+    console.log(launchObj);
+    //console.log(sortedBynextLaunch.sort(compare));
+
+    //apply styles, build the html output
+    //    for (let options in sortedLaunchObj) {
+    //        //use due/overdue formulas here
+    //        if (sevenDays > today) {
+    //            className = "due-in-seven";
+    //        } else if (sortedLaunchObj[options].nextLaunch == today) {
+    //            className = "due-today";
+    //        } else if (sortedLaunchObj[options].nextLaunch < today) {
+    //            className = "overdue-within-thirty";
+    //        }
+    //        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + ' ' + sortedLaunchObj[options].nextLaunch + '</p>';
+    //        // console.log(buildList);
+    //        $(container).html(buildList);
+    //    }
+};
+
 
 
 //  Pigging Schedule >> Submit
@@ -1854,7 +1880,7 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
     $('#pagePiggingSchedule select#systemName option:selected').each(function () {
         systemValue = $(this).text();
     });
-    console.log(systemValue);
+    //console.log(systemValue);
     getPipelinesForSchedule(systemValue, "#scheduleResults");
 
 
