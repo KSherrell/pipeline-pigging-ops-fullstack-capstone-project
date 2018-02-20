@@ -1843,6 +1843,7 @@ function applyStyles(launchObj, container) {
         let nextLaunchDate = new Date(prevLaunch);
         nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
         let strLaunchDate = nextLaunchDate.toDateString();
+        strLaunchDate = strLaunchDate.slice(4, 11);
 
         let sevenDays = new Date(nextLaunchDate);
         sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
@@ -1876,7 +1877,7 @@ function applyStyles(launchObj, container) {
 
 
 
-        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + '<br />Date of Next Launch: ' + sortedLaunchObj[options].nextLaunch + '</p>';
+        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + '</p><p class = "date ' + className + '">' + sortedLaunchObj[options].nextLaunch + '</p>';
         console.log(buildList);
 
     }

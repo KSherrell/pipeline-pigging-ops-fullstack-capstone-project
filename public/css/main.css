@@ -281,7 +281,7 @@
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
         margin-top: 0;
-        padding: .7rem .7rem 0;
+        padding: .7rem 0;
         width: 100%;
         position: fixed;
         top: 45px;
@@ -313,17 +313,19 @@
         margin: 10px 0 0;
     }
     .pigging-schedule-container div.schedule-results {
-        margin: 20px 0 75px;
+        width: 105%;
     }
     .pigging-schedule-container div.schedule-results p {
-        margin-bottom: 1.2rem;
+        margin-bottom: 1rem;
+        padding: 5px 0 5px 3px;
         cursor: pointer;
-        border: 1px solid red;
+        display: inline-block;
+        width: 76%;
+        font-size: .9rem;
     }
-    .pigging-schedule-container div.schedule-results p span {
-        margin-left: 10px;
-        width: 25%;
-        border: 1px solid red;
+    .pigging-schedule-container div.schedule-results p.date {
+        width: 22%;
+        vertical-align: baseline;
     }
     .pigging-schedule-container p.due-today {
         background-color: #ffffff;
