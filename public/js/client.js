@@ -1877,7 +1877,11 @@ function applyStyles(launchObj, container) {
 
 
 
-        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + '</p><p class = "date ' + className + '">' + sortedLaunchObj[options].nextLaunch + '</p>';
+        buildList +=
+            '<div class="schedule-results ' + className + '">' +
+            '<p>' + sortedLaunchObj[options].pipelineName + '</p>' +
+            '<p class = "date">' + sortedLaunchObj[options].nextLaunch + '</p>' +
+            '</div>';
         console.log(buildList);
 
     }

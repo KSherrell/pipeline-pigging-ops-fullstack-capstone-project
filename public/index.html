@@ -348,15 +348,17 @@
                 <div>
                     <select id="systemName" name="pipeline-systems"></select>
                 </div>
-                <div>
+                <div class="button">
                     <button form="piggingSchedule" type="submit">Submit</button>
                 </div>
 
                 <hr>
-
+                <div id="legend" class="schedule-results">
+                    <div class="due-today">Current</div>
+                    <div class="due-in-seven">Next 7 Days</div>
+                    <div class="overdue-within-thirty">Overdue</div>
+                </div>
                 <div id="scheduleResults" class="schedule-results">
-                    <p>California Pipeline Three And Longer Name Here</p>
-                    <p class="date">Next Launch</p>
                 </div>
             </form>
         </section>

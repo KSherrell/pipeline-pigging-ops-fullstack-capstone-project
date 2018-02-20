@@ -27,7 +27,7 @@
         height: 45px;
         width: 100%;
         padding: 8px;
-        z-index: 1;
+        z-index: 2;
         background-color: #69D2E7;
         border-bottom: 3px solid #68baca;
     }
@@ -296,10 +296,12 @@
     .pigging-schedule-container form div select {
         font-size: .9rem;
         margin: 0;
+        margin-left: 10px;
         vertical-align: baseline;
     }
-    .pigging-schedule-container form div + div {
-        width: 25%;
+    .pigging-schedule-container form div.button {
+        width: 22%;
+        margin-left: 10px;
     }
     .pigging-schedule-container button {
         margin: 0;
@@ -310,36 +312,49 @@
         font-size: .9rem;
     }
     .pigging-schedule-container hr {
-        margin: 10px 0 0;
+        margin: 10px 0 20px;
+    }
+    .pigging-schedule-container div#legend {
+        margin-bottom: 1.5rem;
+    }
+    .pigging-schedule-container div#legend div {
+        padding: 5px;
+        border: 1px dotted gray;
+        width: 32%;
+        font-size: .7rem;
     }
     .pigging-schedule-container div.schedule-results {
-        width: 105%;
+        width: 100%;
+        margin-bottom: .25rem;
+        z-index: -1;
     }
     .pigging-schedule-container div.schedule-results p {
-        margin-bottom: 1rem;
-        padding: 5px 0 5px 3px;
+        padding: 5px;
         cursor: pointer;
         display: inline-block;
-        width: 76%;
+        width: 79%;
         font-size: .9rem;
     }
     .pigging-schedule-container div.schedule-results p.date {
-        width: 22%;
+        width: 19%;
+        text-align: right;
+        font-size: .8rem;
+        border-left: 1px dotted gray;
         vertical-align: baseline;
     }
-    .pigging-schedule-container p.due-today {
+    .pigging-schedule-container div.due-today {
         background-color: #ffffff;
     }
-    .pigging-schedule-container p.due-in-seven {
+    .pigging-schedule-container div.due-in-seven {
         background-color: #ffe552;
     }
-    .pigging-schedule-container p.upcoming {
+    .pigging-schedule-container div.upcoming {
         background-color: #a7dbd8;
     }
-    .pigging-schedule-container p.overdue-within-thirty {
+    .pigging-schedule-container div.overdue-within-thirty {
         background-color: #ee7777;
     }
-    .pigging-schedule-container p.overdue-plus-thirty {
+    .pigging-schedule-container div.overdue-plus-thirty {
         background-color: #c0c0c0;
     }
     /* PREVIOUS LAUNCH */
@@ -912,9 +927,11 @@
         position: sticky;
         top: 44px;
     }
+    /*
     .pigging-schedule-container div.schedule-results {
-        margin: 1rem 0 75px;
+        margin: 1rem 0;
     }
+*/
     .pigging-activity-container div.pigging-activity-results div:first-child {
         position: sticky;
     }
