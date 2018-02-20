@@ -1783,6 +1783,8 @@ function getPipelinesForSchedule(systemValue, container) {
                             piggingDays: result1[options].piggingFrequency,
                             prevLaunch: result2.activityDate
                         });
+                        console.log(launchObj);
+                        applyStyles(launchObj, container);
                     })
                     .fail(function (jqXHR, error, errorThrown) {
                         console.log(jqXHR);
@@ -1790,9 +1792,7 @@ function getPipelinesForSchedule(systemValue, container) {
                         console.log(errorThrown);
                     })
             }
-            console.log(launchObj);
-            console.log(typeof (launchObj));
-            applyStyles(launchObj, container);
+
         })
         .fail(function (jqXHR, error, errorThrown) {
             console.log(jqXHR);
@@ -1825,49 +1825,49 @@ function applyStyles(launchObj, container) {
     console.log(launchObj);
     console.log(typeof (launchObj));
 
-
+    let sevenDays = "";
     let sortedLaunchObj = [];
     let today = new Date();
 
     // sort according to nextLaunch
-    for (let i = 0; i < 4; i++) {
-        alert("yay");
-        //
-        //        //setting up the due / overdue formulas
-        //        let prevLaunch = new Date(launchObj[items].prevLaunch);
-        //        console.log(prevLaunch);
-        //        let piggingDays = Number(launchObj[items].piggingDays) + 1;
-        //
-        //        let nextLaunchDate = new Date(prevLaunch);
-        //        nextLaunchDate.setDate(launchObj[items].prevLaunch.getDate() + piggingDays);
-        //
-        //        let sevenDays = new Date(nextLaunchDate);
-        //        sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
-        //
-        //        sortedLaunchObj.push({
-        //            pipelineName: launchObj[items].pipelineName,
-        //            nextLaunch: nextLaunchDate,
-        //            sevenDays: sevenDays
-        //        });
+    for (let options in launchObj) {
+
+        //setting up the due / overdue formulas
+        let prevLaunch = new Date(launchObj[options].prevLaunch);
+        console.log(prevLaunch);
+        let piggingDays = Number(launchObj[options].piggingDays) + 1;
+
+        let nextLaunchDate = new Date(prevLaunch);
+        nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
+
+        sevenDays = new Date(nextLaunchDate);
+        sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
+
+        sortedLaunchObj.push({
+            pipelineName: launchObj[options].pipelineName,
+            nextLaunch: nextLaunchDate,
+            sevenDays: sevenDays
+        });
 
     };
-    console.log(launchObj);
-    //console.log(sortedBynextLaunch.sort(compare));
+    console.log(sortedLaunchObj.sort(compare));
+
 
     //apply styles, build the html output
-    //    for (let options in sortedLaunchObj) {
-    //        //use due/overdue formulas here
-    //        if (sevenDays > today) {
-    //            className = "due-in-seven";
-    //        } else if (sortedLaunchObj[options].nextLaunch == today) {
-    //            className = "due-today";
-    //        } else if (sortedLaunchObj[options].nextLaunch < today) {
-    //            className = "overdue-within-thirty";
-    //        }
-    //        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + ' ' + sortedLaunchObj[options].nextLaunch + '</p>';
-    //        // console.log(buildList);
-    //        $(container).html(buildList);
-    //    }
+    for (let options in sortedLaunchObj) {
+        //use due/overdue formulas here
+        if (sortedLaunchObj[options].sevenDays > today) {
+            className = "due-in-seven";
+        } else if (sortedLaunchObj[options].nextLaunch == today) {
+            className = "due-today";
+        } else if (sortedLaunchObj[options].nextLaunch < today) {
+            className = "overdue-within-thirty";
+        }
+        buildList += '<p class ="' + className + '">' + sortedLaunchObj[options].pipelineName + ' ' + sortedLaunchObj[options].nextLaunch + '</p>';
+        console.log(buildList);
+
+    }
+    $(container).html(buildList);
 };
 
 
