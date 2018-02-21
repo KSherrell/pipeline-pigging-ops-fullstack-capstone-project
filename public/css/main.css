@@ -373,8 +373,10 @@
         margin: 0 10px;
         color: #FA6900;
     }
+    .prev-launch-container p.js-notesDate {
+        padding: .2rem 0;
+    }
     .prev-launch-container p.notes {
-        color: #F38630;
         padding-bottom: 1rem;
     }
     /* FOREMAN ADMIN MENU*/

@@ -1901,57 +1901,82 @@ $(document).on('click', '#pagePiggingSchedule .schedule-results>p:first-child', 
     event.preventDefault();
     $(".jsHide").hide();
     $("#pagePrevLaunch").show();
-    console.log(activePage);
 
     let pipelineValue = $(event.target).text();
-    console.log(pipelineValue);
-    getPreviousLaunch(pipelineValue, '#pagePiggingSchedule .schedule-results>p:first-child')
 
+    getPreviousLaunch(pipelineValue, "#pagePrevLaunch .prev-launch-container");
 });
 
 
-function getPreviousLaunch(pipelineValue) {
+function getPreviousLaunch(pipelineValue, container) {
+    console.log(pipelineValue);
+
     let prevActivityObj = ["launch", "receive", "exception"];
     let prevLaunchPageObj = [];
-    let container = "#pagePrevLaunch .prev-launch-container"
     let i = 0;
-    for (let options in prevActivityObj) {
-        console.log(prevActivityObj[options]);
+    for (let j = 0; j < 3; j++) {
+        console.log(prevActivityObj[j]);
         $.ajax({
                 type: "GET",
-                url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[options],
+                url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[j],
                 dataType: 'json',
                 contentType: 'application/json'
             })
             .done(function (result) {
                 console.log(result);
                 i++;
+
                 if (result === null) {
-                    alert("No " + prevActivityObj[options] + " activity found for " + pipelineValue + ".");
+                    alert("No " + prevActivityObj[j] + " activity found for " + pipelineValue + ".");
+
+                    prevLaunchPageObj.push({
+                        activityName: "--",
+                        operatorEmail: "--",
+                        activityDate: "--",
+                        pigType: "--",
+                        paraffin: "--",
+                        sand: "--",
+                        exception: "--",
+                        notes: "--"
+                    });
+
+                } else {
+                    //creating a new object from result of api calls
+                    prevLaunchPageObj.push({
+                        activityName: result.activityName,
+                        operatorEmail: result.operatorEmail,
+                        activityDate: result.activityDate,
+                        pigType: result.pigType,
+                        paraffin: result.paraffinWeight,
+                        sand: result.sandWeight,
+                        exception: result.exceptionDesc,
+                        notes: result.notes
+                    });
                 }
 
-                //creating a new object from result of api calls
-                prevLaunchPageObj.push({
-                    activityName: result.activityName,
-                    operatorEmail: result.operatorEmail,
-                    activityDate: result.activityDate,
-                    pigType: result.pigType,
-                    paraffin: result.paraffinWeight,
-                    sand: result.sandWeight,
-                    exception: result.exceptionDesc,
-                    notes: result.notes
-                });
-
+                console.log(i);
+                console.log(prevLaunchPageObj);
 
                 if (i == 3) {
-                    $(container + " h2").text(pipelineValue);
-                    $(container + " .js-launchDate").text(prevLaunchPageObj[0].activityDate);
-                    $(container + " .js-launchOperatorEmail").text(prevLaunchPageObj[0].operatorEmail);
-                    $(container + " .js-pigType").text(prevLaunchPageObj[0].pigType);
-                    $(container + " .js-receiveDate").text(prevLaunchPageObj[1].activityDate);
+                    $(container + " h2").text(" " + pipelineValue);
+                    $(container + " .js-launchDate").text(" " + prevLaunchPageObj[0].activityDate);
+                    $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[0].operatorEmail);
+                    $(container + " .js-pigType").text(" " + prevLaunchPageObj[0].pigType);
+                    $(container + " .js-receiveDate").text(" " + prevLaunchPageObj[1].activityDate);
+                    $(container + " .js-receiveOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
+                    $(container + " .js-paraffin").text(" " + prevLaunchPageObj[1].paraffin + " lbs");
+                    $(container + " .js-sand").text(" " + prevLaunchPageObj[1].sand + " lbs");
+                    $(container + " .js-exceptionDate").text(" " + prevLaunchPageObj[2].activityDate);
+                    $(container + " .js-exceptionDesc").text(" " + prevLaunchPageObj[2].exception);
 
+                    // prevLaunchPageObj.sort(compare);
 
-                    console.log(prevLaunchPageObj.sort(compare));
+                    $(container + " .js-notesDate").text(prevLaunchPageObj[0].activityDate)
+                    if (prevLaunchPageObj[0].notes == " --Enter field notes here-- ") {
+                        $(container + " .notes").text("-- No notes entered --");
+                    } else {
+                        $(container + " .notes").text(prevLaunchPageObj[0].notes);
+                    }
                 }
             })
 
@@ -1969,6 +1994,20 @@ function getPreviousLaunch(pipelineValue) {
 $(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
+    let container = "#pagePrevLaunch .prev-launch-container"
+    $(container + " h2").text("");
+    $(container + " .js-launchDate").text("");
+    $(container + " .js-launchOperatorEmail").text("");
+    $(container + " .js-pigType").text("");
+    $(container + " .js-receiveDate").text("");
+    $(container + " .js-receiveOperatorEmail").text("");
+    $(container + " .js-paraffin").text("");
+    $(container + " .js-sand").text("");
+    $(container + " .js-exceptionDate").text("");
+    $(container + " .js-exceptionDesc").text("");
+    $(container + " .js-notesDate").text("");
+    $(container + " .notes").text("");
+
     if (activePage == "piggingScheduleOP") {
         $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-operator, #pagePiggingSchedule .normal-header").show();
     } else if (activePage == "adminMenu") {
