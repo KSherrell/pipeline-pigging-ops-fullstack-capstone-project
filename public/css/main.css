@@ -366,8 +366,8 @@
     .prev-launch-container div + div {
         margin-top: 2rem;
     }
-    .prev-launch-container span:nth-child(2) {
-        color: #FA6900;
+    .prev-launch-container p > span:first-child {
+        color: #088ba5;
     }
     .prev-launch-container span.debris-lbs {
         margin: 0 10px;

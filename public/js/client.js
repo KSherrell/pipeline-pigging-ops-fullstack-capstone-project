@@ -1808,8 +1808,8 @@ function getPipelinesForSchedule(systemValue, container) {
 
 function compare(a, b) {
     // sorting the array
-    let dateA = a.nextLaunch;
-    let dateB = b.nextLaunch;
+    let dateA = a.activityDate;
+    let dateB = b.activityDate;
     let comparison = 0;
     if (dateA > dateB) {
         comparison = -1;
@@ -1844,7 +1844,7 @@ function applyPiggingScheduleStyles(launchObj, container) {
 
         sortedLaunchObj.push({
             pipelineName: launchObj[options].pipelineName,
-            nextLaunch: strLaunchDate,
+            activityDate: strLaunchDate,
             daysPastDue: daysPastDue,
         });
     }
@@ -1865,7 +1865,7 @@ function applyPiggingScheduleStyles(launchObj, container) {
         buildList +=
             '<div class="schedule-results ' + className + '">' +
             '<p>' + sortedLaunchObj[options].pipelineName + '</p>' +
-            '<p class = "date">' + sortedLaunchObj[options].nextLaunch + '</p>' +
+            '<p class = "date">' + sortedLaunchObj[options].activityDate + '</p>' +
             '</div>';
     }
     $(container).html(buildList);
@@ -1904,9 +1904,66 @@ $(document).on('click', '#pagePiggingSchedule .schedule-results>p:first-child', 
     console.log(activePage);
 
     let pipelineValue = $(event.target).text();
-
     console.log(pipelineValue);
+    getPreviousLaunch(pipelineValue, '#pagePiggingSchedule .schedule-results>p:first-child')
+
 });
+
+
+function getPreviousLaunch(pipelineValue) {
+    let prevActivityObj = ["launch", "receive", "exception"];
+    let prevLaunchPageObj = [];
+    let container = "#pagePrevLaunch .prev-launch-container"
+    let i = 0;
+    for (let options in prevActivityObj) {
+        console.log(prevActivityObj[options]);
+        $.ajax({
+                type: "GET",
+                url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[options],
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                i++;
+                if (result === null) {
+                    alert("No " + prevActivityObj[options] + " activity found for " + pipelineValue + ".");
+                }
+
+                //creating a new object from result of api calls
+                prevLaunchPageObj.push({
+                    activityName: result.activityName,
+                    operatorEmail: result.operatorEmail,
+                    activityDate: result.activityDate,
+                    pigType: result.pigType,
+                    paraffin: result.paraffinWeight,
+                    sand: result.sandWeight,
+                    exception: result.exceptionDesc,
+                    notes: result.notes
+                });
+
+
+                if (i == 3) {
+                    $(container + " h2").text(pipelineValue);
+                    $(container + " .js-launchDate").text(prevLaunchPageObj[0].activityDate);
+                    $(container + " .js-launchOperatorEmail").text(prevLaunchPageObj[0].operatorEmail);
+                    $(container + " .js-pigType").text(prevLaunchPageObj[0].pigType);
+                    $(container + " .js-receiveDate").text(prevLaunchPageObj[1].activityDate);
+
+
+                    console.log(prevLaunchPageObj.sort(compare));
+                }
+            })
+
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            })
+    }
+};
+
+
 
 //  Previous Launch (All Users)  >> Back (to Pigging Schedule))
 $(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
