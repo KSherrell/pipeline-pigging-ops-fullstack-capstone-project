@@ -538,13 +538,13 @@ app.post('/pigging-activity/add', (req, res) => {
 
 // GET ACTIVITES BY SYSTEM
 
-app.get("/pigging-activity/:pipelineName", function (req, res) {
+app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
     console.log(req.params.pipelineName);
     Activity
         .findOne({
             pipelineName: req.params.pipelineName
         })
-        .where('activityName').equals('launch')
+        .where('activityName').equals(req.params.activityName)
         .exec(function (err, item) {
             if (err) {
                 return res.status(500).json({

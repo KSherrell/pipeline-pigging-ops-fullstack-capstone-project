@@ -899,7 +899,7 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             $("#pagePiggingSchedule .show-to-operator").show();
             $("#pagePiggingSchedule .foreman-header").hide();
             $("#pagePiggingSchedule .js-viewonly").hide();
-            activePage = "piggingSchedule";
+            activePage = "piggingScheduleOP";
         }
     } else if (currentUserRole == "Report_Viewer") {
         $(".jsHide").hide();
@@ -926,21 +926,21 @@ $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
 });
 
 //  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePrevLaunch").show();
-    $("#pagePrevLaunch header").show();
-    $("#pagePrevLaunch .show-to-foreman").show();
-});
+//$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
+//    event.preventDefault();
+//    $(".jsHide").hide();
+//    $("#pagePrevLaunch").show();
+//    $("#pagePrevLaunch header").show();
+//    $("#pagePrevLaunch .show-to-foreman").show();
+//});
 
 //  Previous Launch  >> Back (to Pigging Schedule (Foreman))
-$(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
-    event.preventDefault();
-    $(".jsHide").hide();
-    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
-
-});
+//$(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
+//    event.preventDefault();
+//    $(".jsHide").hide();
+//    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+//
+//});
 
 //*** Admin Menu >> View Debris Report
 $(document).on('click', 'p.gotoDebrisReport', function (event) {
@@ -1749,13 +1749,13 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
     $("#pagePiggingSchedule .show-to-operator").show();
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .show-to-report-viewer").hide();
-    activePage = "piggingSchedule";
+    activePage = "piggingScheduleOP";
     getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
 });
 
 function getPipelinesForSchedule(systemValue, container) {
     let launchObj = [];
-
+    let i = 0;
     $.ajax({
             // getting the list of pipelines in the selected system
             type: "GET",
@@ -1769,16 +1769,15 @@ function getPipelinesForSchedule(systemValue, container) {
                 //getting the most recent launch for each pipeline
                 $.ajax({
                         type: "GET",
-                        url: '/pigging-activity/' + result1[options].pipelineName,
+                        url: '/pigging-activity/' + result1[options].pipelineName + '/launch',
                         dataType: 'json',
                         contentType: 'application/json'
                     })
                     .done(function (result2) {
+                        i++;
                         if (result2 === null) {
                             alert("No launch activity found for " + result1[options].pipelineName + ".");
                         }
-
-                        console.log(result2);
 
                         //creating a new object from results of two api calls
                         launchObj.push({
@@ -1786,18 +1785,18 @@ function getPipelinesForSchedule(systemValue, container) {
                             piggingDays: result1[options].piggingFrequency,
                             prevLaunch: result2.activityDate
                         });
-                        console.log(launchObj);
-                        applyStyles(launchObj, container);
+                        console.log(i, result1.length);
 
+                        if (i == result1.length) {
+                            applyPiggingScheduleStyles(launchObj, container);
+                        }
                     })
 
                     .fail(function (jqXHR, error, errorThrown) {
                         console.log(jqXHR);
                         console.log(error);
                         console.log(errorThrown);
-
                     })
-
             }
         })
         .fail(function (jqXHR, error, errorThrown) {
@@ -1807,8 +1806,8 @@ function getPipelinesForSchedule(systemValue, container) {
         })
 };
 
-// sorting the array
 function compare(a, b) {
+    // sorting the array
     let dateA = a.nextLaunch;
     let dateB = b.nextLaunch;
     let comparison = 0;
@@ -1820,16 +1819,11 @@ function compare(a, b) {
     return comparison;
 }
 
-
-function applyStyles(launchObj, container) {
-
+function applyPiggingScheduleStyles(launchObj, container) {
+    console.log("applyPiggingScheduleStyles called");
     $(container).html("");
     let buildList = "";
     let className = "";
-
-    console.log(launchObj);
-    console.log(typeof (launchObj));
-
     let sortedLaunchObj = [];
     let today = new Date();
 
@@ -1845,9 +1839,6 @@ function applyStyles(launchObj, container) {
         let strLaunchDate = nextLaunchDate.toDateString();
         strLaunchDate = strLaunchDate.slice(4, 11);
 
-        let sevenDays = new Date(nextLaunchDate);
-        sevenDays.setDate(nextLaunchDate.getDate() - Number(7));
-
         let daysPastDue = (today - nextLaunchDate);
         daysPastDue = Math.floor(daysPastDue / 86400000);
 
@@ -1855,12 +1846,9 @@ function applyStyles(launchObj, container) {
             pipelineName: launchObj[options].pipelineName,
             nextLaunch: strLaunchDate,
             daysPastDue: daysPastDue,
-            sevenDays: sevenDays
         });
-
     }
-    console.log(sortedLaunchObj.sort(compare));
-
+    sortedLaunchObj.sort(compare);
 
     //apply styles, build the html output
     for (let options in sortedLaunchObj) {
@@ -1874,21 +1862,14 @@ function applyStyles(launchObj, container) {
         } else if (sortedLaunchObj[options].daysPastDue >= 31) {
             className = "overdue-plus-thirty";
         }
-
-
-
         buildList +=
             '<div class="schedule-results ' + className + '">' +
             '<p>' + sortedLaunchObj[options].pipelineName + '</p>' +
             '<p class = "date">' + sortedLaunchObj[options].nextLaunch + '</p>' +
             '</div>';
-        console.log(buildList);
-
     }
     $(container).html(buildList);
 };
-
-
 
 //  Pigging Schedule >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
@@ -1902,9 +1883,6 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
 });
 
 
-
-
-
 //  Pigging Schedule (Operator) >> Input Pigging
 $(document).on('click', '#pagePiggingSchedule .show-to-operator', function (event) {
 
@@ -1912,21 +1890,41 @@ $(document).on('click', '#pagePiggingSchedule .show-to-operator', function (even
     $("#pageInputPigging").show();
     $("#pageInputPigging div.select-receive").hide();
     $("#pageInputPigging div.select-exception").hide();
+    $("#pagePiggingSchedule #scheduleResults").html("");
     activePage = "inputPigging";
     console.log(activePage);
 });
 
 
-
-//  Previous Launch >> Back (to Pigging Schedule (Operator))
-$(document).on('click', '#pagePrevLaunch .show-to-operator', function (event) {
-
+//  Pigging Schedule (All Users) >> Previous Launch (via Pipeline Name link)
+$(document).on('click', '#pagePiggingSchedule .schedule-results>p:first-child', function (event) {
+    event.preventDefault();
     $(".jsHide").hide();
-    //    $("#pagePiggingSchedule").show();
-    //    $("#pagePiggingSchedule .normal-header").show();
-    //    $("#pagePiggingSchedule .foreman-header").hide();
-    //    $("#pagePiggingSchedule .show-to-operator").show();
+    $("#pagePrevLaunch").show();
+    console.log(activePage);
+
+    let pipelineValue = $(event.target).text();
+
+    console.log(pipelineValue);
 });
+
+//  Previous Launch (All Users)  >> Back (to Pigging Schedule))
+$(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
+    event.preventDefault();
+    $(".jsHide").hide();
+    if (activePage == "piggingScheduleOP") {
+        $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-operator, #pagePiggingSchedule .normal-header").show();
+    } else if (activePage == "adminMenu") {
+        $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
+
+    } else if (activePage == "piggingScheduleRV") {
+        $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-report-viewer, #pagePiggingSchedule .normal-header").show();
+    };
+
+
+});
+
+
 
 //  Pigging Schedule (Report Viewer) >> Debris Report
 $(document).on('click', '#pagePiggingSchedule .js-viewonly', function (event) {
