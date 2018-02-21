@@ -1959,17 +1959,15 @@ function getPreviousLaunch(pipelineValue, container) {
 
                 if (i == 3) {
                     $(container + " h2").text(" " + pipelineValue);
-                    $(container + " .js-launchDate").text(" " + prevLaunchPageObj[0].activityDate);
-                    $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[0].operatorEmail);
-                    $(container + " .js-pigType").text(" " + prevLaunchPageObj[0].pigType);
-                    $(container + " .js-receiveDate").text(" " + prevLaunchPageObj[1].activityDate);
-                    $(container + " .js-receiveOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
-                    $(container + " .js-paraffin").text(" " + prevLaunchPageObj[1].paraffin + " lbs");
-                    $(container + " .js-sand").text(" " + prevLaunchPageObj[1].sand + " lbs");
-                    $(container + " .js-exceptionDate").text(" " + prevLaunchPageObj[2].activityDate);
-                    $(container + " .js-exceptionDesc").text(" " + prevLaunchPageObj[2].exception);
-
-                    // prevLaunchPageObj.sort(compare);
+                    $(container + " .js-launchDate").text(" ..... " + prevLaunchPageObj[0].activityDate);
+                    $(container + " .js-launchOperatorEmail").text(" ..... " + prevLaunchPageObj[0].operatorEmail);
+                    $(container + " .js-pigType").text(" ..... " + prevLaunchPageObj[0].pigType);
+                    $(container + " .js-receiveDate").text(" ..... " + prevLaunchPageObj[1].activityDate);
+                    $(container + " .js-receiveOperatorEmail").text(" ..... " + prevLaunchPageObj[1].operatorEmail);
+                    $(container + " .js-paraffin").text(" ..... " + prevLaunchPageObj[1].paraffin + " lbs");
+                    $(container + " .js-sand").text(" ..... " + prevLaunchPageObj[1].sand + " lbs");
+                    $(container + " .js-exceptionDate").text(" ..... " + prevLaunchPageObj[2].activityDate);
+                    $(container + " .js-exceptionDesc").text(" ..... " + prevLaunchPageObj[2].exception);
 
                     $(container + " .js-notesDate").text(prevLaunchPageObj[0].activityDate)
                     if (prevLaunchPageObj[0].notes == " --Enter field notes here-- ") {
