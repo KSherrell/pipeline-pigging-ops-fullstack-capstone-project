@@ -961,21 +961,35 @@ $(document).on('click', 'p.gotoDebrisReport', function (event) {
 
 //  Debris Report, Activity Report >> Radio Select by System
 $(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
-    event.preventDefault();
+
     $(".js-system-select").show();
     $(".js-pipeline-select").hide();
+
+    getSystems("#js-selectDebrisSystem");
+
 });
 
 //  Debris Report, Activity Report >> Radio Select by Pipeline
-$(document).on('click', '#radioPipelineDebris, #radioPipelinePigs', function (event) {
-    event.preventDefault();
+$(document).on('click', '#radioPipelineDebris', function (event) {
+
     $(".js-system-select").hide();
     $(".js-pipeline-select").show();
+
+    getSystems("#js-selectDebrisSystem2");
+
+    $(document).on('change', '#pageDebrisReport select#js-selectDebrisSystem2', function (event) {
+        let systemValue = "";
+        $('#pageDebrisReport select#js-selectDebrisSystem2 option:selected').each(function () {
+            systemValue = $(this).text();
+            console.log(systemValue);
+            getPipelineNames(systemValue, "#pageDebrisReport #js-selectDebrisPipeline", "");
+        });
+    });
+
 });
 
 //  Debris Report, Activity Report >> Radio Other Selections
-$(document).on('click', '.radio-other-selection', function (event) {
-    event.preventDefault();
+$(document).on('click', '#pageDebrisReport .radio-other-selection', function (event) {
     $("form .jsHide").hide();
 });
 
@@ -989,7 +1003,7 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
 });
 
 //  Debris Report (Foreman) >> Reset
-$(document).on('click', '#pageDebrisReport .submit-reset', function (event) {
+$(document).on('click', '#pageDebrisReport .js-debrisReset', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pageDebrisReport").show();

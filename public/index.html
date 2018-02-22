@@ -24,7 +24,7 @@
             <form id="userLogin">
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="userEmail" name="user-email" value="jim@email.com" />
+                    <input type="text" id="userEmail" name="user-email" value="foreman@email.com" />
                 </div>
                 <div>
                     <label for="password">Password</label>
@@ -287,7 +287,7 @@
                 <p><span>Notes: </span></p>
                 <p class="notes notesE"></p>
             </div>
-<!--
+            <!--
             <div>
                 <p><span>Last Recorded Notes: </span></p>
                 <p class = "js-notesDate"></p>
@@ -420,23 +420,10 @@
                     <label for="radioTotalDebris">Total Debris</label>
                 </div>
                 <div>
-                    <input type="radio" name="radio-debris-report" id="radioDebrisNorth" class="radio-other-selection" value="debris-north" />
-                    <label for="radioDebrisNorth">Total Debris North</label>
-                </div>
-                <div>
-                    <input type="radio" name="radio-debris-report" id="radioDebrisSouth" class="radio-other-selection" value="debris-south" />
-                    <label for="radioDebrisSouth">Total Debris South</label>
-                </div>
-                <div>
-                    <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debris-by-system" />
+                    <input type="radio" name="radio-debris-report" id="radioSystemDebris" value="debrisBySystem" />
                     <label for="radioSystemDebris">Total Debris by System</label>
                     <div class="js-system-select jsHide">
-                        <select name="select-debris-system">
-                                <option value="select-debris-system">Select System</option>
-                                <option value="debris-system-one">System One</option>
-                                <option value="debris-system-two">System Two</option>
-                                <option value="debris-system-three">System Three</option>
-                                <option value="debris-system-four">System Four</option>
+                        <select id = "js-selectDebrisSystem" name="select-debris-system">
                             </select>
                     </div>
                 </div>
@@ -445,21 +432,12 @@
                     <label for="radioPipelineDebris">Total Debris by Pipeline</label>
                     <div class="js-pipeline-select jsHide">
                         <div>
-                            <select name="select-debris-system">
-                                    <option value="select-debris-system">Select System</option>
-                                    <option value="debris-system-one">System One</option>
-                                    <option value="debris-system-two">System Two</option>
-                                    <option value="debris-system-three">System Three</option>
-                                    <option value="debris-system-four">System Four</option>
+                            <select id= "js-selectDebrisSystem2" name="select-debris-system">
+
                                 </select>
                         </div>
                         <div>
-                            <select name="select-debris-pipeline">
-                                    <option value="select-debris-pipeline">Select Pipeline</option>
-                                    <option value="debris-pipeline-one">Pipeline One</option>
-                                    <option value="debris-pipeline-two">Pipeline Two</option>
-                                    <option value="debris-pipeline-three">Pipeline Three</option>
-                                    <option value="debris-pipeline-four">Pipeline Four</option>
+                            <select id= "js-selectDebrisPipeline" name="select-debris-pipeline">
                                 </select>
                         </div>
                     </div>
@@ -624,7 +602,7 @@
                     </div>
 
                 </div>
-                <div class="submit-reset">
+                <div class="submit-reset js-debrisReset">
                     <button form="debrisReport" type="button">Reset</button>
                 </div>
             </div>
