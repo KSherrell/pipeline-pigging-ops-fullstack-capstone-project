@@ -100,7 +100,7 @@ app.post('/users/create', (req, res) => {
                     });
                 }
                 if (item) {
-                    console.log(`User \`${email}\` created.`);
+                    // console.log(`User \`${email}\` created.`);
                     return res.json(item);
                 }
             });
@@ -231,15 +231,12 @@ app.put('/users/reset-name/:userID', function (req, res) {
 
 // ASSIGN USER ROLE
 app.put('/users/update/:email', function (req, res) {
-    //    console.log(req.params.email);
-    //    console.log(req.body.approved);
     User.findOneAndUpdate({
         email: req.params.email
     }, {
         role: req.body.role,
         approved: req.body.approved
     }).exec().then(function (achievement) {
-        console.log(req.params.email)
         return res.status(204).end();
     }).catch(function (err) {
         return res.status(500).json({
@@ -273,7 +270,7 @@ app.post('/pipelines/create', (req, res) => {
                 });
             }
             if (item) {
-                console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
+                // console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
                 return res.json(item);
             }
         });
@@ -345,7 +342,6 @@ app.get("/pipelines/:systemValue", function (req, res) {
 
 // RETURN A LAUNCHER NAME BASED ON PIPELINE SELECTION
 app.get("/launchers/:pipelineValue", function (req, res) {
-    console.log(req.params.pipelineValue, "line 348");
     Pipeline
         .find({
             pipelineName: req.params.pipelineValue,
@@ -494,7 +490,7 @@ app.get("/exceptions", function (req, res) {
 //ADD NEW ACTIVITY
 app.post('/pigging-activity/add', (req, res) => {
     // the following variables should match the ones in the ajax call
-    console.log(req.body.sandWeight, req.body.paraffinWeight);
+    // console.log(req.body.sandWeight, req.body.paraffinWeight);
     let activityDate = req.body.activityDate;
     let activityTime = req.body.activityTime;
     let activityName = req.body.activityName;
@@ -530,7 +526,7 @@ app.post('/pigging-activity/add', (req, res) => {
                 });
             }
             if (item) {
-                console.log(`Pigging activity added.`);
+                // console.log(`Pigging activity added.`);
                 return res.json(item);
             }
         });
@@ -539,7 +535,6 @@ app.post('/pigging-activity/add', (req, res) => {
 // GET ACTIVITES BY SYSTEM
 
 app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
-    console.log(req.params.pipelineName);
     Activity
         .findOne({
             pipelineName: req.params.pipelineName
@@ -554,6 +549,26 @@ app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
             res.status(200).json(item);
         })
 })
+
+// GET DEBRIS BY PIPELINE
+app.get("/debris/:pipelineName", function (req, res) {
+    Activity
+        .find({
+            pipelineName: req.params.pipelineName
+        })
+        .where('activityName').equals('receive')
+        .exec(function (err, item) {
+            if (err) {
+                return res.status(500).jason({
+                    message: 'Internal Server Error'
+                });
+            }
+            res.status(200).json(item);
+        })
+
+
+})
+
 
 
 // MISC ------------------------------------------

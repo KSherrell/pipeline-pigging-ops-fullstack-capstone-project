@@ -1111,19 +1111,50 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
             systemValue = $(this).text();
         });
 
-        console.log(pipelineValue);
-
         if (systemValue == "Select Option" || (!pipelineValue || pipelineValue == "Select Option")) {
             alert("Please make a selection.");
             if (systemValue == "Select Option") {
                 $("#pageDebrisReport select#js-selectDebrisSystem2").focus();
             } else if (!pipelineValue || pipelineValue == "Select Option") {
                 $('#pageDebrisReport select#js-selectDebrisPipeline').focus();
-            } else {
-                alert("all fields are complete.");
-                //function getDebris(pipelineValue, '', container)
             }
-        }
+        } else {
+            $.ajax({
+                    type: "GET",
+                    url: "/debris/" + pipelineValue,
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result);
+
+
+
+                    let months = [];
+                    for (let i = 0; i < 12; i++) {
+                        let thisMonth = new Date();
+                        thisMonth.setMonth(thisMonth.getMonth() - i);
+                        console.log(thisMonth);
+
+                        months.push(
+                            thisMonth.getMonth()
+                        );
+                    };
+                    console.log(months);
+
+                })
+
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                })
+            //    $(".jsHide").hide();
+            //    $("#pageDebrisReport").show();
+            //    $("#pageDebrisReport .show-to-foreman").show();
+            //    $(".debris-results").show();
+        };
+
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisBySystem") {
         let systemValue = "";
@@ -1147,11 +1178,30 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
 
 
 function getDebris(pipelineValue, systemValue, container) {
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    $(".debris-results").show();
-}
+
+    $.ajax({
+            type: "GET",
+            url: "/debris/" + pipelineValue,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result) {
+            console.log(result);
+        })
+
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+    //    $(".jsHide").hide();
+    //    $("#pageDebrisReport").show();
+    //    $("#pageDebrisReport .show-to-foreman").show();
+    //    $(".debris-results").show();
+};
+
+
+
 
 //  Debris Report (Foreman) >> Reset
 $(document).on('click', '#pageDebrisReport .js-debrisReset', function (event) {
