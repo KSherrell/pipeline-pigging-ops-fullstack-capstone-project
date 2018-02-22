@@ -1000,6 +1000,45 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     $("#pageDebrisReport .show-to-foreman").show();
     $(".debris-results").show();
 
+
+    //    if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
+    //        alert("All fields are required.");
+    //        if (rcValue == "Select Option") {
+    //            $("#pageUpdatePipeline select#rcName").focus();
+    //        } else if (!systemValue || systemValue == "Select Option") {
+    //            $("#pageUpdatePipeline select#systemName").focus();
+    //        } else if (!pipelineValue || pipelineValue == "Select Option") {
+    //            $("#pageUpdatePipeline select#pipelineName").focus();
+    //        }
+    //    } else {
+    //        $.ajax({
+    //            type: "GET",
+    //            url: "/pipelines/update/" + pipelineValue,
+    //            dataType: 'json',
+    //            contentType: 'application/json'
+    //        })
+    //            .done(function (result) {
+    //            populateUpdatePipelineForm(result);
+    //        })
+    //
+    //            .fail(function (jqXHR, error, errorThrown) {
+    //            console.log(jqXHR);
+    //            console.log(error);
+    //            console.log(errorThrown);
+    //        })
+    //
+    //        $(".jsHide").hide();
+    //        $("#pageUpdatePipeline").show();
+    //        $("#updatePipeline").show();
+    //        $("#pageUpdatePipeline .submit-cancel-delete").show();
+    //    }
+    //
+    //
+
+
+
+
+
     if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
         let pipelineValue = "";
         $('#pageDebrisReport select#js-selectDebrisPipeline option:selected').each(function () {
@@ -1007,6 +1046,9 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
         });
         console.log(pipelineValue);
         //function getDebrisByPipeline(pipelineValue, container)
+
+
+
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisBySystem") {
         let systemValue = "";
@@ -1932,8 +1974,14 @@ $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (even
     $('#pagePiggingSchedule select#systemName option:selected').each(function () {
         systemValue = $(this).text();
     });
-    $("#pagePiggingSchedule #scheduleResults").html("");
-    getPipelinesForSchedule(systemValue, "#scheduleResults");
+    if (systemValue == "Select Option") {
+        alert("Please make a selection.");
+        $('#pagePiggingSchedule select#systemName').focus();
+    } else {
+        $("#pagePiggingSchedule #scheduleResults").html("");
+        getPipelinesForSchedule(systemValue, "#scheduleResults");
+    }
+
 });
 
 
