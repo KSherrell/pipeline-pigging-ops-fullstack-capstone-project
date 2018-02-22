@@ -367,6 +367,9 @@
     .prev-launch-container div + div {
         margin-top: 2rem;
     }
+    .prev-launch-container p {
+        margin-bottom: .3rem;
+    }
     .prev-launch-container p > span:first-child {
         color: #088ba5;
     }

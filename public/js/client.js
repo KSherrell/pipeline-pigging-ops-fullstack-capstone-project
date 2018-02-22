@@ -1807,13 +1807,26 @@ function getPipelinesForSchedule(systemValue, container) {
 };
 
 function compare(a, b) {
-    // sorting the array
+    // sorting the array by date
     let dateA = a.activityDate;
     let dateB = b.activityDate;
     let comparison = 0;
     if (dateA > dateB) {
         comparison = -1;
     } else if (dateA < dateB) {
+        comparison = 1
+    }
+    return comparison;
+}
+
+function compare2(a, b) {
+    // sorting the array by activity name
+    let activityA = a.activityName;
+    let activityB = b.activityName;
+    let comparison = 0;
+    if (activityA < activityB) {
+        comparison = -1;
+    } else if (activityA > activityB) {
         comparison = 1
     }
     return comparison;
@@ -1926,11 +1939,11 @@ function getPreviousLaunch(pipelineValue, container) {
                 console.log(result);
                 i++;
 
-                if (result === null) {
+                if (result == null) {
                     alert("No " + prevActivityObj[j] + " activity found for " + pipelineValue + ".");
 
                     prevLaunchPageObj.push({
-                        activityName: "--",
+                        activityName: prevActivityObj[j],
                         operatorEmail: "--",
                         activityDate: "--",
                         pigType: "--",
@@ -1940,8 +1953,10 @@ function getPreviousLaunch(pipelineValue, container) {
                         notes: "--"
                     });
 
-                } else {
-                    //creating a new object from result of api calls
+                } else if (result !== null) {
+                    if (result.notes == " --Enter field notes here-- ") {
+                        result.notes = " -- ";
+                    }
                     prevLaunchPageObj.push({
                         activityName: result.activityName,
                         operatorEmail: result.operatorEmail,
@@ -1952,29 +1967,27 @@ function getPreviousLaunch(pipelineValue, container) {
                         exception: result.exceptionDesc,
                         notes: result.notes
                     });
+
                 }
 
-                console.log(i);
-                console.log(prevLaunchPageObj);
-
                 if (i == 3) {
+                    console.log(prevLaunchPageObj.sort(compare2));
                     $(container + " h2").text(" " + pipelineValue);
-                    $(container + " .js-launchDate").text(" ..... " + prevLaunchPageObj[0].activityDate);
-                    $(container + " .js-launchOperatorEmail").text(" ..... " + prevLaunchPageObj[0].operatorEmail);
-                    $(container + " .js-pigType").text(" ..... " + prevLaunchPageObj[0].pigType);
-                    $(container + " .js-receiveDate").text(" ..... " + prevLaunchPageObj[1].activityDate);
-                    $(container + " .js-receiveOperatorEmail").text(" ..... " + prevLaunchPageObj[1].operatorEmail);
-                    $(container + " .js-paraffin").text(" ..... " + prevLaunchPageObj[1].paraffin + " lbs");
-                    $(container + " .js-sand").text(" ..... " + prevLaunchPageObj[1].sand + " lbs");
-                    $(container + " .js-exceptionDate").text(" ..... " + prevLaunchPageObj[2].activityDate);
-                    $(container + " .js-exceptionDesc").text(" ..... " + prevLaunchPageObj[2].exception);
+                    $(container + " .js-launchDate").text(" " + prevLaunchPageObj[1].activityDate);
+                    $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
+                    $(container + " .js-pigType").text(" " + prevLaunchPageObj[1].pigType);
+                    $(container + " .notesL").text(" " + prevLaunchPageObj[1].notes);
 
-                    $(container + " .js-notesDate").text(prevLaunchPageObj[0].activityDate)
-                    if (prevLaunchPageObj[0].notes == " --Enter field notes here-- ") {
-                        $(container + " .notes").text("-- No notes entered --");
-                    } else {
-                        $(container + " .notes").text(prevLaunchPageObj[0].notes);
-                    }
+                    $(container + " .js-receiveDate").text(" " + prevLaunchPageObj[2].activityDate);
+                    $(container + " .js-receiveOperatorEmail").text(" " + prevLaunchPageObj[2].operatorEmail);
+                    $(container + " .js-paraffin").text(" " + prevLaunchPageObj[2].paraffin + " lbs");
+                    $(container + " .js-sand").text(" " + prevLaunchPageObj[2].sand + " lbs");
+                    $(container + " .notesR").text(" " + prevLaunchPageObj[2].notes);
+
+                    $(container + " .js-exceptionDate").text(" " + prevLaunchPageObj[0].activityDate);
+                    $(container + " .js-exceptionOperatorEmail").text(" " + prevLaunchPageObj[0].operatorEmail);
+                    $(container + " .js-exceptionDesc").text(" " + prevLaunchPageObj[0].exception);
+                    $(container + " .notesE").text(" " + prevLaunchPageObj[0].notes);
                 }
             })
 
