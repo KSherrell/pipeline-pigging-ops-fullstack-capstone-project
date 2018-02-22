@@ -641,6 +641,135 @@ function postPiggingActivity(activityObj) {
         })
 };
 
+function getPipelinesForSchedule(systemValue, container) {
+    let launchObj = [];
+    let i = 0;
+    $.ajax({
+            // getting the list of pipelines in the selected system
+            type: "GET",
+            url: '/pipelines/' + systemValue,
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function (result1) {
+            console.log(result1);
+            for (let options in result1) {
+                //getting the most recent launch for each pipeline
+                $.ajax({
+                        type: "GET",
+                        url: '/pigging-activity/' + result1[options].pipelineName + '/launch',
+                        dataType: 'json',
+                        contentType: 'application/json'
+                    })
+                    .done(function (result2) {
+                        i++;
+                        if (result2 === null) {
+                            alert("No launch activity found for " + result1[options].pipelineName + ".");
+                        }
+
+                        //creating a new object from results of two api calls
+                        launchObj.push({
+                            pipelineName: result1[options].pipelineName,
+                            piggingDays: result1[options].piggingFrequency,
+                            prevLaunch: result2.activityDate
+                        });
+                        console.log(i, result1.length);
+
+                        if (i == result1.length) {
+                            applyPiggingScheduleStyles(launchObj, container);
+                        }
+                    })
+
+                    .fail(function (jqXHR, error, errorThrown) {
+                        console.log(jqXHR);
+                        console.log(error);
+                        console.log(errorThrown);
+                    })
+            }
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        })
+};
+
+function compare(a, b) {
+    // sorting the array by date
+    let dateA = a.activityDate;
+    let dateB = b.activityDate;
+    let comparison = 0;
+    if (dateA > dateB) {
+        comparison = -1;
+    } else if (dateA < dateB) {
+        comparison = 1
+    }
+    return comparison;
+}
+
+function compare2(a, b) {
+    // sorting the array by activity name
+    let activityA = a.activityName;
+    let activityB = b.activityName;
+    let comparison = 0;
+    if (activityA < activityB) {
+        comparison = -1;
+    } else if (activityA > activityB) {
+        comparison = 1
+    }
+    return comparison;
+}
+
+function applyPiggingScheduleStyles(launchObj, container) {
+    $(container).html("");
+    let buildList = "";
+    let className = "";
+    let sortedLaunchObj = [];
+    let today = new Date();
+
+    // sort according to nextLaunch
+    for (let options in launchObj) {
+
+        //setting up the due / overdue formulas
+        let prevLaunch = new Date(launchObj[options].prevLaunch);
+        let piggingDays = Number(launchObj[options].piggingDays) + 1;
+
+        let nextLaunchDate = new Date(prevLaunch);
+        nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
+        let strLaunchDate = nextLaunchDate.toDateString();
+        strLaunchDate = strLaunchDate.slice(4, 11);
+
+        let daysPastDue = (today - nextLaunchDate);
+        daysPastDue = Math.floor(daysPastDue / 86400000);
+
+        sortedLaunchObj.push({
+            pipelineName: launchObj[options].pipelineName,
+            activityDate: strLaunchDate,
+            daysPastDue: daysPastDue,
+        });
+    }
+    sortedLaunchObj.sort(compare);
+
+    //apply styles, build the html output
+    for (let options in sortedLaunchObj) {
+        //use due/overdue formulas here
+        if (sortedLaunchObj[options].daysPastDue < -7) {
+            className = "due-today";
+        } else if (sortedLaunchObj[options].daysPastDue < 1 && sortedLaunchObj[options].daysPastDue > -7) {
+            className = "due-in-seven";
+        } else if (sortedLaunchObj[options].daysPastDue < 30 && sortedLaunchObj[options].daysPastDue >= 1) {
+            className = "overdue-within-thirty";
+        } else if (sortedLaunchObj[options].daysPastDue >= 31) {
+            className = "overdue-plus-thirty";
+        }
+        buildList +=
+            '<div class="schedule-results ' + className + '">' +
+            '<p>' + sortedLaunchObj[options].pipelineName + '</p>' +
+            '<p class = "date">' + sortedLaunchObj[options].activityDate + '</p>' +
+            '</div>';
+    }
+    $(container).html(buildList);
+};
 
 //Step Two: Use functions, object, variables (triggers)
 
@@ -933,23 +1062,6 @@ $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
 
 });
 
-//  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
-//$(document).on('click', '#pagePiggingSchedule .schedule-results>p', function (event) {
-//    event.preventDefault();
-//    $(".jsHide").hide();
-//    $("#pagePrevLaunch").show();
-//    $("#pagePrevLaunch header").show();
-//    $("#pagePrevLaunch .show-to-foreman").show();
-//});
-
-//  Previous Launch  >> Back (to Pigging Schedule (Foreman))
-//$(document).on('click', '#pagePrevLaunch .show-to-foreman', function (event) {
-//    event.preventDefault();
-//    $(".jsHide").hide();
-//    $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
-//
-//});
-
 //*** Admin Menu >> View Debris Report
 $(document).on('click', 'p.gotoDebrisReport', function (event) {
     event.preventDefault();
@@ -959,24 +1071,18 @@ $(document).on('click', 'p.gotoDebrisReport', function (event) {
     $("#pageDebrisReport .show-to-foreman").show();
 });
 
-//  Debris Report, Activity Report >> Radio Select by System
-$(document).on('click', '#radioSystemDebris, #radioSystemPigs', function (event) {
-
+//  Debris Report, Activity Report >> Radio Select by System  (also meant for #radioSystemPigs)
+$(document).on('click', '#radioSystemDebris', function (event) {
     $(".js-system-select").show();
     $(".js-pipeline-select").hide();
-
     getSystems("#js-selectDebrisSystem");
-
 });
 
 //  Debris Report, Activity Report >> Radio Select by Pipeline
 $(document).on('click', '#radioPipelineDebris', function (event) {
-
     $(".js-system-select").hide();
     $(".js-pipeline-select").show();
-
     getSystems("#js-selectDebrisSystem2");
-
     $(document).on('change', '#pageDebrisReport select#js-selectDebrisSystem2', function (event) {
         let systemValue = "";
         $('#pageDebrisReport select#js-selectDebrisSystem2 option:selected').each(function () {
@@ -984,85 +1090,68 @@ $(document).on('click', '#radioPipelineDebris', function (event) {
             getPipelineNames(systemValue, "#pageDebrisReport #js-selectDebrisPipeline", "");
         });
     });
-
 });
 
-//  Debris Report, Activity Report >> Radio Other Selections
-$(document).on('click', '#pageDebrisReport .radio-other-selection', function (event) {
+//  Debris Report >> Radio Other Selections
+$(document).on('click', '#pageDebrisReport #radioTotalDebriw', function (event) {
     $("form .jsHide").hide();
 });
 
 //  Debris Report (Foreman) >> Submit
 $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     event.preventDefault();
-    $(".jsHide").hide();
-    $("#pageDebrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
-    $(".debris-results").show();
-
-
-    //    if (rcValue == "Select Option" || (!systemValue || systemValue == "Select Option") || (!pipelineValue || pipelineValue == "Select Option")) {
-    //        alert("All fields are required.");
-    //        if (rcValue == "Select Option") {
-    //            $("#pageUpdatePipeline select#rcName").focus();
-    //        } else if (!systemValue || systemValue == "Select Option") {
-    //            $("#pageUpdatePipeline select#systemName").focus();
-    //        } else if (!pipelineValue || pipelineValue == "Select Option") {
-    //            $("#pageUpdatePipeline select#pipelineName").focus();
-    //        }
-    //    } else {
-    //        $.ajax({
-    //            type: "GET",
-    //            url: "/pipelines/update/" + pipelineValue,
-    //            dataType: 'json',
-    //            contentType: 'application/json'
-    //        })
-    //            .done(function (result) {
-    //            populateUpdatePipelineForm(result);
-    //        })
-    //
-    //            .fail(function (jqXHR, error, errorThrown) {
-    //            console.log(jqXHR);
-    //            console.log(error);
-    //            console.log(errorThrown);
-    //        })
-    //
-    //        $(".jsHide").hide();
-    //        $("#pageUpdatePipeline").show();
-    //        $("#updatePipeline").show();
-    //        $("#pageUpdatePipeline .submit-cancel-delete").show();
-    //    }
-    //
-    //
-
-
-
-
 
     if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
         let pipelineValue = "";
         $('#pageDebrisReport select#js-selectDebrisPipeline option:selected').each(function () {
             pipelineValue = $(this).text();
         });
+        let systemValue = "";
+        $('#pageDebrisReport select#js-selectDebrisSystem2 option:selected').each(function () {
+            systemValue = $(this).text();
+        });
+
         console.log(pipelineValue);
-        //function getDebrisByPipeline(pipelineValue, container)
 
-
-
+        if (systemValue == "Select Option" || (!pipelineValue || pipelineValue == "Select Option")) {
+            alert("Please make a selection.");
+            if (systemValue == "Select Option") {
+                $("#pageDebrisReport select#js-selectDebrisSystem2").focus();
+            } else if (!pipelineValue || pipelineValue == "Select Option") {
+                $('#pageDebrisReport select#js-selectDebrisPipeline').focus();
+            } else {
+                alert("all fields are complete.");
+                //function getDebris(pipelineValue, '', container)
+            }
+        }
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisBySystem") {
         let systemValue = "";
         $('#pageDebrisReport select#js-selectDebrisSystem option:selected').each(function () {
             systemValue = $(this).text();
         });
-        console.log(systemValue);
-        //function getDebrisBySystem(systemValue, container);
+        if (systemValue == "Select Option") {
+            alert("Please make a selection.");
+            $("#pageDebrisReport select#js-selectDebrisSystem").focus();
+        } else {
+            alert("all fields are complete.");
+            //function getDebris('', systemValue, container);
+        }
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "totalDebris") {
         console.log("totalDebris");
-        // function getTotalDebris(container);
+        alert("all fields are complete.");
+        // function getDebris('', '', container);
     };
 });
+
+
+function getDebris(pipelineValue, systemValue, container) {
+    $(".jsHide").hide();
+    $("#pageDebrisReport").show();
+    $("#pageDebrisReport .show-to-foreman").show();
+    $(".debris-results").show();
+}
 
 //  Debris Report (Foreman) >> Reset
 $(document).on('click', '#pageDebrisReport .js-debrisReset', function (event) {
@@ -1837,135 +1926,6 @@ $(document).on('click', '#pageInputPigging .ops-nav', function (event) {
     getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
 });
 
-function getPipelinesForSchedule(systemValue, container) {
-    let launchObj = [];
-    let i = 0;
-    $.ajax({
-            // getting the list of pipelines in the selected system
-            type: "GET",
-            url: '/pipelines/' + systemValue,
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result1) {
-            console.log(result1);
-            for (let options in result1) {
-                //getting the most recent launch for each pipeline
-                $.ajax({
-                        type: "GET",
-                        url: '/pigging-activity/' + result1[options].pipelineName + '/launch',
-                        dataType: 'json',
-                        contentType: 'application/json'
-                    })
-                    .done(function (result2) {
-                        i++;
-                        if (result2 === null) {
-                            alert("No launch activity found for " + result1[options].pipelineName + ".");
-                        }
-
-                        //creating a new object from results of two api calls
-                        launchObj.push({
-                            pipelineName: result1[options].pipelineName,
-                            piggingDays: result1[options].piggingFrequency,
-                            prevLaunch: result2.activityDate
-                        });
-                        console.log(i, result1.length);
-
-                        if (i == result1.length) {
-                            applyPiggingScheduleStyles(launchObj, container);
-                        }
-                    })
-
-                    .fail(function (jqXHR, error, errorThrown) {
-                        console.log(jqXHR);
-                        console.log(error);
-                        console.log(errorThrown);
-                    })
-            }
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-};
-
-function compare(a, b) {
-    // sorting the array by date
-    let dateA = a.activityDate;
-    let dateB = b.activityDate;
-    let comparison = 0;
-    if (dateA > dateB) {
-        comparison = -1;
-    } else if (dateA < dateB) {
-        comparison = 1
-    }
-    return comparison;
-}
-
-function compare2(a, b) {
-    // sorting the array by activity name
-    let activityA = a.activityName;
-    let activityB = b.activityName;
-    let comparison = 0;
-    if (activityA < activityB) {
-        comparison = -1;
-    } else if (activityA > activityB) {
-        comparison = 1
-    }
-    return comparison;
-}
-
-function applyPiggingScheduleStyles(launchObj, container) {
-    $(container).html("");
-    let buildList = "";
-    let className = "";
-    let sortedLaunchObj = [];
-    let today = new Date();
-
-    // sort according to nextLaunch
-    for (let options in launchObj) {
-
-        //setting up the due / overdue formulas
-        let prevLaunch = new Date(launchObj[options].prevLaunch);
-        let piggingDays = Number(launchObj[options].piggingDays) + 1;
-
-        let nextLaunchDate = new Date(prevLaunch);
-        nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
-        let strLaunchDate = nextLaunchDate.toDateString();
-        strLaunchDate = strLaunchDate.slice(4, 11);
-
-        let daysPastDue = (today - nextLaunchDate);
-        daysPastDue = Math.floor(daysPastDue / 86400000);
-
-        sortedLaunchObj.push({
-            pipelineName: launchObj[options].pipelineName,
-            activityDate: strLaunchDate,
-            daysPastDue: daysPastDue,
-        });
-    }
-    sortedLaunchObj.sort(compare);
-
-    //apply styles, build the html output
-    for (let options in sortedLaunchObj) {
-        //use due/overdue formulas here
-        if (sortedLaunchObj[options].daysPastDue < -7) {
-            className = "due-today";
-        } else if (sortedLaunchObj[options].daysPastDue < 1 && sortedLaunchObj[options].daysPastDue > -7) {
-            className = "due-in-seven";
-        } else if (sortedLaunchObj[options].daysPastDue < 30 && sortedLaunchObj[options].daysPastDue >= 1) {
-            className = "overdue-within-thirty";
-        } else if (sortedLaunchObj[options].daysPastDue >= 31) {
-            className = "overdue-plus-thirty";
-        }
-        buildList +=
-            '<div class="schedule-results ' + className + '">' +
-            '<p>' + sortedLaunchObj[options].pipelineName + '</p>' +
-            '<p class = "date">' + sortedLaunchObj[options].activityDate + '</p>' +
-            '</div>';
-    }
-    $(container).html(buildList);
-};
 
 //  Pigging Schedule >> Submit
 $(document).on('submit', '#pagePiggingSchedule #piggingSchedule', function (event) {
