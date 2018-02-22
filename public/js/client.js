@@ -922,7 +922,15 @@ $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
+    $("#pagePiggingSchedule .normal-header").hide();
+    $("#pagePiggingSchedule .show-to-report-viewer").hide();
+    $("#pagePiggingSchedule .show-to-operator").hide();
     $("#pagePiggingSchedule .show-to-foreman").show();
+    $("#scheduleResults").html("");
+    activePage = "adminMenu";
+    getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
+
+
 });
 
 //  Pigging Schedule (Foreman) >> Previous Launch (via Pipeline Name link)
@@ -1833,7 +1841,6 @@ function compare2(a, b) {
 }
 
 function applyPiggingScheduleStyles(launchObj, container) {
-    console.log("applyPiggingScheduleStyles called");
     $(container).html("");
     let buildList = "";
     let className = "";
@@ -2000,11 +2007,11 @@ function getPreviousLaunch(pipelineValue, container) {
 };
 
 
-
 //  Previous Launch (All Users)  >> Back (to Pigging Schedule))
 $(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
     event.preventDefault();
     $(".jsHide").hide();
+    // clear values from text fields
     let container = "#pagePrevLaunch .prev-launch-container"
     $(container + " h2").text("");
     $(container + " .js-launchDate").text("");
@@ -2043,6 +2050,7 @@ $(document).on('click', '#pagePiggingSchedule .js-viewonly', function (event) {
     $(".debris-results").hide();
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").hide();
+    activePage = "debrisReportRV";
 });
 
 //  Debris Report (Report Viewer) >> Pigging Schedule
@@ -2052,6 +2060,7 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
     $("#pagePiggingSchedule").show();
     $("#pagePiggingSchedule .foreman-header").hide();
     $("#pagePiggingSchedule .show-to-operator").hide();
+    activePage = "piggingScheduleRV";
 });
 
 
