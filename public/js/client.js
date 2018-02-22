@@ -1134,10 +1134,10 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                     for (let i = 0; i < 12; i++) {
                         let thisMonth = new Date();
                         thisMonth.setMonth(thisMonth.getMonth() - i);
-                        console.log(thisMonth);
+                        console.log(typeof (thisMonth));
 
                         months.push(
-                            thisMonth.getMonth()
+                            thisMonth.toString().slice(4, 7)
                         );
                     };
                     console.log(months);
