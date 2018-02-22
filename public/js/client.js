@@ -981,7 +981,6 @@ $(document).on('click', '#radioPipelineDebris', function (event) {
         let systemValue = "";
         $('#pageDebrisReport select#js-selectDebrisSystem2 option:selected').each(function () {
             systemValue = $(this).text();
-            console.log(systemValue);
             getPipelineNames(systemValue, "#pageDebrisReport #js-selectDebrisPipeline", "");
         });
     });
@@ -1000,6 +999,27 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     $("#pageDebrisReport").show();
     $("#pageDebrisReport .show-to-foreman").show();
     $(".debris-results").show();
+
+    if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
+        let pipelineValue = "";
+        $('#pageDebrisReport select#js-selectDebrisPipeline option:selected').each(function () {
+            pipelineValue = $(this).text();
+        });
+        console.log(pipelineValue);
+        //function getDebrisByPipeline(pipelineValue, container)
+
+    } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisBySystem") {
+        let systemValue = "";
+        $('#pageDebrisReport select#js-selectDebrisSystem option:selected').each(function () {
+            systemValue = $(this).text();
+        });
+        console.log(systemValue);
+        //function getDebrisBySystem(systemValue, container);
+
+    } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "totalDebris") {
+        console.log("totalDebris");
+        // function getTotalDebris(container);
+    };
 });
 
 //  Debris Report (Foreman) >> Reset
