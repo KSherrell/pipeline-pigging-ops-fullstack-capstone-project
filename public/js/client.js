@@ -1093,13 +1093,42 @@ $(document).on('click', '#radioPipelineDebris', function (event) {
 });
 
 //  Debris Report >> Radio Other Selections
-$(document).on('click', '#pageDebrisReport #radioTotalDebriw', function (event) {
+$(document).on('click', '#pageDebrisReport #radioTotalDebris', function (event) {
     $("form .jsHide").hide();
 });
 
 //  Debris Report (Foreman) >> Submit
 $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     event.preventDefault();
+
+    //    let months = [];
+    //    for (let i = 0; i < 12; i++) {
+    //        let thisMonth = new Date();
+    //        thisMonth.setMonth(thisMonth.getMonth() - i);
+    //        let currentMonthToPush = thisMonth.getMonth() + 1;
+    //        console.log(currentMonthToPush, thisMonth);
+    //        if (currentMonthToPush < 10) {
+    //            currentMonthToPush = '0' + currentMonthToPush;
+    //        } else {
+    //            currentMonthToPush = JSON.stringify(currentMonthToPush);
+    //        }
+    //        months.push(
+    //            currentMonthToPush
+    //        );
+    //    };
+
+    let months = [];
+    for (let i = 0; i < 12; i++) {
+        let thisMonth = new Date();
+        thisMonth.setMonth(thisMonth.getMonth() - i);
+        let currentMonthToPush = thisMonth.toString().slice(4, 7);
+        console.log(currentMonthToPush, thisMonth);
+        months.push(
+            currentMonthToPush
+        );
+    };
+    console.log(months);
+
 
     if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
         let pipelineValue = "";
@@ -1119,6 +1148,8 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 $('#pageDebrisReport select#js-selectDebrisPipeline').focus();
             }
         } else {
+
+
             $.ajax({
                     type: "GET",
                     url: "/debris/" + pipelineValue,
@@ -1127,29 +1158,38 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 })
                 .done(function (result) {
                     console.log(result);
+                    let debrisObj = [];
+                    let strDebrisDate = "";
+                    let totalParaffin = 0;
+                    let totalSand = 0;
 
-                    for (let options in result) {
-                        let debrisDate = result[options].activityDate;
-                        let paraffin = result[options].paraffinWeight;
-                        let sand = result[options].sandWeight;
-                        console.log(debrisDate, paraffin, sand);
+                    for (let i = 0; i < months.length; i++) {
+
+                        for (let options in result) {
+                            let debrisDate = result[options].activityDate;
+                            debrisDate = new Date(debrisDate);
+                            strDebrisDate = debrisDate.toString().slice(4, 7);
+                            let paraffin = result[options].paraffinWeight;
+                            let sand = result[options].sandWeight;
+
+                            if (strDebrisDate == months[i]) {
+                                totalParaffin += parseInt(paraffin);
+                                totalSand += parseInt(sand);
+                            }
+                            console.log(totalParaffin, totalSand);
+                        }
+
+                        debrisObj.push({
+                            date: months[i],
+                            paraffin: totalParaffin,
+                            sand: totalSand
+                        });
+
+                        totalParaffin = 0;
+                        totalSand = 0;
                     }
+                    console.log(debrisObj);
 
-                    console.log(typeof (debrisDate));
-
-
-                    let months = [];
-                    for (let i = 0; i < 12; i++) {
-                        let thisMonth = new Date();
-                        thisMonth.setMonth(thisMonth.getMonth() - i);
-                        // console.log(thisMonth);
-                        months.push(
-                            thisMonth.getMonth()
-                            //thisMonth.toString().slice(4, 7)
-                        );
-                    };
-                    console.log(months);
-                    console.log(typeof (thisMonth));
                 })
 
                 .fail(function (jqXHR, error, errorThrown) {
@@ -1157,10 +1197,10 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                     console.log(error);
                     console.log(errorThrown);
                 })
-            //    $(".jsHide").hide();
-            //    $("#pageDebrisReport").show();
-            //    $("#pageDebrisReport .show-to-foreman").show();
-            //    $(".debris-results").show();
+            $(".jsHide").hide();
+            $("#pageDebrisReport").show();
+            $("#pageDebrisReport .show-to-foreman").show();
+            $(".debris-results").show();
         };
 
 
