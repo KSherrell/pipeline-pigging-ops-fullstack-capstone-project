@@ -1128,20 +1128,28 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 .done(function (result) {
                     console.log(result);
 
+                    for (let options in result) {
+                        let debrisDate = result[options].activityDate;
+                        let paraffin = result[options].paraffinWeight;
+                        let sand = result[options].sandWeight;
+                        console.log(debrisDate, paraffin, sand);
+                    }
+
+                    console.log(typeof (debrisDate));
 
 
                     let months = [];
                     for (let i = 0; i < 12; i++) {
                         let thisMonth = new Date();
                         thisMonth.setMonth(thisMonth.getMonth() - i);
-                        console.log(typeof (thisMonth));
-
+                        // console.log(thisMonth);
                         months.push(
-                            thisMonth.toString().slice(4, 7)
+                            thisMonth.getMonth()
+                            //thisMonth.toString().slice(4, 7)
                         );
                     };
                     console.log(months);
-
+                    console.log(typeof (thisMonth));
                 })
 
                 .fail(function (jqXHR, error, errorThrown) {
