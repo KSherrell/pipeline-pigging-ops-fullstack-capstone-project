@@ -1264,8 +1264,9 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 for (let i = 0; i < months.length; i++) {
                     for (let options in result) {
                         let debrisDate = result[options].activityDate;
-                        //debrisDate = new Date(debrisDate);
+                        debrisDate = new Date(debrisDate);
                         let strDebrisDate = debrisDate.toString().slice(4, 7);
+                        console.log(debrisDate, strDebrisDate);
                         let paraffin = result[options].paraffinWeight;
                         let sand = result[options].sandWeight;
 
