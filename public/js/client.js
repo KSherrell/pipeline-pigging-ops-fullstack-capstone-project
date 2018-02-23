@@ -707,6 +707,19 @@ function compare(a, b) {
     return comparison;
 }
 
+function compare3(a, b) {
+    // sorting the array by days past due
+    let daysA = a.daysPastDue;
+    let daysB = b.daysPastDue;
+    let comparison = 0;
+    if (daysA < daysB) {
+        comparison = -1;
+    } else if (daysA > daysB) {
+        comparison = 1
+    }
+    return comparison;
+}
+
 function compare2(a, b) {
     // sorting the array by activity name
     let activityA = a.activityName;
@@ -737,7 +750,8 @@ function applyPiggingScheduleStyles(launchObj, container) {
         let nextLaunchDate = new Date(prevLaunch);
         nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
         let strLaunchDate = nextLaunchDate.toDateString();
-        strLaunchDate = strLaunchDate.slice(4, 11);
+        console.log(strLaunchDate);
+        strLaunchDate = strLaunchDate.slice(4, 15);
 
         let daysPastDue = (today - nextLaunchDate);
         daysPastDue = Math.floor(daysPastDue / 86400000);
@@ -748,7 +762,8 @@ function applyPiggingScheduleStyles(launchObj, container) {
             daysPastDue: daysPastDue,
         });
     }
-    sortedLaunchObj.sort(compare);
+    sortedLaunchObj.sort(compare3);
+    console.log(sortedLaunchObj);
 
     //apply styles, build the html output
     for (let options in sortedLaunchObj) {
@@ -1101,34 +1116,15 @@ $(document).on('click', '#pageDebrisReport #radioTotalDebris', function (event) 
 $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     event.preventDefault();
 
-    //    let months = [];
-    //    for (let i = 0; i < 12; i++) {
-    //        let thisMonth = new Date();
-    //        thisMonth.setMonth(thisMonth.getMonth() - i);
-    //        let currentMonthToPush = thisMonth.getMonth() + 1;
-    //        console.log(currentMonthToPush, thisMonth);
-    //        if (currentMonthToPush < 10) {
-    //            currentMonthToPush = '0' + currentMonthToPush;
-    //        } else {
-    //            currentMonthToPush = JSON.stringify(currentMonthToPush);
-    //        }
-    //        months.push(
-    //            currentMonthToPush
-    //        );
-    //    };
-
     let months = [];
     for (let i = 0; i < 12; i++) {
         let thisMonth = new Date();
         thisMonth.setMonth(thisMonth.getMonth() - i);
         let currentMonthToPush = thisMonth.toString().slice(4, 7);
-        console.log(currentMonthToPush, thisMonth);
         months.push(
             currentMonthToPush
         );
     };
-    console.log(months);
-
 
     if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
         let pipelineValue = "";
@@ -1148,11 +1144,9 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 $('#pageDebrisReport select#js-selectDebrisPipeline').focus();
             }
         } else {
-
-
             $.ajax({
                     type: "GET",
-                    url: "/debris/" + pipelineValue,
+                    url: "/pipeline-debris/" + pipelineValue,
                     dataType: 'json',
                     contentType: 'application/json'
                 })
@@ -1164,7 +1158,6 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                     let totalSand = 0;
 
                     for (let i = 0; i < months.length; i++) {
-
                         for (let options in result) {
                             let debrisDate = result[options].activityDate;
                             debrisDate = new Date(debrisDate);
@@ -1176,22 +1169,16 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                                 totalParaffin += parseInt(paraffin);
                                 totalSand += parseInt(sand);
                             }
-                            console.log(totalParaffin, totalSand);
                         }
-
                         debrisObj.push({
                             date: months[i],
                             paraffin: totalParaffin,
                             sand: totalSand
                         });
-
                         totalParaffin = 0;
                         totalSand = 0;
                     }
-                    console.log(debrisObj);
-
                 })
-
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
                     console.log(error);
@@ -1213,15 +1200,100 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
             alert("Please make a selection.");
             $("#pageDebrisReport select#js-selectDebrisSystem").focus();
         } else {
-            alert("all fields are complete.");
-            //function getDebris('', systemValue, container);
+            $.ajax({
+                    type: "GET",
+                    url: "/system-debris/" + systemValue,
+                    dataType: 'json',
+                    contentType: 'application/json'
+                })
+                .done(function (result) {
+                    console.log(result);
+                    let debrisObj = [];
+                    let strDebrisDate = "";
+                    let totalParaffin = 0;
+                    let totalSand = 0;
+
+                    for (let i = 0; i < months.length; i++) {
+                        for (let options in result) {
+                            let debrisDate = result[options].activityDate;
+                            debrisDate = new Date(debrisDate);
+                            strDebrisDate = debrisDate.toString().slice(4, 7);
+                            let paraffin = result[options].paraffinWeight;
+                            let sand = result[options].sandWeight;
+
+                            if (strDebrisDate == months[i]) {
+                                totalParaffin += parseInt(paraffin);
+                                totalSand += parseInt(sand);
+                            }
+                        }
+                        debrisObj.push({
+                            date: months[i],
+                            paraffin: totalParaffin,
+                            sand: totalSand
+                        });
+                        totalParaffin = 0;
+                        totalSand = 0;
+                    }
+                    console.log(debrisObj);
+                })
+                .fail(function (jqXHR, error, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(error);
+                    console.log(errorThrown);
+                })
+            $(".jsHide").hide();
+            $("#pageDebrisReport").show();
+            $("#pageDebrisReport .show-to-foreman").show();
+            $(".debris-results").show();
         }
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "totalDebris") {
         console.log("totalDebris");
-        alert("all fields are complete.");
-        // function getDebris('', '', container);
-    };
+        $.ajax({
+                type: "GET",
+                url: "/debris",
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                let debrisObj = [];
+                let totalParaffin = 0;
+                let totalSand = 0;
+
+                for (let i = 0; i < months.length; i++) {
+                    for (let options in result) {
+                        let debrisDate = result[options].activityDate;
+                        //debrisDate = new Date(debrisDate);
+                        let strDebrisDate = debrisDate.toString().slice(4, 7);
+                        let paraffin = result[options].paraffinWeight;
+                        let sand = result[options].sandWeight;
+
+                        if (strDebrisDate == months[i]) {
+                            totalParaffin += parseInt(paraffin);
+                            totalSand += parseInt(sand);
+                        }
+                    }
+                    debrisObj.push({
+                        date: months[i],
+                        paraffin: totalParaffin,
+                        sand: totalSand
+                    });
+                    totalParaffin = 0;
+                    totalSand = 0;
+                }
+                console.log(debrisObj);
+            })
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            })
+        $(".jsHide").hide();
+        $("#pageDebrisReport").show();
+        $("#pageDebrisReport .show-to-foreman").show();
+        $(".debris-results").show();
+    }
 });
 
 

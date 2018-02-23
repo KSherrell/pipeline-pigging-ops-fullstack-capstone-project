@@ -532,8 +532,7 @@ app.post('/pigging-activity/add', (req, res) => {
         });
 });
 
-// GET ACTIVITES BY SYSTEM
-
+// GET ACTIVITY BY PIPELINE
 app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
     Activity
         .findOne({
@@ -551,7 +550,7 @@ app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
 })
 
 // GET DEBRIS BY PIPELINE
-app.get("/debris/:pipelineName", function (req, res) {
+app.get("/pipeline-debris/:pipelineName", function (req, res) {
     Activity
         .find({
             pipelineName: req.params.pipelineName
@@ -565,8 +564,46 @@ app.get("/debris/:pipelineName", function (req, res) {
             }
             res.status(200).json(item);
         })
+})
 
+// GET DEBRIS BY SYSTEM
+app.get("/system-debris/:systemName", function (req, res) {
+    Activity
+        .find({
+            systemName: req.params.systemName
+        })
+        .where('activityName').equals('receive')
+        .exec(function (err, item) {
+            if (err) {
+                return res.status(500).jason({
+                    message: 'Internal Server Error'
+                });
+            }
+            res.status(200).json(item);
+        })
+})
 
+// GET TOTAL DEBRIS
+app.get("/debris", function (req, res) {
+
+    let compareDate = new Date();
+    compareDate.setMonth(compareDate.getMonth() - 11);
+    Activity
+        .find({
+            activityDate: {
+                $gt: compareDate
+            }
+        })
+        .where('activityName').equals('receive')
+        .exec(function (err, item) {
+            if (err) {
+                return res.status(500).jason({
+                    message: 'Internal Server Error'
+                });
+            }
+            //console.log(activityDate);
+            res.status(200).json(item);
+        })
 })
 
 

@@ -9,7 +9,7 @@ const activitySchema = new mongoose.Schema({
         required: false
     },
     activityDate: {
-        type: String,
+        type: Date,
         required: false
     },
     activityTime: {
