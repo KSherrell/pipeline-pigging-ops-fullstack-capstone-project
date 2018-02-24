@@ -878,6 +878,7 @@
 
 @media only screen and (min-width: 375px) {
     main {
+        width: 350px;
         margin: auto;
     }
     header > div {
