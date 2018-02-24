@@ -780,9 +780,11 @@
     .update-pipeline-container form div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
+/*
     .update-pipeline-container form select:last-of-type {
         width: 200px;
     }
+*/
     .update-pipeline-container form input[type='checkbox'] {
         height: auto;
         width: auto;
