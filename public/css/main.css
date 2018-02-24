@@ -18,7 +18,7 @@
     main {
         position: relative;
         width: 100%;
-        padding: 0 10px;
+        /*        padding: 0 10px;*/
     }
     header {
         position: fixed;
@@ -293,6 +293,7 @@
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
+        width: 73%;
     }
     .pigging-schedule-container form div select {
         font-size: .9rem;
@@ -338,9 +339,9 @@
     }
     .pigging-schedule-container div.schedule-results p.date {
         cursor: default;
-        width: 19%;
+        width: 30%;
         text-align: right;
-        font-size: .8rem;
+        font-size: .7rem;
         border-left: 1px dotted gray;
         vertical-align: baseline;
     }
@@ -890,11 +891,12 @@
     }
     /* PIGGING SCHEDULE*/
     .pigging-schedule-container form {
-        font-size: 1rem;
+        font-size: .9rem;
     }
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
+        width: 74%;
     }
     .pigging-schedule-container form div select {
         margin: 0;
@@ -1050,10 +1052,12 @@
     .pigging-schedule-container form {
         top: 0;
     }
+    /*
     .pigging-schedule-container div.schedule-results {
-        padding: 0 15px;
+        padding: 0 0;
         margin-bottom: auto;
     }
+*/
     /*    DEBRIS REPORT   */
     form#debrisReport {
         padding-left: 1rem;
