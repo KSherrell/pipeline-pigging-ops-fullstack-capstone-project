@@ -2174,13 +2174,18 @@ function getPreviousLaunch(pipelineValue, container) {
                     });
 
                 } else if (result !== null) {
+                    console.log(typeof (result.activityDate));
+                    let strActivityDate = result.activityDate;
+                    strActivityDate = strActivityDate.slice(0, 10);
+                    console.log(strActivityDate);
+
                     if (result.notes == " --Enter field notes here-- ") {
                         result.notes = " -- ";
                     }
                     prevLaunchPageObj.push({
                         activityName: result.activityName,
                         operatorEmail: result.operatorEmail,
-                        activityDate: result.activityDate,
+                        activityDate: strActivityDate,
                         pigType: result.pigType,
                         paraffin: result.paraffinWeight,
                         sand: result.sandWeight,

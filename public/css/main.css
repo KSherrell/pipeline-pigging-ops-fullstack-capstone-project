@@ -322,8 +322,14 @@
     .pigging-schedule-container div#legend div {
         padding: 5px;
         border: 1px dotted gray;
-        width: 32%;
+        width: 24%;
         font-size: .7rem;
+    }
+    .pigging-schedule-container div#legend div.due-today {
+        width: 21%;
+    }
+    .pigging-schedule-container div#legend div.overdue-plus-thirty {
+        width: 26%;
     }
     .pigging-schedule-container div.schedule-results {
         width: 100%;
@@ -334,7 +340,7 @@
         padding: 5px;
         cursor: pointer;
         display: inline-block;
-        width: 79%;
+        width: 70%;
         font-size: .9rem;
     }
     .pigging-schedule-container div.schedule-results p.date {
@@ -780,7 +786,7 @@
     .update-pipeline-container form div.checkboxes-product div:last-of-type {
         padding-right: 0;
     }
-/*
+    /*
     .update-pipeline-container form select:last-of-type {
         width: 200px;
     }
@@ -895,7 +901,7 @@
     .pigging-schedule-container form {
         font-size: .9rem;
     }
-/*
+    /*
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
@@ -908,7 +914,7 @@
     }
     /* DEBRIS REPORTS*/
     #pageDebrisReport section {
-        padding: 0;
+        padding: 10px;
     }
     .debris-report-container form {
         padding-top: 1rem;
