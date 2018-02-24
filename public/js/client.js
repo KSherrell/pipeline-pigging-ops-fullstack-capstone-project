@@ -1036,7 +1036,7 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             $("#pageInputPigging div.select-exception").hide();
             activePage = "inputPigging";
             // selectPipeline();
-        } else if (activePage == "piggingSchedule") {
+        } else if (activePage == "piggingScheduleOP") {
             $(".jsHide").hide();
             $("#pagePiggingSchedule").show();
             $("#pagePiggingSchedule .normal-header").show();

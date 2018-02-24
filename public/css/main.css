@@ -11,7 +11,7 @@
 
 @media only screen and (min-width: 200px) {
     body {
-        font-size: 16px;
+        font-size: 14px;
         font-family: 'Monda', sans-serif;
         background-color: #ffffff;
     }
@@ -32,7 +32,7 @@
         border-bottom: 3px solid #68baca;
     }
     header h1 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         float: left;
         margin: 0 auto;
         color: #fff;
@@ -49,7 +49,7 @@
         margin-right: 13px;
     }
     header.foreman-header h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     header.foreman-header img:first-of-type {
         float: left;
@@ -308,9 +308,9 @@
         margin: 0;
         padding: 0;
         border-radius: 6px;
-        width: 100%;
+        width: 95%;
         height: 2.1rem;
-        font-size: .9rem;
+        font-size: 1em;
     }
     .pigging-schedule-container hr {
         margin: 10px 0 20px;
