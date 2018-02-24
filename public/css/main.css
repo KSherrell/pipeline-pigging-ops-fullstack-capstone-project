@@ -895,11 +895,13 @@
     .pigging-schedule-container form {
         font-size: .9rem;
     }
+/*
     .pigging-schedule-container form div {
         margin: 0;
         display: inline-block;
-        width: 74%;
+        width: 73%;
     }
+*/
     .pigging-schedule-container form div select {
         margin: 0;
         width: 100%;
