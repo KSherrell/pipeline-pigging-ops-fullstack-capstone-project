@@ -428,7 +428,7 @@
     }
     .debris-report-container div.debris-results-header {
         position: fixed;
-        top: 45px;
+        /*        top: 45px;*/
         left: 0;
         width: 100%;
         z-index: 1;
@@ -445,7 +445,7 @@
     }
     .debris-report-container div.debris-results {
         width: 100%;
-        margin: 8rem 0 60px;
+        margin: 8rem 0;
     }
     .debris-report-container div.debris-results-header div > div,
     .debris-report-container div.debris-results-list div > div {
@@ -929,7 +929,7 @@
         margin-top: 0;
     }
     .debris-report-container div.debris-results-header {
-        position: sticky;
+        position: relative;
     }
 }
 
