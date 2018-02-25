@@ -326,16 +326,16 @@
         font-size: .8rem;
     }
     .pigging-schedule-container div#legend div.due-today {
-        width: 20%;
+        width: 42%;
     }
     .pigging-schedule-container div#legend div.due-in-seven {
-        width: 26%;
+        width: 50%;
     }
     .pigging-schedule-container div#legend div.overdue-within-thirty {
-        width: 19%;
+        width: 50%;
     }
     .pigging-schedule-container div#legend div.overdue-plus-thirty {
-        width: 27%;
+        width: 42%;
     }
     .pigging-schedule-container div.schedule-results {
         width: 100%;
