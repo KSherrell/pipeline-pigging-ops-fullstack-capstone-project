@@ -147,6 +147,7 @@
         padding: 13px;
         border-radius: 25px;
         border: 1px solid #ffffff;
+        cursor: pointer;
     }
     div.ops-nav div:hover {
         background-color: #F38630;
