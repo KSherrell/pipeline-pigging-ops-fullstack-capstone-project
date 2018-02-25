@@ -2227,7 +2227,6 @@ function getPreviousLaunch(pipelineValue, container) {
 
 //  Previous Launch (All Users)  >> Back (to Pigging Schedule))
 $(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
-    event.preventDefault();
     $(".jsHide").hide();
     // clear values from text fields
     let container = "#pagePrevLaunch .prev-launch-container"
