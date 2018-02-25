@@ -320,16 +320,21 @@
         margin-bottom: 1.5rem;
     }
     .pigging-schedule-container div#legend div {
-        padding: 5px;
+        padding: 3px;
         border: 1px dotted gray;
-        width: 24%;
-        font-size: .7rem;
+        font-size: .8rem;
     }
     .pigging-schedule-container div#legend div.due-today {
-        width: 21%;
+        width: 20%;
+    }
+    .pigging-schedule-container div#legend div.due-in-seven {
+        width: 26%;
+    }
+    .pigging-schedule-container div#legend div.overdue-within-thirty {
+        width: 19%;
     }
     .pigging-schedule-container div#legend div.overdue-plus-thirty {
-        width: 26%;
+        width: 27%;
     }
     .pigging-schedule-container div.schedule-results {
         width: 100%;
@@ -934,7 +939,7 @@
         border-bottom-right-radius: 6px;
     }
     section {
-        padding: 10px 10px 0;
+        padding: 10px 0 0 10px;
     }
     .user-create-account-container div.buttons {
         margin: 2rem auto;
