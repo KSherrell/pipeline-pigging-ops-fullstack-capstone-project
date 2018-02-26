@@ -786,6 +786,89 @@ function applyPiggingScheduleStyles(launchObj, container) {
     $(container).html(buildList);
 };
 
+function getPreviousLaunch(pipelineValue, container) {
+    console.log(pipelineValue);
+
+    let prevActivityObj = ["launch", "receive", "exception"];
+    let prevLaunchPageObj = [];
+    let i = 0;
+    for (let j = 0; j < 3; j++) {
+        console.log(prevActivityObj[j]);
+        $.ajax({
+                type: "GET",
+                url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[j],
+                dataType: 'json',
+                contentType: 'application/json'
+            })
+            .done(function (result) {
+                console.log(result);
+                i++;
+
+                if (result == null) {
+                    alert("No " + prevActivityObj[j] + " activity found for " + pipelineValue + ".");
+
+                    prevLaunchPageObj.push({
+                        activityName: prevActivityObj[j],
+                        operatorEmail: "--",
+                        activityDate: "--",
+                        pigType: "--",
+                        paraffin: "--",
+                        sand: "--",
+                        exception: "--",
+                        notes: "--"
+                    });
+
+                } else if (result !== null) {
+                    console.log(typeof (result.activityDate));
+                    let strActivityDate = result.activityDate;
+                    strActivityDate = strActivityDate.slice(0, 10);
+                    console.log(strActivityDate);
+
+                    if (result.notes == " --Enter field notes here-- ") {
+                        result.notes = " -- ";
+                    }
+                    prevLaunchPageObj.push({
+                        activityName: result.activityName,
+                        operatorEmail: result.operatorEmail,
+                        activityDate: strActivityDate,
+                        pigType: result.pigType,
+                        paraffin: result.paraffinWeight,
+                        sand: result.sandWeight,
+                        exception: result.exceptionDesc,
+                        notes: result.notes
+                    });
+
+                }
+
+                if (i == 3) {
+                    console.log(prevLaunchPageObj.sort(compare2));
+                    $(container + " h2").text(" " + pipelineValue);
+                    $(container + " .js-launchDate").text(" " + prevLaunchPageObj[1].activityDate);
+                    $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
+                    $(container + " .js-pigType").text(" " + prevLaunchPageObj[1].pigType);
+                    $(container + " .notesL").text(" " + prevLaunchPageObj[1].notes);
+
+                    $(container + " .js-receiveDate").text(" " + prevLaunchPageObj[2].activityDate);
+                    $(container + " .js-receiveOperatorEmail").text(" " + prevLaunchPageObj[2].operatorEmail);
+                    $(container + " .js-paraffin").text(" " + prevLaunchPageObj[2].paraffin + " lbs");
+                    $(container + " .js-sand").text(" " + prevLaunchPageObj[2].sand + " lbs");
+                    $(container + " .notesR").text(" " + prevLaunchPageObj[2].notes);
+
+                    $(container + " .js-exceptionDate").text(" " + prevLaunchPageObj[0].activityDate);
+                    $(container + " .js-exceptionOperatorEmail").text(" " + prevLaunchPageObj[0].operatorEmail);
+                    $(container + " .js-exceptionDesc").text(" " + prevLaunchPageObj[0].exception);
+                    $(container + " .notesE").text(" " + prevLaunchPageObj[0].notes);
+                }
+            })
+
+            .fail(function (jqXHR, error, errorThrown) {
+                console.log(jqXHR);
+                console.log(error);
+                console.log(errorThrown);
+            })
+    }
+};
+
 //Step Two: Use functions, object, variables (triggers)
 
 $(document).ready(function () {
@@ -834,6 +917,10 @@ $(document).ready(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pageCreateAcct").show();
+    });
+    $(document).ready(function () {
+        alert("Please start by creating an account for yourself, then logging in as the Foreman to approve your account and assign yourself a user role.");
+        alert("Foreman login: foreman@email.com \r pwd: 1234");
     });
 });
 
@@ -1298,28 +1385,28 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
 });
 
 
-function getDebris(pipelineValue, systemValue, container) {
-
-    $.ajax({
-            type: "GET",
-            url: "/debris/" + pipelineValue,
-            dataType: 'json',
-            contentType: 'application/json'
-        })
-        .done(function (result) {
-            console.log(result);
-        })
-
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        })
-    //    $(".jsHide").hide();
-    //    $("#pageDebrisReport").show();
-    //    $("#pageDebrisReport .show-to-foreman").show();
-    //    $(".debris-results").show();
-};
+//function getDebris(pipelineValue, systemValue, container) {
+//
+//    $.ajax({
+//            type: "GET",
+//            url: "/debris/" + pipelineValue,
+//            dataType: 'json',
+//            contentType: 'application/json'
+//        })
+//        .done(function (result) {
+//            console.log(result);
+//        })
+//
+//        .fail(function (jqXHR, error, errorThrown) {
+//            console.log(jqXHR);
+//            console.log(error);
+//            console.log(errorThrown);
+//        })
+//    $(".jsHide").hide();
+//    $("#pageDebrisReport").show();
+//    $("#pageDebrisReport .show-to-foreman").show();
+//    $(".debris-results").show();
+//};
 
 
 
@@ -2139,90 +2226,6 @@ $(document).on('click', '#pagePiggingSchedule .schedule-results>p:first-child', 
 
     getPreviousLaunch(pipelineValue, "#pagePrevLaunch .prev-launch-container");
 });
-
-
-function getPreviousLaunch(pipelineValue, container) {
-    console.log(pipelineValue);
-
-    let prevActivityObj = ["launch", "receive", "exception"];
-    let prevLaunchPageObj = [];
-    let i = 0;
-    for (let j = 0; j < 3; j++) {
-        console.log(prevActivityObj[j]);
-        $.ajax({
-                type: "GET",
-                url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[j],
-                dataType: 'json',
-                contentType: 'application/json'
-            })
-            .done(function (result) {
-                console.log(result);
-                i++;
-
-                if (result == null) {
-                    alert("No " + prevActivityObj[j] + " activity found for " + pipelineValue + ".");
-
-                    prevLaunchPageObj.push({
-                        activityName: prevActivityObj[j],
-                        operatorEmail: "--",
-                        activityDate: "--",
-                        pigType: "--",
-                        paraffin: "--",
-                        sand: "--",
-                        exception: "--",
-                        notes: "--"
-                    });
-
-                } else if (result !== null) {
-                    console.log(typeof (result.activityDate));
-                    let strActivityDate = result.activityDate;
-                    strActivityDate = strActivityDate.slice(0, 10);
-                    console.log(strActivityDate);
-
-                    if (result.notes == " --Enter field notes here-- ") {
-                        result.notes = " -- ";
-                    }
-                    prevLaunchPageObj.push({
-                        activityName: result.activityName,
-                        operatorEmail: result.operatorEmail,
-                        activityDate: strActivityDate,
-                        pigType: result.pigType,
-                        paraffin: result.paraffinWeight,
-                        sand: result.sandWeight,
-                        exception: result.exceptionDesc,
-                        notes: result.notes
-                    });
-
-                }
-
-                if (i == 3) {
-                    console.log(prevLaunchPageObj.sort(compare2));
-                    $(container + " h2").text(" " + pipelineValue);
-                    $(container + " .js-launchDate").text(" " + prevLaunchPageObj[1].activityDate);
-                    $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
-                    $(container + " .js-pigType").text(" " + prevLaunchPageObj[1].pigType);
-                    $(container + " .notesL").text(" " + prevLaunchPageObj[1].notes);
-
-                    $(container + " .js-receiveDate").text(" " + prevLaunchPageObj[2].activityDate);
-                    $(container + " .js-receiveOperatorEmail").text(" " + prevLaunchPageObj[2].operatorEmail);
-                    $(container + " .js-paraffin").text(" " + prevLaunchPageObj[2].paraffin + " lbs");
-                    $(container + " .js-sand").text(" " + prevLaunchPageObj[2].sand + " lbs");
-                    $(container + " .notesR").text(" " + prevLaunchPageObj[2].notes);
-
-                    $(container + " .js-exceptionDate").text(" " + prevLaunchPageObj[0].activityDate);
-                    $(container + " .js-exceptionOperatorEmail").text(" " + prevLaunchPageObj[0].operatorEmail);
-                    $(container + " .js-exceptionDesc").text(" " + prevLaunchPageObj[0].exception);
-                    $(container + " .notesE").text(" " + prevLaunchPageObj[0].notes);
-                }
-            })
-
-            .fail(function (jqXHR, error, errorThrown) {
-                console.log(jqXHR);
-                console.log(error);
-                console.log(errorThrown);
-            })
-    }
-};
 
 
 //  Previous Launch (All Users)  >> Back (to Pigging Schedule))

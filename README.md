@@ -197,3 +197,21 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 
 * Admin pages "Debris Report", "Pigging Activity", and "View Pigging History" will be created.
 
+* Expand cross-browser compatibilty to include Chrome for Windows.
+
+## Technical Notes
+
+This application was created by Kim Sherrell, using
+
+* HTML5
+* CSS
+* jQuery
+* Javascript
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* Heroku
+* Linux Ubuntu / Oracle VM VirtualBox
+* lots of arrays, objects, arrays of objects, FOR loops, and IF-ELSE statements
+
