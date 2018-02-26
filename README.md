@@ -3,7 +3,7 @@ Thinkful fullstack capstone project, a Pipeline Pigging Operations History and S
 
 ## Introduction
 
-The Pigging Report is an Excel workbook I created which contains several different types of data: the pigging histories of the pipelines, the pigging schedule, the operators' daily field reports, and the pipeline debris trending reports. It also contains information about each pipeline, such as pipe size, valve types, and acceptable pigs. This report is very time-consuming to manage, modify, and update as all of the work of managing it is done maually -- whether I am copy/pasting information from 6 different daily field reports into the master workbook or copy/paste/clear contents/resetting formulas each month to create a new record. The process for adding new pipelines to the report is clumsy and fractionated, requiring data, links, and formulas to be updated in many places each time a pipeline is added to the report.
+When I worked for a company in the oil and gas industry, I created a pigging report. The Pigging Report is an Excel workbook I created which contains several different types of data: the pigging histories of the pipelines, the pigging schedule, the operators' daily field reports, and the pipeline debris trending reports. It also contains information about each pipeline, such as pipe size, valve types, and acceptable pigs. This report is very time-consuming to manage, modify, and update as all of the work of managing it is done maually -- whether I was copy/pasting information from 6 different daily field reports into the master workbook or copy/paste/clear contents/resetting formulas each month to create a new record. The process for adding new pipelines to the report is clumsy and fractionated, requiring data, links, and formulas to be updated in many places each time a pipeline is added to the report.
 
 The pigging report and schedule is completed in three parts every day:
 
@@ -13,9 +13,9 @@ Part 2: Every morning, the Daily Reports are compiled into one master Daily Repo
 
 Part 3: The Pigging Schedule is created and sent out each day via email to a mailing list which includes Production Foremen, Managers, and Contractors.
 
-Although the Pigging Report has evolved and become more user-friendly over the years, it is still more frenemy than friend.
+Although the Pigging Report had evolved and become more user-friendly over the years, by the time I left, it was still more frenemy than friend.
 
-This application will replace the current Pigging Report, helping our team be more effficient by saving time managing the report. This application will also stabilize the data by reducing the number of times the data is handled (by eliminating the copy/paste cycle), by standardizing data input (e.g. using timestamps instead of manually typing the date or AM/PM), and by making it easier to identify missing information.
+This application will replace the current Pigging Report, helping teams be more effficient by saving time managing their report. This application will also stabilize the data by reducing the number of times the data is handled (by eliminating the copy/paste cycle), and by standardizing data input (e.g. using timestamps instead of manually typing the date or AM/PM).
 
 
 ## User Stories
@@ -179,5 +179,21 @@ The app's functionality includes the following abilities:
 
 ![Wireframe _View Only Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_viewonly_debris_reports.png)
 
+## Notes
 
+The priorities of the design of this application were:
+1. use by the Pipeline Operators
+2. use by the Pipeline Foreman
+3. use by Users logging in
+4. use by New Users ceating accounts
+5. use by the Report Viewers
+
+The Pipeline Operators and Foremen will access the application utilizing an iPhone 6 or later using Chrome or Safari as the web browsers.
+
+
+## Future Fixes
+
+* A third type of user will be created, "Report Viewer", who will have access to the Pigging Schedule and the Debris Report.
+
+* Admin pages "Debris Report", "Pigging Activity", and "View Pigging History" will be created.
 

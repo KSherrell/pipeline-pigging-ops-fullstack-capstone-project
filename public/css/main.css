@@ -1061,7 +1061,7 @@
     /*    PIGGING SCHEDULE   */
     #pagePiggingSchedule section {
         height: 70vh;
-        padding: 0;
+/*        padding: 0;*/
         margin-bottom: 0;
         overflow-y: scroll;
     }
