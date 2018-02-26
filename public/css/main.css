@@ -303,8 +303,8 @@
         vertical-align: baseline;
     }
     .pigging-schedule-container form div.button {
-        width: 22%;
-        margin-left: 10px;
+        width: 23%;
+        /*        margin-left: 10px;*/
     }
     .pigging-schedule-container button {
         margin: 0;
@@ -329,10 +329,10 @@
         width: 42%;
     }
     .pigging-schedule-container div#legend div.due-in-seven {
-        width: 50%;
+        width: 56%;
     }
     .pigging-schedule-container div#legend div.overdue-within-thirty {
-        width: 50%;
+        width: 56%;
     }
     .pigging-schedule-container div#legend div.overdue-plus-thirty {
         width: 42%;
@@ -940,7 +940,7 @@
         border-bottom-right-radius: 6px;
     }
     section {
-        padding: 10px 0 0 10px;
+        padding: 10px;
     }
     .user-create-account-container div.buttons {
         margin: 2rem auto;
