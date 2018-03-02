@@ -1158,7 +1158,7 @@ section.description h2 {
     font-size: 1.25rem;
     font-weight: bold;
     text-align: center;
-
+    margin-top: 5rem;
 }
 
 section.description h3 {
@@ -1188,8 +1188,6 @@ section.description div.user-function {
 
 section.description div.user-function > p {
     display: inline-block;
-    height: 60px;
-    background-color: #E0E4CC;
     padding: 13px;
     vertical-align: middle;
     margin: 3px;
@@ -1214,4 +1212,11 @@ div.demo-logins p {
 
 div.demo-logins {
     margin: 1.5rem;
+}
+
+section.description i.far,
+section.description i.fas {
+    font-size: 5rem;
+    color: darkorange;
+
 }
