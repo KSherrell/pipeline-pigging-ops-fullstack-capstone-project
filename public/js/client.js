@@ -879,7 +879,7 @@ $(document).ready(function () {
     $("#description").show();
 
     //  Shows Login Page
-    $("#pageLogin").show();
+    $("#pageLogin").hide();
 
     //  Hides Forgot Password form
     $("#forgotPassword").hide();
@@ -920,6 +920,11 @@ $(document).ready(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pageCreateAcct").show();
+    });
+
+    $(document).on('click', '#description .preview', function (event) {
+        $("#description").hide();
+        $("#pageLogin").show();
     });
 });
 

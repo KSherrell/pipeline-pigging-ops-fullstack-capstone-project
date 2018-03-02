@@ -1206,3 +1206,12 @@ section.description div.foreman > p {
 section.description div.rv > p {
     width: 45%;
 }
+
+div.demo-logins p {
+    margin: 1px 0;
+    text-align: left;
+}
+
+div.demo-logins {
+    margin: 1.5rem;
+}
