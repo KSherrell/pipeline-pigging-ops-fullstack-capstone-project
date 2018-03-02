@@ -21,9 +21,6 @@
         /*        padding: 0 10px;*/
     }
 
-    main#description {
-        border: 1px solid red;
-    }
     header {
         position: fixed;
         top: 0;
@@ -1131,4 +1128,69 @@
     #pagePrevLaunch section {
         padding: 1rem 15px 2rem;
     }
+}
+
+main#description {
+    border: 1px dashed #69D2E7;
+    width: 75%;
+    font-family: 'Arial', sans-serif;
+}
+
+section.description {
+    width: 75%;
+    border: 0;
+    margin: auto;
+}
+
+section.description h1 {
+    padding: 10px;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+section.description hr {
+    margin: 1rem auto;
+    width: 70%;
+}
+
+section.description h2 {
+    padding: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+section.description h3 {
+    margin-top: 1rem;
+}
+
+section.description p {
+    margin-bottom: 1rem;
+}
+
+section.description div.user-function {
+    width: 100%;
+    text-align: center;
+}
+
+section.description div.user-function > p {
+    display: inline-block;
+    height: 60px;
+    background-color: #E0E4CC;
+    padding: 13px;
+    vertical-align: middle;
+    margin: 3px;
+}
+
+section.description div.operator > p {
+    width: 31%;
+}
+
+section.description div.foreman > p {
+    width: 31%;
+}
+
+section.description div.rv > p {
+    width: 45%;
 }

@@ -875,6 +875,9 @@ $(document).ready(function () {
     //  Hides All
     $(".jsHide").hide();
 
+    //  Shows App Description
+    $("#description").show();
+
     //  Shows Login Page
     $("#pageLogin").show();
 
@@ -917,10 +920,6 @@ $(document).ready(function () {
         event.preventDefault();
         $(".jsHide").hide();
         $("#pageCreateAcct").show();
-    });
-    $(document).ready(function () {
-        alert("Please start by creating an account for yourself, then logging in as the Foreman to approve your account and assign yourself a user role.");
-        alert("Foreman login: foreman@email.com \r pwd: 1234");
     });
 });
 
