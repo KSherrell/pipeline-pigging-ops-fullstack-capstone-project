@@ -31,7 +31,7 @@ describe('Pigging Ops', function () {
     before(function () {
         return runServer();
     });
-    after(funtion() {
+    after(function () {
         return closeServer();
     });
 
