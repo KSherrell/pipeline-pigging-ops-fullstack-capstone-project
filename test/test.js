@@ -5,17 +5,25 @@ const should = chai.should();
 const expect = chai.expect;
 
 // start and close server imported from ../server.js
-const {
-    app,
-    runServer,
-    closeServer
-} = require('../server');
+//const {
+//    app,
+//    runServer,
+//    closeServer
+//} = require('../server');
+
+
+const app = require('../server');
+const runServer = require('../server');
+const closeServer = require('../server');
 
 // import TEST_DATABASE_URL from ../config
-const {
-    DATABASE_URL,
-    TEST_DATABASE_URL
-} = require('../config');
+//const {
+//    DATABASE_URL,
+//    TEST_DATABASE_URL
+//} = require('../config');
+
+const DATABASE_URL = require('../config');
+const TEST_DATABASE_URL = require('../config');
 
 chai.use(chaiHttp);
 
