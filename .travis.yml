@@ -1,2 +1,9 @@
 launguage: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: lVPxbjqCQtgAAngTl+VJis7WSt48G6zNok/J8zprzn8vrA+sR5nT6N6er3mMeqR7aMerxbppsJA5GWRH/JydKid4K5+yn7de2VcyVA7BTKN2aV0bYLwDUcCp7Y2cY7r96A6JGdpW3oKMByGsY9kDP6Kz/q8z893dZCTwF/T7BpXZeQNWiD6MEIonAtxtfMQb3yblb5So/JIDGfbplBX3Glo8Z0l5Zicw5E0W3ERwUzOlQegfwApYAz1DLVYxnBJ/7cCjbap0McYXMlMxOKr9NDFA33EHxQozMVSZREVxsAvgjZkMkogn1YZ6/OPi3KGFpAltE8TiYzN7k8GuAh4eXxWQ6gLAdHbBbyTIysQ3UzikUj9ZcOVGzwx5dbHudpZsqXYfPYGOKZTsSRtH/gQbVwPtW5eS6bu847mcL0o0hbvBA8VRuYn+JkBmACzHmgx2yqPO0FlwL/wL0wTsLDVedSTMN6PVi/+0sY/8krN+ZqKdSeu5Mn+9JvgcE3WLAfvtasIxWVhZ2LEUQyBX0bl/eDXPXPfzVDnjdDN2/f+1V7u2XrkAbMy2dGgZNRnoYm7JdGh9Je0KOpj473JWxETrm25/io/VvsXTB4rmbfU+1H0xLB4o+VZZl0ehs2Oktv0JQXXbJ+k3L+0HIpjXQyf5ISN2+T7STAOVarJbz98IKZ8=
+  app: pipeline-pigging-ops
+  on:
+    repo: KSherrell/pipeline-pigging-ops-fullstack-capstone-project
