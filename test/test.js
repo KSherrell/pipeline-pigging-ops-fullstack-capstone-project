@@ -1,6 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
+const mongoose = require('mongoose');
+
 const should = chai.should();
 const expect = chai.expect;
 
@@ -25,6 +27,8 @@ const closeServer = require('../server');
 const DATABASE_URL = require('../config');
 const TEST_DATABASE_URL = require('../config');
 
+const server = require('../server.js');
+
 chai.use(chaiHttp);
 
 describe('Pigging Ops', function () {
@@ -45,7 +49,7 @@ describe('Pigging Ops', function () {
                 expect(res.body.length).to.be.above(0);
                 res.body.forEach(function (item) {
                     expect(item).to.be.a('object');
-                    expect(item).to.have.keys(
+                    expect(item).to.have.all.keys(
                         'RCName', 'systemName', 'pipelineName', 'launcherName', 'receiverName', 'pipelineSize', 'product', 'acceptablePigs', 'closure', 'piggingFrequency', 'dateAdded', 'pipelineActive')
                 });
             });

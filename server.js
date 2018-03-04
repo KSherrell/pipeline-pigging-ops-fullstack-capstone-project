@@ -28,6 +28,7 @@ mongoose.Promise = global.Promise;
 let server = undefined;
 
 function runServer(urlToUse) {
+
     return new Promise((resolve, reject) => {
         mongoose.connect(urlToUse, err => {
             if (err) {

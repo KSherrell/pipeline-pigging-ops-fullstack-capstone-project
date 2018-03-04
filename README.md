@@ -179,6 +179,7 @@ The app's functionality includes the following abilities:
 
 ![Wireframe _View Only Debris Reports](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/wireframes/wireframes_viewonly_debris_reports.png)
 
+
 ## Notes
 
 The priorities of the design of this application were:
@@ -191,11 +192,20 @@ The priorities of the design of this application were:
 The Pipeline Operators and Foremen will access the application utilizing an iPhone 6 or later using Chrome or Safari as the web browsers.
 
 
+
+## Screenshots
+![Screenshot _Login Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/login-page.jpg)
+
+
+
+
 ## Future Fixes
 
 * A third type of user will be created, "Report Viewer", who will have access to the Pigging Schedule and the Debris Report.
 
 * Admin pages "Debris Report", "Pigging Activity", and "View Pigging History" will be created.
+
+
 
 
 ## Technical Notes
