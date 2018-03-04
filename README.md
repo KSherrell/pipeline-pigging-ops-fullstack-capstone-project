@@ -209,6 +209,8 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 
 ![Screenshot _Pigging Schedule Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/pigging-schedule-page.jpg)
 
+![Screenshot _Previous Launch Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/prev-launch-page.jpg)
+
 
 ## Future Fixes
 
