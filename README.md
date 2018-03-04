@@ -195,11 +195,11 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 
 ## Screenshots
 
-![Screenshot _1](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-1.pdf)
+![Screenshot _1](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-1.png)
 
-![Screenshot _2](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-2.pdf)
+![Screenshot _2](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-2.png)
 
-![Screenshot _3](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-3.pdf)
+![Screenshot _3](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/screenshots-3.png)
 
 ![Screenshot _Login Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/login-page.jpg)
 
