@@ -272,7 +272,7 @@ app.post('/pipelines/create', (req, res) => {
             }
             if (item) {
                 // console.log(`Pipeline \`${req.body.pipelineName}\` created.`);
-                return res.json(item);
+                return res.status(200).json(item);
             }
         });
 });

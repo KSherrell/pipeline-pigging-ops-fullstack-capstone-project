@@ -4,9 +4,9 @@ const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
 
 const should = chai.should();
-const expect = chai.expect;
+const expect = chai.expect();
 
-// start and close server imported from ../server.js
+//start and close server imported from ../server.js
 //const {
 //    app,
 //    runServer,
@@ -14,45 +14,114 @@ const expect = chai.expect;
 //} = require('../server');
 
 
-const app = require('../server');
-const runServer = require('../server');
-const closeServer = require('../server');
-
-// import TEST_DATABASE_URL from ../config
+//import TEST_DATABASE_URL from.. / config
 //const {
 //    DATABASE_URL,
 //    TEST_DATABASE_URL
 //} = require('../config');
 
-const DATABASE_URL = require('../config');
-const TEST_DATABASE_URL = require('../config');
 
 const server = require('../server.js');
+const config = require('../config.js');
+
+
 
 chai.use(chaiHttp);
 
 describe('Pigging Ops', function () {
     before(function () {
-        return runServer();
+        return server.runServer(config.TEST_DATABASE_URL);
     });
     after(function () {
-        return closeServer();
+        return server.closeServer();
     });
 
     it('should list pipelines on GET', function () {
-        return chai.request(app)
+        return chai.request(server.app)
             .get('/pipelines')
             .then(function (res) {
-                expect(res).to.have.status(200);
-                expect(res).to.be.json;
-                expect(res).to.be.a('array');
-                expect(res.body.length).to.be.above(0);
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.a('array');
+                res.body.length.should.be.above(0);
                 res.body.forEach(function (item) {
-                    expect(item).to.be.a('object');
-                    expect(item).to.have.all.keys(
+                    item.should.be.a('object');
+                    item.should.include.keys(
                         'RCName', 'systemName', 'pipelineName', 'launcherName', 'receiverName', 'pipelineSize', 'product', 'acceptablePigs', 'closure', 'piggingFrequency', 'dateAdded', 'pipelineActive')
                 });
             });
+    });
+
+    it('should list users on GET', function () {
+        return chai.request(server.app)
+            .get('/users/requests')
+            .then(function (res) {
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.a('array');
+                res.body.length.should.be.above(0);
+                res.body.forEach(function (item) {
+                    item.should.be.a('object');
+                    item.should.include.keys(
+                        'fname', 'lname', 'email')
+                });
+            });
+    });
+
+    it('should create a pipeline on CREATE', function () {
+        return chai.request(server.app)
+
+            .post('/pipelines/create')
+            .send({
+                RCName: "RC Test Name",
+                systemName: "System Test Name",
+                pipelineName: "Pipeline Test Name",
+                launcherName: "Launcher Test Name",
+                receiverName: "Receiver Test Name",
+                pipelineSize: "6",
+                product: "Gas",
+                acceptablePigs: "cup",
+                closure: "Test Closure",
+                piggingFrequency: "15",
+                dateAdded: "01-18-2018",
+                pipelineActive: "1"
+
+            })
+            .then(function (res) {
+                res.should.have.status(200);
+                res.should.be.json;
+                res.body.should.be.a('object');
+                res.body.should.include.keys(
+                    'RCName', 'systemName', 'pipelineName');
+            });
+    });
+
+    it('should delete a pipeline on DELETE', function () {
+        return chai.request(server.app)
+
+            .delete('/pipelines/create')
+            .send({
+            RCName: "RC Test Name",
+            systemName: "System Test Name",
+            pipelineName: "Pipeline Test Name",
+            launcherName: "Launcher Test Name",
+            receiverName: "Receiver Test Name",
+            pipelineSize: "6",
+            product: "Gas",
+            acceptablePigs: "cup",
+            closure: "Test Closure",
+            piggingFrequency: "15",
+            dateAdded: "01-18-2018",
+            pipelineActive: "1"
+
+        })
+            .then(function (res) {
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.be.a('object');
+            res.body.should.include.keys(
+                'RCName', 'systemName', 'pipelineName');
+        });
     });
 
 
