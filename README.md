@@ -194,9 +194,20 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 
 
 ## Screenshots
+
 ![Screenshot _Login Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/login-page.jpg)
 
+![Screenshot _Create Account Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/create-acct-page.jpg)
 
+![Screenshot _Update User Access Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/update-user-access-page.jpg)
+
+![Screenshot _Admin Menu Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/admin-menu-page.jpg)
+
+![Screenshot _Input Pigging Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/input-pigging-page.jpg)
+
+![Screenshot _Add Pipeline Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/add-pipeline-page.jpg)
+
+![Screenshot _Pigging Schedule Page](https://github.com/KSherrell/pipeline-pigging-ops-fullstack-capstone-project/blob/master/public/imgs/pigging-schedule-page.jpg)
 
 
 ## Future Fixes
