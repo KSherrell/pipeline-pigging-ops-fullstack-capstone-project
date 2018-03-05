@@ -764,7 +764,6 @@ function applyPiggingScheduleStyles(launchObj, container) {
         });
     }
     sortedLaunchObj.sort(compare3);
-    console.log(sortedLaunchObj);
 
     //apply styles, build the html output
     for (let options in sortedLaunchObj) {
@@ -788,13 +787,12 @@ function applyPiggingScheduleStyles(launchObj, container) {
 };
 
 function getPreviousLaunch(pipelineValue, container) {
-    console.log(pipelineValue);
+    //console.log(pipelineValue);
 
     let prevActivityObj = ["launch", "receive", "exception"];
     let prevLaunchPageObj = [];
     let i = 0;
     for (let j = 0; j < 3; j++) {
-        console.log(prevActivityObj[j]);
         $.ajax({
                 type: "GET",
                 url: '/pigging-activity/' + pipelineValue + '/' + prevActivityObj[j],
@@ -802,7 +800,7 @@ function getPreviousLaunch(pipelineValue, container) {
                 contentType: 'application/json'
             })
             .done(function (result) {
-                console.log(result);
+                // console.log(result);
                 i++;
 
                 if (result.length == 0) {
@@ -820,10 +818,9 @@ function getPreviousLaunch(pipelineValue, container) {
                     });
 
                 } else if (result.length > 0) {
-                    console.log(result.sort(compare));
+                    result.sort(compare);
                     let strActivityDate = result[0].activityDate;
                     strActivityDate = strActivityDate.slice(0, 10);
-                    console.log(strActivityDate);
 
                     if (result[0].notes == " --Enter field notes here-- ") {
                         result[0].notes = " -- ";
@@ -842,7 +839,7 @@ function getPreviousLaunch(pipelineValue, container) {
                 }
 
                 if (i == 3) {
-                    console.log(prevLaunchPageObj.sort(compare2));
+                    prevLaunchPageObj.sort(compare2);
                     $(container + " h2").text(" " + pipelineValue);
                     $(container + " .js-launchDate").text(" " + prevLaunchPageObj[1].activityDate);
                     $(container + " .js-launchOperatorEmail").text(" " + prevLaunchPageObj[1].operatorEmail);
@@ -1015,7 +1012,7 @@ $(document).on('click', '#userCreateAcct .js-cancel', function (event) {
 //  Normal Header >> Account Info
 $(document).on('click', 'header img', function (event) {
     event.preventDefault();
-    console.log(activePage);
+    // console.log(activePage);
     $(".jsHide").hide();
     $("#pageUpdateAcct").show();
     $("#pageUpdateAcct #firstName").val(currentUserFName);
