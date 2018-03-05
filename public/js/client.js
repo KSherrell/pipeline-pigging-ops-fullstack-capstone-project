@@ -820,23 +820,23 @@ function getPreviousLaunch(pipelineValue, container) {
                     });
 
                 } else if (result.length > 0) {
-                    console.log(typeof (result.activityDate));
-                    let strActivityDate = result.activityDate;
+                    console.log(result.sort(compare));
+                    let strActivityDate = result[0].activityDate;
                     strActivityDate = strActivityDate.slice(0, 10);
                     console.log(strActivityDate);
 
-                    if (result.notes == " --Enter field notes here-- ") {
-                        result.notes = " -- ";
+                    if (result[0].notes == " --Enter field notes here-- ") {
+                        result[0].notes = " -- ";
                     }
                     prevLaunchPageObj.push({
-                        activityName: result.activityName,
-                        operatorEmail: result.operatorEmail,
+                        activityName: result[0].activityName,
+                        operatorEmail: result[0].operatorEmail,
                         activityDate: strActivityDate,
-                        pigType: result.pigType,
-                        paraffin: result.paraffinWeight,
-                        sand: result.sandWeight,
-                        exception: result.exceptionDesc,
-                        notes: result.notes
+                        pigType: result[0].pigType,
+                        paraffin: result[0].paraffinWeight,
+                        sand: result[0].sandWeight,
+                        exception: result[0].exceptionDesc,
+                        notes: result[0].notes
                     });
 
                 }
