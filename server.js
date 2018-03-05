@@ -441,7 +441,7 @@ app.get("/pipelines", function (req, res) {
             }
             if (!items) {
                 return res.status(401).json({
-                    message: "System not found"
+                    message: "Systems not found"
                 });
             } else {
                 return res.json(items);
