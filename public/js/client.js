@@ -663,7 +663,7 @@ function getPipelinesForSchedule(systemValue, container) {
                         contentType: 'application/json'
                     })
                     .done(function (result2) {
-                        console.log(result2);
+                        console.log(result2.sort(compare));
                         i++;
                         if (result2 === null) {
                             alert("No launch activity found for " + result1[options].pipelineName + ".");
@@ -673,7 +673,7 @@ function getPipelinesForSchedule(systemValue, container) {
                         launchObj.push({
                             pipelineName: result1[options].pipelineName,
                             piggingDays: result1[options].piggingFrequency,
-                            prevLaunch: result2.activityDate
+                            prevLaunch: result2[0].activityDate
                         });
                         console.log(i, result1.length);
 
@@ -752,7 +752,6 @@ function applyPiggingScheduleStyles(launchObj, container) {
         let nextLaunchDate = new Date(prevLaunch);
         nextLaunchDate.setDate(prevLaunch.getDate() + piggingDays);
         let strLaunchDate = nextLaunchDate.toDateString();
-        console.log(strLaunchDate);
         strLaunchDate = strLaunchDate.slice(4, 15);
 
         let daysPastDue = (today - nextLaunchDate);
@@ -771,10 +770,10 @@ function applyPiggingScheduleStyles(launchObj, container) {
     for (let options in sortedLaunchObj) {
         //use due/overdue formulas here
         if (sortedLaunchObj[options].daysPastDue < -7) {
-            className = "due-today";
-        } else if (sortedLaunchObj[options].daysPastDue < 1 && sortedLaunchObj[options].daysPastDue > -7) {
+            className = "current";
+        } else if (sortedLaunchObj[options].daysPastDue < 0 && sortedLaunchObj[options].daysPastDue > -7) {
             className = "due-in-seven";
-        } else if (sortedLaunchObj[options].daysPastDue < 30 && sortedLaunchObj[options].daysPastDue >= 1) {
+        } else if (sortedLaunchObj[options].daysPastDue < 30 && sortedLaunchObj[options].daysPastDue >= 0) {
             className = "overdue-within-thirty";
         } else if (sortedLaunchObj[options].daysPastDue >= 31) {
             className = "overdue-plus-thirty";
@@ -806,7 +805,7 @@ function getPreviousLaunch(pipelineValue, container) {
                 console.log(result);
                 i++;
 
-                if (result == null) {
+                if (result.length == 0) {
                     alert("No " + prevActivityObj[j] + " activity found for " + pipelineValue + ".");
 
                     prevLaunchPageObj.push({
@@ -820,7 +819,7 @@ function getPreviousLaunch(pipelineValue, container) {
                         notes: "--"
                     });
 
-                } else if (result !== null) {
+                } else if (result.length > 0) {
                     console.log(typeof (result.activityDate));
                     let strActivityDate = result.activityDate;
                     strActivityDate = strActivityDate.slice(0, 10);

@@ -326,7 +326,7 @@
         border: 1px dotted gray;
         font-size: .8rem;
     }
-    .pigging-schedule-container div#legend div.due-today {
+    .pigging-schedule-container div#legend div.current {
         width: 42%;
     }
     .pigging-schedule-container div#legend div.due-in-seven {
@@ -358,7 +358,7 @@
         border-left: 1px dotted gray;
         vertical-align: baseline;
     }
-    .pigging-schedule-container div.due-today {
+    .pigging-schedule-container div.current {
         background-color: #ffffff;
     }
     .pigging-schedule-container div.due-in-seven {

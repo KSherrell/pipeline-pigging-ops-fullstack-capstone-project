@@ -538,7 +538,7 @@ app.post('/pigging-activity/add', (req, res) => {
 // GET ACTIVITY BY PIPELINE
 app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
     Activity
-        .findOne({
+        .find({
             pipelineName: req.params.pipelineName
         })
         .where('activityName').equals(req.params.activityName)
