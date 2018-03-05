@@ -662,6 +662,7 @@ function getPipelinesForSchedule(systemValue, container) {
                         contentType: 'application/json'
                     })
                     .done(function (result2) {
+                        console.log(result2);
                         i++;
                         if (result2 === null) {
                             alert("No launch activity found for " + result1[options].pipelineName + ".");
@@ -2144,8 +2145,15 @@ $(document).on('submit', '#pageInputPigging #inputPigging', function (event) {
     let inputActivity = $("input[type=radio][name=radioPigActivity]:checked");
     let inputActivityString = inputActivity[0].id;
 
+    // make sure activityDate isn't in the future
+    let today = new Date();
+    activityDate = new Date(activityDate);
+    if (activityDate > today) {
+        alert("Activity Date cannot be greater than today's date");
+        $("#pageInputPigging #inputPigging #activityDate").focus();
+    }
     //add key:value pairs to activityObj per inputActivity
-    if (inputActivityString == "radioLaunch") {
+    else if (inputActivityString == "radioLaunch") {
         activityName = "launch";
         activityObj.activityName = activityName;
         activityObj.pigType = pigValue;
