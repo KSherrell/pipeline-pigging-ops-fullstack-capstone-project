@@ -423,7 +423,9 @@ app.delete("/pipelines/delete/:pipelineID", function (req, res) {
                         message: "System not found"
                     });
                 } else {
-                    return res.json(items);
+                    return res.status(204).json({
+                        message: "Item deleted"
+                    });
                 }
             });
 });

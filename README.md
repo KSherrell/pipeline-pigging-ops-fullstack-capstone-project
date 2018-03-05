@@ -219,8 +219,6 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 * Admin pages "Debris Report", "Pigging Activity", and "View Pigging History" will be created.
 
 
-
-
 ## Technical Notes
 
 This application was created using
