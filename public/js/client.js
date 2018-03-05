@@ -641,6 +641,7 @@ function postPiggingActivity(activityObj) {
         })
 };
 
+
 function getPipelinesForSchedule(systemValue, container) {
     let launchObj = [];
     let i = 0;
