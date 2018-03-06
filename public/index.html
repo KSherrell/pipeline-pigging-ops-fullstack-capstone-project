@@ -72,32 +72,40 @@
             </div>
         </header>
         <section class="user-login-container">
-            <!--
-<div class="demo-logins">
-    <p>To login as a Foreman:</p>
-    <p>
-        <br /> email: foreman@email.com
-        <br /> pwd: 1234
-    </p>
-</div>
-<hr>
-<div class="demo-logins">
-    <p>To login as an Operator:</p>
-    <p>
-        <br /> email: operator@email.com
-        <br /> pwd: 1234
-    </p>
-</div>
--->
+
+            <div style="margin-top:0" class="demo-logins">
+                <p>To login as a Foreman:</p>
+                <p>
+                    <br /> email: foreman@email.com
+                    <br /> pwd: 1234
+                </p>
+            </div>
+            <hr>
+            <div class="demo-logins">
+                <p>To login as an Operator:</p>
+                <p>
+                    <br /> email: operator@email.com
+                    <br /> pwd: 1234
+                </p>
+            </div>
+            <hr>
+            <div class="demo-logins">
+                <p>To login as a Report Viewer:</p>
+                <p>
+                    <br /> email: report.viewer@email.com
+                    <br /> pwd: 1234
+                </p>
+            </div>
+
 
             <form id="userLogin">
                 <div>
                     <label for="email">Email</label>
-                    <input type="text" id="userEmail" name="user-email" value="kim@email.com" />
+                    <input type="text" id="userEmail" name="user-email" value="" />
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="userPwd" name="user-password" value="1234" />
+                    <input type="password" id="userPwd" name="user-password" value="" />
                 </div>
                 <div class="buttons">
                     <button form="userLogin" type="submit">Submit</button>
@@ -383,14 +391,14 @@
         </header>
         <section class="admin-menu-container">
             <div>
-                <p class="gotoPiggingSchedule">View Pigging Schedule</p>
-                <p class="gotoDebrisReport">View Debris Report</p>
-                <p class="gotoPiggingActivity">Pigging Activity</p>
-                <p class="gotoViewHistory">View Pigging History</p>
+                <p class="gotoPiggingSchedule">Pigging Schedule</p>
+                <p class="gotoDebrisReport">Debris Reports</p>
+                <p class="gotoPiggingActivity">Total Pigs</p>
+                <p class="gotoViewHistory">Activity History</p>
                 <p class="gotoAddPipeline">Add Pipeline</p>
                 <p class="gotoUdatePipeline">Update / Remove Pipeline</p>
-                <p class="gotoAddUser">Add User</p>
-                <p class="gotoUpdateUser">Update / Remove User</p>
+                <p class="gotoAddUser">Assign New User Role</p>
+                <p class="gotoUpdateUser">Update User Access</p>
             </div>
 
         </section>
@@ -553,7 +561,7 @@
         <header class="foreman-header">
             <div>
                 <img src="imgs/admin-menu-wht.png">
-                <h1>Pigging Activity</h1>
+                <h1>Total Pigs</h1>
                 <div>
                     <img src="imgs/acct-info-wht.png">
                     <img src="imgs/exit.png">
@@ -643,7 +651,7 @@
         <header class="foreman-header">
             <div>
                 <img src="imgs/admin-menu-wht.png">
-                <h1>Pigging History</h1>
+                <h1>Activity History</h1>
                 <div>
                     <img src="imgs/acct-info-wht.png">
                     <img src="imgs/exit.png">
@@ -1121,7 +1129,7 @@
         <header class="foreman-header">
             <div>
                 <img src="imgs/admin-menu-wht.png">
-                <h1>Update User</h1>
+                <h1>Update User Access</h1>
                 <div>
                     <img src="imgs/acct-info-wht.png">
                     <img src="imgs/exit.png">
