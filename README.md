@@ -214,9 +214,7 @@ The Pipeline Operators and Foremen will access the application utilizing an iPho
 
 ## Future Fixes
 
-* A third type of user will be created, "Report Viewer", who will have access to the Pigging Schedule and the Debris Report.
-
-* Admin pages "Debris Report", "Pigging Activity", and "View Pigging History" will be created.
+* Admin pages "Pigging Activity", and "View Pigging History" will be created.
 
 
 ## Technical Notes

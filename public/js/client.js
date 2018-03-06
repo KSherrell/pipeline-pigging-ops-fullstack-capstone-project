@@ -117,8 +117,11 @@ function loginUser(email, password) {
                     $(".jsHide").hide();
                     $("#pagePiggingSchedule").show();
                     $(".foreman-header").hide();
+                    $(".normal-header").show();
                     $(".show-to-operator").hide();
+                    $(".show-to-report-viewer").show();
                     activePage = "piggingScheduleRV";
+                    getSystems("#piggingSchedule #systemName");
                 } else {
                     alert("User found but not active. Please contact the Pipeline Foreman.");
                 }
@@ -1124,7 +1127,6 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             $("#pageInputPigging div.select-receive").hide();
             $("#pageInputPigging div.select-exception").hide();
             activePage = "inputPigging";
-            // selectPipeline();
         } else if (activePage == "piggingScheduleOP") {
             $(".jsHide").hide();
             $("#pagePiggingSchedule").show();
@@ -1135,12 +1137,31 @@ $(document).on('click', '#pageUpdateAcct .js-cancel', function (event) {
             activePage = "piggingScheduleOP";
         }
     } else if (currentUserRole == "Report_Viewer") {
-        $(".jsHide").hide();
-        $("#pagePiggingSchedule").show();
-        $(".foreman-header").hide();
-        $(".show-to-operator").hide();
+        if (activePage == "piggingScheduleRV") {
+            $(".jsHide").hide();
+            $("#pagePiggingSchedule").show();
+            $(".foreman-header").hide();
+            $(".normal-header").show();
+            $(".show-to-operator").hide();
+            $(".show-to-report-viewer").show();
+            getSystems("#piggingSchedule #systemName");
+
+        } else if (activePage == "debrisReportRV") {
+            $(".jsHide").hide();
+            $("#pageDebrisReport").show();
+            $("#pageDebrisReport .foreman-header").hide();
+            $("#pageDebrisReport .normal-header").show();
+            $("#pageDebrisReport #debrisReport").show();
+            $(".debris-results").hide();
+            $("#debrisReport .js-system-debris").hide();
+            $("#debrisReport .js-pipeline-debris").hide();
+            $(".ops-nav").show();
+
+        }
     }
 });
+
+
 
 // USER = FOREMAN
 
@@ -1293,8 +1314,14 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 })
             $(".jsHide").hide();
             $("#pageDebrisReport").show();
-            $("#pageDebrisReport .show-to-foreman").show();
             $(".debris-results").show();
+            if (currentUserRole == "Foreman") {
+                $("#pageDebrisReport .show-to-foreman").show();
+            } else if (currentUserRole == "Report_Viewer") {
+                $(".ops-nav").show();
+                $(".normal-header").show();
+            }
+
         };
 
 
@@ -1366,8 +1393,14 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                 })
             $(".jsHide").hide();
             $("#pageDebrisReport").show();
-            $("#pageDebrisReport .show-to-foreman").show();
             $(".debris-results").show();
+            if (currentUserRole == "Foreman") {
+                $("#pageDebrisReport .show-to-foreman").show();
+            } else if (currentUserRole == "Report_Viewer") {
+                $(".ops-nav").show();
+                $(".normal-header").show();
+            }
+
         }
 
     } else if ($("input[type=radio][name=radio-debris-report]:checked").val() == "totalDebris") {
@@ -1430,37 +1463,16 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
             })
         $(".jsHide").hide();
         $("#pageDebrisReport").show();
-        $("#pageDebrisReport .show-to-foreman").show();
         $(".debris-results").show();
+        if (currentUserRole == "Foreman") {
+            $("#pageDebrisReport .show-to-foreman").show();
+        } else if (currentUserRole == "Report_Viewer") {
+            $(".ops-nav").show();
+            $(".normal-header").show();
+        }
+
     }
 });
-
-
-//function getDebris(pipelineValue, systemValue, container) {
-//
-//    $.ajax({
-//            type: "GET",
-//            url: "/debris/" + pipelineValue,
-//            dataType: 'json',
-//            contentType: 'application/json'
-//        })
-//        .done(function (result) {
-//            console.log(result);
-//        })
-//
-//        .fail(function (jqXHR, error, errorThrown) {
-//            console.log(jqXHR);
-//            console.log(error);
-//            console.log(errorThrown);
-//        })
-//    $(".jsHide").hide();
-//    $("#pageDebrisReport").show();
-//    $("#pageDebrisReport .show-to-foreman").show();
-//    $(".debris-results").show();
-//};
-
-
-
 
 //  Debris Report (Foreman) >> Reset
 $(document).on('click', '#pageDebrisReport .js-debrisReset', function (event) {
@@ -1468,8 +1480,14 @@ $(document).on('click', '#pageDebrisReport .js-debrisReset', function (event) {
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
     $("#pageDebrisReport #debrisReport").show();
-    $("#pageDebrisReport .show-to-foreman").show();
     document.getElementById("debrisReport").reset();
+
+    if (currentUserRole == "Foreman") {
+        $("#pageDebrisReport .show-to-foreman").show();
+    } else if (currentUserRole == "Report_Viewer") {
+        $(".normal-header").show();
+        $(".ops-nav").show();
+    }
 });
 
 //*** Admin Menu >> Pigging Activity
@@ -2308,26 +2326,23 @@ $(document).on('click', '#pagePrevLaunch .ops-nav', function (event) {
         $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-operator, #pagePiggingSchedule .normal-header").show();
     } else if (activePage == "adminMenu") {
         $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-foreman").show();
-
     } else if (activePage == "piggingScheduleRV") {
         $("#pagePiggingSchedule, #pagePiggingSchedule .show-to-report-viewer, #pagePiggingSchedule .normal-header").show();
     };
-
-
 });
 
-
-
 //  Pigging Schedule (Report Viewer) >> Debris Report
-$(document).on('click', '#pagePiggingSchedule .js-viewonly', function (event) {
+$(document).on('click', '#pagePiggingSchedule .show-to-report-viewer', function (event) {
 
     $(".jsHide").hide();
     $("#pageDebrisReport").show();
     $("#pageDebrisReport .foreman-header").hide();
+    $("#pageDebrisReport .normal-header").show();
     $("#pageDebrisReport #debrisReport").show();
     $(".debris-results").hide();
     $("#debrisReport .js-system-debris").hide();
     $("#debrisReport .js-pipeline-debris").hide();
+    $(".ops-nav").show();
     activePage = "debrisReportRV";
 });
 
@@ -2336,12 +2351,13 @@ $(document).on('click', '#pageDebrisReport .ops-nav', function (event) {
 
     $(".jsHide").hide();
     $("#pagePiggingSchedule").show();
-    $("#pagePiggingSchedule .foreman-header").hide();
-    $("#pagePiggingSchedule .show-to-operator").hide();
+    $(".foreman-header").hide();
+    $(".normal-header").show();
+    $(".show-to-operator").hide();
+    $(".show-to-report-viewer").show();
     activePage = "piggingScheduleRV";
+    getSystems("#piggingSchedule #systemName");
 });
-
-
 
 //  Normal Header >> Exit Application
 $(document).on('click', 'header img + img', function (event) {
