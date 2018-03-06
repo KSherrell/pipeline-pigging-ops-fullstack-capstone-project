@@ -1213,6 +1213,9 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
         );
     };
 
+    let buildList = "";
+    $('.debris-results-list').html('');
+
     if ($("input[type=radio][name=radio-debris-report]:checked").val() == "debrisByPipeline") {
         let pipelineValue = "";
         $('#pageDebrisReport select#js-selectDebrisPipeline option:selected').each(function () {
@@ -1266,8 +1269,6 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                         totalSand = 0;
                     }
                     console.log(debrisObj);
-                    let buildList = "";
-                    $('.debris-results-list').html('');
                     for (let item in debrisObj) {
                         buildList += '<div>' +
                             '<div>' +
@@ -1341,6 +1342,21 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                         totalSand = 0;
                     }
                     console.log(debrisObj);
+                    for (let item in debrisObj) {
+                        buildList += '<div>' +
+                            '<div>' +
+                            '<h3>' + debrisObj[item].date + '</h3>' +
+                            '</div>' +
+                            '<div>' +
+                            '<p>' + debrisObj[item].paraffin + '</p>' +
+                            '</div>' +
+                            '<div>' +
+                            '<p>' + debrisObj[item].sand + '</p>' +
+                            '</div>' +
+                            '</div>';
+                    };
+                    $('.debris-results-header>h2').text(systemValue);
+                    $('.debris-results-list').html(buildList);
 
                 })
                 .fail(function (jqXHR, error, errorThrown) {
