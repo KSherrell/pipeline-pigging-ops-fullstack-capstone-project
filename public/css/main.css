@@ -423,6 +423,8 @@
     }
     .debris-report-container div.debris-results h3 {
         padding: 0;
+        color: #088ba5;
+        font-weight: normal;
     }
     .debris-report-container hr {
         margin: 10px 0 0;
@@ -439,6 +441,8 @@
     }
     .debris-report-container div.debris-results-header h3 {
         padding: 1rem 0 0;
+        font-weight: normal;
+        color: #088ba5;
     }
     .debris-report-container div.debris-results-header > h3 {
         padding-bottom: .5rem;

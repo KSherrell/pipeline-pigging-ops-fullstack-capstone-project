@@ -1162,8 +1162,6 @@ $(document).on('click', 'p.gotoPiggingSchedule', function (event) {
     $("#scheduleResults").html("");
     activePage = "adminMenu";
     getSystems("#pagePiggingSchedule #piggingSchedule #systemName");
-
-
 });
 
 //*** Admin Menu >> View Debris Report
@@ -1209,9 +1207,9 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
     for (let i = 0; i < 12; i++) {
         let thisMonth = new Date();
         thisMonth.setMonth(thisMonth.getMonth() - i);
-        let currentMonthToPush = thisMonth.toString().slice(4, 7);
+        let monthToPush = thisMonth.toString().slice(4, 7);
         months.push(
-            currentMonthToPush
+            monthToPush
         );
     };
 
@@ -1267,6 +1265,25 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                         totalParaffin = 0;
                         totalSand = 0;
                     }
+                    console.log(debrisObj);
+                    let buildList = "";
+                    $('.debris-results-list').html('');
+                    for (let item in debrisObj) {
+                        buildList += '<div>' +
+                            '<div>' +
+                            '<h3>' + debrisObj[item].date + '</h3>' +
+                            '</div>' +
+                            '<div>' +
+                            '<p>' + debrisObj[item].paraffin + '</p>' +
+                            '</div>' +
+                            '<div>' +
+                            '<p>' + debrisObj[item].sand + '</p>' +
+                            '</div>' +
+                            '</div>';
+                    };
+                    $('.debris-results-header>h2').text(pipelineValue);
+                    $('.debris-results-list').html(buildList);
+
                 })
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
@@ -1324,6 +1341,7 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                         totalSand = 0;
                     }
                     console.log(debrisObj);
+
                 })
                 .fail(function (jqXHR, error, errorThrown) {
                     console.log(jqXHR);
