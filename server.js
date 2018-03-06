@@ -554,11 +554,14 @@ app.get("/pigging-activity/:pipelineName/:activityName", function (req, res) {
 
 // GET DEBRIS BY PIPELINE
 app.get("/pipeline-debris/:pipelineName", function (req, res) {
+    let compareDate = new Date();
+    compareDate.setMonth(compareDate.getMonth() - 11);
     Activity
         .find({
             pipelineName: req.params.pipelineName
         })
         .where('activityName').equals('receive')
+        .where('activityDate').gte(compareDate)
         .exec(function (err, item) {
             if (err) {
                 return res.status(500).jason({
@@ -571,11 +574,14 @@ app.get("/pipeline-debris/:pipelineName", function (req, res) {
 
 // GET DEBRIS BY SYSTEM
 app.get("/system-debris/:systemName", function (req, res) {
+    let compareDate = new Date();
+    compareDate.setMonth(compareDate.getMonth() - 11);
     Activity
         .find({
             systemName: req.params.systemName
         })
         .where('activityName').equals('receive')
+        .where('activityDate').gte(compareDate)
         .exec(function (err, item) {
             if (err) {
                 return res.status(500).jason({

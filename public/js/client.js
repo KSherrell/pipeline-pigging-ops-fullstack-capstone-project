@@ -1389,7 +1389,6 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                         let debrisDate = result[options].activityDate;
                         debrisDate = new Date(debrisDate);
                         let strDebrisDate = debrisDate.toString().slice(4, 7);
-                        console.log(debrisDate, strDebrisDate);
                         let paraffin = result[options].paraffinWeight;
                         let sand = result[options].sandWeight;
 
@@ -1407,6 +1406,22 @@ $(document).on('submit', '#pageDebrisReport #debrisReport', function (event) {
                     totalSand = 0;
                 }
                 console.log(debrisObj);
+                for (let item in debrisObj) {
+                    buildList += '<div>' +
+                        '<div>' +
+                        '<h3>' + debrisObj[item].date + '</h3>' +
+                        '</div>' +
+                        '<div>' +
+                        '<p>' + debrisObj[item].paraffin + '</p>' +
+                        '</div>' +
+                        '<div>' +
+                        '<p>' + debrisObj[item].sand + '</p>' +
+                        '</div>' +
+                        '</div>';
+                };
+                $('.debris-results-header>h2').text("Total Debris");
+                $('.debris-results-list').html(buildList);
+
             })
             .fail(function (jqXHR, error, errorThrown) {
                 console.log(jqXHR);
