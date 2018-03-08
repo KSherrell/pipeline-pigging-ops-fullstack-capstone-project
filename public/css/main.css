@@ -1226,3 +1226,10 @@ section.description i.fas {
     color: darkorange;
 
 }
+
+footer {
+    margin-top: 3rem;
+    font-size: .8rem;
+    color: darkslategrey;
+    text-align: center;
+}
