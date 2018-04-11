@@ -143,7 +143,7 @@ app.post('/users/login', function (req, res) {
             }
             if (!items) {
                 // bad username
-                return res.status(401).json({
+                return res.status(404).json({
                     message: "User not found"
                 });
             } else {
@@ -153,7 +153,7 @@ app.post('/users/login', function (req, res) {
                     }
                     if (!isValid) {
                         return res.status(401).json({
-                            message: "Not found"
+                            message: "Invalid Password"
                         });
                     } else {
 
@@ -309,7 +309,7 @@ app.get("/systems/:rcValue", function (req, res) {
                 });
             }
             if (!items) {
-                return res.status(401).json({
+                return res.status(404).json({
                     message: "System not found"
                 });
             } else {
@@ -331,7 +331,7 @@ app.get("/pipelines/:systemValue", function (req, res) {
                 });
             }
             if (!items) {
-                return res.status(401).json({
+                return res.status(404).json({
                     message: "System not found"
                 });
             } else {
